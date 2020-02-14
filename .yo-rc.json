@@ -1,0 +1,52 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.pfe.hsnx",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.7.0",
+    "applicationType": "monolith",
+    "baseName": "TaskManagerHsnx",
+    "packageName": "com.pfe.hsnx",
+    "packageFolder": "com/pfe/hsnx",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mssql",
+    "prodDatabaseType": "mssql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YTMxYjdmOTE3ZmU0ZTkyNjFkOGVhMDY3OTNkY2I4N2VhNzMxYzc5NzIzNTRhNTY1NDRiMDU5NmM2YjQwNWQ3ZmMyNzI3N2Y1YTZmZjIxODIzNzAxMDYxZTg2NGEyMjQyNDg0NDExY2ZhZGFhZWM4NjAzZDU5ZGMwYTljZGMyMmU=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1581517286004,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-swagger-cli",
+        "version": "3.0.1"
+      },
+      {
+        "name": "generator-jhipster-angular-material-integration",
+        "version": "1.0.17"
+      }
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "ar-ly", "fr"],
+    "blueprints": []
+  }
+}
