@@ -93,7 +93,7 @@
                   identityInsertEnabled="true"
                   tableName="jhi_authority">
             <column name="name" type="string"/>
-        </loadData>
+        </ext:loadData>
 
         <ext:loadData
                   file="config/liquibase/data/user_authority.csv"
@@ -101,7 +101,7 @@
                   identityInsertEnabled="true"
                   tableName="jhi_user_authority">
             <column name="user_id" type="numeric"/>
-        </loadData>
+        </ext:loadData>
         <createTable tableName="jhi_persistent_audit_event">
             <column name="event_id" type="bigint" >
                 <constraints primaryKey="true" nullable="false"/>
