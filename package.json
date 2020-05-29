@@ -23,6 +23,9 @@
     "@ngx-translate/http-loader": "4.0.0",
     "bootstrap": "4.4.1",
     "core-js": "3.5.0",
+    "g": "^2.0.1",
+    "generator-jhipster-db-helper": "^1.2.0",
+    "jhipster": "0.0.2",
     "moment": "2.24.0",
     "ng-jhipster": "0.11.5",
     "ngx-cookie": "4.0.2",
@@ -31,6 +34,7 @@
     "rxjs": "6.5.3",
     "swagger-ui-dist": "3.24.3",
     "tslib": "1.10.0",
+    "yo": "^3.1.1",
     "zone.js": "0.10.2"
   },
   "devDependencies": {

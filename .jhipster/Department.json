@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "deptName",
+            "dbhColumnName": "DeptName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deptNote",
+            "dbhColumnName": "DeptNote",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20190221131629",
+    "dto": "mapstruct",
+    "searchEngine": "elasticsearch",
+    "service": "serviceImpl",
+    "entityTableName": "tblDepartment",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": true,
+    "pagination": "pagination",
+    "angularJSSuffix": "hsnx",
+    "dbhIdName": "DeptID"
+}
