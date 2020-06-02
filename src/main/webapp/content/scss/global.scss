@@ -5,6 +5,14 @@
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
+.hugeModal > .modal-dialog {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: fixed;
+  margin: 0px 0px 0px 0px !important;
+}
 
 body,
 h1,

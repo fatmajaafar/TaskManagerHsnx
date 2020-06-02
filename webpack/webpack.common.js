@@ -34,6 +34,7 @@ module.exports = (options) => ({
                 test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot)$/i,
                 loader: 'file-loader',
                 options: {
+                    esModule: false,
                     digest: 'hex',
                     hash: 'sha512',
                     name: 'content/[hash].[ext]'

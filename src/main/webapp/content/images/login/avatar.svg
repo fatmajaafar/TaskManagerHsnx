@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="_x34_57bf273-24a3-4fd8-a857-e9b918267d6a"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="698px" height="698px"
+	 viewBox="0 0 698 698" enable-background="new 0 0 698 698" xml:space="preserve">
+<g opacity="0.5">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-242.54" y1="209.3403" x2="-242.5401" y2="907.3403" gradientTransform="matrix(1 0 0 -1 591.54 907.3398)">
+		<stop  offset="0" style="stop-color:#808080;stop-opacity:0.25"/>
+		<stop  offset="0.54" style="stop-color:#808080;stop-opacity:0.12"/>
+		<stop  offset="1" style="stop-color:#808080;stop-opacity:0.1"/>
+	</linearGradient>
+	<circle fill="url(#SVGID_1_)" cx="349" cy="349" r="349"/>
+</g>
+<circle fill="#F5F5F5" cx="349.68" cy="346.77" r="341.64"/>
+<path fill="#C91717" d="M350,689.76c66.756,0.108,132.067-19.438,187.79-56.2c-12.59-68.8-60.5-72.72-60.5-72.72h-264.2
+	c0,0-45.21,3.71-59.33,67C211.209,668.25,279.762,689.881,350,689.76z"/>
+<circle fill="#333333" cx="346.37" cy="339.57" r="164.9"/>
+<path opacity="0.1" enable-background="new    " d="M293.15,476.92h105.661l0,0v84.53c0,29.169-23.641,52.818-52.811,52.83l0,0
+	c-29.177,0-52.83-23.653-52.83-52.83l0,0v-84.53l0,0H293.15z"/>
+<path fill="#FDB797" d="M296.5,473h99c1.85,0,3.35,1.5,3.35,3.35l0,0v81.181c0.006,29.177-23.643,52.834-52.82,52.84
+	c-0.01,0-0.02,0-0.03,0l0,0c-29.177,0-52.83-23.653-52.83-52.83l0,0v-81.19C293.17,474.508,294.658,473.011,296.5,473z"/>
+<path opacity="0.1" enable-background="new    " d="M293.34,516.82c34.053,12.723,71.537,12.825,105.66,0.29v-13H293.34V516.82z"/>
+<circle fill="#FDB797" cx="346.37" cy="372.44" r="151.45"/>
+<path opacity="0.1" enable-background="new    " d="M238.49,234.68c0,0,63.83,129.56,243.88,54.32l-41.92-65.73l-74.31-26.67
+	L238.49,234.68z"/>
+<path fill="#333333" d="M238.49,232.78c0,0,63.83,129.56,243.88,54.3l-41.92-65.73l-74.31-26.67L238.49,232.78z"/>
+<path fill="#333333" d="M237.93,224c4.304-13.323,11.742-25.418,21.69-35.27c29.79-29.45,78.63-35.66,103.68-69.24
+	c6,9.32,1.36,23.65-9,27.65c24-0.16,51.81-2.26,65.38-22c6.846,15.936,3.898,34.389-7.57,47.4c21.271,1,44.001,15.4,45.341,36.65
+	c0.92,14.16-8,27.56-19.59,35.68c-11.591,8.12-25.71,11.85-39.561,14.9C357.859,268.7,211.54,306.07,237.93,224z"/>
+<ellipse fill="#FDB797" cx="194.86" cy="372.3" rx="14.09" ry="26.42"/>
+<ellipse fill="#FDB797" cx="497.8" cy="372.3" rx="14.09" ry="26.42"/>
+</svg>
