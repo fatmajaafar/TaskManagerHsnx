@@ -1,0 +1,48 @@
+{
+    "name": "TblEvent",
+    "fields": [
+        {
+            "fieldName": "Description",
+            "dbhColumnName": "Description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "starttime",
+            "dbhColumnName": "StartTime",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "startdate",
+            "dbhColumnName": "StartDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "endtime",
+            "dbhColumnName": "EndTime",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "enddate",
+            "dbhColumnName": "EndDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190221093012",
+    "entityTableName": "TblEvent",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "hsnx",
+    "dbhIdName": "Event",
+    "searchEngine": "elasticsearch",
+    "databaseType": "sql",
+    "readOnly": false
+}

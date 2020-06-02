@@ -1,0 +1,58 @@
+{
+    "name": "TblTask",
+    "fields": [
+        {
+            "fieldName": "taskname",
+            "dbhColumnName": "Title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "dbhColumnName": "TaskDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "DateAssigned",
+            "dbhColumnName": "DateAssigned",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "DateCompletion",
+            "dbhColumnName": "DateCompletion",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "Status",
+            "dbhColumnName": "Status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "priority",
+            "dbhColumnName": "Priority",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "DueDate",
+            "dbhColumnName": "DueDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190221093012",
+    "entityTableName": "TblTask",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "hsnx",
+    "dbhIdName": "Task",
+    "searchEngine": "elasticsearch",
+    "databaseType": "sql",
+    "readOnly": false
+}

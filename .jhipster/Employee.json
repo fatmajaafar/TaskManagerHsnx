@@ -1,0 +1,53 @@
+{
+    "name": "TblEmployee",
+    "fields": [
+        {
+            "fieldName": "branchName",
+            "dbhColumnName": "EmployeeName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "branchPhone",
+            "dbhColumnName": "EmployeePhone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "branchFax",
+            "dbhColumnName": "EmployeeFax",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "branchAddress",
+            "dbhColumnName": "EmployeeAdresse",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "branchEmail",
+            "dbhColumnName": "EmployeeEmail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "branchHiredate",
+            "dbhColumnName": "EmployeeHiredate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190221093012",
+    "entityTableName": "TblEmployee",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "hsnx",
+    "dbhIdName": "Employee",
+    "searchEngine": "elasticsearch",
+    "databaseType": "sql",
+    "readOnly": false
+}
