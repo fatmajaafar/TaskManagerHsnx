@@ -35,6 +35,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.isAuthenticated()) {
+      this.loginModalService.open();
+    }
     this.profileService.getProfileInfo().subscribe(profileInfo => {
       this.inProduction = profileInfo.inProduction;
       this.swaggerEnabled = profileInfo.swaggerEnabled;
@@ -62,6 +65,7 @@ export class NavbarComponent implements OnInit {
     this.collapseNavbar();
     this.loginService.logout();
     this.router.navigate(['']);
+    this.login();
   }
 
   toggleNavbar(): void {

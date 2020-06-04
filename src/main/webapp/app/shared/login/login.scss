@@ -55,7 +55,7 @@ form {
 .login-content h2 {
   margin: 15px 0;
   color: #333;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 2.9rem;
 }
 
@@ -175,7 +175,7 @@ a:hover {
   font-size: 1.2rem;
   color: #fff;
   font-family: 'Poppins', sans-serif;
-  text-transform: uppercase;
+  text-transform: none;
   margin: 1rem 0;
   cursor: pointer;
   transition: 0.5s;
