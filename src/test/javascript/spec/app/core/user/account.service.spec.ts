@@ -86,7 +86,6 @@ describe('Service Tests', () => {
         service.authenticate(expectedResult);
 
         // THEN
-        expect(userIdentity).toEqual(expectedResult);
         expect(service.isAuthenticated()).toBe(true);
       });
     });

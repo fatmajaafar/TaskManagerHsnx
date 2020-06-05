@@ -5,6 +5,8 @@
     "menu": {
       "home": "Home",
       "about": "About",
+      "profile": "Profile",
+      "taskmanag": "Task Management",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
@@ -138,5 +140,5 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "This is your footer"
+  "footer": "You are in a good company"
 }

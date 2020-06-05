@@ -17,6 +17,12 @@
                 </a>
 
             </li>
+            <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
+                <span>
+                    <fa-icon icon="tasks"></fa-icon>
+                    <span jhiTranslate="global.menu.taskmanag">Task management</span>
+                </span>
+            </a>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
@@ -150,8 +156,14 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="about" routerLinkActive="active">
-                    <fa-icon [icon]="'star'"></fa-icon>
+                    <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
                     <span translate="global.menu.about">About</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="profile" routerLinkActive="active">
+                    <fa-icon icon="user"></fa-icon>
+                    <span translate="global.menu.profile">Profile</span>
                 </a>
             </li>
         </ul>
