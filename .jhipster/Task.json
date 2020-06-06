@@ -2,37 +2,46 @@
     "name": "TblTask",
     "fields": [
         {
-            "fieldName": "taskname",
-            "dbhColumnName": "Title",
+            "fieldName": "tasktitle",
+            "dbhColumnName": "TaskTitle",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "description",
+            "fieldName": "taskdescription",
             "dbhColumnName": "TaskDescription",
             "fieldType": "String"
         },
         {
-            "fieldName": "DateAssigned",
-            "dbhColumnName": "DateAssigned",
+            "fieldName": "dateStart",
+            "dbhColumnName": "DateStart",
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "DateCompletion",
-            "dbhColumnName": "DateCompletion",
+            "fieldName": "timeStart",
+            "dbhColumnName": "TimeStart",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateEnd",
+            "dbhColumnName": "DateEnd",
             "fieldType": "LocalDate"
+        },{
+            "fieldName": "timeEnd",
+            "dbhColumnName": "TimeEnd",
+            "fieldType": "Instant"
         },
         {
-            "fieldName": "Status",
-            "dbhColumnName": "Status",
-            "fieldType": "String"
+            "fieldName": "taskstatus",
+            "dbhColumnName": "TaskStatus",
+            "fieldType": "Integer"
         },
         {
-            "fieldName": "priority",
-            "dbhColumnName": "Priority",
-            "fieldType": "String"
+            "fieldName": "taskpriority",
+            "dbhColumnName": "TaskPriority",
+            "fieldType": "Integer"
         },
         {
             "fieldName": "DueDate",
@@ -51,7 +60,7 @@
     "clientRootFolder": "",
     "applications": "*",
     "angularJSSuffix": "hsnx",
-    "dbhIdName": "Task",
+    "dbhIdName": "TaskID",
     "searchEngine": "elasticsearch",
     "databaseType": "sql",
     "readOnly": false

@@ -31,7 +31,7 @@
     "clientRootFolder": "",
     "applications": "*",
     "angularJSSuffix": "hsnx",
-    "dbhIdName": "Notifications",
+    "dbhIdName": "NotificationID",
     "searchEngine": "elasticsearch",
     "databaseType": "sql",
     "readOnly": false

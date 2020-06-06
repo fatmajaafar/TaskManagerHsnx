@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    
+    <!--
+        Added the entity Task.
+    -->
+    <changeSet id="20190221093012-1" author="jhipster">
+        <createTable tableName="TblTask">
+            <column name="TaskID" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TaskTitle" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="TaskDescription" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="DateStart" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="TimeStart" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="DateEnd" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="TimeEnd" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="TaskStatus" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="TaskPriority" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="DueDate" type="date">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="TblTask" columnName="TimeStart" columnDataType="datetime"/>
+        <dropDefaultValue tableName="TblTask" columnName="TimeEnd" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20190221093012-1-relations" author="jhipster">
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20190221093012-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/TblTask.csv"
+                  separator=";"
+                  tableName="TblTask">
+            <column name="id" type="numeric"/>
+            <column name="TaskTitle" type="string"/>
+            <column name="TaskDescription" type="string"/>
+            <column name="DateStart" type="date"/>
+            <column name="TimeStart" type="datetime"/>
+            <column name="DateEnd" type="date"/>
+            <column name="TimeEnd" type="datetime"/>
+            <column name="TaskStatus" type="numeric"/>
+            <column name="TaskPriority" type="numeric"/>
+            <column name="DueDate" type="date"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

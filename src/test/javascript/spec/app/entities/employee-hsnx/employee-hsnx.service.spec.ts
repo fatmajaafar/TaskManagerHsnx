@@ -119,7 +119,6 @@ describe('Service Tests', () => {
 
       it('should delete a EmployeeHsnx', () => {
         service.delete(123).subscribe(resp => (expectedResult = resp.ok));
-
         const req = httpMock.expectOne({ method: 'DELETE' });
         req.flush({ status: 200 });
         expect(expectedResult);

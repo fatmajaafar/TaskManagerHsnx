@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="task">
+            <h2><span jhiTranslate="taskManagerHsnxApp.task.detail.title">Task</span> {{ task.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="taskManagerHsnxApp.task.tasktitle">Tasktitle</span></dt>
+                <dd>
+                    <span>{{ task.tasktitle }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.task.taskdescription">Taskdescription</span></dt>
+                <dd>
+                    <span>{{ task.taskdescription }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.task.dateStart">Date Start</span></dt>
+                <dd>
+                    <span>{{ task.dateStart }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.task.timeStart">Time Start</span></dt>
+                <dd>
+                    <span>{{ task.timeStart }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.task.dateEnd">Date End</span></dt>
+                <dd>
+                    <span>{{ task.dateEnd }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.task.timeEnd">Time End</span></dt>
+                <dd>
+                    <span>{{ task.timeEnd }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.task.taskstatus">Taskstatus</span></dt>
+                <dd>
+                    <span>{{ task.taskstatus }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.task.taskpriority">Taskpriority</span></dt>
+                <dd>
+                    <span>{{ task.taskpriority }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.task.DueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{ task.DueDate }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/task-hsnx', task.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

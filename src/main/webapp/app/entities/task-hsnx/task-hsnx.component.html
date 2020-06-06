@@ -1,0 +1,105 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="taskManagerHsnxApp.task.home.title">Tasks</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-task-hsnx" [routerLink]="['/task-hsnx/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="taskManagerHsnxApp.task.home.createLabel">
+            Create a new Task
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.task.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="tasks?.length === 0">
+        <span jhiTranslate="taskManagerHsnxApp.task.home.notFound">No tasks found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="tasks?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tasktitle"><span jhiTranslate="taskManagerHsnxApp.task.tasktitle">Tasktitle</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="taskdescription"><span jhiTranslate="taskManagerHsnxApp.task.taskdescription">Taskdescription</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateStart"><span jhiTranslate="taskManagerHsnxApp.task.dateStart">Date Start</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="timeStart"><span jhiTranslate="taskManagerHsnxApp.task.timeStart">Time Start</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateEnd"><span jhiTranslate="taskManagerHsnxApp.task.dateEnd">Date End</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="timeEnd"><span jhiTranslate="taskManagerHsnxApp.task.timeEnd">Time End</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="taskstatus"><span jhiTranslate="taskManagerHsnxApp.task.taskstatus">Taskstatus</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="taskpriority"><span jhiTranslate="taskManagerHsnxApp.task.taskpriority">Taskpriority</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="DueDate"><span jhiTranslate="taskManagerHsnxApp.task.DueDate">Due Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks ;trackBy: trackId">
+                    <td><a [routerLink]="['/task-hsnx', task.id, 'view']">{{ task.id }}</a></td>
+                    <td>{{ task.tasktitle }}</td>
+                    <td>{{ task.taskdescription }}</td>
+                    <td>{{ task.dateStart | date:'mediumDate' }}</td>
+                    <td>{{ task.timeStart | date:'medium' }}</td>
+                    <td>{{ task.dateEnd | date:'mediumDate' }}</td>
+                    <td>{{ task.timeEnd | date:'medium' }}</td>
+                    <td>{{ task.taskstatus }}</td>
+                    <td>{{ task.taskpriority }}</td>
+                    <td>{{ task.DueDate | date:'mediumDate' }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/task-hsnx', task.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/task-hsnx', task.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(task)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="tasks?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>
