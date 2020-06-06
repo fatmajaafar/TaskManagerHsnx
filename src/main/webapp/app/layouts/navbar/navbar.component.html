@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark navbar-expand-md jh-navbar">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
         <span class="logo-img"></span>
-        <span jhiTranslate="global.title" class="navbar-title">Task Manager</span> 
+        <span  class="navbar-title">Task Manager</span> 
     </a>
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
         <fa-icon icon="bars"></fa-icon>
@@ -23,6 +23,12 @@
                     <span jhiTranslate="global.menu.taskmanag">Task management</span>
                 </span>
             </a>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="profile" routerLinkActive="active">
+                    <fa-icon icon="bell"></fa-icon>
+                    <span translate="global.menu.notification">notification</span>
+                </a>
+            </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
@@ -154,18 +160,20 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="about" routerLinkActive="active">
-                    <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                    <span translate="global.menu.about">About</span>
-                </a>
-            </li>
+           
             <li class="nav-item">
                 <a class="nav-link" routerLink="profile" routerLinkActive="active">
                     <fa-icon icon="user"></fa-icon>
                     <span translate="global.menu.profile">Profile</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="about" routerLinkActive="active">
+                    <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                    <span translate="global.menu.about">About</span>
+                </a>
+            </li>
+            
         </ul>
     </div>
     
