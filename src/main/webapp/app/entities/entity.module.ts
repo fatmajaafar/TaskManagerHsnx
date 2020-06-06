@@ -7,6 +7,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'department-hsnx',
         loadChildren: () => import('./department-hsnx/department-hsnx.module').then(m => m.TaskManagerHsnxDepartmentHsnxModule)
+      },
+      {
+        path: 'employee-hsnx',
+        loadChildren: () => import('./employee-hsnx/employee-hsnx.module').then(m => m.TaskManagerHsnxEmployeeHsnxModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])
