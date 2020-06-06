@@ -12,25 +12,25 @@
     -->
     <changeSet id="20190221093012-1" author="jhipster">
         <createTable tableName="TblEmployee">
-            <column name="id" type="bigint">
+            <column name="EmpID" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="branch_name" type="varchar(255)">
+            <column name="EmployeeName" type="nvarchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="branch_phone" type="varchar(255)">
+            <column name="EmployeePhone" type="nvarchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="branch_fax" type="varchar(255)">
+            <column name="EmployeeFax" type="nvarchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="branch_address" type="varchar(255)">
+            <column name="EmployeeAdresse" type="nvarchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="branch_email" type="varchar(255)">
+            <column name="EmployeeEmail" type="nvarchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="branch_hiredate" type="date">
+            <column name="EmployeeHiredate" type="date">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -56,12 +56,12 @@
                   separator=";"
                   tableName="TblEmployee">
             <column name="id" type="numeric"/>
-            <column name="branch_name" type="string"/>
-            <column name="branch_phone" type="string"/>
-            <column name="branch_fax" type="string"/>
-            <column name="branch_address" type="string"/>
-            <column name="branch_email" type="string"/>
-            <column name="branch_hiredate" type="date"/>
+            <column name="EmployeeName" type="string"/>
+            <column name="EmployeePhone" type="string"/>
+            <column name="EmployeeFax" type="string"/>
+            <column name="EmployeeAdresse" type="string"/>
+            <column name="EmployeeEmail" type="string"/>
+            <column name="EmployeeHiredate" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

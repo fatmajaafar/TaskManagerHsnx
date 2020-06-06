@@ -46,7 +46,7 @@
     "clientRootFolder": "",
     "applications": "*",
     "angularJSSuffix": "hsnx",
-    "dbhIdName": "Employee",
+    "dbhIdName": "EmpID",
     "searchEngine": "elasticsearch",
     "databaseType": "sql",
     "readOnly": false
