@@ -12,7 +12,7 @@
         {
             "fieldName": "starttime",
             "dbhColumnName": "StartTime",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "startdate",
@@ -22,7 +22,7 @@
         {
             "fieldName": "endtime",
             "dbhColumnName": "EndTime",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "enddate",
@@ -41,7 +41,7 @@
     "clientRootFolder": "",
     "applications": "*",
     "angularJSSuffix": "hsnx",
-    "dbhIdName": "Event",
+    "dbhIdName": "EventID",
     "searchEngine": "elasticsearch",
     "databaseType": "sql",
     "readOnly": false
