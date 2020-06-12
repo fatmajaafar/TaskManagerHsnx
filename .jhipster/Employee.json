@@ -2,7 +2,7 @@
     "name": "TblEmployee",
     "fields": [
         {
-            "fieldName": "branchName",
+            "fieldName": "employeename",
             "dbhColumnName": "EmployeeName",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -10,27 +10,27 @@
             ]
         },
         {
-            "fieldName": "branchPhone",
+            "fieldName": "employeephone",
             "dbhColumnName": "EmployeePhone",
             "fieldType": "String"
         },
         {
-            "fieldName": "branchFax",
+            "fieldName": "employeefax",
             "dbhColumnName": "EmployeeFax",
             "fieldType": "String"
         },
         {
-            "fieldName": "branchAddress",
+            "fieldName": "employeeaddress",
             "dbhColumnName": "EmployeeAdresse",
             "fieldType": "String"
         },
         {
-            "fieldName": "branchEmail",
+            "fieldName": "employeeemail",
             "dbhColumnName": "EmployeeEmail",
             "fieldType": "String"
         },
         {
-            "fieldName": "branchHiredate",
+            "fieldName": "employeehiredate",
             "dbhColumnName": "EmployeeHiredate",
             "fieldType": "LocalDate"
         }

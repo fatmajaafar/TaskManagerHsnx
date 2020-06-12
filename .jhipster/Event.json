@@ -2,8 +2,8 @@
     "name": "TblEvent",
     "fields": [
         {
-            "fieldName": "Description",
-            "dbhColumnName": "Description",
+            "fieldName": "eventdescription",
+            "dbhColumnName": "EventDescription",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
@@ -31,7 +31,7 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20190221093012",
+    "changelogDate": "20200221093012",
     "entityTableName": "TblEvent",
     "dto": "mapstruct",
     "pagination": "pagination",

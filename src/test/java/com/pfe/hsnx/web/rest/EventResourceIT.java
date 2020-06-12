@@ -48,8 +48,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TaskManagerHsnxApp.class)
 public class EventResourceIT {
 
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+    private static final String DEFAULT_EVENTDESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_EVENTDESCRIPTION = "BBBBBBBBBB";
 
     private static final Instant DEFAULT_STARTTIME = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_STARTTIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
@@ -124,7 +124,7 @@ public class EventResourceIT {
      */
     public static Event createEntity(EntityManager em) {
         Event event = new Event()
-            .Description(DEFAULT_DESCRIPTION)
+            .eventdescription(DEFAULT_EVENTDESCRIPTION)
             .starttime(DEFAULT_STARTTIME)
             .startdate(DEFAULT_STARTDATE)
             .endtime(DEFAULT_ENDTIME)
@@ -139,7 +139,7 @@ public class EventResourceIT {
      */
     public static Event createUpdatedEntity(EntityManager em) {
         Event event = new Event()
-            .Description(UPDATED_DESCRIPTION)
+            .eventdescription(UPDATED_EVENTDESCRIPTION)
             .starttime(UPDATED_STARTTIME)
             .startdate(UPDATED_STARTDATE)
             .endtime(UPDATED_ENDTIME)
@@ -168,7 +168,7 @@ public class EventResourceIT {
         List<Event> eventList = eventRepository.findAll();
         assertThat(eventList).hasSize(databaseSizeBeforeCreate + 1);
         Event testEvent = eventList.get(eventList.size() - 1);
-        assertThat(testEvent.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testEvent.getEventdescription()).isEqualTo(DEFAULT_EVENTDESCRIPTION);
         assertThat(testEvent.getStarttime()).isEqualTo(DEFAULT_STARTTIME);
         assertThat(testEvent.getStartdate()).isEqualTo(DEFAULT_STARTDATE);
         assertThat(testEvent.getEndtime()).isEqualTo(DEFAULT_ENDTIME);
@@ -204,10 +204,10 @@ public class EventResourceIT {
 
     @Test
     @Transactional
-    public void checkDescriptionIsRequired() throws Exception {
+    public void checkEventdescriptionIsRequired() throws Exception {
         int databaseSizeBeforeTest = eventRepository.findAll().size();
         // set the field null
-        event.setDescription(null);
+        event.setEventdescription(null);
 
         // Create the Event, which fails.
         EventDTO eventDTO = eventMapper.toDto(event);
@@ -232,7 +232,7 @@ public class EventResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(event.getId().intValue())))
-            .andExpect(jsonPath("$.[*].Description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].eventdescription").value(hasItem(DEFAULT_EVENTDESCRIPTION)))
             .andExpect(jsonPath("$.[*].starttime").value(hasItem(DEFAULT_STARTTIME.toString())))
             .andExpect(jsonPath("$.[*].startdate").value(hasItem(DEFAULT_STARTDATE.toString())))
             .andExpect(jsonPath("$.[*].endtime").value(hasItem(DEFAULT_ENDTIME.toString())))
@@ -250,7 +250,7 @@ public class EventResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(event.getId().intValue()))
-            .andExpect(jsonPath("$.Description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.eventdescription").value(DEFAULT_EVENTDESCRIPTION))
             .andExpect(jsonPath("$.starttime").value(DEFAULT_STARTTIME.toString()))
             .andExpect(jsonPath("$.startdate").value(DEFAULT_STARTDATE.toString()))
             .andExpect(jsonPath("$.endtime").value(DEFAULT_ENDTIME.toString()))
@@ -279,79 +279,79 @@ public class EventResourceIT {
 
     @Test
     @Transactional
-    public void getAllEventsByDescriptionIsEqualToSomething() throws Exception {
+    public void getAllEventsByEventdescriptionIsEqualToSomething() throws Exception {
         // Initialize the database
         eventRepository.saveAndFlush(event);
 
-        // Get all the eventList where Description equals to DEFAULT_DESCRIPTION
-        defaultEventShouldBeFound("Description.equals=" + DEFAULT_DESCRIPTION);
+        // Get all the eventList where eventdescription equals to DEFAULT_EVENTDESCRIPTION
+        defaultEventShouldBeFound("eventdescription.equals=" + DEFAULT_EVENTDESCRIPTION);
 
-        // Get all the eventList where Description equals to UPDATED_DESCRIPTION
-        defaultEventShouldNotBeFound("Description.equals=" + UPDATED_DESCRIPTION);
+        // Get all the eventList where eventdescription equals to UPDATED_EVENTDESCRIPTION
+        defaultEventShouldNotBeFound("eventdescription.equals=" + UPDATED_EVENTDESCRIPTION);
     }
 
     @Test
     @Transactional
-    public void getAllEventsByDescriptionIsNotEqualToSomething() throws Exception {
+    public void getAllEventsByEventdescriptionIsNotEqualToSomething() throws Exception {
         // Initialize the database
         eventRepository.saveAndFlush(event);
 
-        // Get all the eventList where Description not equals to DEFAULT_DESCRIPTION
-        defaultEventShouldNotBeFound("Description.notEquals=" + DEFAULT_DESCRIPTION);
+        // Get all the eventList where eventdescription not equals to DEFAULT_EVENTDESCRIPTION
+        defaultEventShouldNotBeFound("eventdescription.notEquals=" + DEFAULT_EVENTDESCRIPTION);
 
-        // Get all the eventList where Description not equals to UPDATED_DESCRIPTION
-        defaultEventShouldBeFound("Description.notEquals=" + UPDATED_DESCRIPTION);
+        // Get all the eventList where eventdescription not equals to UPDATED_EVENTDESCRIPTION
+        defaultEventShouldBeFound("eventdescription.notEquals=" + UPDATED_EVENTDESCRIPTION);
     }
 
     @Test
     @Transactional
-    public void getAllEventsByDescriptionIsInShouldWork() throws Exception {
+    public void getAllEventsByEventdescriptionIsInShouldWork() throws Exception {
         // Initialize the database
         eventRepository.saveAndFlush(event);
 
-        // Get all the eventList where Description in DEFAULT_DESCRIPTION or UPDATED_DESCRIPTION
-        defaultEventShouldBeFound("Description.in=" + DEFAULT_DESCRIPTION + "," + UPDATED_DESCRIPTION);
+        // Get all the eventList where eventdescription in DEFAULT_EVENTDESCRIPTION or UPDATED_EVENTDESCRIPTION
+        defaultEventShouldBeFound("eventdescription.in=" + DEFAULT_EVENTDESCRIPTION + "," + UPDATED_EVENTDESCRIPTION);
 
-        // Get all the eventList where Description equals to UPDATED_DESCRIPTION
-        defaultEventShouldNotBeFound("Description.in=" + UPDATED_DESCRIPTION);
+        // Get all the eventList where eventdescription equals to UPDATED_EVENTDESCRIPTION
+        defaultEventShouldNotBeFound("eventdescription.in=" + UPDATED_EVENTDESCRIPTION);
     }
 
     @Test
     @Transactional
-    public void getAllEventsByDescriptionIsNullOrNotNull() throws Exception {
+    public void getAllEventsByEventdescriptionIsNullOrNotNull() throws Exception {
         // Initialize the database
         eventRepository.saveAndFlush(event);
 
-        // Get all the eventList where Description is not null
-        defaultEventShouldBeFound("Description.specified=true");
+        // Get all the eventList where eventdescription is not null
+        defaultEventShouldBeFound("eventdescription.specified=true");
 
-        // Get all the eventList where Description is null
-        defaultEventShouldNotBeFound("Description.specified=false");
+        // Get all the eventList where eventdescription is null
+        defaultEventShouldNotBeFound("eventdescription.specified=false");
     }
                 @Test
     @Transactional
-    public void getAllEventsByDescriptionContainsSomething() throws Exception {
+    public void getAllEventsByEventdescriptionContainsSomething() throws Exception {
         // Initialize the database
         eventRepository.saveAndFlush(event);
 
-        // Get all the eventList where Description contains DEFAULT_DESCRIPTION
-        defaultEventShouldBeFound("Description.contains=" + DEFAULT_DESCRIPTION);
+        // Get all the eventList where eventdescription contains DEFAULT_EVENTDESCRIPTION
+        defaultEventShouldBeFound("eventdescription.contains=" + DEFAULT_EVENTDESCRIPTION);
 
-        // Get all the eventList where Description contains UPDATED_DESCRIPTION
-        defaultEventShouldNotBeFound("Description.contains=" + UPDATED_DESCRIPTION);
+        // Get all the eventList where eventdescription contains UPDATED_EVENTDESCRIPTION
+        defaultEventShouldNotBeFound("eventdescription.contains=" + UPDATED_EVENTDESCRIPTION);
     }
 
     @Test
     @Transactional
-    public void getAllEventsByDescriptionNotContainsSomething() throws Exception {
+    public void getAllEventsByEventdescriptionNotContainsSomething() throws Exception {
         // Initialize the database
         eventRepository.saveAndFlush(event);
 
-        // Get all the eventList where Description does not contain DEFAULT_DESCRIPTION
-        defaultEventShouldNotBeFound("Description.doesNotContain=" + DEFAULT_DESCRIPTION);
+        // Get all the eventList where eventdescription does not contain DEFAULT_EVENTDESCRIPTION
+        defaultEventShouldNotBeFound("eventdescription.doesNotContain=" + DEFAULT_EVENTDESCRIPTION);
 
-        // Get all the eventList where Description does not contain UPDATED_DESCRIPTION
-        defaultEventShouldBeFound("Description.doesNotContain=" + UPDATED_DESCRIPTION);
+        // Get all the eventList where eventdescription does not contain UPDATED_EVENTDESCRIPTION
+        defaultEventShouldBeFound("eventdescription.doesNotContain=" + UPDATED_EVENTDESCRIPTION);
     }
 
 
@@ -676,7 +676,7 @@ public class EventResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(event.getId().intValue())))
-            .andExpect(jsonPath("$.[*].Description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].eventdescription").value(hasItem(DEFAULT_EVENTDESCRIPTION)))
             .andExpect(jsonPath("$.[*].starttime").value(hasItem(DEFAULT_STARTTIME.toString())))
             .andExpect(jsonPath("$.[*].startdate").value(hasItem(DEFAULT_STARTDATE.toString())))
             .andExpect(jsonPath("$.[*].endtime").value(hasItem(DEFAULT_ENDTIME.toString())))
@@ -728,7 +728,7 @@ public class EventResourceIT {
         // Disconnect from session so that the updates on updatedEvent are not directly saved in db
         em.detach(updatedEvent);
         updatedEvent
-            .Description(UPDATED_DESCRIPTION)
+            .eventdescription(UPDATED_EVENTDESCRIPTION)
             .starttime(UPDATED_STARTTIME)
             .startdate(UPDATED_STARTDATE)
             .endtime(UPDATED_ENDTIME)
@@ -744,7 +744,7 @@ public class EventResourceIT {
         List<Event> eventList = eventRepository.findAll();
         assertThat(eventList).hasSize(databaseSizeBeforeUpdate);
         Event testEvent = eventList.get(eventList.size() - 1);
-        assertThat(testEvent.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testEvent.getEventdescription()).isEqualTo(UPDATED_EVENTDESCRIPTION);
         assertThat(testEvent.getStarttime()).isEqualTo(UPDATED_STARTTIME);
         assertThat(testEvent.getStartdate()).isEqualTo(UPDATED_STARTDATE);
         assertThat(testEvent.getEndtime()).isEqualTo(UPDATED_ENDTIME);
@@ -809,7 +809,7 @@ public class EventResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(event.getId().intValue())))
-            .andExpect(jsonPath("$.[*].Description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].eventdescription").value(hasItem(DEFAULT_EVENTDESCRIPTION)))
             .andExpect(jsonPath("$.[*].starttime").value(hasItem(DEFAULT_STARTTIME.toString())))
             .andExpect(jsonPath("$.[*].startdate").value(hasItem(DEFAULT_STARTDATE.toString())))
             .andExpect(jsonPath("$.[*].endtime").value(hasItem(DEFAULT_ENDTIME.toString())))

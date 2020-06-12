@@ -28,7 +28,7 @@ public class EventCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
-    private StringFilter Description;
+    private StringFilter eventdescription;
 
     private InstantFilter starttime;
 
@@ -43,7 +43,7 @@ public class EventCriteria implements Serializable, Criteria {
 
     public EventCriteria(EventCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
-        this.Description = other.Description == null ? null : other.Description.copy();
+        this.eventdescription = other.eventdescription == null ? null : other.eventdescription.copy();
         this.starttime = other.starttime == null ? null : other.starttime.copy();
         this.startdate = other.startdate == null ? null : other.startdate.copy();
         this.endtime = other.endtime == null ? null : other.endtime.copy();
@@ -63,12 +63,12 @@ public class EventCriteria implements Serializable, Criteria {
         this.id = id;
     }
 
-    public StringFilter getDescription() {
-        return Description;
+    public StringFilter getEventdescription() {
+        return eventdescription;
     }
 
-    public void setDescription(StringFilter Description) {
-        this.Description = Description;
+    public void setEventdescription(StringFilter eventdescription) {
+        this.eventdescription = eventdescription;
     }
 
     public InstantFilter getStarttime() {
@@ -115,7 +115,7 @@ public class EventCriteria implements Serializable, Criteria {
         final EventCriteria that = (EventCriteria) o;
         return
             Objects.equals(id, that.id) &&
-            Objects.equals(Description, that.Description) &&
+            Objects.equals(eventdescription, that.eventdescription) &&
             Objects.equals(starttime, that.starttime) &&
             Objects.equals(startdate, that.startdate) &&
             Objects.equals(endtime, that.endtime) &&
@@ -126,7 +126,7 @@ public class EventCriteria implements Serializable, Criteria {
     public int hashCode() {
         return Objects.hash(
         id,
-        Description,
+        eventdescription,
         starttime,
         startdate,
         endtime,
@@ -138,7 +138,7 @@ public class EventCriteria implements Serializable, Criteria {
     public String toString() {
         return "EventCriteria{" +
                 (id != null ? "id=" + id + ", " : "") +
-                (Description != null ? "Description=" + Description + ", " : "") +
+                (eventdescription != null ? "eventdescription=" + eventdescription + ", " : "") +
                 (starttime != null ? "starttime=" + starttime + ", " : "") +
                 (startdate != null ? "startdate=" + startdate + ", " : "") +
                 (endtime != null ? "endtime=" + endtime + ", " : "") +

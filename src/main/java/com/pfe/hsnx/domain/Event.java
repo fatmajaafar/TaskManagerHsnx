@@ -29,8 +29,8 @@ public class Event implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "Description", nullable = false)
-    private String Description;
+    @Column(name = "EventDescription", nullable = false)
+    private String eventdescription;
 
     @Column(name = "StartTime")
     private Instant starttime;
@@ -53,17 +53,17 @@ public class Event implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return Description;
+    public String getEventdescription() {
+        return eventdescription;
     }
 
-    public Event Description(String Description) {
-        this.Description = Description;
+    public Event eventdescription(String eventdescription) {
+        this.eventdescription = eventdescription;
         return this;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setEventdescription(String eventdescription) {
+        this.eventdescription = eventdescription;
     }
 
     public Instant getStarttime() {
@@ -139,7 +139,7 @@ public class Event implements Serializable {
     public String toString() {
         return "Event{" +
             "id=" + getId() +
-            ", Description='" + getDescription() + "'" +
+            ", eventdescription='" + getEventdescription() + "'" +
             ", starttime='" + getStarttime() + "'" +
             ", startdate='" + getStartdate() + "'" +
             ", endtime='" + getEndtime() + "'" +

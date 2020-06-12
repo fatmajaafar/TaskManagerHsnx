@@ -29,22 +29,22 @@ public class Employee implements Serializable {
 
     @NotNull
     @Column(name = "EmployeeName", nullable = false)
-    private String branchName;
+    private String employeename;
 
     @Column(name = "EmployeePhone")
-    private String branchPhone;
+    private String employeephone;
 
     @Column(name = "EmployeeFax")
-    private String branchFax;
+    private String employeefax;
 
     @Column(name = "EmployeeAdresse")
-    private String branchAddress;
+    private String employeeaddress;
 
     @Column(name = "EmployeeEmail")
-    private String branchEmail;
+    private String employeeemail;
 
     @Column(name = "EmployeeHiredate")
-    private LocalDate branchHiredate;
+    private LocalDate employeehiredate;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -55,82 +55,82 @@ public class Employee implements Serializable {
         this.id = id;
     }
 
-    public String getBranchName() {
-        return branchName;
+    public String getEmployeename() {
+        return employeename;
     }
 
-    public Employee branchName(String branchName) {
-        this.branchName = branchName;
+    public Employee employeename(String employeename) {
+        this.employeename = employeename;
         return this;
     }
 
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
+    public void setEmployeename(String employeename) {
+        this.employeename = employeename;
     }
 
-    public String getBranchPhone() {
-        return branchPhone;
+    public String getEmployeephone() {
+        return employeephone;
     }
 
-    public Employee branchPhone(String branchPhone) {
-        this.branchPhone = branchPhone;
+    public Employee employeephone(String employeephone) {
+        this.employeephone = employeephone;
         return this;
     }
 
-    public void setBranchPhone(String branchPhone) {
-        this.branchPhone = branchPhone;
+    public void setEmployeephone(String employeephone) {
+        this.employeephone = employeephone;
     }
 
-    public String getBranchFax() {
-        return branchFax;
+    public String getEmployeefax() {
+        return employeefax;
     }
 
-    public Employee branchFax(String branchFax) {
-        this.branchFax = branchFax;
+    public Employee employeefax(String employeefax) {
+        this.employeefax = employeefax;
         return this;
     }
 
-    public void setBranchFax(String branchFax) {
-        this.branchFax = branchFax;
+    public void setEmployeefax(String employeefax) {
+        this.employeefax = employeefax;
     }
 
-    public String getBranchAddress() {
-        return branchAddress;
+    public String getEmployeeaddress() {
+        return employeeaddress;
     }
 
-    public Employee branchAddress(String branchAddress) {
-        this.branchAddress = branchAddress;
+    public Employee employeeaddress(String employeeaddress) {
+        this.employeeaddress = employeeaddress;
         return this;
     }
 
-    public void setBranchAddress(String branchAddress) {
-        this.branchAddress = branchAddress;
+    public void setEmployeeaddress(String employeeaddress) {
+        this.employeeaddress = employeeaddress;
     }
 
-    public String getBranchEmail() {
-        return branchEmail;
+    public String getEmployeeemail() {
+        return employeeemail;
     }
 
-    public Employee branchEmail(String branchEmail) {
-        this.branchEmail = branchEmail;
+    public Employee employeeemail(String employeeemail) {
+        this.employeeemail = employeeemail;
         return this;
     }
 
-    public void setBranchEmail(String branchEmail) {
-        this.branchEmail = branchEmail;
+    public void setEmployeeemail(String employeeemail) {
+        this.employeeemail = employeeemail;
     }
 
-    public LocalDate getBranchHiredate() {
-        return branchHiredate;
+    public LocalDate getEmployeehiredate() {
+        return employeehiredate;
     }
 
-    public Employee branchHiredate(LocalDate branchHiredate) {
-        this.branchHiredate = branchHiredate;
+    public Employee employeehiredate(LocalDate employeehiredate) {
+        this.employeehiredate = employeehiredate;
         return this;
     }
 
-    public void setBranchHiredate(LocalDate branchHiredate) {
-        this.branchHiredate = branchHiredate;
+    public void setEmployeehiredate(LocalDate employeehiredate) {
+        this.employeehiredate = employeehiredate;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -154,12 +154,12 @@ public class Employee implements Serializable {
     public String toString() {
         return "Employee{" +
             "id=" + getId() +
-            ", branchName='" + getBranchName() + "'" +
-            ", branchPhone='" + getBranchPhone() + "'" +
-            ", branchFax='" + getBranchFax() + "'" +
-            ", branchAddress='" + getBranchAddress() + "'" +
-            ", branchEmail='" + getBranchEmail() + "'" +
-            ", branchHiredate='" + getBranchHiredate() + "'" +
+            ", employeename='" + getEmployeename() + "'" +
+            ", employeephone='" + getEmployeephone() + "'" +
+            ", employeefax='" + getEmployeefax() + "'" +
+            ", employeeaddress='" + getEmployeeaddress() + "'" +
+            ", employeeemail='" + getEmployeeemail() + "'" +
+            ", employeehiredate='" + getEmployeehiredate() + "'" +
             "}";
     }
 }

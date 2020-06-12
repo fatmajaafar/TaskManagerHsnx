@@ -76,7 +76,7 @@ describe('Service Tests', () => {
       it('should update a EventHsnx', () => {
         const returnedFromService = Object.assign(
           {
-            Description: 'BBBBBB',
+            eventdescription: 'BBBBBB',
             starttime: currentDate.format(DATE_TIME_FORMAT),
             startdate: currentDate.format(DATE_FORMAT),
             endtime: currentDate.format(DATE_TIME_FORMAT),
@@ -104,7 +104,7 @@ describe('Service Tests', () => {
       it('should return a list of EventHsnx', () => {
         const returnedFromService = Object.assign(
           {
-            Description: 'BBBBBB',
+            eventdescription: 'BBBBBB',
             starttime: currentDate.format(DATE_TIME_FORMAT),
             startdate: currentDate.format(DATE_FORMAT),
             endtime: currentDate.format(DATE_TIME_FORMAT),

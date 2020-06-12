@@ -12,47 +12,47 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.branchName" for="field_branchName">Branch Name</label>
-                    <input type="text" class="form-control" name="branchName" id="field_branchName"
-                           formControlName="branchName"/>
-                    <div *ngIf="editForm.get('branchName')!.invalid && (editForm.get('branchName')!.dirty || editForm.get('branchName')!.touched)">
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeename" for="field_employeename">Employeename</label>
+                    <input type="text" class="form-control" name="employeename" id="field_employeename"
+                           formControlName="employeename"/>
+                    <div *ngIf="editForm.get('employeename')!.invalid && (editForm.get('employeename')!.dirty || editForm.get('employeename')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('branchName')?.errors?.required" jhiTranslate="entity.validation.required">
+                               *ngIf="editForm.get('employeename')?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.branchPhone" for="field_branchPhone">Branch Phone</label>
-                    <input type="text" class="form-control" name="branchPhone" id="field_branchPhone"
-                           formControlName="branchPhone"/>
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeephone" for="field_employeephone">Employeephone</label>
+                    <input type="text" class="form-control" name="employeephone" id="field_employeephone"
+                           formControlName="employeephone"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.branchFax" for="field_branchFax">Branch Fax</label>
-                    <input type="text" class="form-control" name="branchFax" id="field_branchFax"
-                           formControlName="branchFax"/>
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeefax" for="field_employeefax">Employeefax</label>
+                    <input type="text" class="form-control" name="employeefax" id="field_employeefax"
+                           formControlName="employeefax"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.branchAddress" for="field_branchAddress">Branch Address</label>
-                    <input type="text" class="form-control" name="branchAddress" id="field_branchAddress"
-                           formControlName="branchAddress"/>
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeeaddress" for="field_employeeaddress">Employeeaddress</label>
+                    <input type="text" class="form-control" name="employeeaddress" id="field_employeeaddress"
+                           formControlName="employeeaddress"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.branchEmail" for="field_branchEmail">Branch Email</label>
-                    <input type="text" class="form-control" name="branchEmail" id="field_branchEmail"
-                           formControlName="branchEmail"/>
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeeemail" for="field_employeeemail">Employeeemail</label>
+                    <input type="text" class="form-control" name="employeeemail" id="field_employeeemail"
+                           formControlName="employeeemail"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.branchHiredate" for="field_branchHiredate">Branch Hiredate</label>
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeehiredate" for="field_employeehiredate">Employeehiredate</label>
                     <div class="input-group">
-                        <input id="field_branchHiredate" type="text" class="form-control" name="branchHiredate" ngbDatepicker #branchHiredateDp="ngbDatepicker" formControlName="branchHiredate"/>
+                        <input id="field_employeehiredate" type="text" class="form-control" name="employeehiredate" ngbDatepicker #employeehiredateDp="ngbDatepicker" formControlName="employeehiredate"/>
                         <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="branchHiredateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                            <button type="button" class="btn btn-secondary" (click)="employeehiredateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
                         </span>
                     </div>
                 </div>

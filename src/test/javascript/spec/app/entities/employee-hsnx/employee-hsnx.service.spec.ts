@@ -31,7 +31,7 @@ describe('Service Tests', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            branchHiredate: currentDate.format(DATE_FORMAT)
+            employeehiredate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -46,14 +46,14 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            branchHiredate: currentDate.format(DATE_FORMAT)
+            employeehiredate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
 
         const expected = Object.assign(
           {
-            branchHiredate: currentDate
+            employeehiredate: currentDate
           },
           returnedFromService
         );
@@ -67,19 +67,19 @@ describe('Service Tests', () => {
       it('should update a EmployeeHsnx', () => {
         const returnedFromService = Object.assign(
           {
-            branchName: 'BBBBBB',
-            branchPhone: 'BBBBBB',
-            branchFax: 'BBBBBB',
-            branchAddress: 'BBBBBB',
-            branchEmail: 'BBBBBB',
-            branchHiredate: currentDate.format(DATE_FORMAT)
+            employeename: 'BBBBBB',
+            employeephone: 'BBBBBB',
+            employeefax: 'BBBBBB',
+            employeeaddress: 'BBBBBB',
+            employeeemail: 'BBBBBB',
+            employeehiredate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
 
         const expected = Object.assign(
           {
-            branchHiredate: currentDate
+            employeehiredate: currentDate
           },
           returnedFromService
         );
@@ -93,19 +93,19 @@ describe('Service Tests', () => {
       it('should return a list of EmployeeHsnx', () => {
         const returnedFromService = Object.assign(
           {
-            branchName: 'BBBBBB',
-            branchPhone: 'BBBBBB',
-            branchFax: 'BBBBBB',
-            branchAddress: 'BBBBBB',
-            branchEmail: 'BBBBBB',
-            branchHiredate: currentDate.format(DATE_FORMAT)
+            employeename: 'BBBBBB',
+            employeephone: 'BBBBBB',
+            employeefax: 'BBBBBB',
+            employeeaddress: 'BBBBBB',
+            employeeemail: 'BBBBBB',
+            employeehiredate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
 
         const expected = Object.assign(
           {
-            branchHiredate: currentDate
+            employeehiredate: currentDate
           },
           returnedFromService
         );
@@ -119,6 +119,7 @@ describe('Service Tests', () => {
 
       it('should delete a EmployeeHsnx', () => {
         service.delete(123).subscribe(resp => (expectedResult = resp.ok));
+
         const req = httpMock.expectOne({ method: 'DELETE' });
         req.flush({ status: 200 });
         expect(expectedResult);

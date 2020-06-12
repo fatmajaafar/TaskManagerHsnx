@@ -14,16 +14,16 @@ import { EmployeeHsnxService } from './employee-hsnx.service';
 })
 export class EmployeeHsnxUpdateComponent implements OnInit {
   isSaving = false;
-  branchHiredateDp: any;
+  employeehiredateDp: any;
 
   editForm = this.fb.group({
     id: [],
-    branchName: [null, [Validators.required]],
-    branchPhone: [],
-    branchFax: [],
-    branchAddress: [],
-    branchEmail: [],
-    branchHiredate: []
+    employeename: [null, [Validators.required]],
+    employeephone: [],
+    employeefax: [],
+    employeeaddress: [],
+    employeeemail: [],
+    employeehiredate: []
   });
 
   constructor(protected employeeService: EmployeeHsnxService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -37,12 +37,12 @@ export class EmployeeHsnxUpdateComponent implements OnInit {
   updateForm(employee: IEmployeeHsnx): void {
     this.editForm.patchValue({
       id: employee.id,
-      branchName: employee.branchName,
-      branchPhone: employee.branchPhone,
-      branchFax: employee.branchFax,
-      branchAddress: employee.branchAddress,
-      branchEmail: employee.branchEmail,
-      branchHiredate: employee.branchHiredate
+      employeename: employee.employeename,
+      employeephone: employee.employeephone,
+      employeefax: employee.employeefax,
+      employeeaddress: employee.employeeaddress,
+      employeeemail: employee.employeeemail,
+      employeehiredate: employee.employeehiredate
     });
   }
 
@@ -64,12 +64,12 @@ export class EmployeeHsnxUpdateComponent implements OnInit {
     return {
       ...new EmployeeHsnx(),
       id: this.editForm.get(['id'])!.value,
-      branchName: this.editForm.get(['branchName'])!.value,
-      branchPhone: this.editForm.get(['branchPhone'])!.value,
-      branchFax: this.editForm.get(['branchFax'])!.value,
-      branchAddress: this.editForm.get(['branchAddress'])!.value,
-      branchEmail: this.editForm.get(['branchEmail'])!.value,
-      branchHiredate: this.editForm.get(['branchHiredate'])!.value
+      employeename: this.editForm.get(['employeename'])!.value,
+      employeephone: this.editForm.get(['employeephone'])!.value,
+      employeefax: this.editForm.get(['employeefax'])!.value,
+      employeeaddress: this.editForm.get(['employeeaddress'])!.value,
+      employeeemail: this.editForm.get(['employeeemail'])!.value,
+      employeehiredate: this.editForm.get(['employeehiredate'])!.value
     };
   }
 

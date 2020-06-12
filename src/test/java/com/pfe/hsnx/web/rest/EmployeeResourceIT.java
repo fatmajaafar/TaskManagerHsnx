@@ -46,24 +46,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TaskManagerHsnxApp.class)
 public class EmployeeResourceIT {
 
-    private static final String DEFAULT_BRANCH_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_BRANCH_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_EMPLOYEENAME = "AAAAAAAAAA";
+    private static final String UPDATED_EMPLOYEENAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_BRANCH_PHONE = "AAAAAAAAAA";
-    private static final String UPDATED_BRANCH_PHONE = "BBBBBBBBBB";
+    private static final String DEFAULT_EMPLOYEEPHONE = "AAAAAAAAAA";
+    private static final String UPDATED_EMPLOYEEPHONE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_BRANCH_FAX = "AAAAAAAAAA";
-    private static final String UPDATED_BRANCH_FAX = "BBBBBBBBBB";
+    private static final String DEFAULT_EMPLOYEEFAX = "AAAAAAAAAA";
+    private static final String UPDATED_EMPLOYEEFAX = "BBBBBBBBBB";
 
-    private static final String DEFAULT_BRANCH_ADDRESS = "AAAAAAAAAA";
-    private static final String UPDATED_BRANCH_ADDRESS = "BBBBBBBBBB";
+    private static final String DEFAULT_EMPLOYEEADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_EMPLOYEEADDRESS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_BRANCH_EMAIL = "AAAAAAAAAA";
-    private static final String UPDATED_BRANCH_EMAIL = "BBBBBBBBBB";
+    private static final String DEFAULT_EMPLOYEEEMAIL = "AAAAAAAAAA";
+    private static final String UPDATED_EMPLOYEEEMAIL = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_BRANCH_HIREDATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_BRANCH_HIREDATE = LocalDate.now(ZoneId.systemDefault());
-    private static final LocalDate SMALLER_BRANCH_HIREDATE = LocalDate.ofEpochDay(-1L);
+    private static final LocalDate DEFAULT_EMPLOYEEHIREDATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_EMPLOYEEHIREDATE = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDate SMALLER_EMPLOYEEHIREDATE = LocalDate.ofEpochDay(-1L);
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -124,12 +124,12 @@ public class EmployeeResourceIT {
      */
     public static Employee createEntity(EntityManager em) {
         Employee employee = new Employee()
-            .branchName(DEFAULT_BRANCH_NAME)
-            .branchPhone(DEFAULT_BRANCH_PHONE)
-            .branchFax(DEFAULT_BRANCH_FAX)
-            .branchAddress(DEFAULT_BRANCH_ADDRESS)
-            .branchEmail(DEFAULT_BRANCH_EMAIL)
-            .branchHiredate(DEFAULT_BRANCH_HIREDATE);
+            .employeename(DEFAULT_EMPLOYEENAME)
+            .employeephone(DEFAULT_EMPLOYEEPHONE)
+            .employeefax(DEFAULT_EMPLOYEEFAX)
+            .employeeaddress(DEFAULT_EMPLOYEEADDRESS)
+            .employeeemail(DEFAULT_EMPLOYEEEMAIL)
+            .employeehiredate(DEFAULT_EMPLOYEEHIREDATE);
         return employee;
     }
     /**
@@ -140,12 +140,12 @@ public class EmployeeResourceIT {
      */
     public static Employee createUpdatedEntity(EntityManager em) {
         Employee employee = new Employee()
-            .branchName(UPDATED_BRANCH_NAME)
-            .branchPhone(UPDATED_BRANCH_PHONE)
-            .branchFax(UPDATED_BRANCH_FAX)
-            .branchAddress(UPDATED_BRANCH_ADDRESS)
-            .branchEmail(UPDATED_BRANCH_EMAIL)
-            .branchHiredate(UPDATED_BRANCH_HIREDATE);
+            .employeename(UPDATED_EMPLOYEENAME)
+            .employeephone(UPDATED_EMPLOYEEPHONE)
+            .employeefax(UPDATED_EMPLOYEEFAX)
+            .employeeaddress(UPDATED_EMPLOYEEADDRESS)
+            .employeeemail(UPDATED_EMPLOYEEEMAIL)
+            .employeehiredate(UPDATED_EMPLOYEEHIREDATE);
         return employee;
     }
 
@@ -170,12 +170,12 @@ public class EmployeeResourceIT {
         List<Employee> employeeList = employeeRepository.findAll();
         assertThat(employeeList).hasSize(databaseSizeBeforeCreate + 1);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
-        assertThat(testEmployee.getBranchName()).isEqualTo(DEFAULT_BRANCH_NAME);
-        assertThat(testEmployee.getBranchPhone()).isEqualTo(DEFAULT_BRANCH_PHONE);
-        assertThat(testEmployee.getBranchFax()).isEqualTo(DEFAULT_BRANCH_FAX);
-        assertThat(testEmployee.getBranchAddress()).isEqualTo(DEFAULT_BRANCH_ADDRESS);
-        assertThat(testEmployee.getBranchEmail()).isEqualTo(DEFAULT_BRANCH_EMAIL);
-        assertThat(testEmployee.getBranchHiredate()).isEqualTo(DEFAULT_BRANCH_HIREDATE);
+        assertThat(testEmployee.getEmployeename()).isEqualTo(DEFAULT_EMPLOYEENAME);
+        assertThat(testEmployee.getEmployeephone()).isEqualTo(DEFAULT_EMPLOYEEPHONE);
+        assertThat(testEmployee.getEmployeefax()).isEqualTo(DEFAULT_EMPLOYEEFAX);
+        assertThat(testEmployee.getEmployeeaddress()).isEqualTo(DEFAULT_EMPLOYEEADDRESS);
+        assertThat(testEmployee.getEmployeeemail()).isEqualTo(DEFAULT_EMPLOYEEEMAIL);
+        assertThat(testEmployee.getEmployeehiredate()).isEqualTo(DEFAULT_EMPLOYEEHIREDATE);
 
         // Validate the Employee in Elasticsearch
         verify(mockEmployeeSearchRepository, times(1)).save(testEmployee);
@@ -207,10 +207,10 @@ public class EmployeeResourceIT {
 
     @Test
     @Transactional
-    public void checkBranchNameIsRequired() throws Exception {
+    public void checkEmployeenameIsRequired() throws Exception {
         int databaseSizeBeforeTest = employeeRepository.findAll().size();
         // set the field null
-        employee.setBranchName(null);
+        employee.setEmployeename(null);
 
         // Create the Employee, which fails.
         EmployeeDTO employeeDTO = employeeMapper.toDto(employee);
@@ -235,12 +235,12 @@ public class EmployeeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(employee.getId().intValue())))
-            .andExpect(jsonPath("$.[*].branchName").value(hasItem(DEFAULT_BRANCH_NAME)))
-            .andExpect(jsonPath("$.[*].branchPhone").value(hasItem(DEFAULT_BRANCH_PHONE)))
-            .andExpect(jsonPath("$.[*].branchFax").value(hasItem(DEFAULT_BRANCH_FAX)))
-            .andExpect(jsonPath("$.[*].branchAddress").value(hasItem(DEFAULT_BRANCH_ADDRESS)))
-            .andExpect(jsonPath("$.[*].branchEmail").value(hasItem(DEFAULT_BRANCH_EMAIL)))
-            .andExpect(jsonPath("$.[*].branchHiredate").value(hasItem(DEFAULT_BRANCH_HIREDATE.toString())));
+            .andExpect(jsonPath("$.[*].employeename").value(hasItem(DEFAULT_EMPLOYEENAME)))
+            .andExpect(jsonPath("$.[*].employeephone").value(hasItem(DEFAULT_EMPLOYEEPHONE)))
+            .andExpect(jsonPath("$.[*].employeefax").value(hasItem(DEFAULT_EMPLOYEEFAX)))
+            .andExpect(jsonPath("$.[*].employeeaddress").value(hasItem(DEFAULT_EMPLOYEEADDRESS)))
+            .andExpect(jsonPath("$.[*].employeeemail").value(hasItem(DEFAULT_EMPLOYEEEMAIL)))
+            .andExpect(jsonPath("$.[*].employeehiredate").value(hasItem(DEFAULT_EMPLOYEEHIREDATE.toString())));
     }
     
     @Test
@@ -254,12 +254,12 @@ public class EmployeeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(employee.getId().intValue()))
-            .andExpect(jsonPath("$.branchName").value(DEFAULT_BRANCH_NAME))
-            .andExpect(jsonPath("$.branchPhone").value(DEFAULT_BRANCH_PHONE))
-            .andExpect(jsonPath("$.branchFax").value(DEFAULT_BRANCH_FAX))
-            .andExpect(jsonPath("$.branchAddress").value(DEFAULT_BRANCH_ADDRESS))
-            .andExpect(jsonPath("$.branchEmail").value(DEFAULT_BRANCH_EMAIL))
-            .andExpect(jsonPath("$.branchHiredate").value(DEFAULT_BRANCH_HIREDATE.toString()));
+            .andExpect(jsonPath("$.employeename").value(DEFAULT_EMPLOYEENAME))
+            .andExpect(jsonPath("$.employeephone").value(DEFAULT_EMPLOYEEPHONE))
+            .andExpect(jsonPath("$.employeefax").value(DEFAULT_EMPLOYEEFAX))
+            .andExpect(jsonPath("$.employeeaddress").value(DEFAULT_EMPLOYEEADDRESS))
+            .andExpect(jsonPath("$.employeeemail").value(DEFAULT_EMPLOYEEEMAIL))
+            .andExpect(jsonPath("$.employeehiredate").value(DEFAULT_EMPLOYEEHIREDATE.toString()));
     }
 
 
@@ -284,496 +284,496 @@ public class EmployeeResourceIT {
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchNameIsEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeenameIsEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchName equals to DEFAULT_BRANCH_NAME
-        defaultEmployeeShouldBeFound("branchName.equals=" + DEFAULT_BRANCH_NAME);
+        // Get all the employeeList where employeename equals to DEFAULT_EMPLOYEENAME
+        defaultEmployeeShouldBeFound("employeename.equals=" + DEFAULT_EMPLOYEENAME);
 
-        // Get all the employeeList where branchName equals to UPDATED_BRANCH_NAME
-        defaultEmployeeShouldNotBeFound("branchName.equals=" + UPDATED_BRANCH_NAME);
+        // Get all the employeeList where employeename equals to UPDATED_EMPLOYEENAME
+        defaultEmployeeShouldNotBeFound("employeename.equals=" + UPDATED_EMPLOYEENAME);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchNameIsNotEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeenameIsNotEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchName not equals to DEFAULT_BRANCH_NAME
-        defaultEmployeeShouldNotBeFound("branchName.notEquals=" + DEFAULT_BRANCH_NAME);
+        // Get all the employeeList where employeename not equals to DEFAULT_EMPLOYEENAME
+        defaultEmployeeShouldNotBeFound("employeename.notEquals=" + DEFAULT_EMPLOYEENAME);
 
-        // Get all the employeeList where branchName not equals to UPDATED_BRANCH_NAME
-        defaultEmployeeShouldBeFound("branchName.notEquals=" + UPDATED_BRANCH_NAME);
+        // Get all the employeeList where employeename not equals to UPDATED_EMPLOYEENAME
+        defaultEmployeeShouldBeFound("employeename.notEquals=" + UPDATED_EMPLOYEENAME);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchNameIsInShouldWork() throws Exception {
+    public void getAllEmployeesByEmployeenameIsInShouldWork() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchName in DEFAULT_BRANCH_NAME or UPDATED_BRANCH_NAME
-        defaultEmployeeShouldBeFound("branchName.in=" + DEFAULT_BRANCH_NAME + "," + UPDATED_BRANCH_NAME);
+        // Get all the employeeList where employeename in DEFAULT_EMPLOYEENAME or UPDATED_EMPLOYEENAME
+        defaultEmployeeShouldBeFound("employeename.in=" + DEFAULT_EMPLOYEENAME + "," + UPDATED_EMPLOYEENAME);
 
-        // Get all the employeeList where branchName equals to UPDATED_BRANCH_NAME
-        defaultEmployeeShouldNotBeFound("branchName.in=" + UPDATED_BRANCH_NAME);
+        // Get all the employeeList where employeename equals to UPDATED_EMPLOYEENAME
+        defaultEmployeeShouldNotBeFound("employeename.in=" + UPDATED_EMPLOYEENAME);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchNameIsNullOrNotNull() throws Exception {
+    public void getAllEmployeesByEmployeenameIsNullOrNotNull() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchName is not null
-        defaultEmployeeShouldBeFound("branchName.specified=true");
+        // Get all the employeeList where employeename is not null
+        defaultEmployeeShouldBeFound("employeename.specified=true");
 
-        // Get all the employeeList where branchName is null
-        defaultEmployeeShouldNotBeFound("branchName.specified=false");
+        // Get all the employeeList where employeename is null
+        defaultEmployeeShouldNotBeFound("employeename.specified=false");
     }
                 @Test
     @Transactional
-    public void getAllEmployeesByBranchNameContainsSomething() throws Exception {
+    public void getAllEmployeesByEmployeenameContainsSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchName contains DEFAULT_BRANCH_NAME
-        defaultEmployeeShouldBeFound("branchName.contains=" + DEFAULT_BRANCH_NAME);
+        // Get all the employeeList where employeename contains DEFAULT_EMPLOYEENAME
+        defaultEmployeeShouldBeFound("employeename.contains=" + DEFAULT_EMPLOYEENAME);
 
-        // Get all the employeeList where branchName contains UPDATED_BRANCH_NAME
-        defaultEmployeeShouldNotBeFound("branchName.contains=" + UPDATED_BRANCH_NAME);
+        // Get all the employeeList where employeename contains UPDATED_EMPLOYEENAME
+        defaultEmployeeShouldNotBeFound("employeename.contains=" + UPDATED_EMPLOYEENAME);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchNameNotContainsSomething() throws Exception {
+    public void getAllEmployeesByEmployeenameNotContainsSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchName does not contain DEFAULT_BRANCH_NAME
-        defaultEmployeeShouldNotBeFound("branchName.doesNotContain=" + DEFAULT_BRANCH_NAME);
+        // Get all the employeeList where employeename does not contain DEFAULT_EMPLOYEENAME
+        defaultEmployeeShouldNotBeFound("employeename.doesNotContain=" + DEFAULT_EMPLOYEENAME);
 
-        // Get all the employeeList where branchName does not contain UPDATED_BRANCH_NAME
-        defaultEmployeeShouldBeFound("branchName.doesNotContain=" + UPDATED_BRANCH_NAME);
+        // Get all the employeeList where employeename does not contain UPDATED_EMPLOYEENAME
+        defaultEmployeeShouldBeFound("employeename.doesNotContain=" + UPDATED_EMPLOYEENAME);
     }
 
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchPhoneIsEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeephoneIsEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchPhone equals to DEFAULT_BRANCH_PHONE
-        defaultEmployeeShouldBeFound("branchPhone.equals=" + DEFAULT_BRANCH_PHONE);
+        // Get all the employeeList where employeephone equals to DEFAULT_EMPLOYEEPHONE
+        defaultEmployeeShouldBeFound("employeephone.equals=" + DEFAULT_EMPLOYEEPHONE);
 
-        // Get all the employeeList where branchPhone equals to UPDATED_BRANCH_PHONE
-        defaultEmployeeShouldNotBeFound("branchPhone.equals=" + UPDATED_BRANCH_PHONE);
+        // Get all the employeeList where employeephone equals to UPDATED_EMPLOYEEPHONE
+        defaultEmployeeShouldNotBeFound("employeephone.equals=" + UPDATED_EMPLOYEEPHONE);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchPhoneIsNotEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeephoneIsNotEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchPhone not equals to DEFAULT_BRANCH_PHONE
-        defaultEmployeeShouldNotBeFound("branchPhone.notEquals=" + DEFAULT_BRANCH_PHONE);
+        // Get all the employeeList where employeephone not equals to DEFAULT_EMPLOYEEPHONE
+        defaultEmployeeShouldNotBeFound("employeephone.notEquals=" + DEFAULT_EMPLOYEEPHONE);
 
-        // Get all the employeeList where branchPhone not equals to UPDATED_BRANCH_PHONE
-        defaultEmployeeShouldBeFound("branchPhone.notEquals=" + UPDATED_BRANCH_PHONE);
+        // Get all the employeeList where employeephone not equals to UPDATED_EMPLOYEEPHONE
+        defaultEmployeeShouldBeFound("employeephone.notEquals=" + UPDATED_EMPLOYEEPHONE);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchPhoneIsInShouldWork() throws Exception {
+    public void getAllEmployeesByEmployeephoneIsInShouldWork() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchPhone in DEFAULT_BRANCH_PHONE or UPDATED_BRANCH_PHONE
-        defaultEmployeeShouldBeFound("branchPhone.in=" + DEFAULT_BRANCH_PHONE + "," + UPDATED_BRANCH_PHONE);
+        // Get all the employeeList where employeephone in DEFAULT_EMPLOYEEPHONE or UPDATED_EMPLOYEEPHONE
+        defaultEmployeeShouldBeFound("employeephone.in=" + DEFAULT_EMPLOYEEPHONE + "," + UPDATED_EMPLOYEEPHONE);
 
-        // Get all the employeeList where branchPhone equals to UPDATED_BRANCH_PHONE
-        defaultEmployeeShouldNotBeFound("branchPhone.in=" + UPDATED_BRANCH_PHONE);
+        // Get all the employeeList where employeephone equals to UPDATED_EMPLOYEEPHONE
+        defaultEmployeeShouldNotBeFound("employeephone.in=" + UPDATED_EMPLOYEEPHONE);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchPhoneIsNullOrNotNull() throws Exception {
+    public void getAllEmployeesByEmployeephoneIsNullOrNotNull() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchPhone is not null
-        defaultEmployeeShouldBeFound("branchPhone.specified=true");
+        // Get all the employeeList where employeephone is not null
+        defaultEmployeeShouldBeFound("employeephone.specified=true");
 
-        // Get all the employeeList where branchPhone is null
-        defaultEmployeeShouldNotBeFound("branchPhone.specified=false");
+        // Get all the employeeList where employeephone is null
+        defaultEmployeeShouldNotBeFound("employeephone.specified=false");
     }
                 @Test
     @Transactional
-    public void getAllEmployeesByBranchPhoneContainsSomething() throws Exception {
+    public void getAllEmployeesByEmployeephoneContainsSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchPhone contains DEFAULT_BRANCH_PHONE
-        defaultEmployeeShouldBeFound("branchPhone.contains=" + DEFAULT_BRANCH_PHONE);
+        // Get all the employeeList where employeephone contains DEFAULT_EMPLOYEEPHONE
+        defaultEmployeeShouldBeFound("employeephone.contains=" + DEFAULT_EMPLOYEEPHONE);
 
-        // Get all the employeeList where branchPhone contains UPDATED_BRANCH_PHONE
-        defaultEmployeeShouldNotBeFound("branchPhone.contains=" + UPDATED_BRANCH_PHONE);
+        // Get all the employeeList where employeephone contains UPDATED_EMPLOYEEPHONE
+        defaultEmployeeShouldNotBeFound("employeephone.contains=" + UPDATED_EMPLOYEEPHONE);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchPhoneNotContainsSomething() throws Exception {
+    public void getAllEmployeesByEmployeephoneNotContainsSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchPhone does not contain DEFAULT_BRANCH_PHONE
-        defaultEmployeeShouldNotBeFound("branchPhone.doesNotContain=" + DEFAULT_BRANCH_PHONE);
+        // Get all the employeeList where employeephone does not contain DEFAULT_EMPLOYEEPHONE
+        defaultEmployeeShouldNotBeFound("employeephone.doesNotContain=" + DEFAULT_EMPLOYEEPHONE);
 
-        // Get all the employeeList where branchPhone does not contain UPDATED_BRANCH_PHONE
-        defaultEmployeeShouldBeFound("branchPhone.doesNotContain=" + UPDATED_BRANCH_PHONE);
+        // Get all the employeeList where employeephone does not contain UPDATED_EMPLOYEEPHONE
+        defaultEmployeeShouldBeFound("employeephone.doesNotContain=" + UPDATED_EMPLOYEEPHONE);
     }
 
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchFaxIsEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeefaxIsEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchFax equals to DEFAULT_BRANCH_FAX
-        defaultEmployeeShouldBeFound("branchFax.equals=" + DEFAULT_BRANCH_FAX);
+        // Get all the employeeList where employeefax equals to DEFAULT_EMPLOYEEFAX
+        defaultEmployeeShouldBeFound("employeefax.equals=" + DEFAULT_EMPLOYEEFAX);
 
-        // Get all the employeeList where branchFax equals to UPDATED_BRANCH_FAX
-        defaultEmployeeShouldNotBeFound("branchFax.equals=" + UPDATED_BRANCH_FAX);
+        // Get all the employeeList where employeefax equals to UPDATED_EMPLOYEEFAX
+        defaultEmployeeShouldNotBeFound("employeefax.equals=" + UPDATED_EMPLOYEEFAX);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchFaxIsNotEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeefaxIsNotEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchFax not equals to DEFAULT_BRANCH_FAX
-        defaultEmployeeShouldNotBeFound("branchFax.notEquals=" + DEFAULT_BRANCH_FAX);
+        // Get all the employeeList where employeefax not equals to DEFAULT_EMPLOYEEFAX
+        defaultEmployeeShouldNotBeFound("employeefax.notEquals=" + DEFAULT_EMPLOYEEFAX);
 
-        // Get all the employeeList where branchFax not equals to UPDATED_BRANCH_FAX
-        defaultEmployeeShouldBeFound("branchFax.notEquals=" + UPDATED_BRANCH_FAX);
+        // Get all the employeeList where employeefax not equals to UPDATED_EMPLOYEEFAX
+        defaultEmployeeShouldBeFound("employeefax.notEquals=" + UPDATED_EMPLOYEEFAX);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchFaxIsInShouldWork() throws Exception {
+    public void getAllEmployeesByEmployeefaxIsInShouldWork() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchFax in DEFAULT_BRANCH_FAX or UPDATED_BRANCH_FAX
-        defaultEmployeeShouldBeFound("branchFax.in=" + DEFAULT_BRANCH_FAX + "," + UPDATED_BRANCH_FAX);
+        // Get all the employeeList where employeefax in DEFAULT_EMPLOYEEFAX or UPDATED_EMPLOYEEFAX
+        defaultEmployeeShouldBeFound("employeefax.in=" + DEFAULT_EMPLOYEEFAX + "," + UPDATED_EMPLOYEEFAX);
 
-        // Get all the employeeList where branchFax equals to UPDATED_BRANCH_FAX
-        defaultEmployeeShouldNotBeFound("branchFax.in=" + UPDATED_BRANCH_FAX);
+        // Get all the employeeList where employeefax equals to UPDATED_EMPLOYEEFAX
+        defaultEmployeeShouldNotBeFound("employeefax.in=" + UPDATED_EMPLOYEEFAX);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchFaxIsNullOrNotNull() throws Exception {
+    public void getAllEmployeesByEmployeefaxIsNullOrNotNull() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchFax is not null
-        defaultEmployeeShouldBeFound("branchFax.specified=true");
+        // Get all the employeeList where employeefax is not null
+        defaultEmployeeShouldBeFound("employeefax.specified=true");
 
-        // Get all the employeeList where branchFax is null
-        defaultEmployeeShouldNotBeFound("branchFax.specified=false");
+        // Get all the employeeList where employeefax is null
+        defaultEmployeeShouldNotBeFound("employeefax.specified=false");
     }
                 @Test
     @Transactional
-    public void getAllEmployeesByBranchFaxContainsSomething() throws Exception {
+    public void getAllEmployeesByEmployeefaxContainsSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchFax contains DEFAULT_BRANCH_FAX
-        defaultEmployeeShouldBeFound("branchFax.contains=" + DEFAULT_BRANCH_FAX);
+        // Get all the employeeList where employeefax contains DEFAULT_EMPLOYEEFAX
+        defaultEmployeeShouldBeFound("employeefax.contains=" + DEFAULT_EMPLOYEEFAX);
 
-        // Get all the employeeList where branchFax contains UPDATED_BRANCH_FAX
-        defaultEmployeeShouldNotBeFound("branchFax.contains=" + UPDATED_BRANCH_FAX);
+        // Get all the employeeList where employeefax contains UPDATED_EMPLOYEEFAX
+        defaultEmployeeShouldNotBeFound("employeefax.contains=" + UPDATED_EMPLOYEEFAX);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchFaxNotContainsSomething() throws Exception {
+    public void getAllEmployeesByEmployeefaxNotContainsSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchFax does not contain DEFAULT_BRANCH_FAX
-        defaultEmployeeShouldNotBeFound("branchFax.doesNotContain=" + DEFAULT_BRANCH_FAX);
+        // Get all the employeeList where employeefax does not contain DEFAULT_EMPLOYEEFAX
+        defaultEmployeeShouldNotBeFound("employeefax.doesNotContain=" + DEFAULT_EMPLOYEEFAX);
 
-        // Get all the employeeList where branchFax does not contain UPDATED_BRANCH_FAX
-        defaultEmployeeShouldBeFound("branchFax.doesNotContain=" + UPDATED_BRANCH_FAX);
+        // Get all the employeeList where employeefax does not contain UPDATED_EMPLOYEEFAX
+        defaultEmployeeShouldBeFound("employeefax.doesNotContain=" + UPDATED_EMPLOYEEFAX);
     }
 
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchAddressIsEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeeaddressIsEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchAddress equals to DEFAULT_BRANCH_ADDRESS
-        defaultEmployeeShouldBeFound("branchAddress.equals=" + DEFAULT_BRANCH_ADDRESS);
+        // Get all the employeeList where employeeaddress equals to DEFAULT_EMPLOYEEADDRESS
+        defaultEmployeeShouldBeFound("employeeaddress.equals=" + DEFAULT_EMPLOYEEADDRESS);
 
-        // Get all the employeeList where branchAddress equals to UPDATED_BRANCH_ADDRESS
-        defaultEmployeeShouldNotBeFound("branchAddress.equals=" + UPDATED_BRANCH_ADDRESS);
+        // Get all the employeeList where employeeaddress equals to UPDATED_EMPLOYEEADDRESS
+        defaultEmployeeShouldNotBeFound("employeeaddress.equals=" + UPDATED_EMPLOYEEADDRESS);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchAddressIsNotEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeeaddressIsNotEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchAddress not equals to DEFAULT_BRANCH_ADDRESS
-        defaultEmployeeShouldNotBeFound("branchAddress.notEquals=" + DEFAULT_BRANCH_ADDRESS);
+        // Get all the employeeList where employeeaddress not equals to DEFAULT_EMPLOYEEADDRESS
+        defaultEmployeeShouldNotBeFound("employeeaddress.notEquals=" + DEFAULT_EMPLOYEEADDRESS);
 
-        // Get all the employeeList where branchAddress not equals to UPDATED_BRANCH_ADDRESS
-        defaultEmployeeShouldBeFound("branchAddress.notEquals=" + UPDATED_BRANCH_ADDRESS);
+        // Get all the employeeList where employeeaddress not equals to UPDATED_EMPLOYEEADDRESS
+        defaultEmployeeShouldBeFound("employeeaddress.notEquals=" + UPDATED_EMPLOYEEADDRESS);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchAddressIsInShouldWork() throws Exception {
+    public void getAllEmployeesByEmployeeaddressIsInShouldWork() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchAddress in DEFAULT_BRANCH_ADDRESS or UPDATED_BRANCH_ADDRESS
-        defaultEmployeeShouldBeFound("branchAddress.in=" + DEFAULT_BRANCH_ADDRESS + "," + UPDATED_BRANCH_ADDRESS);
+        // Get all the employeeList where employeeaddress in DEFAULT_EMPLOYEEADDRESS or UPDATED_EMPLOYEEADDRESS
+        defaultEmployeeShouldBeFound("employeeaddress.in=" + DEFAULT_EMPLOYEEADDRESS + "," + UPDATED_EMPLOYEEADDRESS);
 
-        // Get all the employeeList where branchAddress equals to UPDATED_BRANCH_ADDRESS
-        defaultEmployeeShouldNotBeFound("branchAddress.in=" + UPDATED_BRANCH_ADDRESS);
+        // Get all the employeeList where employeeaddress equals to UPDATED_EMPLOYEEADDRESS
+        defaultEmployeeShouldNotBeFound("employeeaddress.in=" + UPDATED_EMPLOYEEADDRESS);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchAddressIsNullOrNotNull() throws Exception {
+    public void getAllEmployeesByEmployeeaddressIsNullOrNotNull() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchAddress is not null
-        defaultEmployeeShouldBeFound("branchAddress.specified=true");
+        // Get all the employeeList where employeeaddress is not null
+        defaultEmployeeShouldBeFound("employeeaddress.specified=true");
 
-        // Get all the employeeList where branchAddress is null
-        defaultEmployeeShouldNotBeFound("branchAddress.specified=false");
+        // Get all the employeeList where employeeaddress is null
+        defaultEmployeeShouldNotBeFound("employeeaddress.specified=false");
     }
                 @Test
     @Transactional
-    public void getAllEmployeesByBranchAddressContainsSomething() throws Exception {
+    public void getAllEmployeesByEmployeeaddressContainsSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchAddress contains DEFAULT_BRANCH_ADDRESS
-        defaultEmployeeShouldBeFound("branchAddress.contains=" + DEFAULT_BRANCH_ADDRESS);
+        // Get all the employeeList where employeeaddress contains DEFAULT_EMPLOYEEADDRESS
+        defaultEmployeeShouldBeFound("employeeaddress.contains=" + DEFAULT_EMPLOYEEADDRESS);
 
-        // Get all the employeeList where branchAddress contains UPDATED_BRANCH_ADDRESS
-        defaultEmployeeShouldNotBeFound("branchAddress.contains=" + UPDATED_BRANCH_ADDRESS);
+        // Get all the employeeList where employeeaddress contains UPDATED_EMPLOYEEADDRESS
+        defaultEmployeeShouldNotBeFound("employeeaddress.contains=" + UPDATED_EMPLOYEEADDRESS);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchAddressNotContainsSomething() throws Exception {
+    public void getAllEmployeesByEmployeeaddressNotContainsSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchAddress does not contain DEFAULT_BRANCH_ADDRESS
-        defaultEmployeeShouldNotBeFound("branchAddress.doesNotContain=" + DEFAULT_BRANCH_ADDRESS);
+        // Get all the employeeList where employeeaddress does not contain DEFAULT_EMPLOYEEADDRESS
+        defaultEmployeeShouldNotBeFound("employeeaddress.doesNotContain=" + DEFAULT_EMPLOYEEADDRESS);
 
-        // Get all the employeeList where branchAddress does not contain UPDATED_BRANCH_ADDRESS
-        defaultEmployeeShouldBeFound("branchAddress.doesNotContain=" + UPDATED_BRANCH_ADDRESS);
+        // Get all the employeeList where employeeaddress does not contain UPDATED_EMPLOYEEADDRESS
+        defaultEmployeeShouldBeFound("employeeaddress.doesNotContain=" + UPDATED_EMPLOYEEADDRESS);
     }
 
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchEmailIsEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeeemailIsEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchEmail equals to DEFAULT_BRANCH_EMAIL
-        defaultEmployeeShouldBeFound("branchEmail.equals=" + DEFAULT_BRANCH_EMAIL);
+        // Get all the employeeList where employeeemail equals to DEFAULT_EMPLOYEEEMAIL
+        defaultEmployeeShouldBeFound("employeeemail.equals=" + DEFAULT_EMPLOYEEEMAIL);
 
-        // Get all the employeeList where branchEmail equals to UPDATED_BRANCH_EMAIL
-        defaultEmployeeShouldNotBeFound("branchEmail.equals=" + UPDATED_BRANCH_EMAIL);
+        // Get all the employeeList where employeeemail equals to UPDATED_EMPLOYEEEMAIL
+        defaultEmployeeShouldNotBeFound("employeeemail.equals=" + UPDATED_EMPLOYEEEMAIL);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchEmailIsNotEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeeemailIsNotEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchEmail not equals to DEFAULT_BRANCH_EMAIL
-        defaultEmployeeShouldNotBeFound("branchEmail.notEquals=" + DEFAULT_BRANCH_EMAIL);
+        // Get all the employeeList where employeeemail not equals to DEFAULT_EMPLOYEEEMAIL
+        defaultEmployeeShouldNotBeFound("employeeemail.notEquals=" + DEFAULT_EMPLOYEEEMAIL);
 
-        // Get all the employeeList where branchEmail not equals to UPDATED_BRANCH_EMAIL
-        defaultEmployeeShouldBeFound("branchEmail.notEquals=" + UPDATED_BRANCH_EMAIL);
+        // Get all the employeeList where employeeemail not equals to UPDATED_EMPLOYEEEMAIL
+        defaultEmployeeShouldBeFound("employeeemail.notEquals=" + UPDATED_EMPLOYEEEMAIL);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchEmailIsInShouldWork() throws Exception {
+    public void getAllEmployeesByEmployeeemailIsInShouldWork() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchEmail in DEFAULT_BRANCH_EMAIL or UPDATED_BRANCH_EMAIL
-        defaultEmployeeShouldBeFound("branchEmail.in=" + DEFAULT_BRANCH_EMAIL + "," + UPDATED_BRANCH_EMAIL);
+        // Get all the employeeList where employeeemail in DEFAULT_EMPLOYEEEMAIL or UPDATED_EMPLOYEEEMAIL
+        defaultEmployeeShouldBeFound("employeeemail.in=" + DEFAULT_EMPLOYEEEMAIL + "," + UPDATED_EMPLOYEEEMAIL);
 
-        // Get all the employeeList where branchEmail equals to UPDATED_BRANCH_EMAIL
-        defaultEmployeeShouldNotBeFound("branchEmail.in=" + UPDATED_BRANCH_EMAIL);
+        // Get all the employeeList where employeeemail equals to UPDATED_EMPLOYEEEMAIL
+        defaultEmployeeShouldNotBeFound("employeeemail.in=" + UPDATED_EMPLOYEEEMAIL);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchEmailIsNullOrNotNull() throws Exception {
+    public void getAllEmployeesByEmployeeemailIsNullOrNotNull() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchEmail is not null
-        defaultEmployeeShouldBeFound("branchEmail.specified=true");
+        // Get all the employeeList where employeeemail is not null
+        defaultEmployeeShouldBeFound("employeeemail.specified=true");
 
-        // Get all the employeeList where branchEmail is null
-        defaultEmployeeShouldNotBeFound("branchEmail.specified=false");
+        // Get all the employeeList where employeeemail is null
+        defaultEmployeeShouldNotBeFound("employeeemail.specified=false");
     }
                 @Test
     @Transactional
-    public void getAllEmployeesByBranchEmailContainsSomething() throws Exception {
+    public void getAllEmployeesByEmployeeemailContainsSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchEmail contains DEFAULT_BRANCH_EMAIL
-        defaultEmployeeShouldBeFound("branchEmail.contains=" + DEFAULT_BRANCH_EMAIL);
+        // Get all the employeeList where employeeemail contains DEFAULT_EMPLOYEEEMAIL
+        defaultEmployeeShouldBeFound("employeeemail.contains=" + DEFAULT_EMPLOYEEEMAIL);
 
-        // Get all the employeeList where branchEmail contains UPDATED_BRANCH_EMAIL
-        defaultEmployeeShouldNotBeFound("branchEmail.contains=" + UPDATED_BRANCH_EMAIL);
+        // Get all the employeeList where employeeemail contains UPDATED_EMPLOYEEEMAIL
+        defaultEmployeeShouldNotBeFound("employeeemail.contains=" + UPDATED_EMPLOYEEEMAIL);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchEmailNotContainsSomething() throws Exception {
+    public void getAllEmployeesByEmployeeemailNotContainsSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchEmail does not contain DEFAULT_BRANCH_EMAIL
-        defaultEmployeeShouldNotBeFound("branchEmail.doesNotContain=" + DEFAULT_BRANCH_EMAIL);
+        // Get all the employeeList where employeeemail does not contain DEFAULT_EMPLOYEEEMAIL
+        defaultEmployeeShouldNotBeFound("employeeemail.doesNotContain=" + DEFAULT_EMPLOYEEEMAIL);
 
-        // Get all the employeeList where branchEmail does not contain UPDATED_BRANCH_EMAIL
-        defaultEmployeeShouldBeFound("branchEmail.doesNotContain=" + UPDATED_BRANCH_EMAIL);
+        // Get all the employeeList where employeeemail does not contain UPDATED_EMPLOYEEEMAIL
+        defaultEmployeeShouldBeFound("employeeemail.doesNotContain=" + UPDATED_EMPLOYEEEMAIL);
     }
 
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchHiredateIsEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeehiredateIsEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchHiredate equals to DEFAULT_BRANCH_HIREDATE
-        defaultEmployeeShouldBeFound("branchHiredate.equals=" + DEFAULT_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate equals to DEFAULT_EMPLOYEEHIREDATE
+        defaultEmployeeShouldBeFound("employeehiredate.equals=" + DEFAULT_EMPLOYEEHIREDATE);
 
-        // Get all the employeeList where branchHiredate equals to UPDATED_BRANCH_HIREDATE
-        defaultEmployeeShouldNotBeFound("branchHiredate.equals=" + UPDATED_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate equals to UPDATED_EMPLOYEEHIREDATE
+        defaultEmployeeShouldNotBeFound("employeehiredate.equals=" + UPDATED_EMPLOYEEHIREDATE);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchHiredateIsNotEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeehiredateIsNotEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchHiredate not equals to DEFAULT_BRANCH_HIREDATE
-        defaultEmployeeShouldNotBeFound("branchHiredate.notEquals=" + DEFAULT_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate not equals to DEFAULT_EMPLOYEEHIREDATE
+        defaultEmployeeShouldNotBeFound("employeehiredate.notEquals=" + DEFAULT_EMPLOYEEHIREDATE);
 
-        // Get all the employeeList where branchHiredate not equals to UPDATED_BRANCH_HIREDATE
-        defaultEmployeeShouldBeFound("branchHiredate.notEquals=" + UPDATED_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate not equals to UPDATED_EMPLOYEEHIREDATE
+        defaultEmployeeShouldBeFound("employeehiredate.notEquals=" + UPDATED_EMPLOYEEHIREDATE);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchHiredateIsInShouldWork() throws Exception {
+    public void getAllEmployeesByEmployeehiredateIsInShouldWork() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchHiredate in DEFAULT_BRANCH_HIREDATE or UPDATED_BRANCH_HIREDATE
-        defaultEmployeeShouldBeFound("branchHiredate.in=" + DEFAULT_BRANCH_HIREDATE + "," + UPDATED_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate in DEFAULT_EMPLOYEEHIREDATE or UPDATED_EMPLOYEEHIREDATE
+        defaultEmployeeShouldBeFound("employeehiredate.in=" + DEFAULT_EMPLOYEEHIREDATE + "," + UPDATED_EMPLOYEEHIREDATE);
 
-        // Get all the employeeList where branchHiredate equals to UPDATED_BRANCH_HIREDATE
-        defaultEmployeeShouldNotBeFound("branchHiredate.in=" + UPDATED_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate equals to UPDATED_EMPLOYEEHIREDATE
+        defaultEmployeeShouldNotBeFound("employeehiredate.in=" + UPDATED_EMPLOYEEHIREDATE);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchHiredateIsNullOrNotNull() throws Exception {
+    public void getAllEmployeesByEmployeehiredateIsNullOrNotNull() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchHiredate is not null
-        defaultEmployeeShouldBeFound("branchHiredate.specified=true");
+        // Get all the employeeList where employeehiredate is not null
+        defaultEmployeeShouldBeFound("employeehiredate.specified=true");
 
-        // Get all the employeeList where branchHiredate is null
-        defaultEmployeeShouldNotBeFound("branchHiredate.specified=false");
+        // Get all the employeeList where employeehiredate is null
+        defaultEmployeeShouldNotBeFound("employeehiredate.specified=false");
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchHiredateIsGreaterThanOrEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeehiredateIsGreaterThanOrEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchHiredate is greater than or equal to DEFAULT_BRANCH_HIREDATE
-        defaultEmployeeShouldBeFound("branchHiredate.greaterThanOrEqual=" + DEFAULT_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate is greater than or equal to DEFAULT_EMPLOYEEHIREDATE
+        defaultEmployeeShouldBeFound("employeehiredate.greaterThanOrEqual=" + DEFAULT_EMPLOYEEHIREDATE);
 
-        // Get all the employeeList where branchHiredate is greater than or equal to UPDATED_BRANCH_HIREDATE
-        defaultEmployeeShouldNotBeFound("branchHiredate.greaterThanOrEqual=" + UPDATED_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate is greater than or equal to UPDATED_EMPLOYEEHIREDATE
+        defaultEmployeeShouldNotBeFound("employeehiredate.greaterThanOrEqual=" + UPDATED_EMPLOYEEHIREDATE);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchHiredateIsLessThanOrEqualToSomething() throws Exception {
+    public void getAllEmployeesByEmployeehiredateIsLessThanOrEqualToSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchHiredate is less than or equal to DEFAULT_BRANCH_HIREDATE
-        defaultEmployeeShouldBeFound("branchHiredate.lessThanOrEqual=" + DEFAULT_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate is less than or equal to DEFAULT_EMPLOYEEHIREDATE
+        defaultEmployeeShouldBeFound("employeehiredate.lessThanOrEqual=" + DEFAULT_EMPLOYEEHIREDATE);
 
-        // Get all the employeeList where branchHiredate is less than or equal to SMALLER_BRANCH_HIREDATE
-        defaultEmployeeShouldNotBeFound("branchHiredate.lessThanOrEqual=" + SMALLER_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate is less than or equal to SMALLER_EMPLOYEEHIREDATE
+        defaultEmployeeShouldNotBeFound("employeehiredate.lessThanOrEqual=" + SMALLER_EMPLOYEEHIREDATE);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchHiredateIsLessThanSomething() throws Exception {
+    public void getAllEmployeesByEmployeehiredateIsLessThanSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchHiredate is less than DEFAULT_BRANCH_HIREDATE
-        defaultEmployeeShouldNotBeFound("branchHiredate.lessThan=" + DEFAULT_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate is less than DEFAULT_EMPLOYEEHIREDATE
+        defaultEmployeeShouldNotBeFound("employeehiredate.lessThan=" + DEFAULT_EMPLOYEEHIREDATE);
 
-        // Get all the employeeList where branchHiredate is less than UPDATED_BRANCH_HIREDATE
-        defaultEmployeeShouldBeFound("branchHiredate.lessThan=" + UPDATED_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate is less than UPDATED_EMPLOYEEHIREDATE
+        defaultEmployeeShouldBeFound("employeehiredate.lessThan=" + UPDATED_EMPLOYEEHIREDATE);
     }
 
     @Test
     @Transactional
-    public void getAllEmployeesByBranchHiredateIsGreaterThanSomething() throws Exception {
+    public void getAllEmployeesByEmployeehiredateIsGreaterThanSomething() throws Exception {
         // Initialize the database
         employeeRepository.saveAndFlush(employee);
 
-        // Get all the employeeList where branchHiredate is greater than DEFAULT_BRANCH_HIREDATE
-        defaultEmployeeShouldNotBeFound("branchHiredate.greaterThan=" + DEFAULT_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate is greater than DEFAULT_EMPLOYEEHIREDATE
+        defaultEmployeeShouldNotBeFound("employeehiredate.greaterThan=" + DEFAULT_EMPLOYEEHIREDATE);
 
-        // Get all the employeeList where branchHiredate is greater than SMALLER_BRANCH_HIREDATE
-        defaultEmployeeShouldBeFound("branchHiredate.greaterThan=" + SMALLER_BRANCH_HIREDATE);
+        // Get all the employeeList where employeehiredate is greater than SMALLER_EMPLOYEEHIREDATE
+        defaultEmployeeShouldBeFound("employeehiredate.greaterThan=" + SMALLER_EMPLOYEEHIREDATE);
     }
 
     /**
@@ -784,12 +784,12 @@ public class EmployeeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(employee.getId().intValue())))
-            .andExpect(jsonPath("$.[*].branchName").value(hasItem(DEFAULT_BRANCH_NAME)))
-            .andExpect(jsonPath("$.[*].branchPhone").value(hasItem(DEFAULT_BRANCH_PHONE)))
-            .andExpect(jsonPath("$.[*].branchFax").value(hasItem(DEFAULT_BRANCH_FAX)))
-            .andExpect(jsonPath("$.[*].branchAddress").value(hasItem(DEFAULT_BRANCH_ADDRESS)))
-            .andExpect(jsonPath("$.[*].branchEmail").value(hasItem(DEFAULT_BRANCH_EMAIL)))
-            .andExpect(jsonPath("$.[*].branchHiredate").value(hasItem(DEFAULT_BRANCH_HIREDATE.toString())));
+            .andExpect(jsonPath("$.[*].employeename").value(hasItem(DEFAULT_EMPLOYEENAME)))
+            .andExpect(jsonPath("$.[*].employeephone").value(hasItem(DEFAULT_EMPLOYEEPHONE)))
+            .andExpect(jsonPath("$.[*].employeefax").value(hasItem(DEFAULT_EMPLOYEEFAX)))
+            .andExpect(jsonPath("$.[*].employeeaddress").value(hasItem(DEFAULT_EMPLOYEEADDRESS)))
+            .andExpect(jsonPath("$.[*].employeeemail").value(hasItem(DEFAULT_EMPLOYEEEMAIL)))
+            .andExpect(jsonPath("$.[*].employeehiredate").value(hasItem(DEFAULT_EMPLOYEEHIREDATE.toString())));
 
         // Check, that the count call also returns 1
         restEmployeeMockMvc.perform(get("/api/employees/count?sort=id,desc&" + filter))
@@ -837,12 +837,12 @@ public class EmployeeResourceIT {
         // Disconnect from session so that the updates on updatedEmployee are not directly saved in db
         em.detach(updatedEmployee);
         updatedEmployee
-            .branchName(UPDATED_BRANCH_NAME)
-            .branchPhone(UPDATED_BRANCH_PHONE)
-            .branchFax(UPDATED_BRANCH_FAX)
-            .branchAddress(UPDATED_BRANCH_ADDRESS)
-            .branchEmail(UPDATED_BRANCH_EMAIL)
-            .branchHiredate(UPDATED_BRANCH_HIREDATE);
+            .employeename(UPDATED_EMPLOYEENAME)
+            .employeephone(UPDATED_EMPLOYEEPHONE)
+            .employeefax(UPDATED_EMPLOYEEFAX)
+            .employeeaddress(UPDATED_EMPLOYEEADDRESS)
+            .employeeemail(UPDATED_EMPLOYEEEMAIL)
+            .employeehiredate(UPDATED_EMPLOYEEHIREDATE);
         EmployeeDTO employeeDTO = employeeMapper.toDto(updatedEmployee);
 
         restEmployeeMockMvc.perform(put("/api/employees")
@@ -854,12 +854,12 @@ public class EmployeeResourceIT {
         List<Employee> employeeList = employeeRepository.findAll();
         assertThat(employeeList).hasSize(databaseSizeBeforeUpdate);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
-        assertThat(testEmployee.getBranchName()).isEqualTo(UPDATED_BRANCH_NAME);
-        assertThat(testEmployee.getBranchPhone()).isEqualTo(UPDATED_BRANCH_PHONE);
-        assertThat(testEmployee.getBranchFax()).isEqualTo(UPDATED_BRANCH_FAX);
-        assertThat(testEmployee.getBranchAddress()).isEqualTo(UPDATED_BRANCH_ADDRESS);
-        assertThat(testEmployee.getBranchEmail()).isEqualTo(UPDATED_BRANCH_EMAIL);
-        assertThat(testEmployee.getBranchHiredate()).isEqualTo(UPDATED_BRANCH_HIREDATE);
+        assertThat(testEmployee.getEmployeename()).isEqualTo(UPDATED_EMPLOYEENAME);
+        assertThat(testEmployee.getEmployeephone()).isEqualTo(UPDATED_EMPLOYEEPHONE);
+        assertThat(testEmployee.getEmployeefax()).isEqualTo(UPDATED_EMPLOYEEFAX);
+        assertThat(testEmployee.getEmployeeaddress()).isEqualTo(UPDATED_EMPLOYEEADDRESS);
+        assertThat(testEmployee.getEmployeeemail()).isEqualTo(UPDATED_EMPLOYEEEMAIL);
+        assertThat(testEmployee.getEmployeehiredate()).isEqualTo(UPDATED_EMPLOYEEHIREDATE);
 
         // Validate the Employee in Elasticsearch
         verify(mockEmployeeSearchRepository, times(1)).save(testEmployee);
@@ -920,11 +920,11 @@ public class EmployeeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(employee.getId().intValue())))
-            .andExpect(jsonPath("$.[*].branchName").value(hasItem(DEFAULT_BRANCH_NAME)))
-            .andExpect(jsonPath("$.[*].branchPhone").value(hasItem(DEFAULT_BRANCH_PHONE)))
-            .andExpect(jsonPath("$.[*].branchFax").value(hasItem(DEFAULT_BRANCH_FAX)))
-            .andExpect(jsonPath("$.[*].branchAddress").value(hasItem(DEFAULT_BRANCH_ADDRESS)))
-            .andExpect(jsonPath("$.[*].branchEmail").value(hasItem(DEFAULT_BRANCH_EMAIL)))
-            .andExpect(jsonPath("$.[*].branchHiredate").value(hasItem(DEFAULT_BRANCH_HIREDATE.toString())));
+            .andExpect(jsonPath("$.[*].employeename").value(hasItem(DEFAULT_EMPLOYEENAME)))
+            .andExpect(jsonPath("$.[*].employeephone").value(hasItem(DEFAULT_EMPLOYEEPHONE)))
+            .andExpect(jsonPath("$.[*].employeefax").value(hasItem(DEFAULT_EMPLOYEEFAX)))
+            .andExpect(jsonPath("$.[*].employeeaddress").value(hasItem(DEFAULT_EMPLOYEEADDRESS)))
+            .andExpect(jsonPath("$.[*].employeeemail").value(hasItem(DEFAULT_EMPLOYEEEMAIL)))
+            .andExpect(jsonPath("$.[*].employeehiredate").value(hasItem(DEFAULT_EMPLOYEEHIREDATE.toString())));
     }
 }

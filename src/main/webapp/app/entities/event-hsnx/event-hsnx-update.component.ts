@@ -21,7 +21,7 @@ export class EventHsnxUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    Description: [null, [Validators.required]],
+    eventdescription: [null, [Validators.required]],
     starttime: [],
     startdate: [],
     endtime: [],
@@ -45,7 +45,7 @@ export class EventHsnxUpdateComponent implements OnInit {
   updateForm(event: IEventHsnx): void {
     this.editForm.patchValue({
       id: event.id,
-      Description: event.Description,
+      eventdescription: event.eventdescription,
       starttime: event.starttime ? event.starttime.format(DATE_TIME_FORMAT) : null,
       startdate: event.startdate,
       endtime: event.endtime ? event.endtime.format(DATE_TIME_FORMAT) : null,
@@ -71,7 +71,7 @@ export class EventHsnxUpdateComponent implements OnInit {
     return {
       ...new EventHsnx(),
       id: this.editForm.get(['id'])!.value,
-      Description: this.editForm.get(['Description'])!.value,
+      eventdescription: this.editForm.get(['eventdescription'])!.value,
       starttime: this.editForm.get(['starttime'])!.value ? moment(this.editForm.get(['starttime'])!.value, DATE_TIME_FORMAT) : undefined,
       startdate: this.editForm.get(['startdate'])!.value,
       endtime: this.editForm.get(['endtime'])!.value ? moment(this.editForm.get(['endtime'])!.value, DATE_TIME_FORMAT) : undefined,

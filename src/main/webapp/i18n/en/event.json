@@ -17,7 +17,7 @@
       "detail": {
         "title": "Event"
       },
-      "Description": "Description",
+      "eventdescription": "Eventdescription",
       "starttime": "Starttime",
       "startdate": "Startdate",
       "endtime": "Endtime",

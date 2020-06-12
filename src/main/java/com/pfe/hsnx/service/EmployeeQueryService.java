@@ -95,23 +95,23 @@ public class EmployeeQueryService extends QueryService<Employee> {
             if (criteria.getId() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getId(), Employee_.id));
             }
-            if (criteria.getBranchName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getBranchName(), Employee_.branchName));
+            if (criteria.getEmployeename() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getEmployeename(), Employee_.employeename));
             }
-            if (criteria.getBranchPhone() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getBranchPhone(), Employee_.branchPhone));
+            if (criteria.getEmployeephone() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getEmployeephone(), Employee_.employeephone));
             }
-            if (criteria.getBranchFax() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getBranchFax(), Employee_.branchFax));
+            if (criteria.getEmployeefax() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getEmployeefax(), Employee_.employeefax));
             }
-            if (criteria.getBranchAddress() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getBranchAddress(), Employee_.branchAddress));
+            if (criteria.getEmployeeaddress() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getEmployeeaddress(), Employee_.employeeaddress));
             }
-            if (criteria.getBranchEmail() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getBranchEmail(), Employee_.branchEmail));
+            if (criteria.getEmployeeemail() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getEmployeeemail(), Employee_.employeeemail));
             }
-            if (criteria.getBranchHiredate() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBranchHiredate(), Employee_.branchHiredate));
+            if (criteria.getEmployeehiredate() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getEmployeehiredate(), Employee_.employeehiredate));
             }
         }
         return specification;

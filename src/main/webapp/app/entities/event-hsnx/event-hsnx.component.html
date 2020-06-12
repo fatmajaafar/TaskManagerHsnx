@@ -41,7 +41,7 @@
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="Description"><span jhiTranslate="taskManagerHsnxApp.event.Description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="eventdescription"><span jhiTranslate="taskManagerHsnxApp.event.eventdescription">Eventdescription</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="starttime"><span jhiTranslate="taskManagerHsnxApp.event.starttime">Starttime</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="startdate"><span jhiTranslate="taskManagerHsnxApp.event.startdate">Startdate</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="endtime"><span jhiTranslate="taskManagerHsnxApp.event.endtime">Endtime</span> <fa-icon icon="sort"></fa-icon></th>
@@ -52,7 +52,7 @@
             <tbody>
                 <tr *ngFor="let event of events ;trackBy: trackId">
                     <td><a [routerLink]="['/event-hsnx', event.id, 'view']">{{ event.id }}</a></td>
-                    <td>{{ event.Description }}</td>
+                    <td>{{ event.eventdescription }}</td>
                     <td>{{ event.starttime | date:'medium' }}</td>
                     <td>{{ event.startdate | date:'mediumDate' }}</td>
                     <td>{{ event.endtime | date:'medium' }}</td>

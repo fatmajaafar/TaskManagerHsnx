@@ -27,29 +27,29 @@ public class EmployeeCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
-    private StringFilter branchName;
+    private StringFilter employeename;
 
-    private StringFilter branchPhone;
+    private StringFilter employeephone;
 
-    private StringFilter branchFax;
+    private StringFilter employeefax;
 
-    private StringFilter branchAddress;
+    private StringFilter employeeaddress;
 
-    private StringFilter branchEmail;
+    private StringFilter employeeemail;
 
-    private LocalDateFilter branchHiredate;
+    private LocalDateFilter employeehiredate;
 
     public EmployeeCriteria() {
     }
 
     public EmployeeCriteria(EmployeeCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
-        this.branchName = other.branchName == null ? null : other.branchName.copy();
-        this.branchPhone = other.branchPhone == null ? null : other.branchPhone.copy();
-        this.branchFax = other.branchFax == null ? null : other.branchFax.copy();
-        this.branchAddress = other.branchAddress == null ? null : other.branchAddress.copy();
-        this.branchEmail = other.branchEmail == null ? null : other.branchEmail.copy();
-        this.branchHiredate = other.branchHiredate == null ? null : other.branchHiredate.copy();
+        this.employeename = other.employeename == null ? null : other.employeename.copy();
+        this.employeephone = other.employeephone == null ? null : other.employeephone.copy();
+        this.employeefax = other.employeefax == null ? null : other.employeefax.copy();
+        this.employeeaddress = other.employeeaddress == null ? null : other.employeeaddress.copy();
+        this.employeeemail = other.employeeemail == null ? null : other.employeeemail.copy();
+        this.employeehiredate = other.employeehiredate == null ? null : other.employeehiredate.copy();
     }
 
     @Override
@@ -65,52 +65,52 @@ public class EmployeeCriteria implements Serializable, Criteria {
         this.id = id;
     }
 
-    public StringFilter getBranchName() {
-        return branchName;
+    public StringFilter getEmployeename() {
+        return employeename;
     }
 
-    public void setBranchName(StringFilter branchName) {
-        this.branchName = branchName;
+    public void setEmployeename(StringFilter employeename) {
+        this.employeename = employeename;
     }
 
-    public StringFilter getBranchPhone() {
-        return branchPhone;
+    public StringFilter getEmployeephone() {
+        return employeephone;
     }
 
-    public void setBranchPhone(StringFilter branchPhone) {
-        this.branchPhone = branchPhone;
+    public void setEmployeephone(StringFilter employeephone) {
+        this.employeephone = employeephone;
     }
 
-    public StringFilter getBranchFax() {
-        return branchFax;
+    public StringFilter getEmployeefax() {
+        return employeefax;
     }
 
-    public void setBranchFax(StringFilter branchFax) {
-        this.branchFax = branchFax;
+    public void setEmployeefax(StringFilter employeefax) {
+        this.employeefax = employeefax;
     }
 
-    public StringFilter getBranchAddress() {
-        return branchAddress;
+    public StringFilter getEmployeeaddress() {
+        return employeeaddress;
     }
 
-    public void setBranchAddress(StringFilter branchAddress) {
-        this.branchAddress = branchAddress;
+    public void setEmployeeaddress(StringFilter employeeaddress) {
+        this.employeeaddress = employeeaddress;
     }
 
-    public StringFilter getBranchEmail() {
-        return branchEmail;
+    public StringFilter getEmployeeemail() {
+        return employeeemail;
     }
 
-    public void setBranchEmail(StringFilter branchEmail) {
-        this.branchEmail = branchEmail;
+    public void setEmployeeemail(StringFilter employeeemail) {
+        this.employeeemail = employeeemail;
     }
 
-    public LocalDateFilter getBranchHiredate() {
-        return branchHiredate;
+    public LocalDateFilter getEmployeehiredate() {
+        return employeehiredate;
     }
 
-    public void setBranchHiredate(LocalDateFilter branchHiredate) {
-        this.branchHiredate = branchHiredate;
+    public void setEmployeehiredate(LocalDateFilter employeehiredate) {
+        this.employeehiredate = employeehiredate;
     }
 
 
@@ -125,24 +125,24 @@ public class EmployeeCriteria implements Serializable, Criteria {
         final EmployeeCriteria that = (EmployeeCriteria) o;
         return
             Objects.equals(id, that.id) &&
-            Objects.equals(branchName, that.branchName) &&
-            Objects.equals(branchPhone, that.branchPhone) &&
-            Objects.equals(branchFax, that.branchFax) &&
-            Objects.equals(branchAddress, that.branchAddress) &&
-            Objects.equals(branchEmail, that.branchEmail) &&
-            Objects.equals(branchHiredate, that.branchHiredate);
+            Objects.equals(employeename, that.employeename) &&
+            Objects.equals(employeephone, that.employeephone) &&
+            Objects.equals(employeefax, that.employeefax) &&
+            Objects.equals(employeeaddress, that.employeeaddress) &&
+            Objects.equals(employeeemail, that.employeeemail) &&
+            Objects.equals(employeehiredate, that.employeehiredate);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
         id,
-        branchName,
-        branchPhone,
-        branchFax,
-        branchAddress,
-        branchEmail,
-        branchHiredate
+        employeename,
+        employeephone,
+        employeefax,
+        employeeaddress,
+        employeeemail,
+        employeehiredate
         );
     }
 
@@ -150,12 +150,12 @@ public class EmployeeCriteria implements Serializable, Criteria {
     public String toString() {
         return "EmployeeCriteria{" +
                 (id != null ? "id=" + id + ", " : "") +
-                (branchName != null ? "branchName=" + branchName + ", " : "") +
-                (branchPhone != null ? "branchPhone=" + branchPhone + ", " : "") +
-                (branchFax != null ? "branchFax=" + branchFax + ", " : "") +
-                (branchAddress != null ? "branchAddress=" + branchAddress + ", " : "") +
-                (branchEmail != null ? "branchEmail=" + branchEmail + ", " : "") +
-                (branchHiredate != null ? "branchHiredate=" + branchHiredate + ", " : "") +
+                (employeename != null ? "employeename=" + employeename + ", " : "") +
+                (employeephone != null ? "employeephone=" + employeephone + ", " : "") +
+                (employeefax != null ? "employeefax=" + employeefax + ", " : "") +
+                (employeeaddress != null ? "employeeaddress=" + employeeaddress + ", " : "") +
+                (employeeemail != null ? "employeeemail=" + employeeemail + ", " : "") +
+                (employeehiredate != null ? "employeehiredate=" + employeehiredate + ", " : "") +
             "}";
     }
 

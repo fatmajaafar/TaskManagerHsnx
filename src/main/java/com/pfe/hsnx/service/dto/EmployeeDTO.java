@@ -13,17 +13,17 @@ public class EmployeeDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String branchName;
+    private String employeename;
 
-    private String branchPhone;
+    private String employeephone;
 
-    private String branchFax;
+    private String employeefax;
 
-    private String branchAddress;
+    private String employeeaddress;
 
-    private String branchEmail;
+    private String employeeemail;
 
-    private LocalDate branchHiredate;
+    private LocalDate employeehiredate;
 
 
     public Long getId() {
@@ -34,52 +34,52 @@ public class EmployeeDTO implements Serializable {
         this.id = id;
     }
 
-    public String getBranchName() {
-        return branchName;
+    public String getEmployeename() {
+        return employeename;
     }
 
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
+    public void setEmployeename(String employeename) {
+        this.employeename = employeename;
     }
 
-    public String getBranchPhone() {
-        return branchPhone;
+    public String getEmployeephone() {
+        return employeephone;
     }
 
-    public void setBranchPhone(String branchPhone) {
-        this.branchPhone = branchPhone;
+    public void setEmployeephone(String employeephone) {
+        this.employeephone = employeephone;
     }
 
-    public String getBranchFax() {
-        return branchFax;
+    public String getEmployeefax() {
+        return employeefax;
     }
 
-    public void setBranchFax(String branchFax) {
-        this.branchFax = branchFax;
+    public void setEmployeefax(String employeefax) {
+        this.employeefax = employeefax;
     }
 
-    public String getBranchAddress() {
-        return branchAddress;
+    public String getEmployeeaddress() {
+        return employeeaddress;
     }
 
-    public void setBranchAddress(String branchAddress) {
-        this.branchAddress = branchAddress;
+    public void setEmployeeaddress(String employeeaddress) {
+        this.employeeaddress = employeeaddress;
     }
 
-    public String getBranchEmail() {
-        return branchEmail;
+    public String getEmployeeemail() {
+        return employeeemail;
     }
 
-    public void setBranchEmail(String branchEmail) {
-        this.branchEmail = branchEmail;
+    public void setEmployeeemail(String employeeemail) {
+        this.employeeemail = employeeemail;
     }
 
-    public LocalDate getBranchHiredate() {
-        return branchHiredate;
+    public LocalDate getEmployeehiredate() {
+        return employeehiredate;
     }
 
-    public void setBranchHiredate(LocalDate branchHiredate) {
-        this.branchHiredate = branchHiredate;
+    public void setEmployeehiredate(LocalDate employeehiredate) {
+        this.employeehiredate = employeehiredate;
     }
 
     @Override
@@ -107,12 +107,12 @@ public class EmployeeDTO implements Serializable {
     public String toString() {
         return "EmployeeDTO{" +
             "id=" + getId() +
-            ", branchName='" + getBranchName() + "'" +
-            ", branchPhone='" + getBranchPhone() + "'" +
-            ", branchFax='" + getBranchFax() + "'" +
-            ", branchAddress='" + getBranchAddress() + "'" +
-            ", branchEmail='" + getBranchEmail() + "'" +
-            ", branchHiredate='" + getBranchHiredate() + "'" +
+            ", employeename='" + getEmployeename() + "'" +
+            ", employeephone='" + getEmployeephone() + "'" +
+            ", employeefax='" + getEmployeefax() + "'" +
+            ", employeeaddress='" + getEmployeeaddress() + "'" +
+            ", employeeemail='" + getEmployeeemail() + "'" +
+            ", employeehiredate='" + getEmployeehiredate() + "'" +
             "}";
     }
 }

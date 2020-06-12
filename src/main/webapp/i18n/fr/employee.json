@@ -17,12 +17,12 @@
       "detail": {
         "title": "Employee"
       },
-      "branchName": "Branch Name",
-      "branchPhone": "Branch Phone",
-      "branchFax": "Branch Fax",
-      "branchAddress": "Branch Address",
-      "branchEmail": "Branch Email",
-      "branchHiredate": "Branch Hiredate"
+      "employeename": "Employeename",
+      "employeephone": "Employeephone",
+      "employeefax": "Employeefax",
+      "employeeaddress": "Employeeaddress",
+      "employeeemail": "Employeeemail",
+      "employeehiredate": "Employeehiredate"
     }
   }
 }

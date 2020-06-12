@@ -41,24 +41,24 @@
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchName"><span jhiTranslate="taskManagerHsnxApp.employee.branchName">Branch Name</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchPhone"><span jhiTranslate="taskManagerHsnxApp.employee.branchPhone">Branch Phone</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchFax"><span jhiTranslate="taskManagerHsnxApp.employee.branchFax">Branch Fax</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchAddress"><span jhiTranslate="taskManagerHsnxApp.employee.branchAddress">Branch Address</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchEmail"><span jhiTranslate="taskManagerHsnxApp.employee.branchEmail">Branch Email</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchHiredate"><span jhiTranslate="taskManagerHsnxApp.employee.branchHiredate">Branch Hiredate</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="employeename"><span jhiTranslate="taskManagerHsnxApp.employee.employeename">Employeename</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="employeephone"><span jhiTranslate="taskManagerHsnxApp.employee.employeephone">Employeephone</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="employeefax"><span jhiTranslate="taskManagerHsnxApp.employee.employeefax">Employeefax</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="employeeaddress"><span jhiTranslate="taskManagerHsnxApp.employee.employeeaddress">Employeeaddress</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="employeeemail"><span jhiTranslate="taskManagerHsnxApp.employee.employeeemail">Employeeemail</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="employeehiredate"><span jhiTranslate="taskManagerHsnxApp.employee.employeehiredate">Employeehiredate</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let employee of employees ;trackBy: trackId">
                     <td><a [routerLink]="['/employee-hsnx', employee.id, 'view']">{{ employee.id }}</a></td>
-                    <td>{{ employee.branchName }}</td>
-                    <td>{{ employee.branchPhone }}</td>
-                    <td>{{ employee.branchFax }}</td>
-                    <td>{{ employee.branchAddress }}</td>
-                    <td>{{ employee.branchEmail }}</td>
-                    <td>{{ employee.branchHiredate | date:'mediumDate' }}</td>
+                    <td>{{ employee.employeename }}</td>
+                    <td>{{ employee.employeephone }}</td>
+                    <td>{{ employee.employeefax }}</td>
+                    <td>{{ employee.employeeaddress }}</td>
+                    <td>{{ employee.employeeemail }}</td>
+                    <td>{{ employee.employeehiredate | date:'mediumDate' }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

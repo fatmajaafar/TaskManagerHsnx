@@ -14,7 +14,7 @@ public class EventDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String Description;
+    private String eventdescription;
 
     private Instant starttime;
 
@@ -33,12 +33,12 @@ public class EventDTO implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return Description;
+    public String getEventdescription() {
+        return eventdescription;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setEventdescription(String eventdescription) {
+        this.eventdescription = eventdescription;
     }
 
     public Instant getStarttime() {
@@ -98,7 +98,7 @@ public class EventDTO implements Serializable {
     public String toString() {
         return "EventDTO{" +
             "id=" + getId() +
-            ", Description='" + getDescription() + "'" +
+            ", eventdescription='" + getEventdescription() + "'" +
             ", starttime='" + getStarttime() + "'" +
             ", startdate='" + getStartdate() + "'" +
             ", endtime='" + getEndtime() + "'" +

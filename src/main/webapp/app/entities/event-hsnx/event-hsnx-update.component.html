@@ -12,12 +12,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.Description" for="field_Description">Description</label>
-                    <input type="text" class="form-control" name="Description" id="field_Description"
-                           formControlName="Description"/>
-                    <div *ngIf="editForm.get('Description')!.invalid && (editForm.get('Description')!.dirty || editForm.get('Description')!.touched)">
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.eventdescription" for="field_eventdescription">Eventdescription</label>
+                    <input type="text" class="form-control" name="eventdescription" id="field_eventdescription"
+                           formControlName="eventdescription"/>
+                    <div *ngIf="editForm.get('eventdescription')!.invalid && (editForm.get('eventdescription')!.dirty || editForm.get('eventdescription')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('Description')?.errors?.required" jhiTranslate="entity.validation.required">
+                               *ngIf="editForm.get('eventdescription')?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>

@@ -59,14 +59,15 @@ export class EmployeeHsnxService {
 
   protected convertDateFromClient(employee: IEmployeeHsnx): IEmployeeHsnx {
     const copy: IEmployeeHsnx = Object.assign({}, employee, {
-      branchHiredate: employee.branchHiredate && employee.branchHiredate.isValid() ? employee.branchHiredate.format(DATE_FORMAT) : undefined
+      employeehiredate:
+        employee.employeehiredate && employee.employeehiredate.isValid() ? employee.employeehiredate.format(DATE_FORMAT) : undefined
     });
     return copy;
   }
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.branchHiredate = res.body.branchHiredate ? moment(res.body.branchHiredate) : undefined;
+      res.body.employeehiredate = res.body.employeehiredate ? moment(res.body.employeehiredate) : undefined;
     }
     return res;
   }
@@ -74,7 +75,7 @@ export class EmployeeHsnxService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((employee: IEmployeeHsnx) => {
-        employee.branchHiredate = employee.branchHiredate ? moment(employee.branchHiredate) : undefined;
+        employee.employeehiredate = employee.employeehiredate ? moment(employee.employeehiredate) : undefined;
       });
     }
     return res;
