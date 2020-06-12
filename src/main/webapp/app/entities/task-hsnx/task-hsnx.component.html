@@ -1,8 +1,9 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="taskManagerHsnxApp.task.home.title">Tasks</span>
-
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-task-hsnx" [routerLink]="['/task-hsnx/new']">
+          
+       
+        <button mat-fab color="primary" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-task-hsnx" [routerLink]="['/task-hsnx/new']">
             <fa-icon icon="plus"></fa-icon>
             <span class="hidden-sm-down"  jhiTranslate="taskManagerHsnxApp.task.home.createLabel">
             Create a new Task
@@ -10,23 +11,21 @@
         </button>
     </h2>
 
-    <jhi-alert-error></jhi-alert-error>
-
-    <jhi-alert></jhi-alert>
 
     <div class="row">
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
-                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.task.home.search' | translate }}">
-
-                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                    <mat-form-field>
+                    <input matInput type="text"  [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.task.home.search' | translate }}">
+                    </mat-form-field>
+                    <button mat-mini-fab color="primary" class="input-group-append btn btn-info" (click)="search(currentSearch)">
                         <fa-icon icon="search"></fa-icon>
                     </button>
 
-                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+             <!--  <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
                         <fa-icon icon="trash-alt"></fa-icon>
-                    </button>
+                    </button>-->
                 </div>
             </form>
         </div>
@@ -39,8 +38,8 @@
     <div class="table-responsive" id="entities" *ngIf="tasks?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)" >
+                  
                     <th scope="col"  jhiSortBy="tasktitle"><span jhiTranslate="taskManagerHsnxApp.task.tasktitle">Tasktitle</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="taskdescription"><span jhiTranslate="taskManagerHsnxApp.task.taskdescription">Taskdescription</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="dateStart"><span jhiTranslate="taskManagerHsnxApp.task.dateStart">Date Start</span> <fa-icon icon="sort"></fa-icon></th>
@@ -55,13 +54,13 @@
             </thead>
             <tbody>
                 <tr *ngFor="let task of tasks ;trackBy: trackId">
-                    <td><a [routerLink]="['/task-hsnx', task.id, 'view']">{{ task.id }}</a></td>
+                  
                     <td>{{ task.tasktitle }}</td>
                     <td>{{ task.taskdescription }}</td>
-                    <td>{{ task.dateStart | date:'mediumDate' }}</td>
-                    <td>{{ task.timeStart | date:'medium' }}</td>
-                    <td>{{ task.dateEnd | date:'mediumDate' }}</td>
-                    <td>{{ task.timeEnd | date:'medium' }}</td>
+                    <td>{{ task.dateStart | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ task.timeStart | date:'HH:mm' }}</td>
+                    <td>{{ task.dateEnd | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ task.timeEnd | date:'HH:mm' }}</td>
                     <td>{{ task.taskstatus }}</td>
                     <td>{{ task.taskpriority }}</td>
                     <td>{{ task.DueDate | date:'mediumDate' }}</td>
@@ -71,20 +70,20 @@
                                     [routerLink]="['/task-hsnx', task.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                               
                             </button>
 
                             <button type="submit"
                                     [routerLink]="['/task-hsnx', task.id, 'edit']"
                                     class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                              
                             </button>
 
                             <button type="submit" (click)="delete(task)"
                                     class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                
                             </button>
                         </div>
                     </td>

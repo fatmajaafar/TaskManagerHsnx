@@ -4,8 +4,6 @@
             <h2 id="jhi-department-hsnx-heading" jhiTranslate="taskManagerHsnxApp.department.home.createOrEditLabel">Create or edit a Department</h2>
 
             <div>
-                <jhi-alert-error></jhi-alert-error>
-
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
