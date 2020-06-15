@@ -19,6 +19,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'task-hsnx',
         loadChildren: () => import('./task-hsnx/task-hsnx.module').then(m => m.TaskManagerHsnxTaskHsnxModule)
+      },
+      {
+        path: 'country-hsnx',
+        loadChildren: () => import('./country-hsnx/country-hsnx.module').then(m => m.TaskManagerHsnxCountryHsnxModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

@@ -10,13 +10,18 @@
             ]
         },
         {
-            "fieldName": "Handled",
+            "fieldName": "handled",
             "dbhColumnName": "Handled",
             "fieldType": "Boolean"
         },
         {
-            "fieldName": "FromTo",
-            "dbhColumnName": "FromTo",
+            "fieldName": "notifFrom",
+            "dbhColumnName": "NotifFrom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notifto",
+            "dbhColumnName": "NotifTo",
             "fieldType": "String"
         }
     ],

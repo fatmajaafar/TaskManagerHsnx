@@ -10,10 +10,14 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "countryCode",
+            "dbhColumnName": "CountryCode",
+            "fieldType": "String"
         }
-       
     ],
-    "changelogDate": "20200615004632", 
+    "changelogDate": "20200615004632",
     "dto": "mapstruct",
     "searchEngine": "elasticsearch",
     "service": "serviceImpl",

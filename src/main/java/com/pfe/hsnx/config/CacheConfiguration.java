@@ -49,6 +49,7 @@ public class CacheConfiguration {
             createCache(cm, com.pfe.hsnx.domain.Employee.class.getName());
             createCache(cm, com.pfe.hsnx.domain.Event.class.getName());
             createCache(cm, com.pfe.hsnx.domain.Task.class.getName());
+            createCache(cm, com.pfe.hsnx.domain.Country.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
