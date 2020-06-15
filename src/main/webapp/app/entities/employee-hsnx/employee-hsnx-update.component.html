@@ -13,7 +13,7 @@
                     <input matInput type="text"  id="id" name="id" formControlName="id" readonly />
                     </mat-form-field>
                 </div>
-
+                 
                 <div class="form-group">
                     <mat-label jhiTranslate="taskManagerHsnxApp.employee.employeename" for="field_employeename">Employeename</mat-label>
                     <mat-form-field class="example-full-width">
@@ -60,7 +60,7 @@
                         </mat-form-field>
                 </div>
 
-                <!--<div class="form-group">
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeehiredate" for="field_employeehiredate">Employeehiredate</label>
                     <div class="input-group">
                         <input id="field_employeehiredate" type="text" class="form-control" name="employeehiredate" ngbDatepicker #employeehiredateDp="ngbDatepicker" formControlName="employeehiredate"/>
@@ -68,13 +68,8 @@
                             <button type="button" class="btn btn-secondary" (click)="employeehiredateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
                         </span>
                     </div>
-                </div>-->
-                <mat-form-field  class="example-full-width">
-                    <mat-label jhiTranslate="taskManagerHsnxApp.employee.employeehiredate" for="field_employeehiredate">Employeehiredate</mat-label>
-                   <input matInput [matDatepicker]="picker">
-                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                   <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
-                   </mat-form-field>
+                </div>
+              
             </div>
 
             

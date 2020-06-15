@@ -37,13 +37,13 @@
     <div class="table-responsive" id="entities" *ngIf="events?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)" style="background-color: #5f83c5">
                  
-                    <th scope="col"  jhiSortBy="eventdescription"><span jhiTranslate="taskManagerHsnxApp.event.eventdescription">Eventdescription</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="starttime"><span jhiTranslate="taskManagerHsnxApp.event.starttime">Starttime</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="startdate"><span jhiTranslate="taskManagerHsnxApp.event.startdate">Startdate</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="endtime"><span jhiTranslate="taskManagerHsnxApp.event.endtime">Endtime</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="enddate"><span jhiTranslate="taskManagerHsnxApp.event.enddate">Enddate</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="eventdescription"><span jhiTranslate="taskManagerHsnxApp.event.eventdescription" style="color: white;">Eventdescription</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="starttime"><span jhiTranslate="taskManagerHsnxApp.event.starttime" style="color: white;">Starttime</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="startdate"><span jhiTranslate="taskManagerHsnxApp.event.startdate" style="color: white;">Startdate</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="endtime"><span jhiTranslate="taskManagerHsnxApp.event.endtime" style="color: white;">Endtime</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="enddate"><span jhiTranslate="taskManagerHsnxApp.event.enddate" style="color: white;">Enddate</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>

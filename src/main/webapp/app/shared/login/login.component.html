@@ -6,29 +6,31 @@
     <div class="login-content">
         <form role="form" (ngSubmit)="login()" [formGroup]="loginForm">
             <img src="../../../content/images/login/emp.svg">
-         <strong> <h2 class="title">Sign in</h2></strong>
-            <div class="input-div one">
-                <div class="i">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="div">
+            <mat-card>
+                <mat-card-title>Login</mat-card-title>
+          <mat-card-content>
+            
                   <!--<h5>Username</h5>-->  
-                    <input type="text" class="form-control" name="username" id="username"  formControlName="username" placeholder="E-mail"  >
-                </div>
-            </div>
-            <div class="input-div pass">
-                <div class="i">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="div">
+                  <p>
+                  <mat-form-field >
+                    
+                    <input matInput  type="text" name="username" id="username"  formControlName="username" placeholder="E-mail" >
+                  </mat-form-field>
+                
+                  </p>
+
+               <p>
                 <!--<h5>Password</h5>-->    
-                    <input type="password" class="form-control" name="password" id="password" 
+                <mat-form-field >
+                   
+                    <input matInput type="password" name="password" id="password" 
                             formControlName="password" placeholder="Password">
-                </div>
-            </div>
+                      
+                </mat-form-field>            
+            </p>
             
            
-            <a jhiTranslate="login.password.forgot">Forgot password?</a>
+            <a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">Forgot password?</a>
             <input type="submit" class="btn" jhiTranslate="login.form.button" value="Sign in">
             <div class="form-check">
                 <label class="form-check-label" for="rememberMe">
@@ -36,7 +38,11 @@
                     <span jhiTranslate="login.form.rememberme">Remember me</span>
                 </label>
             </div>
-
+            <hr>
+           <div><span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
+            <a class="alert-link" (click)="register()" jhiTranslate="global.messages.info.register.link">Register a new account</a></div> 
+        </mat-card-content>
+    </mat-card>
             
         </form>
         

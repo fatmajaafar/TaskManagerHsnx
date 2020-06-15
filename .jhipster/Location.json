@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "streetName",
+            "dbhColumnName": "StreetName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "postalCode",
+            "dbhColumnName": "PostalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "dbhColumnName": "City",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "state",
+            "dbhColumnName": "State",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20201506002859",
+    "dto": "mapstruct",
+    "searchEngine": "elasticsearch",
+    "service": "serviceImpl",
+    "entityTableName": "tblLocation",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": true,
+    "pagination": "pagination",
+    "angularJSSuffix": "hsnx",
+    "dbhIdName": "LocationID"
+}

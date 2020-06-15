@@ -3,7 +3,7 @@
     "task": {
       "home": {
         "title": "Tasks",
-        "createLabel": "",
+        "createLabel": "Create a new Task",
         "createOrEditLabel": "Create or edit a Task",
         "search": "Search for Task",
         "notFound": "No Tasks found"
@@ -25,7 +25,7 @@
       "timeEnd": "Time End",
       "taskstatus": "Taskstatus",
       "taskpriority": "Taskpriority",
-      "DueDate": "Due Date"
+      "dueDate": "Due Date"
     }
   }
 }

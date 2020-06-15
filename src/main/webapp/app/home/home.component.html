@@ -3,15 +3,12 @@
 	
 		<span class="hipster img-fluid rounded"></span>
 		<p class="lead">
-			<h4 class="text-danger"><u> <strong> Task Manager Duties and Responsabilities:</strong></u></h4>
-			<ul>
-				<li><strong>Improves teamwork</strong></li>
-				<li><strong>Prioritisation</strong></li>
-				<li><strong>Track time requirements</strong></li>
-				<li><strong>Anytime, anywhere</strong></li>
-				<li><strong>Reduce Stress</strong></li>
-				<li><strong>Team collaboration</strong></li>
-			</ul>
+			<div [ngSwitch]="isAuthenticated()">
+				<div class="alert alert-success" *ngSwitchCase="true">
+					<span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
+						[translateValues]="{ username: account.login }">You are logged in as user "{{ account.login }}".</span>
+				</div>
+			</div>
 	    </p>
 	</div>
 

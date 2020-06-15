@@ -17,56 +17,60 @@
                 </a>
 
             </li>
-            <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
+            <a class="nav-link" routerLink="" (click)="collapseNavbar()">
                 <span>
                     <fa-icon icon="tasks"></fa-icon>
                     <span jhiTranslate="global.menu.taskmanag">Task management</span>
                 </span>
             </a>
+
             <li class="nav-item">
-                <a class="nav-link" routerLink="profile" routerLinkActive="active">
-                    <fa-icon icon="bell"></fa-icon>
-                    <span translate="global.menu.notification">notification</span>
+                <a class="nav-link" routerLink="department-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="20" height="20"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,14.33333l-64.5,28.66667v107.5h129v-107.5zM64.5,129h-14.33333v-14.33333h14.33333zM64.5,100.33333h-14.33333v-14.33333h14.33333zM64.5,71.66667h-14.33333v-14.33333h14.33333zM93.16667,129h-14.33333v-14.33333h14.33333zM93.16667,100.33333h-14.33333v-14.33333h14.33333zM93.16667,71.66667h-14.33333v-14.33333h14.33333zM121.83333,129h-14.33333v-14.33333h14.33333zM121.83333,100.33333h-14.33333v-14.33333h14.33333zM121.83333,71.66667h-14.33333v-14.33333h14.33333z"></path></g></g></svg>
+                    <span jhiTranslate="global.menu.entities.departmentHsnx">Department Hsnx</span>
                 </a>
             </li>
+                
+            <li class="nav-item">
+                <a class="nav-link" routerLink="employee-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="24" height="24"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,6.88c-9.50031,0 -17.2,7.69969 -17.2,17.2c0,9.50031 7.69969,17.2 17.2,17.2c9.50031,0 17.2,-7.69969 17.2,-17.2c0,-9.50031 -7.69969,-17.2 -17.2,-17.2zM82.56,48.36156c-15.48,1.70656 -27.52,14.82156 -27.52,30.75844v30.96l11.98625,4.79719l2.45906,46.80281h33.02937l2.45906,-46.80281l11.98625,-4.79719v-30.96c0,-15.93687 -12.04,-29.05187 -27.52,-30.75844v6.67844h-6.88zM82.56,58.48h6.88v34.4h-6.88z"></path></g></g></svg>
+                    <span jhiTranslate="global.menu.entities.employeeHsnx">Employee Hsnx</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="event-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                     width="20" height="20"
+                     viewBox="0 0 172 172"
+                     style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M35.83333,0v28.66667h14.33333v-28.66667zM121.83333,0v28.66667h14.33333v-28.66667zM7.16667,21.5c-4.31119,0 -7.16667,2.85547 -7.16667,7.16667v21.5c0,4.3112 2.85547,7.16667 7.16667,7.16667v114.66667h157.66667v-114.66667c4.3112,0 7.16667,-2.85547 7.16667,-7.16667v-21.5c0,-4.31119 -2.85547,-7.16667 -7.16667,-7.16667h-21.5v14.33333h-28.66667v-14.33333h-57.33333v14.33333h-28.66667v-14.33333zM21.5,57.33333h129v100.33333h-129zM35.83333,71.66667v14.33333h14.33333v-14.33333zM64.5,71.66667v14.33333h14.33333v-14.33333zM93.16667,71.66667v14.33333h14.33333v-14.33333zM121.83333,71.66667v14.33333h14.33333v-14.33333zM86,93.16667v28.66667h28.66667v-28.66667zM35.83333,100.33333v14.33333h14.33333v-14.33333zM64.5,100.33333v14.33333h14.33333v-14.33333zM121.83333,100.33333v14.33333h14.33333v-14.33333zM35.83333,129v14.33333h14.33333v-14.33333zM64.5,129v14.33333h14.33333v-14.33333zM93.16667,129v14.33333h14.33333v-14.33333zM121.83333,129v14.33333h14.33333v-14.33333z"></path></g></g></svg>
+                    <span jhiTranslate="global.menu.entities.eventHsnx">Event Hsnx</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="task-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="20" height="20"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,0c-6.3984,0 -11.78904,4.38944 -13.32328,10.32h-14.19672h-24.08c-5.68976,0 -10.32,4.63024 -10.32,10.32v134.16c0,5.68976 4.63024,10.32 10.32,10.32h82.68765c5.74119,4.29627 12.8321,6.88 20.51235,6.88c18.92,0 34.4,-15.48 34.4,-34.4c0,-15.32691 -10.1633,-28.38969 -24.08,-32.80094v-84.15906c0,-5.68976 -4.63024,-10.32 -10.32,-10.32h-24.08h-14.19672c-1.53424,-5.93056 -6.92488,-10.32 -13.32328,-10.32zM86,6.88c3.79432,0 6.88,3.08568 6.88,6.88c0,1.90232 1.54112,3.44 3.44,3.44h13.76v10.32c0,1.89888 -1.54456,3.44 -3.44,3.44h-41.28c-1.89544,0 -3.44,-1.54112 -3.44,-3.44v-10.32h13.76c1.89888,0 3.44,-1.53768 3.44,-3.44c0,-3.79432 3.08568,-6.88 6.88,-6.88zM48.16,61.92h75.68c1.89888,0 3.44,1.53768 3.44,3.44c0,1.90232 -1.54112,3.44 -3.44,3.44h-75.68c-1.89888,0 -3.44,-1.53768 -3.44,-3.44c0,-1.90232 1.54112,-3.44 3.44,-3.44zM48.16,82.56h75.68c1.89888,0 3.44,1.53768 3.44,3.44c0,1.90232 -1.54112,3.44 -3.44,3.44h-75.68c-1.89888,0 -3.44,-1.53768 -3.44,-3.44c0,-1.90232 1.54112,-3.44 3.44,-3.44zM48.16,103.2h55.04c1.89888,0 3.44,1.53768 3.44,3.44c0,1.90232 -1.54112,3.44 -3.44,3.44h-55.04c-1.89888,0 -3.44,-1.53768 -3.44,-3.44c0,-1.90232 1.54112,-3.44 3.44,-3.44zM137.6,110.08c15.136,0 27.52,12.384 27.52,27.52c0,15.136 -12.384,27.52 -27.52,27.52c-15.136,0 -27.52,-12.384 -27.52,-27.52c0,-15.136 12.384,-27.52 27.52,-27.52zM134.16,116.96v18.92l-12.38265,9.28531l4.12531,5.50937l15.13735,-11.35469v-22.36zM48.16,123.84h44.72c1.89888,0 3.44,1.53768 3.44,3.44c0,1.90232 -1.54112,3.44 -3.44,3.44h-44.72c-1.89888,0 -3.44,-1.53768 -3.44,-3.44c0,-1.90232 1.54112,-3.44 3.44,-3.44z"></path></g></g></svg>
+                    <span jhiTranslate="global.menu.entities.taskHsnx">Task Hsnx</span>
+                </a>
+            </li>
+           
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-            <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
-                    <span>
-                        <fa-icon icon="th-list"></fa-icon>
-                        <span jhiTranslate="global.menu.entities.main">
-                            Entities
-                        </span>
-                    </span>
-                </a>
-                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
-                    <li>
-                        <a class="dropdown-item" routerLink="department-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.departmentHsnx">Department Hsnx</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="employee-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.employeeHsnx">Employee Hsnx</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="event-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.eventHsnx">Event Hsnx</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="task-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.taskHsnx">Task Hsnx</span>
-                        </a>
-                    </li>
+         
+                   
+                    
+                    
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-                </ul>
-            </li>
+              
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>
@@ -185,12 +189,7 @@
                     <span translate="global.menu.profile">Profile</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="about" routerLinkActive="active">
-                    <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                    <span translate="global.menu.about">About</span>
-                </a>
-            </li>
+            
         
         </ul>
     </div>

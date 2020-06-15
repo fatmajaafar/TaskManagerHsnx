@@ -28,7 +28,8 @@
             "fieldName": "dateEnd",
             "dbhColumnName": "DateEnd",
             "fieldType": "LocalDate"
-        },{
+        },
+        {
             "fieldName": "timeEnd",
             "dbhColumnName": "TimeEnd",
             "fieldType": "Instant"
@@ -44,7 +45,7 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "DueDate",
+            "fieldName": "dueDate",
             "dbhColumnName": "DueDate",
             "fieldType": "LocalDate"
         }

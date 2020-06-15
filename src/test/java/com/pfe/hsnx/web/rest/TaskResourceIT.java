@@ -147,7 +147,7 @@ public class TaskResourceIT {
             .timeEnd(DEFAULT_TIME_END)
             .taskstatus(DEFAULT_TASKSTATUS)
             .taskpriority(DEFAULT_TASKPRIORITY)
-            .DueDate(DEFAULT_DUE_DATE);
+            .dueDate(DEFAULT_DUE_DATE);
         return task;
     }
     /**
@@ -166,7 +166,7 @@ public class TaskResourceIT {
             .timeEnd(UPDATED_TIME_END)
             .taskstatus(UPDATED_TASKSTATUS)
             .taskpriority(UPDATED_TASKPRIORITY)
-            .DueDate(UPDATED_DUE_DATE);
+            .dueDate(UPDATED_DUE_DATE);
         return task;
     }
 
@@ -267,7 +267,7 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.[*].timeEnd").value(hasItem(DEFAULT_TIME_END.toString())))
             .andExpect(jsonPath("$.[*].taskstatus").value(hasItem(DEFAULT_TASKSTATUS)))
             .andExpect(jsonPath("$.[*].taskpriority").value(hasItem(DEFAULT_TASKPRIORITY)))
-            .andExpect(jsonPath("$.[*].DueDate").value(hasItem(DEFAULT_DUE_DATE.toString())));
+            .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())));
     }
     
     @Test
@@ -289,7 +289,7 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.timeEnd").value(DEFAULT_TIME_END.toString()))
             .andExpect(jsonPath("$.taskstatus").value(DEFAULT_TASKSTATUS))
             .andExpect(jsonPath("$.taskpriority").value(DEFAULT_TASKPRIORITY))
-            .andExpect(jsonPath("$.DueDate").value(DEFAULT_DUE_DATE.toString()));
+            .andExpect(jsonPath("$.dueDate").value(DEFAULT_DUE_DATE.toString()));
     }
 
 
@@ -998,11 +998,11 @@ public class TaskResourceIT {
         // Initialize the database
         taskRepository.saveAndFlush(task);
 
-        // Get all the taskList where DueDate equals to DEFAULT_DUE_DATE
-        defaultTaskShouldBeFound("DueDate.equals=" + DEFAULT_DUE_DATE);
+        // Get all the taskList where dueDate equals to DEFAULT_DUE_DATE
+        defaultTaskShouldBeFound("dueDate.equals=" + DEFAULT_DUE_DATE);
 
-        // Get all the taskList where DueDate equals to UPDATED_DUE_DATE
-        defaultTaskShouldNotBeFound("DueDate.equals=" + UPDATED_DUE_DATE);
+        // Get all the taskList where dueDate equals to UPDATED_DUE_DATE
+        defaultTaskShouldNotBeFound("dueDate.equals=" + UPDATED_DUE_DATE);
     }
 
     @Test
@@ -1011,11 +1011,11 @@ public class TaskResourceIT {
         // Initialize the database
         taskRepository.saveAndFlush(task);
 
-        // Get all the taskList where DueDate not equals to DEFAULT_DUE_DATE
-        defaultTaskShouldNotBeFound("DueDate.notEquals=" + DEFAULT_DUE_DATE);
+        // Get all the taskList where dueDate not equals to DEFAULT_DUE_DATE
+        defaultTaskShouldNotBeFound("dueDate.notEquals=" + DEFAULT_DUE_DATE);
 
-        // Get all the taskList where DueDate not equals to UPDATED_DUE_DATE
-        defaultTaskShouldBeFound("DueDate.notEquals=" + UPDATED_DUE_DATE);
+        // Get all the taskList where dueDate not equals to UPDATED_DUE_DATE
+        defaultTaskShouldBeFound("dueDate.notEquals=" + UPDATED_DUE_DATE);
     }
 
     @Test
@@ -1024,11 +1024,11 @@ public class TaskResourceIT {
         // Initialize the database
         taskRepository.saveAndFlush(task);
 
-        // Get all the taskList where DueDate in DEFAULT_DUE_DATE or UPDATED_DUE_DATE
-        defaultTaskShouldBeFound("DueDate.in=" + DEFAULT_DUE_DATE + "," + UPDATED_DUE_DATE);
+        // Get all the taskList where dueDate in DEFAULT_DUE_DATE or UPDATED_DUE_DATE
+        defaultTaskShouldBeFound("dueDate.in=" + DEFAULT_DUE_DATE + "," + UPDATED_DUE_DATE);
 
-        // Get all the taskList where DueDate equals to UPDATED_DUE_DATE
-        defaultTaskShouldNotBeFound("DueDate.in=" + UPDATED_DUE_DATE);
+        // Get all the taskList where dueDate equals to UPDATED_DUE_DATE
+        defaultTaskShouldNotBeFound("dueDate.in=" + UPDATED_DUE_DATE);
     }
 
     @Test
@@ -1037,11 +1037,11 @@ public class TaskResourceIT {
         // Initialize the database
         taskRepository.saveAndFlush(task);
 
-        // Get all the taskList where DueDate is not null
-        defaultTaskShouldBeFound("DueDate.specified=true");
+        // Get all the taskList where dueDate is not null
+        defaultTaskShouldBeFound("dueDate.specified=true");
 
-        // Get all the taskList where DueDate is null
-        defaultTaskShouldNotBeFound("DueDate.specified=false");
+        // Get all the taskList where dueDate is null
+        defaultTaskShouldNotBeFound("dueDate.specified=false");
     }
 
     @Test
@@ -1050,11 +1050,11 @@ public class TaskResourceIT {
         // Initialize the database
         taskRepository.saveAndFlush(task);
 
-        // Get all the taskList where DueDate is greater than or equal to DEFAULT_DUE_DATE
-        defaultTaskShouldBeFound("DueDate.greaterThanOrEqual=" + DEFAULT_DUE_DATE);
+        // Get all the taskList where dueDate is greater than or equal to DEFAULT_DUE_DATE
+        defaultTaskShouldBeFound("dueDate.greaterThanOrEqual=" + DEFAULT_DUE_DATE);
 
-        // Get all the taskList where DueDate is greater than or equal to UPDATED_DUE_DATE
-        defaultTaskShouldNotBeFound("DueDate.greaterThanOrEqual=" + UPDATED_DUE_DATE);
+        // Get all the taskList where dueDate is greater than or equal to UPDATED_DUE_DATE
+        defaultTaskShouldNotBeFound("dueDate.greaterThanOrEqual=" + UPDATED_DUE_DATE);
     }
 
     @Test
@@ -1063,11 +1063,11 @@ public class TaskResourceIT {
         // Initialize the database
         taskRepository.saveAndFlush(task);
 
-        // Get all the taskList where DueDate is less than or equal to DEFAULT_DUE_DATE
-        defaultTaskShouldBeFound("DueDate.lessThanOrEqual=" + DEFAULT_DUE_DATE);
+        // Get all the taskList where dueDate is less than or equal to DEFAULT_DUE_DATE
+        defaultTaskShouldBeFound("dueDate.lessThanOrEqual=" + DEFAULT_DUE_DATE);
 
-        // Get all the taskList where DueDate is less than or equal to SMALLER_DUE_DATE
-        defaultTaskShouldNotBeFound("DueDate.lessThanOrEqual=" + SMALLER_DUE_DATE);
+        // Get all the taskList where dueDate is less than or equal to SMALLER_DUE_DATE
+        defaultTaskShouldNotBeFound("dueDate.lessThanOrEqual=" + SMALLER_DUE_DATE);
     }
 
     @Test
@@ -1076,11 +1076,11 @@ public class TaskResourceIT {
         // Initialize the database
         taskRepository.saveAndFlush(task);
 
-        // Get all the taskList where DueDate is less than DEFAULT_DUE_DATE
-        defaultTaskShouldNotBeFound("DueDate.lessThan=" + DEFAULT_DUE_DATE);
+        // Get all the taskList where dueDate is less than DEFAULT_DUE_DATE
+        defaultTaskShouldNotBeFound("dueDate.lessThan=" + DEFAULT_DUE_DATE);
 
-        // Get all the taskList where DueDate is less than UPDATED_DUE_DATE
-        defaultTaskShouldBeFound("DueDate.lessThan=" + UPDATED_DUE_DATE);
+        // Get all the taskList where dueDate is less than UPDATED_DUE_DATE
+        defaultTaskShouldBeFound("dueDate.lessThan=" + UPDATED_DUE_DATE);
     }
 
     @Test
@@ -1089,11 +1089,11 @@ public class TaskResourceIT {
         // Initialize the database
         taskRepository.saveAndFlush(task);
 
-        // Get all the taskList where DueDate is greater than DEFAULT_DUE_DATE
-        defaultTaskShouldNotBeFound("DueDate.greaterThan=" + DEFAULT_DUE_DATE);
+        // Get all the taskList where dueDate is greater than DEFAULT_DUE_DATE
+        defaultTaskShouldNotBeFound("dueDate.greaterThan=" + DEFAULT_DUE_DATE);
 
-        // Get all the taskList where DueDate is greater than SMALLER_DUE_DATE
-        defaultTaskShouldBeFound("DueDate.greaterThan=" + SMALLER_DUE_DATE);
+        // Get all the taskList where dueDate is greater than SMALLER_DUE_DATE
+        defaultTaskShouldBeFound("dueDate.greaterThan=" + SMALLER_DUE_DATE);
     }
 
     /**
@@ -1112,7 +1112,7 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.[*].timeEnd").value(hasItem(DEFAULT_TIME_END.toString())))
             .andExpect(jsonPath("$.[*].taskstatus").value(hasItem(DEFAULT_TASKSTATUS)))
             .andExpect(jsonPath("$.[*].taskpriority").value(hasItem(DEFAULT_TASKPRIORITY)))
-            .andExpect(jsonPath("$.[*].DueDate").value(hasItem(DEFAULT_DUE_DATE.toString())));
+            .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())));
 
         // Check, that the count call also returns 1
         restTaskMockMvc.perform(get("/api/tasks/count?sort=id,desc&" + filter))
@@ -1168,7 +1168,7 @@ public class TaskResourceIT {
             .timeEnd(UPDATED_TIME_END)
             .taskstatus(UPDATED_TASKSTATUS)
             .taskpriority(UPDATED_TASKPRIORITY)
-            .DueDate(UPDATED_DUE_DATE);
+            .dueDate(UPDATED_DUE_DATE);
         TaskDTO taskDTO = taskMapper.toDto(updatedTask);
 
         restTaskMockMvc.perform(put("/api/tasks")
@@ -1257,6 +1257,6 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.[*].timeEnd").value(hasItem(DEFAULT_TIME_END.toString())))
             .andExpect(jsonPath("$.[*].taskstatus").value(hasItem(DEFAULT_TASKSTATUS)))
             .andExpect(jsonPath("$.[*].taskpriority").value(hasItem(DEFAULT_TASKPRIORITY)))
-            .andExpect(jsonPath("$.[*].DueDate").value(hasItem(DEFAULT_DUE_DATE.toString())));
+            .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())));
     }
 }

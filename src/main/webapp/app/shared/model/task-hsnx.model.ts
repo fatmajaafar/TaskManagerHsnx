@@ -10,7 +10,7 @@ export interface ITaskHsnx {
   timeEnd?: Moment;
   taskstatus?: number;
   taskpriority?: number;
-  DueDate?: Moment;
+  dueDate?: Moment;
 }
 
 export class TaskHsnx implements ITaskHsnx {
@@ -24,6 +24,6 @@ export class TaskHsnx implements ITaskHsnx {
     public timeEnd?: Moment,
     public taskstatus?: number,
     public taskpriority?: number,
-    public DueDate?: Moment
+    public dueDate?: Moment
   ) {}
 }

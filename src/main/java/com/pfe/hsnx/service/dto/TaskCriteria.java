@@ -44,7 +44,7 @@ public class TaskCriteria implements Serializable, Criteria {
 
     private IntegerFilter taskpriority;
 
-    private LocalDateFilter DueDate;
+    private LocalDateFilter dueDate;
 
     public TaskCriteria() {
     }
@@ -59,7 +59,7 @@ public class TaskCriteria implements Serializable, Criteria {
         this.timeEnd = other.timeEnd == null ? null : other.timeEnd.copy();
         this.taskstatus = other.taskstatus == null ? null : other.taskstatus.copy();
         this.taskpriority = other.taskpriority == null ? null : other.taskpriority.copy();
-        this.DueDate = other.DueDate == null ? null : other.DueDate.copy();
+        this.dueDate = other.dueDate == null ? null : other.dueDate.copy();
     }
 
     @Override
@@ -140,11 +140,11 @@ public class TaskCriteria implements Serializable, Criteria {
     }
 
     public LocalDateFilter getDueDate() {
-        return DueDate;
+        return dueDate;
     }
 
-    public void setDueDate(LocalDateFilter DueDate) {
-        this.DueDate = DueDate;
+    public void setDueDate(LocalDateFilter dueDate) {
+        this.dueDate = dueDate;
     }
 
 
@@ -167,7 +167,7 @@ public class TaskCriteria implements Serializable, Criteria {
             Objects.equals(timeEnd, that.timeEnd) &&
             Objects.equals(taskstatus, that.taskstatus) &&
             Objects.equals(taskpriority, that.taskpriority) &&
-            Objects.equals(DueDate, that.DueDate);
+            Objects.equals(dueDate, that.dueDate);
     }
 
     @Override
@@ -182,7 +182,7 @@ public class TaskCriteria implements Serializable, Criteria {
         timeEnd,
         taskstatus,
         taskpriority,
-        DueDate
+        dueDate
         );
     }
 
@@ -198,7 +198,7 @@ public class TaskCriteria implements Serializable, Criteria {
                 (timeEnd != null ? "timeEnd=" + timeEnd + ", " : "") +
                 (taskstatus != null ? "taskstatus=" + taskstatus + ", " : "") +
                 (taskpriority != null ? "taskpriority=" + taskpriority + ", " : "") +
-                (DueDate != null ? "DueDate=" + DueDate + ", " : "") +
+                (dueDate != null ? "dueDate=" + dueDate + ", " : "") +
             "}";
     }
 

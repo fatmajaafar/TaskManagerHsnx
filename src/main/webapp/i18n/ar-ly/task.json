@@ -25,7 +25,7 @@
       "timeEnd": "Time End",
       "taskstatus": "Taskstatus",
       "taskpriority": "Taskpriority",
-      "DueDate": "Due Date"
+      "dueDate": "Due Date"
     }
   }
 }

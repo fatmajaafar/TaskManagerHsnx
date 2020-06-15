@@ -63,7 +63,7 @@ export class TaskHsnxService {
       timeStart: task.timeStart && task.timeStart.isValid() ? task.timeStart.toJSON() : undefined,
       dateEnd: task.dateEnd && task.dateEnd.isValid() ? task.dateEnd.format(DATE_FORMAT) : undefined,
       timeEnd: task.timeEnd && task.timeEnd.isValid() ? task.timeEnd.toJSON() : undefined,
-      DueDate: task.DueDate && task.DueDate.isValid() ? task.DueDate.format(DATE_FORMAT) : undefined
+      dueDate: task.dueDate && task.dueDate.isValid() ? task.dueDate.format(DATE_FORMAT) : undefined
     });
     return copy;
   }
@@ -74,7 +74,7 @@ export class TaskHsnxService {
       res.body.timeStart = res.body.timeStart ? moment(res.body.timeStart) : undefined;
       res.body.dateEnd = res.body.dateEnd ? moment(res.body.dateEnd) : undefined;
       res.body.timeEnd = res.body.timeEnd ? moment(res.body.timeEnd) : undefined;
-      res.body.DueDate = res.body.DueDate ? moment(res.body.DueDate) : undefined;
+      res.body.dueDate = res.body.dueDate ? moment(res.body.dueDate) : undefined;
     }
     return res;
   }
@@ -86,7 +86,7 @@ export class TaskHsnxService {
         task.timeStart = task.timeStart ? moment(task.timeStart) : undefined;
         task.dateEnd = task.dateEnd ? moment(task.dateEnd) : undefined;
         task.timeEnd = task.timeEnd ? moment(task.timeEnd) : undefined;
-        task.DueDate = task.DueDate ? moment(task.DueDate) : undefined;
+        task.dueDate = task.dueDate ? moment(task.dueDate) : undefined;
       });
     }
     return res;

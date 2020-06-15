@@ -30,7 +30,7 @@ public class TaskDTO implements Serializable {
 
     private Integer taskpriority;
 
-    private LocalDate DueDate;
+    private LocalDate dueDate;
 
 
     public Long getId() {
@@ -106,11 +106,11 @@ public class TaskDTO implements Serializable {
     }
 
     public LocalDate getDueDate() {
-        return DueDate;
+        return dueDate;
     }
 
-    public void setDueDate(LocalDate DueDate) {
-        this.DueDate = DueDate;
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
     }
 
     @Override
@@ -146,7 +146,7 @@ public class TaskDTO implements Serializable {
             ", timeEnd='" + getTimeEnd() + "'" +
             ", taskstatus=" + getTaskstatus() +
             ", taskpriority=" + getTaskpriority() +
-            ", DueDate='" + getDueDate() + "'" +
+            ", dueDate='" + getDueDate() + "'" +
             "}";
     }
 }

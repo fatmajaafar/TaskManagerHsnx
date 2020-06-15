@@ -5,13 +5,16 @@
 
             <div>
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  id="id" name="id" formControlName="id" readonly />
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.department.deptName" for="field_deptName">Dept Name</label>
-                    <input type="text" class="form-control" name="deptName" id="field_deptName"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.department.deptName" for="field_deptName">Dept Name</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text" name="deptName" id="field_deptName"
                            formControlName="deptName"/>
                     <div *ngIf="editForm.get('deptName')!.invalid && (editForm.get('deptName')!.dirty || editForm.get('deptName')!.touched)">
                         <small class="form-text text-danger"
@@ -19,12 +22,15 @@
                         This field is required.
                         </small>
                     </div>
-                </div>
+                      </mat-form-field>
+                      </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.department.deptNote" for="field_deptNote">Dept Note</label>
-                    <input type="text" class="form-control" name="deptNote" id="field_deptNote"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.department.deptNote" for="field_deptNote">Dept Note</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="deptNote" id="field_deptNote"
                            formControlName="deptNote"/>
+                    </mat-form-field>
                 </div>
             </div>
 

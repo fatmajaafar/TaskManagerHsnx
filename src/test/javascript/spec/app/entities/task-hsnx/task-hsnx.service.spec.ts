@@ -35,7 +35,7 @@ describe('Service Tests', () => {
             timeStart: currentDate.format(DATE_TIME_FORMAT),
             dateEnd: currentDate.format(DATE_FORMAT),
             timeEnd: currentDate.format(DATE_TIME_FORMAT),
-            DueDate: currentDate.format(DATE_FORMAT)
+            dueDate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -54,7 +54,7 @@ describe('Service Tests', () => {
             timeStart: currentDate.format(DATE_TIME_FORMAT),
             dateEnd: currentDate.format(DATE_FORMAT),
             timeEnd: currentDate.format(DATE_TIME_FORMAT),
-            DueDate: currentDate.format(DATE_FORMAT)
+            dueDate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -65,7 +65,7 @@ describe('Service Tests', () => {
             timeStart: currentDate,
             dateEnd: currentDate,
             timeEnd: currentDate,
-            DueDate: currentDate
+            dueDate: currentDate
           },
           returnedFromService
         );
@@ -87,7 +87,7 @@ describe('Service Tests', () => {
             timeEnd: currentDate.format(DATE_TIME_FORMAT),
             taskstatus: 1,
             taskpriority: 1,
-            DueDate: currentDate.format(DATE_FORMAT)
+            dueDate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -98,7 +98,7 @@ describe('Service Tests', () => {
             timeStart: currentDate,
             dateEnd: currentDate,
             timeEnd: currentDate,
-            DueDate: currentDate
+            dueDate: currentDate
           },
           returnedFromService
         );
@@ -120,7 +120,7 @@ describe('Service Tests', () => {
             timeEnd: currentDate.format(DATE_TIME_FORMAT),
             taskstatus: 1,
             taskpriority: 1,
-            DueDate: currentDate.format(DATE_FORMAT)
+            dueDate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -131,7 +131,7 @@ describe('Service Tests', () => {
             timeStart: currentDate,
             dateEnd: currentDate,
             timeEnd: currentDate,
-            DueDate: currentDate
+            dueDate: currentDate
           },
           returnedFromService
         );

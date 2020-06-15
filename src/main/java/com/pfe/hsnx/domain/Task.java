@@ -54,7 +54,7 @@ public class Task implements Serializable {
     private Integer taskpriority;
 
     @Column(name = "DueDate")
-    private LocalDate DueDate;
+    private LocalDate dueDate;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -170,16 +170,16 @@ public class Task implements Serializable {
     }
 
     public LocalDate getDueDate() {
-        return DueDate;
+        return dueDate;
     }
 
-    public Task DueDate(LocalDate DueDate) {
-        this.DueDate = DueDate;
+    public Task dueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
         return this;
     }
 
-    public void setDueDate(LocalDate DueDate) {
-        this.DueDate = DueDate;
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -211,7 +211,7 @@ public class Task implements Serializable {
             ", timeEnd='" + getTimeEnd() + "'" +
             ", taskstatus=" + getTaskstatus() +
             ", taskpriority=" + getTaskpriority() +
-            ", DueDate='" + getDueDate() + "'" +
+            ", dueDate='" + getDueDate() + "'" +
             "}";
     }
 }
