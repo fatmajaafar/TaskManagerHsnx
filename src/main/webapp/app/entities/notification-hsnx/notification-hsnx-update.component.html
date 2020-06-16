@@ -4,41 +4,50 @@
             <h2 id="jhi-notification-hsnx-heading" jhiTranslate="taskManagerHsnxApp.notification.home.createOrEditLabel">Create or edit a Notification</h2>
 
             <div>
-                <jhi-alert-error></jhi-alert-error>
+                *
 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  id="id" name="id" formControlName="id" readonly />
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.notification.message" for="field_message">Message</label>
-                    <input type="text" class="form-control" name="message" id="field_message"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.notification.message" for="field_message">Message</mat-label>
+                    <mat-form-field class="example-full-width">
+                       <input matInput type="text" name="message" id="field_message"
                            formControlName="message"/>
-                    <div *ngIf="editForm.get('message')!.invalid && (editForm.get('message')!.dirty || editForm.get('message')!.touched)">
+                     <div *ngIf="editForm.get('message')!.invalid && (editForm.get('message')!.dirty || editForm.get('message')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('message')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                                This field is required.
                         </small>
-                    </div>
+                     </div>
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
+                    
                     <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.notification.handled" for="field_handled">Handled</label>
-                    <input type="checkbox" class="form-control" name="handled" id="field_handled"
+                    <input type="checkbox"  name="handled" id="field_handled"
                            formControlName="handled"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.notification.notifFrom" for="field_notifFrom">Notif From</label>
-                    <input type="text" class="form-control" name="notifFrom" id="field_notifFrom"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.notification.notifFrom" for="field_notifFrom">Notif From</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="notifFrom" id="field_notifFrom"
                            formControlName="notifFrom"/>
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.notification.notifto" for="field_notifto">Notifto</label>
-                    <input type="text" class="form-control" name="notifto" id="field_notifto"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.notification.notifto" for="field_notifto">Notifto</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="notifto" id="field_notifto"
                            formControlName="notifto"/>
+                    </mat-form-field>       
                 </div>
             </div>
 

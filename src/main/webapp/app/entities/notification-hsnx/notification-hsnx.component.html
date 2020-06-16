@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="taskManagerHsnxApp.notification.home.title">Notifications</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-notification-hsnx" [routerLink]="['/notification-hsnx/new']">
+        <button mat-fab color="primary" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-notification-hsnx" [routerLink]="['/notification-hsnx/new']">
             <fa-icon icon="plus"></fa-icon>
             <span class="hidden-sm-down"  jhiTranslate="taskManagerHsnxApp.notification.home.createLabel">
             Create a new Notification
@@ -10,23 +10,22 @@
         </button>
     </h2>
 
-    <jhi-alert-error></jhi-alert-error>
-
-    <jhi-alert></jhi-alert>
+    
 
     <div class="row">
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
-                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.notification.home.search' | translate }}">
-
-                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                    <mat-form-field>
+                    <input matInput type="text" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.notification.home.search' | translate }}">
+                    </mat-form-field>
+                    <button mat-mini-fab color="primary" class="input-group-append btn btn-info" (click)="search(currentSearch)">
                         <fa-icon icon="search"></fa-icon>
                     </button>
 
-                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                  <!--  <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
                         <fa-icon icon="trash-alt"></fa-icon>
-                    </button>
+                    </button>-->
                 </div>
             </form>
         </div>
@@ -39,18 +38,18 @@
     <div class="table-responsive" id="entities" *ngIf="notifications?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="message"><span jhiTranslate="taskManagerHsnxApp.notification.message">Message</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="handled"><span jhiTranslate="taskManagerHsnxApp.notification.handled">Handled</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="notifFrom"><span jhiTranslate="taskManagerHsnxApp.notification.notifFrom">Notif From</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="notifto"><span jhiTranslate="taskManagerHsnxApp.notification.notifto">Notifto</span> <fa-icon icon="sort"></fa-icon></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)"  style="background-color: #5f83c5">
+                   
+                    <th scope="col"  jhiSortBy="message"><span jhiTranslate="taskManagerHsnxApp.notification.message" style="color: white;">Message</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="handled"><span jhiTranslate="taskManagerHsnxApp.notification.handled" style="color: white;">Handled</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="notifFrom"><span jhiTranslate="taskManagerHsnxApp.notification.notifFrom" style="color: white;">Notif From</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="notifto"><span jhiTranslate="taskManagerHsnxApp.notification.notifto" style="color: white;">Notifto</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let notification of notifications ;trackBy: trackId">
-                    <td><a [routerLink]="['/notification-hsnx', notification.id, 'view']">{{ notification.id }}</a></td>
+                    
                     <td>{{ notification.message }}</td>
                     <td>{{ notification.handled }}</td>
                     <td>{{ notification.notifFrom }}</td>
@@ -61,20 +60,20 @@
                                     [routerLink]="['/notification-hsnx', notification.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+           
                             </button>
 
                             <button type="submit"
                                     [routerLink]="['/notification-hsnx', notification.id, 'edit']"
                                     class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                
                             </button>
 
                             <button type="submit" (click)="delete(notification)"
                                     class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                               
                             </button>
                         </div>
                     </td>

@@ -3,7 +3,7 @@
     "notification": {
       "home": {
         "title": "Notifications",
-        "createLabel": "Create a new Notification",
+        "createLabel": "",
         "createOrEditLabel": "Create or edit a Notification",
         "search": "Search for Notification",
         "notFound": "No Notifications found"

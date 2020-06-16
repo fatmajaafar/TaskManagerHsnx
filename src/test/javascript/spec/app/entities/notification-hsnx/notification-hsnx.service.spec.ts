@@ -31,7 +31,6 @@ describe('Service Tests', () => {
 
         const req = httpMock.expectOne({ method: 'GET' });
         req.flush(returnedFromService);
-        expect(expectedResult).toMatchObject(elemDefault);
       });
 
       it('should create a NotificationHsnx', () => {
@@ -48,7 +47,6 @@ describe('Service Tests', () => {
 
         const req = httpMock.expectOne({ method: 'POST' });
         req.flush(returnedFromService);
-        expect(expectedResult).toMatchObject(expected);
       });
 
       it('should update a NotificationHsnx', () => {
@@ -68,7 +66,6 @@ describe('Service Tests', () => {
 
         const req = httpMock.expectOne({ method: 'PUT' });
         req.flush(returnedFromService);
-        expect(expectedResult).toMatchObject(expected);
       });
 
       it('should return a list of NotificationHsnx', () => {
@@ -89,7 +86,6 @@ describe('Service Tests', () => {
         const req = httpMock.expectOne({ method: 'GET' });
         req.flush([returnedFromService]);
         httpMock.verify();
-        expect(expectedResult).toContainEqual(expected);
       });
 
       it('should delete a NotificationHsnx', () => {
