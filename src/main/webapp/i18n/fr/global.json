@@ -12,6 +12,7 @@
         "eventHsnx": "Event",
         "taskHsnx": "Task",
         "countryHsnx": "Country",
+        "notificationHsnx": "Notification",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

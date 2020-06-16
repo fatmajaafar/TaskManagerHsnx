@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="notification">
+            <h2><span jhiTranslate="taskManagerHsnxApp.notification.detail.title">Notification</span> {{ notification.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="taskManagerHsnxApp.notification.message">Message</span></dt>
+                <dd>
+                    <span>{{ notification.message }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.notification.handled">Handled</span></dt>
+                <dd>
+                    <span>{{ notification.handled }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.notification.notifFrom">Notif From</span></dt>
+                <dd>
+                    <span>{{ notification.notifFrom }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.notification.notifto">Notifto</span></dt>
+                <dd>
+                    <span>{{ notification.notifto }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/notification-hsnx', notification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

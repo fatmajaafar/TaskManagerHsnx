@@ -1,6 +1,6 @@
 {
   "register": {
-    "title": "Registration",
+    "title": "Register new User Account",
     "form": {
       "button": "Register"
     },
