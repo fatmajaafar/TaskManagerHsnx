@@ -27,7 +27,12 @@ import { RouterModule } from '@angular/router';
       {
         path: 'notification-hsnx',
         loadChildren: () => import('./notification-hsnx/notification-hsnx.module').then(m => m.TaskManagerHsnxNotificationHsnxModule)
+      },
+      {
+        path: 'taskmanagement-hsnx',
+        loadChildren: () => import('./taskmanagement-hsnx/taskmanagement-hsnx.module').then(m => m.TaskManagerHsnxTaskmanagementHsnxModule)
       }
+
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])
   ]

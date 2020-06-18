@@ -1,7 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ProdConfig } from './blocks/config/prod.config';
 import { TaskManagerHsnxAppModule } from './app.module';
-
+import { TaskmanagementHsnxComponent } from './entities/taskmanagement-hsnx/taskmanagement-hsnx.component';
 ProdConfig();
 
 if (module['hot']) {
