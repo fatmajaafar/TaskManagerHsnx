@@ -51,10 +51,10 @@
                 <tr *ngFor="let event of events ;trackBy: trackId">
 
                     <td>{{ event.eventdescription }}</td>
-                    <td>{{ event.starttime | date:'medium' }}</td>
-                    <td>{{ event.startdate | date:'mediumDate' }}</td>
-                    <td>{{ event.endtime | date:'medium' }}</td>
-                    <td>{{ event.enddate | date:'mediumDate' }}</td>
+                    <td>{{ event.starttime | date:'hh:mm' }}</td>
+                    <td>{{ event.startdate | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ event.endtime | date:'hh:mm' }}</td>
+                    <td>{{ event.enddate | date:'dd/MM/yyyy' }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

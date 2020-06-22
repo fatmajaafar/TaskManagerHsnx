@@ -15,7 +15,8 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatTabsModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -23,9 +24,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TaskManagerHsnxSharedModule,
     TaskManagerHsnxCoreModule,
     TaskManagerHsnxHomeModule,
+
     // jhipster-needle-angular-add-module JHipster will add new module here
     TaskManagerHsnxEntityModule,
-    TaskManagerHsnxAppRoutingModule
+    TaskManagerHsnxAppRoutingModule,
+    MatTabsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent]

@@ -188,7 +188,7 @@
             </li>
            <!--PROFILE-->
             <li class="nav-item">
-                <a class="nav-link" routerLink="profile" routerLinkActive="active">
+                <a class="nav-link" routerLink="profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     <fa-icon icon="user"></fa-icon>
                     <span translate="global.menu.profile">Profile</span>
                 </a>

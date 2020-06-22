@@ -12,6 +12,11 @@
     "use-pipe-transform-interface": false,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "typedef": [true, "call-signature"]
+    "typedef": [true, "call-signature"],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "class-name": true,
+    "camelcase": "off",
+    "@typescript-eslint/camelcase": ["warn"]
   }
 }

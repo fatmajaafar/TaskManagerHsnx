@@ -15,7 +15,7 @@
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
                     <mat-form-field>
-                    <input matInput type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.task.home.search' | translate }}">
+                    <input matInput type="text" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.task.home.search' | translate }}">
                     </mat-form-field>
                     <button mat-mini-fab color="primary" class="input-group-append btn btn-info" (click)="search(currentSearch)">
                         <fa-icon icon="search"></fa-icon>
@@ -55,13 +55,13 @@
                     
                     <td>{{ task.tasktitle }}</td>
                     <td>{{ task.taskdescription }}</td>
-                    <td>{{ task.dateStart | date:'mediumDate' }}</td>
-                    <td>{{ task.timeStart | date:'medium' }}</td>
-                    <td>{{ task.dateEnd | date:'mediumDate' }}</td>
-                    <td>{{ task.timeEnd | date:'medium' }}</td>
+                    <td>{{ task.dateStart | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ task.timeStart | date:'hh:mm' }}</td>
+                    <td>{{ task.dateEnd | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ task.timeEnd | date:'hh:mm' }}</td>
                     <td>{{ task.taskstatus }}</td>
                     <td>{{ task.taskpriority }}</td>
-                    <td>{{ task.dueDate | date:'mediumDate' }}</td>
+                    <td>{{ task.dueDate | date:'dd/MM/yyyy' }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

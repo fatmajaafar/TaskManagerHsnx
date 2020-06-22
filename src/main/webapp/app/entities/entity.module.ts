@@ -31,10 +31,15 @@ import { RouterModule } from '@angular/router';
       {
         path: 'taskmanagement-hsnx',
         loadChildren: () => import('./taskmanagement-hsnx/taskmanagement-hsnx.module').then(m => m.TaskManagerHsnxTaskmanagementHsnxModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.TaskManagerHsnxProfileModule)
       }
 
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])
-  ]
+  ],
+  declarations: []
 })
 export class TaskManagerHsnxEntityModule {}
