@@ -46,6 +46,10 @@ public class TaskCriteria implements Serializable, Criteria {
 
     private LocalDateFilter dueDate;
 
+    private StringFilter taskcategory;
+
+    private IntegerFilter taskstate;
+
     public TaskCriteria() {
     }
 
@@ -60,6 +64,8 @@ public class TaskCriteria implements Serializable, Criteria {
         this.taskstatus = other.taskstatus == null ? null : other.taskstatus.copy();
         this.taskpriority = other.taskpriority == null ? null : other.taskpriority.copy();
         this.dueDate = other.dueDate == null ? null : other.dueDate.copy();
+        this.taskcategory = other.taskcategory == null ? null : other.taskcategory.copy();
+        this.taskstate = other.taskstate == null ? null : other.taskstate.copy();
     }
 
     @Override
@@ -147,6 +153,22 @@ public class TaskCriteria implements Serializable, Criteria {
         this.dueDate = dueDate;
     }
 
+    public StringFilter getTaskcategory() {
+        return taskcategory;
+    }
+
+    public void setTaskcategory(StringFilter taskcategory) {
+        this.taskcategory = taskcategory;
+    }
+
+    public IntegerFilter getTaskstate() {
+        return taskstate;
+    }
+
+    public void setTaskstate(IntegerFilter taskstate) {
+        this.taskstate = taskstate;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -167,7 +189,9 @@ public class TaskCriteria implements Serializable, Criteria {
             Objects.equals(timeEnd, that.timeEnd) &&
             Objects.equals(taskstatus, that.taskstatus) &&
             Objects.equals(taskpriority, that.taskpriority) &&
-            Objects.equals(dueDate, that.dueDate);
+            Objects.equals(dueDate, that.dueDate) &&
+            Objects.equals(taskcategory, that.taskcategory) &&
+            Objects.equals(taskstate, that.taskstate);
     }
 
     @Override
@@ -182,7 +206,9 @@ public class TaskCriteria implements Serializable, Criteria {
         timeEnd,
         taskstatus,
         taskpriority,
-        dueDate
+        dueDate,
+        taskcategory,
+        taskstate
         );
     }
 
@@ -199,6 +225,8 @@ public class TaskCriteria implements Serializable, Criteria {
                 (taskstatus != null ? "taskstatus=" + taskstatus + ", " : "") +
                 (taskpriority != null ? "taskpriority=" + taskpriority + ", " : "") +
                 (dueDate != null ? "dueDate=" + dueDate + ", " : "") +
+                (taskcategory != null ? "taskcategory=" + taskcategory + ", " : "") +
+                (taskstate != null ? "taskstate=" + taskstate + ", " : "") +
             "}";
     }
 

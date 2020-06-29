@@ -7,6 +7,13 @@ import { IEventHsnx } from 'app/shared/model/event-hsnx.model';
 import { INotificationHsnx } from 'app/shared/model/notification-hsnx.model';
 import { NotificationHsnxService } from '../notification-hsnx/notification-hsnx.service';
 
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { JhiEventManager } from 'ng-jhipster';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
+
 @Component({
   selector: 'jhi-taskmanagement-hsnx',
   templateUrl: './taskmanagement-hsnx.component.html',
@@ -16,7 +23,6 @@ export class TaskmanagementHsnxComponent implements OnInit {
   tasks: ITaskHsnx[] = [];
   events: IEventHsnx[] = [];
   notifications: INotificationHsnx[] = [];
-
   constructor(
     protected taskService: TaskHsnxService,
     protected eventService: EventHsnxService,
@@ -24,8 +30,14 @@ export class TaskmanagementHsnxComponent implements OnInit {
   ) {}
 
   getBackgroundColor(event: Event): String {
-    return event ? '#ffefc8' : '';
+    return event ? '#91a3db' : '';
   }
+
+  /**
+  getRandomColor():String {
+   const color = Math.floor(0x1000000 * Math.random()).toString(16);
+    return '#' + ('000000' + color).slice(-6);
+  } */
 
   ngOnInit(): void {
     this.taskService

@@ -1,0 +1,29 @@
+.profile-img .file {
+  position: relative;
+  overflow: hidden;
+  margin-top: -30%;
+
+  width: 153px;
+  border: none;
+  border-radius: 0;
+  font-size: 15px;
+  background: #212529b8;
+}
+.profile-img .file input {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
+.profile-edit-btn {
+  width: 50px;
+  border: 0;
+  padding: 1%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  color: #fff;
+  border-radius: 2px;
+
+  background: #2288bb;
+}

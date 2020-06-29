@@ -48,6 +48,16 @@
             "fieldName": "dueDate",
             "dbhColumnName": "DueDate",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "taskcategory",
+            "dbhColumnName": "taskCategory",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "taskstate",
+            "dbhColumnName": "taskState",
+            "fieldType": "Integer"
         }
     ],
     "relationships": [],

@@ -32,6 +32,10 @@ public class TaskDTO implements Serializable {
 
     private LocalDate dueDate;
 
+    private String taskcategory;
+
+    private Integer taskstate;
+
 
     public Long getId() {
         return id;
@@ -113,6 +117,22 @@ public class TaskDTO implements Serializable {
         this.dueDate = dueDate;
     }
 
+    public String getTaskcategory() {
+        return taskcategory;
+    }
+
+    public void setTaskcategory(String taskcategory) {
+        this.taskcategory = taskcategory;
+    }
+
+    public Integer getTaskstate() {
+        return taskstate;
+    }
+
+    public void setTaskstate(Integer taskstate) {
+        this.taskstate = taskstate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -147,6 +167,8 @@ public class TaskDTO implements Serializable {
             ", taskstatus=" + getTaskstatus() +
             ", taskpriority=" + getTaskpriority() +
             ", dueDate='" + getDueDate() + "'" +
+            ", taskcategory='" + getTaskcategory() + "'" +
+            ", taskstate=" + getTaskstate() +
             "}";
     }
 }

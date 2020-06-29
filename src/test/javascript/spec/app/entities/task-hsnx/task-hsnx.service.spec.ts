@@ -24,7 +24,20 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new TaskHsnx(0, 'AAAAAAA', 'AAAAAAA', currentDate, currentDate, currentDate, currentDate, 0, 0, currentDate);
+      elemDefault = new TaskHsnx(
+        0,
+        'AAAAAAA',
+        'AAAAAAA',
+        currentDate,
+        currentDate,
+        currentDate,
+        currentDate,
+        0,
+        0,
+        currentDate,
+        'AAAAAAA',
+        0
+      );
     });
 
     describe('Service methods', () => {
@@ -87,7 +100,9 @@ describe('Service Tests', () => {
             timeEnd: currentDate.format(DATE_TIME_FORMAT),
             taskstatus: 1,
             taskpriority: 1,
-            dueDate: currentDate.format(DATE_FORMAT)
+            dueDate: currentDate.format(DATE_FORMAT),
+            taskcategory: 'BBBBBB',
+            taskstate: 1
           },
           elemDefault
         );
@@ -120,7 +135,9 @@ describe('Service Tests', () => {
             timeEnd: currentDate.format(DATE_TIME_FORMAT),
             taskstatus: 1,
             taskpriority: 1,
-            dueDate: currentDate.format(DATE_FORMAT)
+            dueDate: currentDate.format(DATE_FORMAT),
+            taskcategory: 'BBBBBB',
+            taskstate: 1
           },
           elemDefault
         );

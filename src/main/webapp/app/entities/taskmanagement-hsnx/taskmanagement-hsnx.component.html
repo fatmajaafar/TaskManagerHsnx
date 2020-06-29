@@ -11,11 +11,22 @@
         <form name="searchForm" class="form-inline">
           <div class="input-group w-100 mt-3">
             
-              <mat-form-field>   
+            <!--  <mat-form-field>   
               <input matInput type="text" placeholder="Type here to search">
               <mat-icon matPrefix>search</mat-icon>
-              </mat-form-field>
-            
+              </mat-form-field>-->
+              <div class="search-bar">
+  
+                <input type="text" class="input" placeholder="&nbsp;">
+                <span class="label">Type to search</span>
+                <span class="highlight"></span>
+                <div class="search-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="24" height="24"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M64.5,14.33333c-27.6214,0 -50.16667,22.54527 -50.16667,50.16667c0,27.6214 22.54527,50.16667 50.16667,50.16667c12.52732,0 23.97256,-4.67249 32.7819,-12.31771l3.05143,3.05143v9.26628l43,43l14.33333,-14.33333l-43,-43h-9.26628l-3.05143,-3.05143c7.64521,-8.80934 12.31771,-20.25458 12.31771,-32.7819c0,-27.6214 -22.54527,-50.16667 -50.16667,-50.16667zM64.5,28.66667c19.87509,0 35.83333,15.95824 35.83333,35.83333c0,19.87509 -15.95825,35.83333 -35.83333,35.83333c-19.87509,0 -35.83333,-15.95825 -35.83333,-35.83333c0,-19.87509 15.95824,-35.83333 35.83333,-35.83333z"></path></g></g></svg>
+                 </div>
+                </div>
           </div>
         </form>
       </div>
@@ -84,14 +95,10 @@
       </ul>
       <ul class="category-list">
         <li class="item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-users">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
-          <span>Family</span>
+          <div class="material-icons">
+            notifications_none
+            </div>
+          <span>Notifications</span>
         </li>
         <li class="item">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
@@ -121,111 +128,67 @@
       </ul>
     </div>
   </div>
+  <br>
   <div class="page-content">
-    <p class="b">noottt workinnn</p>
+    
     <div class="header">
-      
-      <img src="https://img.icons8.com/nolan/64/to-do.png"/>
-      
-      <span>Tasks Today</span>
+    <img src="https://img.icons8.com/nolan/64/to-do.png"/>
+    <span>Tasks Today</span>
     </div>
     <mat-form-field>
-      <input matInput placeholder="Filter by task">
+      <input matInput placeholder="Filter by task category">
       <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
     
       <mat-tab-group>
-        <mat-tab label = "All">
-          <mat-list *ngFor="let task of tasks">
-            <mat-list-item>{{task.tasktitle}}</mat-list-item>
-          </mat-list>
-        </mat-tab>
-        <mat-tab label = "Important">
-          <mat-list *ngFor="let task of tasks">
-            <mat-list-item>{{task.tasktitle}}</mat-list-item>
-          </mat-list>
-        </mat-tab>
-        <mat-tab label = "Notes">
+        
+      <mat-tab label = "All">
           <mat-list *ngFor="let task of tasks">
             <mat-list-item>{{task.tasktitle}}</mat-list-item>
           </mat-list>
         </mat-tab>
 
+        <mat-tab label = "Important">
+          <mat-list *ngFor="let task of tasks">
+            <mat-list-item *ngIf="task.taskcategory == 1">{{task.tasktitle}}</mat-list-item>
+          </mat-list>
+        </mat-tab>
+
+        <mat-tab label = "Notes">
+          <mat-list *ngFor="let task of tasks">
+            <mat-list-item *ngIf="task.taskcategory == 2">{{task.tasktitle}}</mat-list-item>
+          </mat-list>
+        </mat-tab>
+
         <mat-tab label = "Links">
           <mat-list *ngFor="let task of tasks">
-            <mat-list-item>{{task.tasktitle}}</mat-list-item>
+            <mat-list-item *ngIf ="task.taskcategory == 3">{{task.tasktitle}}</mat-list-item>
           </mat-list>
         </mat-tab>
       </mat-tab-group>
- 
-    
-    <!--<div class="content-categories">
-      <div class="label-wrapper">
-        <input class="nav-item" name="nav" type="radio" id="opt-1">
-        <label class="category" for="opt-1">All</label>
-      </div>
-      <div class="label-wrapper">
-        <input class="nav-item" name="nav" type="radio" id="opt-2" checked>
-        <label class="category" for="opt-2">Important</label>
-      </div>
-      <div class="label-wrapper">
-        <input class="nav-item" name="nav" type="radio" id="opt-3">
-        <label class="category" for="opt-3">Notes</label>
-      </div>
-      <div class="label-wrapper">
-        <input class="nav-item" name="nav" type="radio" id="opt-4">
-        <label class="category" for="opt-4">Links</label>
-      </div>
-    </div>-->
-    <div>
+
       <mat-divider></mat-divider>
+   
+      <div style="overflow-y:scroll;">
       <p><div ><strong>Todo List</strong></div></p>
-      <div class="task" *ngFor="let task of tasks">
-        <input class="task-item" name="task">
+      <div class="task" *ngFor="let task of tasks  ;trackBy: trackId" >
+        <input class="task-item" name="task" type="checkbox">
         <label for="item-1" >
           <span class="label-text">{{task.tasktitle}}</span>
+          <span>
+            <a [routerLink]="['/task-hsnx', task.id, 'view']">
+            <small class="badge badge-light">more</small></a>
+            
+        </span>
         </label>
         <!--<span ><small> comleted by {{task.dateEnd}}</small></span>--> 
-        <span class="tag approved" *ngIf="task.taskstatus === 1">Approved</span>
-        <span class="tag review" *ngIf="task.taskstatus === 2">In Review</span>
-        <span class="tag progress" *ngIf="task.taskstatus === 3">In Progress</span>
+        <span class=" approved" *ngIf="task.taskstatus ===1" style="color: rgb(228, 100, 122);">Approved</span>
+        <span class="review" *ngIf="task.taskstatus === 2" style="color: rgb(68, 204, 129);">In Review</span>
+        <span class="progress" *ngIf="task.taskstatus === 3" style="color: rgb(53, 34, 221);">In Progress</span>
       </div>
-     <!--<div class="task">
-        <input class="task-item" name="task" type="checkbox" id="item-2" checked>
-        <label for="item-2">
-          <span class="label-text">Create a userflow</span>
-        </label>
-        <span class="tag progress">In Progress</span>
       </div>
-      <div class="task">
-        <input class="task-item" name="task" type="checkbox" id="item-3">
-        <label for="item-3">
-          <span class="label-text">Application Implementation</span>
-        </label>
-        <span class="tag review">In Review</span>
-      </div>
-      <div class="task">
-        <input class="task-item" name="task" type="checkbox" id="item-4">
-        <label for="item-4">
-          <span class="label-text">Create a Dashboard Design</span>
-        </label>
-        <span class="tag progress">In Progress</span>
-      </div>
-      <div class="task">
-        <input class="task-item" name="task" type="checkbox" id="item-5">
-        <label for="item-5">
-          <span class="label-text">Create a Web Application Design</span>
-        </label>
-        <span class="tag approved">Approved</span>
-      </div>
-      <div class="task">
-        <input class="task-item" name="task" type="checkbox" id="item-6">
-        <label for="item-6">
-          <span class="label-text">Interactive Design</span>
-        </label>
-        <span class="tag review">In Review</span>
-      </div>-->
       <mat-divider></mat-divider>
+      <div style="overflow-y:scroll;">
       <p><div ><strong>Upcoming Tasks</strong></div></p>
       <div class="task">
         <input class="task-item" name="task" type="checkbox" id="item-7">
@@ -259,153 +222,34 @@
   </div>
   <div class="right-bar">
     
-<!--<div class="top-part">
-</div>-->
+ 
+        <button mat-button mat-icon-button class="toolbar-btn"><span class="material-icons" matTooltip="{{(tasks?.length)}}">
+          notifications_none
+          </span></button>
+   
+    
+    
+    <div class="top-part">
+      
+    </div>
+
     <div class="header">
       <img src="https://img.icons8.com/nolan/64/tear-off-calendar.png"/>
       <span>Events</span>
     </div>
-    <hr>
     <div class="right-content" *ngFor="let event of events">
-      <div >
-        <div class="description-event" class="task-box blue" [ngStyle]="{backgroundColor: getBackgroundColor(event)}">
+      <div>
+        <div class="description-event" class="task-box blue" style="color:rgb(0, 0, 0);" [ngStyle]="{'backgroundColor': getBackgroundColor(event)}" >
+          
           <label><div class="time" >{{event.startdate}}</div>
             <div class="event-name">{{event.eventdescription}}</div>
           </label>
         </div>
-        <div class="more-button"></div>
-
       </div>
     
       </div>
       
-         <!-- <div class="time">08:00 - 09:00 AM</div>
-          <div class="task-name">Product Review</div>
-        </div>
-        <div class="more-button"></div>
-        <div class="members">
-          <img
-            src="https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-            alt="member">
-          <img
-            src="https://images.unsplash.com/photo-1476657680631-c07285ff2581?ixlib=rb-1.2.1&auto=format&fit=crop&w=2210&q=80"
-            alt="member-2">
-          <img
-            src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
-            alt="member-3">
-          <img
-            src="https://images.unsplash.com/photo-1455504490126-80ed4d83b3b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
-            alt="member-4">
-        </div>
-      </div>
-      <div class="task-box blue">
-        <div class="description-task">
-          <div class="time">10:00 - 11:00 AM</div>
-          <div class="task-name">Design Meeting</div>
-        </div>
-        <div class="more-button"></div>
-        <div class="members">
-          <img
-            src="https://images.unsplash.com/photo-1484688493527-670f98f9b195?ixlib=rb-1.2.1&auto=format&fit=crop&w=2230&q=80"
-            alt="member">
-          <img
-            src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
-            alt="member-2">
-          <img
-            src="https://images.unsplash.com/photo-1455504490126-80ed4d83b3b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
-            alt="member-3">
-        </div>
-      </div>
-      <div class="task-box red">
-        <div class="description-task">
-          <div class="time">01:00 - 02:00 PM</div>
-          <div class="task-name">Team Meeting</div>
-        </div>
-        <div class="more-button"></div>
-        <div class="members">
-          <img
-            src="https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-            alt="member">
-          <img
-            src="https://images.unsplash.com/photo-1475552113915-6fcb52652ba2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80"
-            alt="member-2">
-          <img
-            src="https://images.unsplash.com/photo-1493752603190-08d8b5d1781d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
-            alt="member-3">
-          <img
-            src="https://images.unsplash.com/photo-1484688493527-670f98f9b195?ixlib=rb-1.2.1&auto=format&fit=crop&w=2230&q=80"
-            alt="member-4">
-        </div>
-      </div>
-      <div class="task-box green">
-        <div class="description-task">
-          <div class="time">03:00 - 04:00 PM</div>
-          <div class="task-name">Release Event</div>
-        </div>
-        <div class="more-button"></div>
-        <div class="members">
-          <img
-            src="https://images.unsplash.com/photo-1523419409543-a5e549c1faa8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-            alt="member">
-          <img
-            src="https://images.unsplash.com/photo-1519742866993-66d3cfef4bbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=881&q=80"
-            alt="member-2">
-          <img
-            src="https://images.unsplash.com/photo-1521122872341-065792fb2fa0?ixlib=rb-1.2.1&auto=format&fit=crop&w=2208&q=80"
-            alt="member-3">
-          <img
-            src="https://images.unsplash.com/photo-1486302913014-862923f5fd48?ixlib=rb-1.2.1&auto=format&fit=crop&w=3400&q=80"
-            alt="member-4">
-          <img
-            src="https://images.unsplash.com/photo-1484187216010-59798e9cc726?ixlib=rb-1.2.1&auto=format&fit=crop&w=955&q=80"
-            alt="member-5">
-        </div>
-      </div>
-      <div class="task-box blue">
-        <div class="description-task">
-          <div class="time">08:00 - 09:00 PM</div>
-          <div class="task-name">Release Event</div>
-        </div>
-        <div class="more-button"></div>
-        <div class="members">
-          <img
-            src="https://images.unsplash.com/photo-1523419409543-a5e549c1faa8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-            alt="member">
-          <img
-            src="https://images.unsplash.com/photo-1519742866993-66d3cfef4bbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=881&q=80"
-            alt="member-2">
-          <img
-            src="https://images.unsplash.com/photo-1521122872341-065792fb2fa0?ixlib=rb-1.2.1&auto=format&fit=crop&w=2208&q=80"
-            alt="member-3">
-          <img
-            src="https://images.unsplash.com/photo-1486302913014-862923f5fd48?ixlib=rb-1.2.1&auto=format&fit=crop&w=3400&q=80"
-            alt="member-4">
-          <img
-            src="https://images.unsplash.com/photo-1484187216010-59798e9cc726?ixlib=rb-1.2.1&auto=format&fit=crop&w=955&q=80"
-            alt="member-5">
-        </div>
-      </div>
-      <div class="task-box yellow">
-        <div class="description-task">
-          <div class="time">11:00 - 12:00 PM</div>
-          <div class="task-name">Practise</div>
-        </div>
-        <div class="more-button"></div>
-        <div class="members">
-          <img
-            src="https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-            alt="member">
-          <img
-            src="https://images.unsplash.com/photo-1476657680631-c07285ff2581?ixlib=rb-1.2.1&auto=format&fit=crop&w=2210&q=80"
-            alt="member-2">
-          <img
-            src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
-            alt="member-3">
-          <img
-            src="https://images.unsplash.com/photo-1455504490126-80ed4d83b3b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
-            alt="member-4">
-        </div>
-        -->
+        
       </div>
     </div>
   </div>

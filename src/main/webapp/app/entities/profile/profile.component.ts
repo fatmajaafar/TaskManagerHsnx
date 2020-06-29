@@ -8,6 +8,7 @@ import { User } from 'app/core/user/user.model';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { Account } from 'app/core/user/account.model';
 import { UserService } from 'app/core/user/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'jhi-profile',
@@ -19,6 +20,10 @@ export class ProfileComponent implements OnInit {
   events: IEventHsnx[] = [];
   currentAccount: Account | null = null;
   users: User[] | null = null;
+  account: Account | null = null;
+  authSubscription?: Subscription;
+  url = '';
+
   constructor(
     protected taskService: TaskHsnxService,
     protected eventService: EventHsnxService,
@@ -27,5 +32,10 @@ export class ProfileComponent implements OnInit {
     private userService: UserService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
+  }
+  isAuthenticated(): boolean {
+    return this.accountService.isAuthenticated();
+  }
 }

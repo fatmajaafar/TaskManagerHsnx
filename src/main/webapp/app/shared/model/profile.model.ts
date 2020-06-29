@@ -1,17 +1,22 @@
+import { Moment } from 'moment';
 export interface IProfile {
   id?: number;
-  tasktitle?: string;
-  taskdescription?: string;
-  taskstatus?: number;
-  taskpriority?: number;
+  employeename?: string;
+  employeephone?: string;
+  employeefax?: string;
+  employeeaddress?: string;
+  employeeemail?: string;
+  employeehiredate?: Moment;
 }
 
 export class Profile implements IProfile {
   constructor(
     public id?: number,
-    public tasktitle?: string,
-    public taskdescription?: string,
-    public taskstatus?: number,
-    public taskpriority?: number
+    public employeename?: string,
+    public employeephone?: string,
+    public employeefax?: string,
+    public employeeaddress?: string,
+    public employeeemail?: string,
+    public employeehiredate?: Moment
   ) {}
 }

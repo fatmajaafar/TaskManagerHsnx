@@ -30,7 +30,9 @@ export class TaskHsnxUpdateComponent implements OnInit {
     timeEnd: [],
     taskstatus: [],
     taskpriority: [],
-    dueDate: []
+    dueDate: [],
+    taskcategory: [],
+    taskstate: []
   });
 
   constructor(protected taskService: TaskHsnxService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -58,7 +60,9 @@ export class TaskHsnxUpdateComponent implements OnInit {
       timeEnd: task.timeEnd ? task.timeEnd.format(DATE_TIME_FORMAT) : null,
       taskstatus: task.taskstatus,
       taskpriority: task.taskpriority,
-      dueDate: task.dueDate
+      dueDate: task.dueDate,
+      taskcategory: task.taskcategory,
+      taskstate: task.taskstate
     });
   }
 
@@ -88,7 +92,9 @@ export class TaskHsnxUpdateComponent implements OnInit {
       timeEnd: this.editForm.get(['timeEnd'])!.value ? moment(this.editForm.get(['timeEnd'])!.value, DATE_TIME_FORMAT) : undefined,
       taskstatus: this.editForm.get(['taskstatus'])!.value,
       taskpriority: this.editForm.get(['taskpriority'])!.value,
-      dueDate: this.editForm.get(['dueDate'])!.value
+      dueDate: this.editForm.get(['dueDate'])!.value,
+      taskcategory: this.editForm.get(['taskcategory'])!.value,
+      taskstate: this.editForm.get(['taskstate'])!.value
     };
   }
 

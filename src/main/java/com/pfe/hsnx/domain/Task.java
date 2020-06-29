@@ -56,6 +56,12 @@ public class Task implements Serializable {
     @Column(name = "DueDate")
     private LocalDate dueDate;
 
+    @Column(name = "taskCategory")
+    private String taskcategory;
+
+    @Column(name = "taskState")
+    private Integer taskstate;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -181,6 +187,32 @@ public class Task implements Serializable {
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
+
+    public String getTaskcategory() {
+        return taskcategory;
+    }
+
+    public Task taskcategory(String taskcategory) {
+        this.taskcategory = taskcategory;
+        return this;
+    }
+
+    public void setTaskcategory(String taskcategory) {
+        this.taskcategory = taskcategory;
+    }
+
+    public Integer getTaskstate() {
+        return taskstate;
+    }
+
+    public Task taskstate(Integer taskstate) {
+        this.taskstate = taskstate;
+        return this;
+    }
+
+    public void setTaskstate(Integer taskstate) {
+        this.taskstate = taskstate;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -212,6 +244,8 @@ public class Task implements Serializable {
             ", taskstatus=" + getTaskstatus() +
             ", taskpriority=" + getTaskpriority() +
             ", dueDate='" + getDueDate() + "'" +
+            ", taskcategory='" + getTaskcategory() + "'" +
+            ", taskstate=" + getTaskstate() +
             "}";
     }
 }

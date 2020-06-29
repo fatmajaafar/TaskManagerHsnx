@@ -80,6 +80,13 @@ public class TaskResourceIT {
     private static final LocalDate UPDATED_DUE_DATE = LocalDate.now(ZoneId.systemDefault());
     private static final LocalDate SMALLER_DUE_DATE = LocalDate.ofEpochDay(-1L);
 
+    private static final String DEFAULT_TASKCATEGORY = "AAAAAAAAAA";
+    private static final String UPDATED_TASKCATEGORY = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_TASKSTATE = 1;
+    private static final Integer UPDATED_TASKSTATE = 2;
+    private static final Integer SMALLER_TASKSTATE = 1 - 1;
+
     @Autowired
     private TaskRepository taskRepository;
 
@@ -147,7 +154,9 @@ public class TaskResourceIT {
             .timeEnd(DEFAULT_TIME_END)
             .taskstatus(DEFAULT_TASKSTATUS)
             .taskpriority(DEFAULT_TASKPRIORITY)
-            .dueDate(DEFAULT_DUE_DATE);
+            .dueDate(DEFAULT_DUE_DATE)
+            .taskcategory(DEFAULT_TASKCATEGORY)
+            .taskstate(DEFAULT_TASKSTATE);
         return task;
     }
     /**
@@ -166,7 +175,9 @@ public class TaskResourceIT {
             .timeEnd(UPDATED_TIME_END)
             .taskstatus(UPDATED_TASKSTATUS)
             .taskpriority(UPDATED_TASKPRIORITY)
-            .dueDate(UPDATED_DUE_DATE);
+            .dueDate(UPDATED_DUE_DATE)
+            .taskcategory(UPDATED_TASKCATEGORY)
+            .taskstate(UPDATED_TASKSTATE);
         return task;
     }
 
@@ -200,6 +211,8 @@ public class TaskResourceIT {
         assertThat(testTask.getTaskstatus()).isEqualTo(DEFAULT_TASKSTATUS);
         assertThat(testTask.getTaskpriority()).isEqualTo(DEFAULT_TASKPRIORITY);
         assertThat(testTask.getDueDate()).isEqualTo(DEFAULT_DUE_DATE);
+        assertThat(testTask.getTaskcategory()).isEqualTo(DEFAULT_TASKCATEGORY);
+        assertThat(testTask.getTaskstate()).isEqualTo(DEFAULT_TASKSTATE);
 
         // Validate the Task in Elasticsearch
         verify(mockTaskSearchRepository, times(1)).save(testTask);
@@ -267,7 +280,9 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.[*].timeEnd").value(hasItem(DEFAULT_TIME_END.toString())))
             .andExpect(jsonPath("$.[*].taskstatus").value(hasItem(DEFAULT_TASKSTATUS)))
             .andExpect(jsonPath("$.[*].taskpriority").value(hasItem(DEFAULT_TASKPRIORITY)))
-            .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())));
+            .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())))
+            .andExpect(jsonPath("$.[*].taskcategory").value(hasItem(DEFAULT_TASKCATEGORY)))
+            .andExpect(jsonPath("$.[*].taskstate").value(hasItem(DEFAULT_TASKSTATE)));
     }
     
     @Test
@@ -289,7 +304,9 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.timeEnd").value(DEFAULT_TIME_END.toString()))
             .andExpect(jsonPath("$.taskstatus").value(DEFAULT_TASKSTATUS))
             .andExpect(jsonPath("$.taskpriority").value(DEFAULT_TASKPRIORITY))
-            .andExpect(jsonPath("$.dueDate").value(DEFAULT_DUE_DATE.toString()));
+            .andExpect(jsonPath("$.dueDate").value(DEFAULT_DUE_DATE.toString()))
+            .andExpect(jsonPath("$.taskcategory").value(DEFAULT_TASKCATEGORY))
+            .andExpect(jsonPath("$.taskstate").value(DEFAULT_TASKSTATE));
     }
 
 
@@ -1096,6 +1113,189 @@ public class TaskResourceIT {
         defaultTaskShouldBeFound("dueDate.greaterThan=" + SMALLER_DUE_DATE);
     }
 
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskcategoryIsEqualToSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskcategory equals to DEFAULT_TASKCATEGORY
+        defaultTaskShouldBeFound("taskcategory.equals=" + DEFAULT_TASKCATEGORY);
+
+        // Get all the taskList where taskcategory equals to UPDATED_TASKCATEGORY
+        defaultTaskShouldNotBeFound("taskcategory.equals=" + UPDATED_TASKCATEGORY);
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskcategoryIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskcategory not equals to DEFAULT_TASKCATEGORY
+        defaultTaskShouldNotBeFound("taskcategory.notEquals=" + DEFAULT_TASKCATEGORY);
+
+        // Get all the taskList where taskcategory not equals to UPDATED_TASKCATEGORY
+        defaultTaskShouldBeFound("taskcategory.notEquals=" + UPDATED_TASKCATEGORY);
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskcategoryIsInShouldWork() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskcategory in DEFAULT_TASKCATEGORY or UPDATED_TASKCATEGORY
+        defaultTaskShouldBeFound("taskcategory.in=" + DEFAULT_TASKCATEGORY + "," + UPDATED_TASKCATEGORY);
+
+        // Get all the taskList where taskcategory equals to UPDATED_TASKCATEGORY
+        defaultTaskShouldNotBeFound("taskcategory.in=" + UPDATED_TASKCATEGORY);
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskcategoryIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskcategory is not null
+        defaultTaskShouldBeFound("taskcategory.specified=true");
+
+        // Get all the taskList where taskcategory is null
+        defaultTaskShouldNotBeFound("taskcategory.specified=false");
+    }
+                @Test
+    @Transactional
+    public void getAllTasksByTaskcategoryContainsSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskcategory contains DEFAULT_TASKCATEGORY
+        defaultTaskShouldBeFound("taskcategory.contains=" + DEFAULT_TASKCATEGORY);
+
+        // Get all the taskList where taskcategory contains UPDATED_TASKCATEGORY
+        defaultTaskShouldNotBeFound("taskcategory.contains=" + UPDATED_TASKCATEGORY);
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskcategoryNotContainsSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskcategory does not contain DEFAULT_TASKCATEGORY
+        defaultTaskShouldNotBeFound("taskcategory.doesNotContain=" + DEFAULT_TASKCATEGORY);
+
+        // Get all the taskList where taskcategory does not contain UPDATED_TASKCATEGORY
+        defaultTaskShouldBeFound("taskcategory.doesNotContain=" + UPDATED_TASKCATEGORY);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskstateIsEqualToSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskstate equals to DEFAULT_TASKSTATE
+        defaultTaskShouldBeFound("taskstate.equals=" + DEFAULT_TASKSTATE);
+
+        // Get all the taskList where taskstate equals to UPDATED_TASKSTATE
+        defaultTaskShouldNotBeFound("taskstate.equals=" + UPDATED_TASKSTATE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskstateIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskstate not equals to DEFAULT_TASKSTATE
+        defaultTaskShouldNotBeFound("taskstate.notEquals=" + DEFAULT_TASKSTATE);
+
+        // Get all the taskList where taskstate not equals to UPDATED_TASKSTATE
+        defaultTaskShouldBeFound("taskstate.notEquals=" + UPDATED_TASKSTATE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskstateIsInShouldWork() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskstate in DEFAULT_TASKSTATE or UPDATED_TASKSTATE
+        defaultTaskShouldBeFound("taskstate.in=" + DEFAULT_TASKSTATE + "," + UPDATED_TASKSTATE);
+
+        // Get all the taskList where taskstate equals to UPDATED_TASKSTATE
+        defaultTaskShouldNotBeFound("taskstate.in=" + UPDATED_TASKSTATE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskstateIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskstate is not null
+        defaultTaskShouldBeFound("taskstate.specified=true");
+
+        // Get all the taskList where taskstate is null
+        defaultTaskShouldNotBeFound("taskstate.specified=false");
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskstateIsGreaterThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskstate is greater than or equal to DEFAULT_TASKSTATE
+        defaultTaskShouldBeFound("taskstate.greaterThanOrEqual=" + DEFAULT_TASKSTATE);
+
+        // Get all the taskList where taskstate is greater than or equal to UPDATED_TASKSTATE
+        defaultTaskShouldNotBeFound("taskstate.greaterThanOrEqual=" + UPDATED_TASKSTATE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskstateIsLessThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskstate is less than or equal to DEFAULT_TASKSTATE
+        defaultTaskShouldBeFound("taskstate.lessThanOrEqual=" + DEFAULT_TASKSTATE);
+
+        // Get all the taskList where taskstate is less than or equal to SMALLER_TASKSTATE
+        defaultTaskShouldNotBeFound("taskstate.lessThanOrEqual=" + SMALLER_TASKSTATE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskstateIsLessThanSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskstate is less than DEFAULT_TASKSTATE
+        defaultTaskShouldNotBeFound("taskstate.lessThan=" + DEFAULT_TASKSTATE);
+
+        // Get all the taskList where taskstate is less than UPDATED_TASKSTATE
+        defaultTaskShouldBeFound("taskstate.lessThan=" + UPDATED_TASKSTATE);
+    }
+
+    @Test
+    @Transactional
+    public void getAllTasksByTaskstateIsGreaterThanSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+
+        // Get all the taskList where taskstate is greater than DEFAULT_TASKSTATE
+        defaultTaskShouldNotBeFound("taskstate.greaterThan=" + DEFAULT_TASKSTATE);
+
+        // Get all the taskList where taskstate is greater than SMALLER_TASKSTATE
+        defaultTaskShouldBeFound("taskstate.greaterThan=" + SMALLER_TASKSTATE);
+    }
+
     /**
      * Executes the search, and checks that the default entity is returned.
      */
@@ -1112,7 +1312,9 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.[*].timeEnd").value(hasItem(DEFAULT_TIME_END.toString())))
             .andExpect(jsonPath("$.[*].taskstatus").value(hasItem(DEFAULT_TASKSTATUS)))
             .andExpect(jsonPath("$.[*].taskpriority").value(hasItem(DEFAULT_TASKPRIORITY)))
-            .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())));
+            .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())))
+            .andExpect(jsonPath("$.[*].taskcategory").value(hasItem(DEFAULT_TASKCATEGORY)))
+            .andExpect(jsonPath("$.[*].taskstate").value(hasItem(DEFAULT_TASKSTATE)));
 
         // Check, that the count call also returns 1
         restTaskMockMvc.perform(get("/api/tasks/count?sort=id,desc&" + filter))
@@ -1168,7 +1370,9 @@ public class TaskResourceIT {
             .timeEnd(UPDATED_TIME_END)
             .taskstatus(UPDATED_TASKSTATUS)
             .taskpriority(UPDATED_TASKPRIORITY)
-            .dueDate(UPDATED_DUE_DATE);
+            .dueDate(UPDATED_DUE_DATE)
+            .taskcategory(UPDATED_TASKCATEGORY)
+            .taskstate(UPDATED_TASKSTATE);
         TaskDTO taskDTO = taskMapper.toDto(updatedTask);
 
         restTaskMockMvc.perform(put("/api/tasks")
@@ -1189,6 +1393,8 @@ public class TaskResourceIT {
         assertThat(testTask.getTaskstatus()).isEqualTo(UPDATED_TASKSTATUS);
         assertThat(testTask.getTaskpriority()).isEqualTo(UPDATED_TASKPRIORITY);
         assertThat(testTask.getDueDate()).isEqualTo(UPDATED_DUE_DATE);
+        assertThat(testTask.getTaskcategory()).isEqualTo(UPDATED_TASKCATEGORY);
+        assertThat(testTask.getTaskstate()).isEqualTo(UPDATED_TASKSTATE);
 
         // Validate the Task in Elasticsearch
         verify(mockTaskSearchRepository, times(1)).save(testTask);
@@ -1257,6 +1463,8 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.[*].timeEnd").value(hasItem(DEFAULT_TIME_END.toString())))
             .andExpect(jsonPath("$.[*].taskstatus").value(hasItem(DEFAULT_TASKSTATUS)))
             .andExpect(jsonPath("$.[*].taskpriority").value(hasItem(DEFAULT_TASKPRIORITY)))
-            .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())));
+            .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())))
+            .andExpect(jsonPath("$.[*].taskcategory").value(hasItem(DEFAULT_TASKCATEGORY)))
+            .andExpect(jsonPath("$.[*].taskstate").value(hasItem(DEFAULT_TASKSTATE)));
     }
 }

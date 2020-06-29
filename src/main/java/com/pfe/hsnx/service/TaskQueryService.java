@@ -122,6 +122,12 @@ public class TaskQueryService extends QueryService<Task> {
             if (criteria.getDueDate() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getDueDate(), Task_.dueDate));
             }
+            if (criteria.getTaskcategory() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getTaskcategory(), Task_.taskcategory));
+            }
+            if (criteria.getTaskstate() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getTaskstate(), Task_.taskstate));
+            }
         }
         return specification;
     }
