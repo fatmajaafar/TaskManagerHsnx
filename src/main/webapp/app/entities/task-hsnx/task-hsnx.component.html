@@ -40,7 +40,7 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    
                     <th scope="col"  jhiSortBy="tasktitle"><span jhiTranslate="taskManagerHsnxApp.task.tasktitle">Tasktitle</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="taskdescription"><span jhiTranslate="taskManagerHsnxApp.task.taskdescription">Taskdescription</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="dateStart"><span jhiTranslate="taskManagerHsnxApp.task.dateStart">Date Start</span> <fa-icon icon="sort"></fa-icon></th>
@@ -57,7 +57,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let task of tasks ;trackBy: trackId">
-                    <td><a [routerLink]="['/task-hsnx', task.id, 'view']">{{ task.id }}</a></td>
+                    
                     <td>{{ task.tasktitle }}</td>
                     <td>{{ task.taskdescription }}</td>
                     <td>{{ task.dateStart | date:'mediumDate' }}</td>

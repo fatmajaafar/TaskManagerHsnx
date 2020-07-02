@@ -39,8 +39,22 @@ export class TaskHsnxService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  query(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<ITaskHsnx[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  search(req: SearchWithPagination): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<ITaskHsnx[]>(this.resourceSearchUrl, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
   protected convertDateFromClient(task: ITaskHsnx): ITaskHsnx {
@@ -61,6 +75,19 @@ export class TaskHsnxService {
       res.body.dateEnd = res.body.dateEnd ? moment(res.body.dateEnd) : undefined;
       res.body.timeEnd = res.body.timeEnd ? moment(res.body.timeEnd) : undefined;
       res.body.dueDate = res.body.dueDate ? moment(res.body.dueDate) : undefined;
+    }
+    return res;
+  }
+
+  protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+    if (res.body) {
+      res.body.forEach((task: ITaskHsnx) => {
+        task.dateStart = task.dateStart ? moment(task.dateStart) : undefined;
+        task.timeStart = task.timeStart ? moment(task.timeStart) : undefined;
+        task.dateEnd = task.dateEnd ? moment(task.dateEnd) : undefined;
+        task.timeEnd = task.timeEnd ? moment(task.timeEnd) : undefined;
+        task.dueDate = task.dueDate ? moment(task.dueDate) : undefined;
+      });
     }
     return res;
   }

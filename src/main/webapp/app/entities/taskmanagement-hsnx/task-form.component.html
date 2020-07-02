@@ -1,0 +1,71 @@
+<div class="task-form-wrapper">
+
+  <mat-toolbar color="warn" style="background-color:#880e4f">
+    <span class="material-icons">
+      check_circle
+      </span>
+   <h5>Add New Todo</h5>
+  </mat-toolbar>
+  
+  <mat-card>
+  
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+  
+    <div class="input-full-width">
+      <textarea
+      matInput
+      type="text"
+      name="tasktitle" 
+      formControlName="tasktitle"
+      maxlength="500"
+      minlength="5" 
+      placeholder="What needs to be done?" 
+      autocomplete="off"
+      autofocus
+     
+      class="task-form__input"></textarea>
+      <br>
+      <div class="form-group">
+        <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart" for="field_dateStart">Date Start</label>
+        <div class="input-group">
+            
+            <input id="field_dateStart" type="text" class="form-control" name="dateStart" ngbDatepicker #dateStartDp="ngbDatepicker" formControlName="dateStart"/>
+            <span class="input-group-append">
+                <button type="button" class="btn btn-secondary" (click)="dateStartDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+          <mat-form-field  >
+            <mat-label jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory">Category</mat-label>
+            <mat-select name="taskcategory" id="field_taskcategory"
+            formControlName="taskcategory">
+              <mat-option value="1">Important</mat-option>
+              <mat-option value="2">Notes</mat-option>
+              <mat-option value="3">Links</mat-option>
+            </mat-select>
+           </mat-form-field>
+          </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+            
+            <button 
+              
+              type="submit" id="save-entity" [disabled]=" isSaving"
+             
+              class="task-form_input_button" style="color:  white; background-color:#880e4f;">Add Task
+            </button>
+  
+    </div>
+  
+    </form>
+  </mat-card>
+  
+    
+      
+     
+  

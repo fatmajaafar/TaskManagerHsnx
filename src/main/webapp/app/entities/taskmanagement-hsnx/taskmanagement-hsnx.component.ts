@@ -7,12 +7,8 @@ import { IEventHsnx } from 'app/shared/model/event-hsnx.model';
 import { INotificationHsnx } from 'app/shared/model/notification-hsnx.model';
 import { NotificationHsnxService } from '../notification-hsnx/notification-hsnx.service';
 
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
+import { TaskFormComponent } from './task-form.component';
 
 @Component({
   selector: 'jhi-taskmanagement-hsnx',
@@ -24,6 +20,7 @@ export class TaskmanagementHsnxComponent implements OnInit {
   events: IEventHsnx[] = [];
   notifications: INotificationHsnx[] = [];
   constructor(
+    protected modalService: NgbModal,
     protected taskService: TaskHsnxService,
     protected eventService: EventHsnxService,
     protected notificationService: NotificationHsnxService
@@ -31,6 +28,10 @@ export class TaskmanagementHsnxComponent implements OnInit {
 
   getBackgroundColor(event: Event): String {
     return event ? '#91a3db' : '';
+  }
+
+  openDialog(): void {
+    this.modalService.open(TaskFormComponent as Component);
   }
 
   /**
