@@ -18,8 +18,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TaskSchedulerModule } from './entities/task-scheduler/task-scheduler.module';
+import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [
+    CommonModule,
+    TaskSchedulerModule,
     BrowserAnimationsModule,
     BrowserModule,
     TaskManagerHsnxSharedModule,

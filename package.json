@@ -28,6 +28,7 @@
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
     "core-js": "3.5.0",
+    "daypilot-pro-angular": "https://npm.daypilot.org/daypilot-pro-angular/trial/2018.4.3442.tar.gz",
     "font-awesome": "^4.7.0",
     "g": "^2.0.1",
     "generator-jhipster-db-helper": "^1.2.0",

@@ -35,6 +35,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.TaskManagerHsnxProfileModule)
+      },
+      {
+        path: 'task-scheduler',
+        loadChildren: () => import('./task-scheduler/task-scheduler.module').then(m => m.TaskSchedulerModule)
       }
 
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
