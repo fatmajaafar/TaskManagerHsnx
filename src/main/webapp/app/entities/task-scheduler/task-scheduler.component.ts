@@ -3,10 +3,16 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { DayPilot, DayPilotSchedulerComponent } from 'daypilot-pro-angular';
 import { DataService } from './data.service';
 import * as moment from 'moment';
+import { ITaskHsnx } from 'app/shared/model/task-hsnx.model';
+import { TaskHsnxService } from '../task-hsnx/task-hsnx.service';
+import { Observable } from 'rxjs';
+import { HttpResponse } from '@angular/common/http';
+import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 
 @Component({
   selector: 'jhi-task-scheduler',
-  templateUrl: './task-scheduler.component.html'
+  templateUrl: './task-scheduler.component.html',
+  styleUrls: ['task-scheduler.component.scss']
 })
 export class TaskSchedulerComponent implements AfterViewInit {
   @ViewChild('scheduler', { static: true })
@@ -27,7 +33,7 @@ export class TaskSchedulerComponent implements AfterViewInit {
 
     onTimeRangeSelected: (args: { start: any; end: any; resource: any }) => {
       const dp = this.scheduler.control;
-      DayPilot.Modal.prompt('Create a new task:', 'Task 1').then(function(modal): void {
+      DayPilot.Modal.prompt('Create a new task:', 'Task 1').then((modal): void => {
         dp.clearSelection();
         if (!modal.result) {
           return;
@@ -41,6 +47,14 @@ export class TaskSchedulerComponent implements AfterViewInit {
             text: modal.result
           })
         );
+
+        const task: ITaskHsnx = {};
+        task.dateStart = moment(args.start, DATE_FORMAT);
+        task.dateEnd = moment(args.end, DATE_FORMAT);
+        task.taskdescription = modal.result;
+        task.tasktitle = 'Task ' + args.start;
+
+        this.subscribeToSaveResponseTask(this.taskService.create(task));
       });
     },
     eventMoveHandling: 'Update',
@@ -51,14 +65,18 @@ export class TaskSchedulerComponent implements AfterViewInit {
     onEventResized: () => {
       this.scheduler.control.message('Task resized');
     },
-    eventDeleteHandling: 'Update',
-    onEventDeleted: () => {
+    eventDeleteHandling: 'Delete',
+    onEventDeleted: (res: any) => {
+      //console.log(res.e.data.id)
+      this.taskService.delete(res.e.data.id).subscribe(() => {
+        this.load();
+      });
       this.scheduler.control.message('Task deleted');
     }
   };
   control: any;
 
-  constructor(private ds: DataService) {}
+  constructor(protected taskService: TaskHsnxService, private ds: DataService) {}
 
   ngAfterViewInit(): void {
     this.load();
@@ -74,5 +92,12 @@ export class TaskSchedulerComponent implements AfterViewInit {
         this.events = result;
       });
     });
+  }
+
+  protected subscribeToSaveResponseTask(result: Observable<HttpResponse<ITaskHsnx>>): void {
+    result.subscribe(
+      (res: HttpResponse<ITaskHsnx>) => this.load(),
+      () => ''
+    );
   }
 }

@@ -6,17 +6,19 @@ import { Observable } from 'rxjs';
 import { ITaskHsnx } from 'app/shared/model/task-hsnx.model';
 import { TaskHsnxService } from '../task-hsnx/task-hsnx.service';
 import * as moment from 'moment';
+import { EmployeeHsnxService } from '../employee-hsnx/employee-hsnx.service';
+import { IEmployeeHsnx } from 'app/shared/model/employee-hsnx.model';
 
 @Injectable()
 export class DataService {
-  resources: any[] = [
+  resources: IEmployeeTaskHsnx[] = [
     { name: 'Resource 1', id: 'R1' },
     { name: 'Resource 2', id: 'R2' }
   ];
 
   events: ITaskEventHsnx[] = [];
 
-  constructor(protected taskService: TaskHsnxService, private http: HttpClient) {}
+  constructor(protected taskService: TaskHsnxService, private http: HttpClient, protected employeeService: EmployeeHsnxService) {}
 
   getEvents(from: string, to: string): Observable<any[]> {
     this.events = [];
@@ -36,8 +38,8 @@ export class DataService {
               i += 1;
 
               const task: ITaskEventHsnx = {};
-              task.id = i.toString();
-              task.resource = 'R2';
+              if (element.id) task.id = element.id.toString();
+              task.resource = '1';
               task.start = moment(element.dateStart).format('YYYY-MM-DD');
               task.end = moment(element.dateEnd).format('YYYY-MM-DD');
               task.text = element.taskdescription;
@@ -60,6 +62,29 @@ export class DataService {
   }
 
   getResources(): Observable<any[]> {
+    this.resources = [];
+    this.employeeService
+      .query({
+        size: 1000
+      })
+      .subscribe(
+        (res: HttpResponse<IEmployeeHsnx[]>) => {
+          if (res.body) {
+            let i = 0;
+
+            res.body.forEach(element => {
+              i += 1;
+
+              const employee: IEmployeeTaskHsnx = {};
+              employee.id = i.toString();
+              employee.name = element.employeename;
+
+              this.resources.push(employee);
+            });
+          }
+        },
+        () => ''
+      );
     // simulating an HTTP request
     return new Observable(observer => {
       setTimeout(() => {
@@ -78,4 +103,9 @@ export interface ITaskEventHsnx {
   end?: string;
   text?: string;
   color?: string;
+}
+
+export interface IEmployeeTaskHsnx {
+  id?: string;
+  name?: string;
 }
