@@ -1,12 +1,12 @@
+/* eslint-disable */
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { DayPilot, DayPilotSchedulerComponent } from 'daypilot-pro-angular';
 import { DataService } from './data.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'jhi-task-scheduler',
-  template: `
-    <daypilot-scheduler [config]="config" [events]="events" #scheduler></daypilot-scheduler>
-  `
+  templateUrl: './task-scheduler.component.html'
 })
 export class TaskSchedulerComponent implements AfterViewInit {
   @ViewChild('scheduler', { static: true })
@@ -14,15 +14,20 @@ export class TaskSchedulerComponent implements AfterViewInit {
 
   events: any[] = [];
 
+  fromDate = moment(new Date().setDate(1)).format('YYYY-MM-DD');
+  toDate = moment(new Date()).format('YYYY-MM-DD');
+
   config: any = {
     treeEnabled: true,
     timeHeaders: [{ groupBy: 'Month' }, { groupBy: 'Day', format: 'd' }],
     scale: 'Day',
     days: 31,
-    startDate: '2018-10-01',
+    startDate: this.fromDate,
+    endDate: this.toDate,
+
     onTimeRangeSelected: (args: { start: any; end: any; resource: any }) => {
       const dp = this.scheduler.control;
-      DayPilot.Modal.prompt('Create a new event:', 'Event 1').then(function(modal): void {
+      DayPilot.Modal.prompt('Create a new task:', 'Task 1').then(function(modal): void {
         dp.clearSelection();
         if (!modal.result) {
           return;
@@ -40,15 +45,15 @@ export class TaskSchedulerComponent implements AfterViewInit {
     },
     eventMoveHandling: 'Update',
     onEventMoved: () => {
-      this.scheduler.control.message('Event moved');
+      this.scheduler.control.message('Task moved');
     },
     eventResizeHandling: 'Update',
     onEventResized: () => {
-      this.scheduler.control.message('Event resized');
+      this.scheduler.control.message('Task resized');
     },
     eventDeleteHandling: 'Update',
     onEventDeleted: () => {
-      this.scheduler.control.message('Event deleted');
+      this.scheduler.control.message('Task deleted');
     }
   };
   control: any;
@@ -56,12 +61,18 @@ export class TaskSchedulerComponent implements AfterViewInit {
   constructor(private ds: DataService) {}
 
   ngAfterViewInit(): void {
-    this.ds.getResources().subscribe(result => (this.config.resources = result));
+    this.load();
+  }
 
-    const from = this.scheduler.control.visibleStart();
-    const to = this.scheduler.control.visibleEnd();
-    this.ds.getEvents(from, to).subscribe(result => {
-      this.events = result;
+  load() {
+    this.ds.getResources().subscribe(result => {
+      this.config.resources = result;
+      this.config.startDate = this.fromDate;
+      this.config.endDate = this.toDate;
+
+      this.ds.getEvents(this.fromDate, this.toDate).subscribe(result => {
+        this.events = result;
+      });
     });
   }
 }

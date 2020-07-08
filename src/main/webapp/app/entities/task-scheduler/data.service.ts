@@ -1,60 +1,54 @@
+/* eslint-disable */
 import { Injectable } from '@angular/core';
 import { DayPilot } from 'daypilot-pro-angular';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ITaskHsnx } from 'app/shared/model/task-hsnx.model';
+import { TaskHsnxService } from '../task-hsnx/task-hsnx.service';
+import * as moment from 'moment';
 
 @Injectable()
 export class DataService {
   resources: any[] = [
-    {
-      name: 'Group A',
-      id: 'GA',
-      expanded: true,
-      children: [
-        { name: 'Resource 1', id: 'R1' },
-        { name: 'Resource 2', id: 'R2' }
-      ]
-    },
-    {
-      name: 'Group B',
-      id: 'GB',
-      expanded: true,
-      children: [
-        { name: 'Resource 3', id: 'R3', unavailable: true },
-        { name: 'Resource 4', id: 'R4' }
-      ]
-    }
-  ];
-  events: any[] = [
-    {
-      id: '1',
-      resource: 'R1',
-      start: '2018-05-03',
-      end: '2018-05-08',
-      text: 'Scheduler Event 1',
-      color: '#e69138'
-    },
-    {
-      id: '2',
-      resource: 'R2',
-      start: '2018-05-02',
-      end: '2018-05-05',
-      text: 'Scheduler Event 2',
-      color: '#6aa84f'
-    },
-    {
-      id: '3',
-      resource: 'R2',
-      start: '2018-05-06',
-      end: '2018-05-09',
-      text: 'Scheduler Event 3',
-      color: '#3c78d8'
-    }
+    { name: 'Resource 1', id: 'R1' },
+    { name: 'Resource 2', id: 'R2' }
   ];
 
-  constructor(private http: HttpClient) {}
+  events: ITaskEventHsnx[] = [];
 
-  getEvents(from: DayPilot.Date, to: DayPilot.Date): Observable<any[]> {
+  constructor(protected taskService: TaskHsnxService, private http: HttpClient) {}
+
+  getEvents(from: string, to: string): Observable<any[]> {
+    this.events = [];
+
+    this.taskService
+      .query({
+        'dateStart.greaterOrEqualThan': from,
+        'dateEnd.lessOrEqualThan': to,
+        size: 1000
+      })
+      .subscribe(
+        (res: HttpResponse<ITaskHsnx[]>) => {
+          if (res.body) {
+            let i = 0;
+
+            res.body.forEach(element => {
+              i += 1;
+
+              const task: ITaskEventHsnx = {};
+              task.id = i.toString();
+              task.resource = 'R2';
+              task.start = moment(element.dateStart).format('YYYY-MM-DD');
+              task.end = moment(element.dateEnd).format('YYYY-MM-DD');
+              task.text = element.taskdescription;
+              task.color = '#e69138';
+
+              this.events.push(task);
+            });
+          }
+        },
+        () => ''
+      );
     // simulating an HTTP request
     return new Observable(observer => {
       setTimeout(() => {
@@ -75,4 +69,13 @@ export class DataService {
 
     // return this.http.get("/api/resources");
   }
+}
+
+export interface ITaskEventHsnx {
+  id?: string;
+  resource?: string;
+  start?: string;
+  end?: string;
+  text?: string;
+  color?: string;
 }

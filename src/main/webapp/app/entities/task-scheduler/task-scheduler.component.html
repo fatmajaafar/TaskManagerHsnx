@@ -1,1 +1,17 @@
-hello
+<div class="row justify-center">
+    <div class="col-md-4">
+        <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart" for="field_dateStart">Date Start</label>
+        <input id="field_dateStart" type="date" class="form-control" name="dateStart" [(ngModel)]="fromDate"/>
+    </div> 
+    <div class="col-md-4">
+        <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateEnd" for="field_dateEnd">Date End</label>
+        <input id="field_dateEnd" type="date" class="form-control" name="dateEnd"  [(ngModel)]="toDate"/>
+    </div>
+    <div class="col-md-1">
+        <button type="button" class="btn btn-secondary" (click)="load()">load</button>
+    </div>
+</div>
+
+
+
+<daypilot-scheduler [config]="config" [events]="events" #scheduler></daypilot-scheduler>

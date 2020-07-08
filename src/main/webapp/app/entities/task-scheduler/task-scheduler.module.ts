@@ -7,9 +7,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { taskSchedulerRoute } from './task-scheduler.route';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [DayPilotModule, RouterModule.forChild(taskSchedulerRoute)],
+  imports: [DayPilotModule, RouterModule.forChild(taskSchedulerRoute), FormsModule],
   declarations: [TaskSchedulerComponent],
   exports: [],
   providers: [DataService]
