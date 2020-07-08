@@ -58,19 +58,38 @@ export class TaskSchedulerComponent implements AfterViewInit {
       });
     },
     eventMoveHandling: 'Update',
-    onEventMoved: () => {
+    onEventMoved: (res: any) => {
+      console.clear();
+      console.log(res.e.data);
+      this.taskService.find(res.e.data.id).subscribe(
+        (resTask: HttpResponse<ITaskHsnx>) => {
+          if (resTask.body) {
+            resTask.body.dateStart = moment(res.e.data.start, DATE_FORMAT);
+            resTask.body.dateEnd = moment(res.e.data.end, DATE_FORMAT);
+            this.subscribeToSaveResponseTask(this.taskService.update(resTask.body));
+          }
+        },
+        () => ''
+      );
       this.scheduler.control.message('Task moved');
     },
     eventResizeHandling: 'Update',
-    onEventResized: () => {
+    onEventResized: (res: any) => {
+      this.taskService.find(res.e.data.id).subscribe(
+        (resTask: HttpResponse<ITaskHsnx>) => {
+          if (resTask.body) {
+            resTask.body.dateStart = moment(res.e.data.start, DATE_FORMAT);
+            resTask.body.dateEnd = moment(res.e.data.end, DATE_FORMAT);
+            this.subscribeToSaveResponseTask(this.taskService.update(resTask.body));
+          }
+        },
+        () => ''
+      );
       this.scheduler.control.message('Task resized');
     },
     eventDeleteHandling: 'Delete',
     onEventDeleted: (res: any) => {
-      //console.log(res.e.data.id)
-      this.taskService.delete(res.e.data.id).subscribe(() => {
-        this.load();
-      });
+      this.taskService.delete(res.e.data.id).subscribe(() => this.load());
       this.scheduler.control.message('Task deleted');
     }
   };
