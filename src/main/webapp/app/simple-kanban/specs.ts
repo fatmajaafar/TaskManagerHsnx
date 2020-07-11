@@ -54,7 +54,7 @@ export class SortableSpecService {
       id: 1,
       title: 'To Do',
       cards: [
-        { listId: 1, id: 10, title: 'Write a new song' },
+        { listId: 1, id: 10, title: 'Task number one' },
         { listId: 1, id: 20, title: 'Put the lyrics to music' }
       ]
     },

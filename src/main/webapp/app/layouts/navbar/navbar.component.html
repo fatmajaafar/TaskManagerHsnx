@@ -18,12 +18,7 @@
 
             </li>
             <!--Task Management!!!-->
-            <a class="nav-link" routerLink="taskmanagement-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Task management">
-                <span>
-                    <fa-icon icon="tasks"></fa-icon>
-                
-                </span>
-            </a>
+           
              <!--Department entity-->
             <li class="nav-item" >
                 <a class="nav-link" routerLink="department-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Departments" >
@@ -79,12 +74,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"   routerLink="task-scheduler" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Task Scheduler">
+                        <a class="nav-link"   routerLink="kanban" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Task Scheduler">
                             <span class="material-icons">
                                 schedule
                                 </span>
                         </a>
                     </li>
+                    <a class="nav-link" routerLink="taskmanagement-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Task management">
+                        <span>
+                            <fa-icon icon="tasks"></fa-icon>
+                        
+                        </span>
+                    </a>
                 </ul>
                    
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->

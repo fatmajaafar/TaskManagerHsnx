@@ -18,7 +18,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { TaskSchedulerModule } from './entities/task-scheduler/task-scheduler.module';
 import { CommonModule } from '@angular/common';
 import { KanbanModule } from './simple-kanban/kanban.module';
 import { SkyhookDndModule } from '@angular-skyhook/core';
@@ -28,7 +27,6 @@ import { SkyhookDndModule } from '@angular-skyhook/core';
     SkyhookDndModule,
     KanbanModule,
     CommonModule,
-    TaskSchedulerModule,
     BrowserAnimationsModule,
     BrowserModule,
     TaskManagerHsnxSharedModule,
