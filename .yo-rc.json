@@ -31,7 +31,7 @@
     "clientThemeVariant": "",
     "creationTimestamp": 1581517286004,
     "testFrameworks": [],
-    "jhiPrefix": "jhi",
+    "jhiPrefix": "",
     "entitySuffix": "",
     "dtoSuffix": "DTO",
     "otherModules": [
