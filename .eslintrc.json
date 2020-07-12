@@ -5,8 +5,15 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "@typescript-eslint/tslint/config": [
+    "@typescript-eslint/no-this-alias": [
       "error",
+      {
+        "allowDestructuring": true,
+        "allowedNames": ["this"]
+      }
+    ],
+    "@typescript-eslint/tslint/config": [
+      "warn",
       {
         "lintFile": "./tslint.json"
       }
@@ -19,6 +26,8 @@
         "ignoreRestSiblings": false
       }
     ],
+
+    "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-non-null-assertion": "off"
   }
 }

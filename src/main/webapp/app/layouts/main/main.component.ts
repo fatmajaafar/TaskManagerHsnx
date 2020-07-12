@@ -5,6 +5,8 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 import { AccountService } from 'app/core/auth/account.service';
 import { FindLanguageFromKeyPipe } from 'app/shared/language/find-language-from-key.pipe';
+import { WebSocketService } from './WebSocketService';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'jhi-main',
@@ -14,14 +16,22 @@ export class MainComponent implements OnInit {
   private renderer: Renderer2;
 
   constructor(
+    private toastr: ToastrService,
     private accountService: AccountService,
     private titleService: Title,
     private router: Router,
     private findLanguageFromKeyPipe: FindLanguageFromKeyPipe,
     private translateService: TranslateService,
-    rootRenderer: RendererFactory2
+    rootRenderer: RendererFactory2,
+    private webSocketService: WebSocketService
   ) {
     this.renderer = rootRenderer.createRenderer(document.querySelector('html'), null);
+    const DemandNotif = this.webSocketService.connect();
+    DemandNotif.connect({}, (frame: any) => {
+      DemandNotif.subscribe('/topic/UpdateDemandStatus', (CreateDemandNotif: { body: string }) => {
+        this.toastr.info('Name : ' + JSON.parse(CreateDemandNotif.body).demandName, 'New Demand Created', { timeOut: 3000 });
+      });
+    });
   }
 
   ngOnInit(): void {

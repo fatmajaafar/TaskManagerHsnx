@@ -11,6 +11,13 @@
     "use-pipe-transform-interface": false,
     "component-class-suffix": false,
     "directive-class-suffix": false,
+    "@typescript-eslint/no-this-alias": [
+      "error",
+      {
+        "allowDestructuring": true,
+        "allowedNames": ["this"]
+      }
+    ],
     "typedef": [false, "call-signature"],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",

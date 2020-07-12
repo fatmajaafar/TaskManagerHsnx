@@ -21,9 +21,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { KanbanModule } from './simple-kanban/kanban.module';
 import { SkyhookDndModule } from '@angular-skyhook/core';
+import { ToastrModule } from 'ngx-toastr';
+import { WebSocketService } from './layouts/main/WebSocketService';
 
 @NgModule({
   imports: [
+    ToastrModule.forRoot(),
     SkyhookDndModule,
     KanbanModule,
     CommonModule,
@@ -41,6 +44,7 @@ import { SkyhookDndModule } from '@angular-skyhook/core';
     ReactiveFormsModule,
     HttpClientModule
   ],
+  providers: [WebSocketService],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent]
 })
