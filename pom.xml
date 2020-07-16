@@ -128,6 +128,11 @@
             <artifactId>jackson-datatype-hibernate5</artifactId>
         </dependency>
         <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>2.3.0</version>
+</dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-hppc</artifactId>
         </dependency>
@@ -665,7 +670,7 @@
                         <url>jdbc:sqlserver://localhost:1433;database=TaskManagerHsnx</url>
                         <defaultSchemaName></defaultSchemaName>
                         <username>SA</username>
-                        <password>!QA2ws3ed</password>
+                        <password>admin13484357</password>
                         <referenceUrl>hibernate:spring:com.pfe.hsnx.domain?dialect=org.hibernate.dialect.SQLServer2012Dialect&amp;hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl&amp;hibernate.implicit_naming_strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl</referenceUrl>
                         <verbose>true</verbose>
                         <logging>debug</logging>
