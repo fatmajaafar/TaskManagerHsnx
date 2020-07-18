@@ -52,7 +52,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:sqlserver://localhost:1433;database=TaskManagerHsnx
     username: SA
-    password: 'admin13484357'
+    password: '!QA2ws3ed'
     hikari:
       poolName: Hikari
       auto-commit: false

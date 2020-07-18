@@ -670,7 +670,7 @@
                         <url>jdbc:sqlserver://localhost:1433;database=TaskManagerHsnx</url>
                         <defaultSchemaName></defaultSchemaName>
                         <username>SA</username>
-                        <password>admin13484357</password>
+                        <password>!QA2ws3ed</password>
                         <referenceUrl>hibernate:spring:com.pfe.hsnx.domain?dialect=org.hibernate.dialect.SQLServer2012Dialect&amp;hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl&amp;hibernate.implicit_naming_strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl</referenceUrl>
                         <verbose>true</verbose>
                         <logging>debug</logging>
