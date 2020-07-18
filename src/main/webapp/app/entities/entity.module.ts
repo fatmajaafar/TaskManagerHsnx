@@ -39,8 +39,12 @@ import { RouterModule } from '@angular/router';
       {
         path: 'kanban',
         loadChildren: () => import('../simple-kanban/kanban.module').then(m => m.KanbanModule)
-      }
+      },
 
+      {
+        path: 'branch-hsnx',
+        loadChildren: () => import('./branch-hsnx/branch-hsnx.module').then(m => m.TaskManagerHsnxBranchHsnxModule)
+      }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])
   ],

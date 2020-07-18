@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="branch">
+            <h2><span jhiTranslate="taskManagerHsnxApp.branch.detail.title">Branch</span> {{ branch.id }}</h2>
+
+            <hr>
+
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="taskManagerHsnxApp.branch.branchName">Branch Name</span></dt>
+                <dd>
+                    <span>{{ branch.branchName }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.branch.branchPhone">Branch Phone</span></dt>
+                <dd>
+                    <span>{{ branch.branchPhone }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.branch.branchFax">Branch Fax</span></dt>
+                <dd>
+                    <span>{{ branch.branchFax }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.branch.branchAddress">Branch Address</span></dt>
+                <dd>
+                    <span>{{ branch.branchAddress }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.branch.branchEmail">Branch Email</span></dt>
+                <dd>
+                    <span>{{ branch.branchEmail }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.branch.branchBanner">Branch Banner</span></dt>
+                <dd>
+                    <span>{{ branch.branchBanner }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.branch.branchDefaultExercice">Branch Default Exercice</span></dt>
+                <dd>
+                    <span>{{ branch.branchDefaultExercice }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/branch-hsnx', branch.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
