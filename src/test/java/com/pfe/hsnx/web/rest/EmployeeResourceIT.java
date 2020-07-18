@@ -2,6 +2,9 @@ package com.pfe.hsnx.web.rest;
 
 import com.pfe.hsnx.TaskManagerHsnxApp;
 import com.pfe.hsnx.domain.Employee;
+import com.pfe.hsnx.domain.Job;
+import com.pfe.hsnx.domain.Department;
+import com.pfe.hsnx.domain.Branch;
 import com.pfe.hsnx.repository.EmployeeRepository;
 import com.pfe.hsnx.repository.search.EmployeeSearchRepository;
 import com.pfe.hsnx.service.EmployeeService;
@@ -774,6 +777,66 @@ public class EmployeeResourceIT {
 
         // Get all the employeeList where employeehiredate is greater than SMALLER_EMPLOYEEHIREDATE
         defaultEmployeeShouldBeFound("employeehiredate.greaterThan=" + SMALLER_EMPLOYEEHIREDATE);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllEmployeesByTblJobIsEqualToSomething() throws Exception {
+        // Initialize the database
+        employeeRepository.saveAndFlush(employee);
+        Job tblJob = JobResourceIT.createEntity(em);
+        em.persist(tblJob);
+        em.flush();
+        employee.setTblJob(tblJob);
+        employeeRepository.saveAndFlush(employee);
+        Long tblJobId = tblJob.getId();
+
+        // Get all the employeeList where tblJob equals to tblJobId
+        defaultEmployeeShouldBeFound("tblJobId.equals=" + tblJobId);
+
+        // Get all the employeeList where tblJob equals to tblJobId + 1
+        defaultEmployeeShouldNotBeFound("tblJobId.equals=" + (tblJobId + 1));
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllEmployeesByTblDepartmentIsEqualToSomething() throws Exception {
+        // Initialize the database
+        employeeRepository.saveAndFlush(employee);
+        Department tblDepartment = DepartmentResourceIT.createEntity(em);
+        em.persist(tblDepartment);
+        em.flush();
+        employee.setTblDepartment(tblDepartment);
+        employeeRepository.saveAndFlush(employee);
+        Long tblDepartmentId = tblDepartment.getId();
+
+        // Get all the employeeList where tblDepartment equals to tblDepartmentId
+        defaultEmployeeShouldBeFound("tblDepartmentId.equals=" + tblDepartmentId);
+
+        // Get all the employeeList where tblDepartment equals to tblDepartmentId + 1
+        defaultEmployeeShouldNotBeFound("tblDepartmentId.equals=" + (tblDepartmentId + 1));
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllEmployeesByTblBranchIsEqualToSomething() throws Exception {
+        // Initialize the database
+        employeeRepository.saveAndFlush(employee);
+        Branch tblBranch = BranchResourceIT.createEntity(em);
+        em.persist(tblBranch);
+        em.flush();
+        employee.setTblBranch(tblBranch);
+        employeeRepository.saveAndFlush(employee);
+        Long tblBranchId = tblBranch.getId();
+
+        // Get all the employeeList where tblBranch equals to tblBranchId
+        defaultEmployeeShouldBeFound("tblBranchId.equals=" + tblBranchId);
+
+        // Get all the employeeList where tblBranch equals to tblBranchId + 1
+        defaultEmployeeShouldNotBeFound("tblBranchId.equals=" + (tblBranchId + 1));
     }
 
     /**

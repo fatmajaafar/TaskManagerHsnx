@@ -39,7 +39,7 @@
         {
             "relationshipName": "tblJob",
             "dbhRelationshipId": "JobID",
-            "otherEntityName": "tblJob",
+            "otherEntityName": "Job",
             "relationshipType": "many-to-one",
             "otherEntityField": "jobName",
             "otherEntityRelationshipName": "tblEmployee",
@@ -48,7 +48,7 @@
         {
             "relationshipName": "tblDepartment",
             "dbhRelationshipId": "DeptID",
-            "otherEntityName": "tblDepartment",
+            "otherEntityName": "Department",
             "relationshipType": "many-to-one",
             "otherEntityField": "deptName",
             "otherEntityRelationshipName": "tblEmployee",
@@ -57,7 +57,7 @@
         {
             "relationshipName": "tblBranch",
             "dbhRelationshipId": "BranchID",
-            "otherEntityName": "tblBranch",
+            "otherEntityName": "Branch",
             "relationshipType": "many-to-one",
             "otherEntityField": "branchName",
             "otherEntityRelationshipName": "tblEmployee",

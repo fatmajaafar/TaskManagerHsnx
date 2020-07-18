@@ -39,6 +39,12 @@ public class EmployeeCriteria implements Serializable, Criteria {
 
     private LocalDateFilter employeehiredate;
 
+    private LongFilter tblJobId;
+
+    private LongFilter tblDepartmentId;
+
+    private LongFilter tblBranchId;
+
     public EmployeeCriteria() {
     }
 
@@ -50,6 +56,9 @@ public class EmployeeCriteria implements Serializable, Criteria {
         this.employeeaddress = other.employeeaddress == null ? null : other.employeeaddress.copy();
         this.employeeemail = other.employeeemail == null ? null : other.employeeemail.copy();
         this.employeehiredate = other.employeehiredate == null ? null : other.employeehiredate.copy();
+        this.tblJobId = other.tblJobId == null ? null : other.tblJobId.copy();
+        this.tblDepartmentId = other.tblDepartmentId == null ? null : other.tblDepartmentId.copy();
+        this.tblBranchId = other.tblBranchId == null ? null : other.tblBranchId.copy();
     }
 
     @Override
@@ -113,6 +122,30 @@ public class EmployeeCriteria implements Serializable, Criteria {
         this.employeehiredate = employeehiredate;
     }
 
+    public LongFilter getTblJobId() {
+        return tblJobId;
+    }
+
+    public void setTblJobId(LongFilter tblJobId) {
+        this.tblJobId = tblJobId;
+    }
+
+    public LongFilter getTblDepartmentId() {
+        return tblDepartmentId;
+    }
+
+    public void setTblDepartmentId(LongFilter tblDepartmentId) {
+        this.tblDepartmentId = tblDepartmentId;
+    }
+
+    public LongFilter getTblBranchId() {
+        return tblBranchId;
+    }
+
+    public void setTblBranchId(LongFilter tblBranchId) {
+        this.tblBranchId = tblBranchId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -130,7 +163,10 @@ public class EmployeeCriteria implements Serializable, Criteria {
             Objects.equals(employeefax, that.employeefax) &&
             Objects.equals(employeeaddress, that.employeeaddress) &&
             Objects.equals(employeeemail, that.employeeemail) &&
-            Objects.equals(employeehiredate, that.employeehiredate);
+            Objects.equals(employeehiredate, that.employeehiredate) &&
+            Objects.equals(tblJobId, that.tblJobId) &&
+            Objects.equals(tblDepartmentId, that.tblDepartmentId) &&
+            Objects.equals(tblBranchId, that.tblBranchId);
     }
 
     @Override
@@ -142,7 +178,10 @@ public class EmployeeCriteria implements Serializable, Criteria {
         employeefax,
         employeeaddress,
         employeeemail,
-        employeehiredate
+        employeehiredate,
+        tblJobId,
+        tblDepartmentId,
+        tblBranchId
         );
     }
 
@@ -156,6 +195,9 @@ public class EmployeeCriteria implements Serializable, Criteria {
                 (employeeaddress != null ? "employeeaddress=" + employeeaddress + ", " : "") +
                 (employeeemail != null ? "employeeemail=" + employeeemail + ", " : "") +
                 (employeehiredate != null ? "employeehiredate=" + employeehiredate + ", " : "") +
+                (tblJobId != null ? "tblJobId=" + tblJobId + ", " : "") +
+                (tblDepartmentId != null ? "tblDepartmentId=" + tblDepartmentId + ", " : "") +
+                (tblBranchId != null ? "tblBranchId=" + tblBranchId + ", " : "") +
             "}";
     }
 

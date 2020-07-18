@@ -8,6 +8,12 @@ export interface IEmployeeHsnx {
   employeeaddress?: string;
   employeeemail?: string;
   employeehiredate?: Moment;
+  tblJobJobName?: string;
+  tblJobId?: number;
+  tblDepartmentDeptName?: string;
+  tblDepartmentId?: number;
+  tblBranchBranchName?: string;
+  tblBranchId?: number;
 }
 
 export class EmployeeHsnx implements IEmployeeHsnx {
@@ -18,6 +24,12 @@ export class EmployeeHsnx implements IEmployeeHsnx {
     public employeefax?: string,
     public employeeaddress?: string,
     public employeeemail?: string,
-    public employeehiredate?: Moment
+    public employeehiredate?: Moment,
+    public tblJobJobName?: string,
+    public tblJobId?: number,
+    public tblDepartmentDeptName?: string,
+    public tblDepartmentId?: number,
+    public tblBranchBranchName?: string,
+    public tblBranchId?: number
   ) {}
 }
