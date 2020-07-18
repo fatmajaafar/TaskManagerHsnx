@@ -26,18 +26,6 @@ public class EmployeeDTO implements Serializable {
     private LocalDate employeehiredate;
 
 
-    private Long tblJobId;
-
-    private String tblJobJobName;
-
-    private Long tblDepartmentId;
-
-    private String tblDepartmentDeptName;
-
-    private Long tblBranchId;
-
-    private String tblBranchBranchName;
-
     public Long getId() {
         return id;
     }
@@ -94,54 +82,6 @@ public class EmployeeDTO implements Serializable {
         this.employeehiredate = employeehiredate;
     }
 
-    public Long getTblJobId() {
-        return tblJobId;
-    }
-
-    public void setTblJobId(Long JobId) {
-        this.tblJobId = JobId;
-    }
-
-    public String getTblJobJobName() {
-        return tblJobJobName;
-    }
-
-    public void setTblJobJobName(String JobJobName) {
-        this.tblJobJobName = JobJobName;
-    }
-
-    public Long getTblDepartmentId() {
-        return tblDepartmentId;
-    }
-
-    public void setTblDepartmentId(Long DepartmentId) {
-        this.tblDepartmentId = DepartmentId;
-    }
-
-    public String getTblDepartmentDeptName() {
-        return tblDepartmentDeptName;
-    }
-
-    public void setTblDepartmentDeptName(String DepartmentDeptName) {
-        this.tblDepartmentDeptName = DepartmentDeptName;
-    }
-
-    public Long getTblBranchId() {
-        return tblBranchId;
-    }
-
-    public void setTblBranchId(Long BranchId) {
-        this.tblBranchId = BranchId;
-    }
-
-    public String getTblBranchBranchName() {
-        return tblBranchBranchName;
-    }
-
-    public void setTblBranchBranchName(String BranchBranchName) {
-        this.tblBranchBranchName = BranchBranchName;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -173,12 +113,6 @@ public class EmployeeDTO implements Serializable {
             ", employeeaddress='" + getEmployeeaddress() + "'" +
             ", employeeemail='" + getEmployeeemail() + "'" +
             ", employeehiredate='" + getEmployeehiredate() + "'" +
-            ", tblJobId=" + getTblJobId() +
-            ", tblJobJobName='" + getTblJobJobName() + "'" +
-            ", tblDepartmentId=" + getTblDepartmentId() +
-            ", tblDepartmentDeptName='" + getTblDepartmentDeptName() + "'" +
-            ", tblBranchId=" + getTblBranchId() +
-            ", tblBranchBranchName='" + getTblBranchBranchName() + "'" +
             "}";
     }
 }

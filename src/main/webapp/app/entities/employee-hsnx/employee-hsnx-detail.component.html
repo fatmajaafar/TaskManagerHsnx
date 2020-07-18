@@ -5,6 +5,7 @@
 
             <hr>
 
+            <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="taskManagerHsnxApp.employee.employeename">Employeename</span></dt>
@@ -30,24 +31,6 @@
                 <dt><span jhiTranslate="taskManagerHsnxApp.employee.employeehiredate">Employeehiredate</span></dt>
                 <dd>
                     <span>{{ employee.employeehiredate }}</span>
-                </dd>
-                <dt><span jhiTranslate="taskManagerHsnxApp.employee.tblJob">Tbl Job</span></dt>
-                <dd>
-                    <div *ngIf="employee.tblJobId">
-                        <a [routerLink]="['/job-hsnx', employee.tblJobId, 'view']">{{ employee.tblJobJobName }}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="taskManagerHsnxApp.employee.tblDepartment">Tbl Department</span></dt>
-                <dd>
-                    <div *ngIf="employee.tblDepartmentId">
-                        <a [routerLink]="['/department-hsnx', employee.tblDepartmentId, 'view']">{{ employee.tblDepartmentDeptName }}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="taskManagerHsnxApp.employee.tblBranch">Tbl Branch</span></dt>
-                <dd>
-                    <div *ngIf="employee.tblBranchId">
-                        <a [routerLink]="['/branch-hsnx', employee.tblBranchId, 'view']">{{ employee.tblBranchBranchName }}</a>
-                    </div>
                 </dd>
             </dl>
 

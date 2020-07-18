@@ -3,7 +3,7 @@
     "employee": {
       "home": {
         "title": "Employees",
-        "createLabel": "Create a new Employee",
+        "createLabel": "",
         "createOrEditLabel": "Create or edit a Employee",
         "search": "Search for Employee",
         "notFound": "No Employees found"
@@ -22,10 +22,7 @@
       "employeefax": "Employeefax",
       "employeeaddress": "Employeeaddress",
       "employeeemail": "Employeeemail",
-      "employeehiredate": "Employeehiredate",
-      "tblJob": "Tbl Job",
-      "tblDepartment": "Tbl Department",
-      "tblBranch": "Tbl Branch"
+      "employeehiredate": "Employeehiredate"
     }
   }
 }

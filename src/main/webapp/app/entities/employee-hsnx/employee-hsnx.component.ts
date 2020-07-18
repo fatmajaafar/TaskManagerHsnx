@@ -12,7 +12,7 @@ import { EmployeeHsnxService } from './employee-hsnx.service';
 import { EmployeeHsnxDeleteDialogComponent } from './employee-hsnx-delete-dialog.component';
 
 @Component({
-  selector: '-employee-hsnx',
+  selector: 'jhi-employee-hsnx',
   templateUrl: './employee-hsnx.component.html'
 })
 export class EmployeeHsnxComponent implements OnInit, OnDestroy {

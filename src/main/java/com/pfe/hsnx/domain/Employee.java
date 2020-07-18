@@ -1,6 +1,5 @@
 package com.pfe.hsnx.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -46,21 +45,6 @@ public class Employee implements Serializable {
 
     @Column(name = "EmployeeHiredate")
     private LocalDate employeehiredate;
-
-    @ManyToOne
-    @JsonIgnoreProperties("tblEmployees")
-    @JoinColumn(name = "JobID")
-    private Job tblJob;
-
-    @ManyToOne
-    @JsonIgnoreProperties("tblEmployees")
-    @JoinColumn(name = "DeptID")
-    private Department tblDepartment;
-
-    @ManyToOne
-    @JsonIgnoreProperties("tblEmployees")
-    @JoinColumn(name = "BranchID")
-    private Branch tblBranch;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -147,45 +131,6 @@ public class Employee implements Serializable {
 
     public void setEmployeehiredate(LocalDate employeehiredate) {
         this.employeehiredate = employeehiredate;
-    }
-
-    public Job getTblJob() {
-        return tblJob;
-    }
-
-    public Employee tblJob(Job Job) {
-        this.tblJob = Job;
-        return this;
-    }
-
-    public void setTblJob(Job Job) {
-        this.tblJob = Job;
-    }
-
-    public Department getTblDepartment() {
-        return tblDepartment;
-    }
-
-    public Employee tblDepartment(Department Department) {
-        this.tblDepartment = Department;
-        return this;
-    }
-
-    public void setTblDepartment(Department Department) {
-        this.tblDepartment = Department;
-    }
-
-    public Branch getTblBranch() {
-        return tblBranch;
-    }
-
-    public Employee tblBranch(Branch Branch) {
-        this.tblBranch = Branch;
-        return this;
-    }
-
-    public void setTblBranch(Branch Branch) {
-        this.tblBranch = Branch;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
