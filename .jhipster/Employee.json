@@ -39,16 +39,16 @@
         {
             "relationshipName": "tblJob",
             "dbhRelationshipId": "JobID",
-            "otherEntityName": "tblJob",
+            "otherEntityName": "Job",
             "relationshipType": "many-to-one",
-            "otherEntityField": "jobName",
+            "otherEntityField": "jobTitle",
             "otherEntityRelationshipName": "tblEmployee",
             "otherEntityRelationshipNameUndefined": false
         },
         {
             "relationshipName": "tblDepartment",
             "dbhRelationshipId": "DeptID",
-            "otherEntityName": "tblDepartment",
+            "otherEntityName": "Department",
             "relationshipType": "many-to-one",
             "otherEntityField": "deptName",
             "otherEntityRelationshipName": "tblEmployee",
@@ -57,7 +57,7 @@
         {
             "relationshipName": "tblBranch",
             "dbhRelationshipId": "BranchID",
-            "otherEntityName": "tblBranch",
+            "otherEntityName": "Branch",
             "relationshipType": "many-to-one",
             "otherEntityField": "branchName",
             "otherEntityRelationshipName": "tblEmployee",
@@ -65,7 +65,7 @@
         }
     ],
     "changelogDate": "20200721093012",
-    "entityTableName": "TblEmployee",
+    "entityTableName": "tblEmployee",
     "dto": "mapstruct",
     "pagination": "pagination",
     "service": "serviceImpl",

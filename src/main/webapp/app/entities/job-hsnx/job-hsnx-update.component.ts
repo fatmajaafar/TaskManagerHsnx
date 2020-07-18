@@ -9,7 +9,7 @@ import { IJobHsnx, JobHsnx } from 'app/shared/model/job-hsnx.model';
 import { JobHsnxService } from './job-hsnx.service';
 
 @Component({
-  selector: '-job-hsnx-update',
+  selector: 'jhi-job-hsnx-update',
   templateUrl: './job-hsnx-update.component.html'
 })
 export class JobHsnxUpdateComponent implements OnInit {

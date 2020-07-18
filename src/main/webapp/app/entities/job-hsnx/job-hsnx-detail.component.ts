@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IJobHsnx } from 'app/shared/model/job-hsnx.model';
 
 @Component({
-  selector: '-job-hsnx-detail',
+  selector: 'jhi-job-hsnx-detail',
   templateUrl: './job-hsnx-detail.component.html'
 })
 export class JobHsnxDetailComponent implements OnInit {

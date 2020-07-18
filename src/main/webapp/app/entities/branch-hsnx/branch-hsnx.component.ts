@@ -12,7 +12,7 @@ import { BranchHsnxService } from './branch-hsnx.service';
 import { BranchHsnxDeleteDialogComponent } from './branch-hsnx-delete-dialog.component';
 
 @Component({
-  selector: '-branch-hsnx',
+  selector: 'jhi-branch-hsnx',
   templateUrl: './branch-hsnx.component.html'
 })
 export class BranchHsnxComponent implements OnInit, OnDestroy {

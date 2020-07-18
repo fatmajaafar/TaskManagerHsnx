@@ -9,7 +9,7 @@ import { IBranchHsnx, BranchHsnx } from 'app/shared/model/branch-hsnx.model';
 import { BranchHsnxService } from './branch-hsnx.service';
 
 @Component({
-  selector: '-branch-hsnx-update',
+  selector: 'jhi-branch-hsnx-update',
   templateUrl: './branch-hsnx-update.component.html'
 })
 export class BranchHsnxUpdateComponent implements OnInit {

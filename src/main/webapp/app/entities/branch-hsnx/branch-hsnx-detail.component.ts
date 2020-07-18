@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IBranchHsnx } from 'app/shared/model/branch-hsnx.model';
 
 @Component({
-  selector: '-branch-hsnx-detail',
+  selector: 'jhi-branch-hsnx-detail',
   templateUrl: './branch-hsnx-detail.component.html'
 })
 export class BranchHsnxDetailComponent implements OnInit {

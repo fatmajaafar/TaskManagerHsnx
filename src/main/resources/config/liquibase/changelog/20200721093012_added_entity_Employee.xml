@@ -8,39 +8,45 @@
 
     
     <!--
-        Added the entity Branch.
+        Added the entity Employee.
     -->
-    <changeSet id="20200718093012-1" author="jhipster">
-        <createTable tableName="tblBranch">
-            <column name="BranchID" type="bigint">
+    <changeSet id="20200721093012-1" author="jhipster">
+        <createTable tableName="tblEmployee">
+            <column name="EmpID" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="BranchName" type="varchar(255)">
+            <column name="EmployeeName" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="BranchPhone" type="varchar(255)">
+            <column name="EmployeePhone" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="BranchFax" type="varchar(255)">
+            <column name="EmployeeFax" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="BranchAddress" type="varchar(255)">
+            <column name="EmployeeAdresse" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="BranchEmail" type="varchar(255)">
+            <column name="EmployeeEmail" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="BranchBanner" type="varchar(255)">
+            <column name="EmployeeHiredate" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="BranchDefaultExercice" type="integer">
+            <column name="JobID" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="DeptID" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="BranchID" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
     </changeSet>
 
-    <changeSet id="20200718093012-1-relations" author="jhipster">
+    <changeSet id="20200721093012-1-relations" author="jhipster">
 
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
@@ -53,6 +59,5 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-
-
+   
 </databaseChangeLog>

@@ -7,6 +7,14 @@ import { Observable } from 'rxjs';
 
 import { IEmployeeHsnx, EmployeeHsnx } from 'app/shared/model/employee-hsnx.model';
 import { EmployeeHsnxService } from './employee-hsnx.service';
+import { IJobHsnx } from 'app/shared/model/job-hsnx.model';
+import { JobHsnxService } from 'app/entities/job-hsnx/job-hsnx.service';
+import { IDepartmentHsnx } from 'app/shared/model/department-hsnx.model';
+import { DepartmentHsnxService } from 'app/entities/department-hsnx/department-hsnx.service';
+import { IBranchHsnx } from 'app/shared/model/branch-hsnx.model';
+import { BranchHsnxService } from 'app/entities/branch-hsnx/branch-hsnx.service';
+
+type SelectableEntity = IJobHsnx | IDepartmentHsnx | IBranchHsnx;
 
 @Component({
   selector: 'jhi-employee-hsnx-update',
@@ -14,6 +22,9 @@ import { EmployeeHsnxService } from './employee-hsnx.service';
 })
 export class EmployeeHsnxUpdateComponent implements OnInit {
   isSaving = false;
+  jobs: IJobHsnx[] = [];
+  departments: IDepartmentHsnx[] = [];
+  branches: IBranchHsnx[] = [];
   employeehiredateDp: any;
 
   editForm = this.fb.group({
@@ -23,14 +34,30 @@ export class EmployeeHsnxUpdateComponent implements OnInit {
     employeefax: [],
     employeeaddress: [],
     employeeemail: [],
-    employeehiredate: []
+    employeehiredate: [],
+    tblJobId: [],
+    tblDepartmentId: [],
+    tblBranchId: []
   });
 
-  constructor(protected employeeService: EmployeeHsnxService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected employeeService: EmployeeHsnxService,
+    protected JobService: JobHsnxService,
+    protected DepartmentService: DepartmentHsnxService,
+    protected BranchService: BranchHsnxService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ employee }) => {
       this.updateForm(employee);
+
+      this.JobService.query().subscribe((res: HttpResponse<IJobHsnx[]>) => (this.jobs = res.body || []));
+
+      this.DepartmentService.query().subscribe((res: HttpResponse<IDepartmentHsnx[]>) => (this.departments = res.body || []));
+
+      this.BranchService.query().subscribe((res: HttpResponse<IBranchHsnx[]>) => (this.branches = res.body || []));
     });
   }
 
@@ -42,7 +69,10 @@ export class EmployeeHsnxUpdateComponent implements OnInit {
       employeefax: employee.employeefax,
       employeeaddress: employee.employeeaddress,
       employeeemail: employee.employeeemail,
-      employeehiredate: employee.employeehiredate
+      employeehiredate: employee.employeehiredate,
+      tblJobId: employee.tblJobId,
+      tblDepartmentId: employee.tblDepartmentId,
+      tblBranchId: employee.tblBranchId
     });
   }
 
@@ -69,7 +99,10 @@ export class EmployeeHsnxUpdateComponent implements OnInit {
       employeefax: this.editForm.get(['employeefax'])!.value,
       employeeaddress: this.editForm.get(['employeeaddress'])!.value,
       employeeemail: this.editForm.get(['employeeemail'])!.value,
-      employeehiredate: this.editForm.get(['employeehiredate'])!.value
+      employeehiredate: this.editForm.get(['employeehiredate'])!.value,
+      tblJobId: this.editForm.get(['tblJobId'])!.value,
+      tblDepartmentId: this.editForm.get(['tblDepartmentId'])!.value,
+      tblBranchId: this.editForm.get(['tblBranchId'])!.value
     };
   }
 
@@ -87,5 +120,9 @@ export class EmployeeHsnxUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: SelectableEntity): any {
+    return item.id;
   }
 }

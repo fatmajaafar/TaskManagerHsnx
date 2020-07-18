@@ -12,7 +12,7 @@ import { JobHsnxService } from './job-hsnx.service';
 import { JobHsnxDeleteDialogComponent } from './job-hsnx-delete-dialog.component';
 
 @Component({
-  selector: '-job-hsnx',
+  selector: 'jhi-job-hsnx',
   templateUrl: './job-hsnx.component.html'
 })
 export class JobHsnxComponent implements OnInit, OnDestroy {

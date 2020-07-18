@@ -22,7 +22,10 @@
       "employeefax": "Employeefax",
       "employeeaddress": "Employeeaddress",
       "employeeemail": "Employeeemail",
-      "employeehiredate": "Employeehiredate"
+      "employeehiredate": "Employeehiredate",
+      "tblJob": "Tbl Job",
+      "tblDepartment": "Tbl Department",
+      "tblBranch": "Tbl Branch"
     }
   }
 }
