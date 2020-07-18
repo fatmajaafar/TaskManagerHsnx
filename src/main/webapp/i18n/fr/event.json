@@ -21,7 +21,8 @@
       "starttime": "Starttime",
       "startdate": "Startdate",
       "endtime": "Endtime",
-      "enddate": "Enddate"
+      "enddate": "Enddate",
+      "tblTask": "Tbl Task"
     }
   }
 }

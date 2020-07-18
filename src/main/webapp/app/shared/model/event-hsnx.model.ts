@@ -7,6 +7,8 @@ export interface IEventHsnx {
   startdate?: Moment;
   endtime?: Moment;
   enddate?: Moment;
+  tblTaskTasktitle?: string;
+  tblTaskId?: number;
 }
 
 export class EventHsnx implements IEventHsnx {
@@ -16,6 +18,8 @@ export class EventHsnx implements IEventHsnx {
     public starttime?: Moment,
     public startdate?: Moment,
     public endtime?: Moment,
-    public enddate?: Moment
+    public enddate?: Moment,
+    public tblTaskTasktitle?: string,
+    public tblTaskId?: number
   ) {}
 }

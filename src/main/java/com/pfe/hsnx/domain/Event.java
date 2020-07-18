@@ -1,5 +1,6 @@
 package com.pfe.hsnx.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -15,7 +16,7 @@ import java.time.LocalDate;
  * A Event.
  */
 @Entity
-@Table(name = "TblEvent")
+@Table(name = "tblEvent")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "event")
 public class Event implements Serializable {
@@ -43,6 +44,11 @@ public class Event implements Serializable {
 
     @Column(name = "EndDate")
     private LocalDate enddate;
+
+    @ManyToOne
+    @JsonIgnoreProperties("tblEvents")
+    @JoinColumn(name = "TaskID")
+    private Task tblTask;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -116,6 +122,19 @@ public class Event implements Serializable {
 
     public void setEnddate(LocalDate enddate) {
         this.enddate = enddate;
+    }
+
+    public Task getTblTask() {
+        return tblTask;
+    }
+
+    public Event tblTask(Task Task) {
+        this.tblTask = Task;
+        return this;
+    }
+
+    public void setTblTask(Task Task) {
+        this.tblTask = Task;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

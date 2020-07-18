@@ -110,6 +110,10 @@ public class EventQueryService extends QueryService<Event> {
             if (criteria.getEnddate() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getEnddate(), Event_.enddate));
             }
+            if (criteria.getTblTaskId() != null) {
+                specification = specification.and(buildSpecification(criteria.getTblTaskId(),
+                    root -> root.join(Event_.tblTask, JoinType.LEFT).get(Task_.id)));
+            }
         }
         return specification;
     }

@@ -25,6 +25,10 @@ public class EventDTO implements Serializable {
     private LocalDate enddate;
 
 
+    private Long tblTaskId;
+
+    private String tblTaskTasktitle;
+
     public Long getId() {
         return id;
     }
@@ -73,6 +77,22 @@ public class EventDTO implements Serializable {
         this.enddate = enddate;
     }
 
+    public Long getTblTaskId() {
+        return tblTaskId;
+    }
+
+    public void setTblTaskId(Long TaskId) {
+        this.tblTaskId = TaskId;
+    }
+
+    public String getTblTaskTasktitle() {
+        return tblTaskTasktitle;
+    }
+
+    public void setTblTaskTasktitle(String TaskTasktitle) {
+        this.tblTaskTasktitle = TaskTasktitle;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -103,6 +123,8 @@ public class EventDTO implements Serializable {
             ", startdate='" + getStartdate() + "'" +
             ", endtime='" + getEndtime() + "'" +
             ", enddate='" + getEnddate() + "'" +
+            ", tblTaskId=" + getTblTaskId() +
+            ", tblTaskTasktitle='" + getTblTaskTasktitle() + "'" +
             "}";
     }
 }

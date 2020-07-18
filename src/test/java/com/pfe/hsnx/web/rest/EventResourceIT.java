@@ -2,6 +2,7 @@ package com.pfe.hsnx.web.rest;
 
 import com.pfe.hsnx.TaskManagerHsnxApp;
 import com.pfe.hsnx.domain.Event;
+import com.pfe.hsnx.domain.Task;
 import com.pfe.hsnx.repository.EventRepository;
 import com.pfe.hsnx.repository.search.EventSearchRepository;
 import com.pfe.hsnx.service.EventService;
@@ -666,6 +667,26 @@ public class EventResourceIT {
 
         // Get all the eventList where enddate is greater than SMALLER_ENDDATE
         defaultEventShouldBeFound("enddate.greaterThan=" + SMALLER_ENDDATE);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllEventsByTblTaskIsEqualToSomething() throws Exception {
+        // Initialize the database
+        eventRepository.saveAndFlush(event);
+        Task tblTask = TaskResourceIT.createEntity(em);
+        em.persist(tblTask);
+        em.flush();
+        event.setTblTask(tblTask);
+        eventRepository.saveAndFlush(event);
+        Long tblTaskId = tblTask.getId();
+
+        // Get all the eventList where tblTask equals to tblTaskId
+        defaultEventShouldBeFound("tblTaskId.equals=" + tblTaskId);
+
+        // Get all the eventList where tblTask equals to tblTaskId + 1
+        defaultEventShouldNotBeFound("tblTaskId.equals=" + (tblTaskId + 1));
     }
 
     /**

@@ -32,17 +32,17 @@
     ],
     "relationships": [
         {
-            "relationshipName": "TblTask",
+            "relationshipName": "tblTask",
             "dbhRelationshipId": "TaskID",
-            "otherEntityName": "TblTask",
+            "otherEntityName": "Task",
             "relationshipType": "many-to-one",
             "otherEntityField": "tasktitle",
-            "otherEntityRelationshipName": "TblEvent",
+            "otherEntityRelationshipName": "tblEvent",
             "otherEntityRelationshipNameUndefined": false
         }
     ],
     "changelogDate": "20209719093012",
-    "entityTableName": "TblEvent",
+    "entityTableName": "tblEvent",
     "dto": "mapstruct",
     "pagination": "pagination",
     "service": "serviceImpl",

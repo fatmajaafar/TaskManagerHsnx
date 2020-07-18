@@ -9,10 +9,15 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Event} and its DTO {@link EventDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {TaskMapper.class})
 public interface EventMapper extends EntityMapper<EventDTO, Event> {
 
+    @Mapping(source = "tblTask.id", target = "tblTaskId")
+    @Mapping(source = "tblTask.tasktitle", target = "tblTaskTasktitle")
+    EventDTO toDto(Event event);
 
+    @Mapping(source = "tblTaskId", target = "tblTask")
+    Event toEntity(EventDTO eventDTO);
 
     default Event fromId(Long id) {
         if (id == null) {

@@ -5,7 +5,7 @@
 
             <hr>
 
-            <jhi-alert-error></jhi-alert-error>
+            
 
             <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="taskManagerHsnxApp.event.eventdescription">Eventdescription</span></dt>
@@ -27,6 +27,12 @@
                 <dt><span jhiTranslate="taskManagerHsnxApp.event.enddate">Enddate</span></dt>
                 <dd>
                     <span>{{ event.enddate }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.event.tblTask">Tbl Task</span></dt>
+                <dd>
+                    <div *ngIf="event.tblTaskId">
+                        <a [routerLink]="['/task-hsnx', event.tblTaskId, 'view']">{{ event.tblTaskTasktitle }}</a>
+                    </div>
                 </dd>
             </dl>
 

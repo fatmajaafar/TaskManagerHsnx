@@ -1,23 +1,19 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-event-hsnx-heading" jhiTranslate="taskManagerHsnxApp.event.home.createOrEditLabel">Create or edit a Event</h2>
+            <h2 id="-event-hsnx-heading" jhiTranslate="taskManagerHsnxApp.event.home.createOrEditLabel">Create or edit a Event</h2>
 
             <div>
-               
+                
 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
-                    </mat-form-field>
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                 </div>
 
-
                 <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.eventdescription" for="field_eventdescription">Eventdescription</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text" name="eventdescription" id="field_eventdescription"
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.eventdescription" for="field_eventdescription">Eventdescription</label>
+                    <input type="text" class="form-control" name="eventdescription" id="field_eventdescription"
                            formControlName="eventdescription"/>
                     <div *ngIf="editForm.get('eventdescription')!.invalid && (editForm.get('eventdescription')!.dirty || editForm.get('eventdescription')!.touched)">
                         <small class="form-text text-danger"
@@ -25,7 +21,6 @@
                         This field is required.
                         </small>
                     </div>
-                </mat-form-field>
                 </div>
 
                 <div class="form-group">
@@ -60,6 +55,14 @@
                             <button type="button" class="btn btn-secondary" (click)="enddateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
                         </span>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.tblTask" for="field_tblTask">Tbl Task</label>
+                    <select class="form-control" id="field_tblTask" name="tblTask" formControlName="tblTaskId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="TaskOption.id" *ngFor="let TaskOption of tasks; trackBy: trackById">{{ TaskOption.tasktitle }}</option>
+                    </select>
                 </div>
             </div>
 

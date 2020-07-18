@@ -38,6 +38,8 @@ public class EventCriteria implements Serializable, Criteria {
 
     private LocalDateFilter enddate;
 
+    private LongFilter tblTaskId;
+
     public EventCriteria() {
     }
 
@@ -48,6 +50,7 @@ public class EventCriteria implements Serializable, Criteria {
         this.startdate = other.startdate == null ? null : other.startdate.copy();
         this.endtime = other.endtime == null ? null : other.endtime.copy();
         this.enddate = other.enddate == null ? null : other.enddate.copy();
+        this.tblTaskId = other.tblTaskId == null ? null : other.tblTaskId.copy();
     }
 
     @Override
@@ -103,6 +106,14 @@ public class EventCriteria implements Serializable, Criteria {
         this.enddate = enddate;
     }
 
+    public LongFilter getTblTaskId() {
+        return tblTaskId;
+    }
+
+    public void setTblTaskId(LongFilter tblTaskId) {
+        this.tblTaskId = tblTaskId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -119,7 +130,8 @@ public class EventCriteria implements Serializable, Criteria {
             Objects.equals(starttime, that.starttime) &&
             Objects.equals(startdate, that.startdate) &&
             Objects.equals(endtime, that.endtime) &&
-            Objects.equals(enddate, that.enddate);
+            Objects.equals(enddate, that.enddate) &&
+            Objects.equals(tblTaskId, that.tblTaskId);
     }
 
     @Override
@@ -130,7 +142,8 @@ public class EventCriteria implements Serializable, Criteria {
         starttime,
         startdate,
         endtime,
-        enddate
+        enddate,
+        tblTaskId
         );
     }
 
@@ -143,6 +156,7 @@ public class EventCriteria implements Serializable, Criteria {
                 (startdate != null ? "startdate=" + startdate + ", " : "") +
                 (endtime != null ? "endtime=" + endtime + ", " : "") +
                 (enddate != null ? "enddate=" + enddate + ", " : "") +
+                (tblTaskId != null ? "tblTaskId=" + tblTaskId + ", " : "") +
             "}";
     }
 

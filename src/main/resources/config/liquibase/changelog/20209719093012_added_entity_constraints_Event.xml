@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Event.
+    -->
+    <changeSet id="20209719093012-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="TaskID"
+                                 baseTableName="tblEvent"
+                                 constraintName="fk_tbl_event_tbl_task_id"
+                                 referencedColumnNames="TaskID"
+                                 referencedTableName="tblTask"/>
+
+    </changeSet>
+</databaseChangeLog>
