@@ -30,8 +30,18 @@
             "fieldType": "LocalDate"
         }
     ],
-    "relationships": [],
-    "changelogDate": "20200221093012",
+    "relationships": [
+        {
+            "relationshipName": "TblTask",
+            "dbhRelationshipId": "TaskID",
+            "otherEntityName": "TblTask",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "tasktitle",
+            "otherEntityRelationshipName": "TblEvent",
+            "otherEntityRelationshipNameUndefined": false
+        }
+    ],
+    "changelogDate": "20209719093012",
     "entityTableName": "TblEvent",
     "dto": "mapstruct",
     "pagination": "pagination",

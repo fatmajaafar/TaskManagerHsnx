@@ -1,0 +1,56 @@
+
+{
+    "name": "TblBranch",
+    "fields": [
+        {
+            "fieldName": "branchName",
+            "dbhColumnName": "BranchName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "branchPhone",
+            "dbhColumnName": "BranchPhone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "branchFax",
+            "dbhColumnName": "BranchFax",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "branchAddress",
+            "dbhColumnName": "BranchAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "branchEmail",
+            "dbhColumnName": "BranchEmail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "branchBanner",
+            "dbhColumnName": "BranchBanner",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "branchDefaultExercice",
+            "dbhColumnName": "BranchDefaultExercice",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200718093012",
+    "entityTableName": "tblBranch",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "hsnx",
+    "dbhIdName": "BranchID"
+}

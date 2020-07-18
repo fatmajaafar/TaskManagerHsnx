@@ -60,8 +60,18 @@
             "fieldType": "Integer"
         }
     ],
-    "relationships": [],
-    "changelogDate": "20190221093012",
+    "relationships": [
+        {
+            "relationshipName": "tblEmployee",
+            "dbhRelationshipId": "EmpID",
+            "otherEntityName": "tblEmployee",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "empFnameAr",
+            "otherEntityRelationshipName": "TblTask",
+            "otherEntityRelationshipNameUndefined": false
+        }
+    ],
+    "changelogDate": "20200720093012",
     "entityTableName": "TblTask",
     "dto": "mapstruct",
     "pagination": "pagination",

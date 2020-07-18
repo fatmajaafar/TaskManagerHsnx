@@ -35,8 +35,36 @@
             "fieldType": "LocalDate"
         }
     ],
-    "relationships": [],
-    "changelogDate": "20190221093012",
+    "relationships": [
+        {
+            "relationshipName": "tblJob",
+            "dbhRelationshipId": "JobID",
+            "otherEntityName": "tblJob",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "jobName",
+            "otherEntityRelationshipName": "tblEmployee",
+            "otherEntityRelationshipNameUndefined": false
+        },
+        {
+            "relationshipName": "tblDepartment",
+            "dbhRelationshipId": "DeptID",
+            "otherEntityName": "tblDepartment",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "deptName",
+            "otherEntityRelationshipName": "tblEmployee",
+            "otherEntityRelationshipNameUndefined": false
+        },
+        {
+            "relationshipName": "tblBranch",
+            "dbhRelationshipId": "BranchID",
+            "otherEntityName": "tblBranch",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "branchName",
+            "otherEntityRelationshipName": "tblEmployee",
+            "otherEntityRelationshipNameUndefined": true
+        }
+    ],
+    "changelogDate": "20200721093012",
     "entityTableName": "TblEmployee",
     "dto": "mapstruct",
     "pagination": "pagination",
