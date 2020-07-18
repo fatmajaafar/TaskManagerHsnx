@@ -44,6 +44,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'branch-hsnx',
         loadChildren: () => import('./branch-hsnx/branch-hsnx.module').then(m => m.TaskManagerHsnxBranchHsnxModule)
+      },
+      {
+        path: 'job-hsnx',
+        loadChildren: () => import('./job-hsnx/job-hsnx.module').then(m => m.TaskManagerHsnxJobHsnxModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])
