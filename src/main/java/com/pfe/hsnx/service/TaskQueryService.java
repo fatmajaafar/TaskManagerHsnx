@@ -128,6 +128,10 @@ public class TaskQueryService extends QueryService<Task> {
             if (criteria.getTaskstate() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getTaskstate(), Task_.taskstate));
             }
+            if (criteria.getTblEmployeeId() != null) {
+                specification = specification.and(buildSpecification(criteria.getTblEmployeeId(),
+                    root -> root.join(Task_.tblEmployee, JoinType.LEFT).get(Employee_.id)));
+            }
         }
         return specification;
     }

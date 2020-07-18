@@ -1,22 +1,19 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-task-hsnx-heading" jhiTranslate="taskManagerHsnxApp.task.home.createOrEditLabel">Create or edit a Task</h2>
+            <h2 id="-task-hsnx-heading" jhiTranslate="taskManagerHsnxApp.task.home.createOrEditLabel">Create or edit a Task</h2>
 
             <div>
-                <jhi-alert-error></jhi-alert-error>
+                
 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text"  id="id" name="id" formControlName="id" readonly />
-                    </mat-form-field>
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                 </div>
 
                 <div class="form-group">
-                    <mat-label  class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.tasktitle" for="field_tasktitle">Tasktitle</mat-label >
-                        <mat-form-field class="example-full-width">
-                    <input matInput type="text"  name="tasktitle" id="field_tasktitle"
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.tasktitle" for="field_tasktitle">Tasktitle</label>
+                    <input type="text" class="form-control" name="tasktitle" id="field_tasktitle"
                            formControlName="tasktitle"/>
                     <div *ngIf="editForm.get('tasktitle')!.invalid && (editForm.get('tasktitle')!.dirty || editForm.get('tasktitle')!.touched)">
                         <small class="form-text text-danger"
@@ -24,21 +21,17 @@
                         This field is required.
                         </small>
                     </div>
-                </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskdescription" for="field_taskdescription">Taskdescription</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text"  name="taskdescription" id="field_taskdescription"
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskdescription" for="field_taskdescription">Taskdescription</label>
+                    <input type="text" class="form-control" name="taskdescription" id="field_taskdescription"
                            formControlName="taskdescription"/>
-                    </mat-form-field>       
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart" for="field_dateStart">Date Start</label>
                     <div class="input-group">
-                        
                         <input id="field_dateStart" type="text" class="form-control" name="dateStart" ngbDatepicker #dateStartDp="ngbDatepicker" formControlName="dateStart"/>
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="dateStartDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
@@ -71,19 +64,15 @@
                 </div>
 
                 <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus">Taskstatus</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="number" name="taskstatus" id="field_taskstatus"
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus">Taskstatus</label>
+                    <input type="number" class="form-control" name="taskstatus" id="field_taskstatus"
                            formControlName="taskstatus"/>
-                    </mat-form-field>       
                 </div>
 
                 <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority">Taskpriority</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="number"  name="taskpriority" id="field_taskpriority"
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority">Taskpriority</label>
+                    <input type="number" class="form-control" name="taskpriority" id="field_taskpriority"
                            formControlName="taskpriority"/>
-                    </mat-form-field>       
                 </div>
 
                 <div class="form-group">
@@ -97,29 +86,23 @@
                 </div>
 
                 <div class="form-group">
-                    <!--<label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory">Taskcategory</label>
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory">Taskcategory</label>
                     <input type="text" class="form-control" name="taskcategory" id="field_taskcategory"
-                           formControlName="taskcategory"/>-->
-
-                           
-                           <mat-form-field class="example-half-width" >
-                            <mat-label jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory">Category</mat-label>
-                            <mat-select name="taskcategory" id="field_taskcategory"
-                            formControlName="taskcategory">
-                              <mat-option value="1">Important</mat-option>
-                              <mat-option value="2">Notes</mat-option>
-                              <mat-option value="3">Links</mat-option>
-                            </mat-select>
-                           </mat-form-field>
-                    
+                           formControlName="taskcategory"/>
                 </div>
 
                 <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskstate" for="field_taskstate">Taskstate</mat-label>
-                        <mat-form-field class="example-full-width">
-                    <input matInput type="number"  name="taskstate" id="field_taskstate"
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskstate" for="field_taskstate">Taskstate</label>
+                    <input type="number" class="form-control" name="taskstate" id="field_taskstate"
                            formControlName="taskstate"/>
-                        </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.tblEmployee" for="field_tblEmployee">Tbl Employee</label>
+                    <select class="form-control" id="field_tblEmployee" name="tblEmployee" formControlName="tblEmployeeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="EmployeeOption.id" *ngFor="let EmployeeOption of employees; trackBy: trackById">{{ EmployeeOption.employeename }}</option>
+                    </select>
                 </div>
             </div>
 

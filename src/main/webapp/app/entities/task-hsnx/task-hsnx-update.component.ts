@@ -9,6 +9,8 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { ITaskHsnx, TaskHsnx } from 'app/shared/model/task-hsnx.model';
 import { TaskHsnxService } from './task-hsnx.service';
+import { IEmployeeHsnx } from 'app/shared/model/employee-hsnx.model';
+import { EmployeeHsnxService } from 'app/entities/employee-hsnx/employee-hsnx.service';
 
 @Component({
   selector: 'jhi-task-hsnx-update',
@@ -16,6 +18,7 @@ import { TaskHsnxService } from './task-hsnx.service';
 })
 export class TaskHsnxUpdateComponent implements OnInit {
   isSaving = false;
+  employees: IEmployeeHsnx[] = [];
   dateStartDp: any;
   dateEndDp: any;
   dueDateDp: any;
@@ -32,10 +35,16 @@ export class TaskHsnxUpdateComponent implements OnInit {
     taskpriority: [],
     dueDate: [],
     taskcategory: [],
-    taskstate: []
+    taskstate: [],
+    tblEmployeeId: []
   });
 
-  constructor(protected taskService: TaskHsnxService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected taskService: TaskHsnxService,
+    protected EmployeeService: EmployeeHsnxService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ task }) => {
@@ -46,6 +55,8 @@ export class TaskHsnxUpdateComponent implements OnInit {
       }
 
       this.updateForm(task);
+
+      this.EmployeeService.query().subscribe((res: HttpResponse<IEmployeeHsnx[]>) => (this.employees = res.body || []));
     });
   }
 
@@ -62,7 +73,8 @@ export class TaskHsnxUpdateComponent implements OnInit {
       taskpriority: task.taskpriority,
       dueDate: task.dueDate,
       taskcategory: task.taskcategory,
-      taskstate: task.taskstate
+      taskstate: task.taskstate,
+      tblEmployeeId: task.tblEmployeeId
     });
   }
 
@@ -94,7 +106,8 @@ export class TaskHsnxUpdateComponent implements OnInit {
       taskpriority: this.editForm.get(['taskpriority'])!.value,
       dueDate: this.editForm.get(['dueDate'])!.value,
       taskcategory: this.editForm.get(['taskcategory'])!.value,
-      taskstate: this.editForm.get(['taskstate'])!.value
+      taskstate: this.editForm.get(['taskstate'])!.value,
+      tblEmployeeId: this.editForm.get(['tblEmployeeId'])!.value
     };
   }
 
@@ -112,5 +125,9 @@ export class TaskHsnxUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IEmployeeHsnx): any {
+    return item.id;
   }
 }

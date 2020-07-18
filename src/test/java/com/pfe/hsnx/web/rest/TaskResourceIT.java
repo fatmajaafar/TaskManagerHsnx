@@ -2,6 +2,7 @@ package com.pfe.hsnx.web.rest;
 
 import com.pfe.hsnx.TaskManagerHsnxApp;
 import com.pfe.hsnx.domain.Task;
+import com.pfe.hsnx.domain.Employee;
 import com.pfe.hsnx.repository.TaskRepository;
 import com.pfe.hsnx.repository.search.TaskSearchRepository;
 import com.pfe.hsnx.service.TaskService;
@@ -1294,6 +1295,26 @@ public class TaskResourceIT {
 
         // Get all the taskList where taskstate is greater than SMALLER_TASKSTATE
         defaultTaskShouldBeFound("taskstate.greaterThan=" + SMALLER_TASKSTATE);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllTasksByTblEmployeeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        taskRepository.saveAndFlush(task);
+        Employee tblEmployee = EmployeeResourceIT.createEntity(em);
+        em.persist(tblEmployee);
+        em.flush();
+        task.setTblEmployee(tblEmployee);
+        taskRepository.saveAndFlush(task);
+        Long tblEmployeeId = tblEmployee.getId();
+
+        // Get all the taskList where tblEmployee equals to tblEmployeeId
+        defaultTaskShouldBeFound("tblEmployeeId.equals=" + tblEmployeeId);
+
+        // Get all the taskList where tblEmployee equals to tblEmployeeId + 1
+        defaultTaskShouldNotBeFound("tblEmployeeId.equals=" + (tblEmployeeId + 1));
     }
 
     /**

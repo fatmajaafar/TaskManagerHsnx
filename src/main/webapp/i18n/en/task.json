@@ -27,7 +27,8 @@
       "taskpriority": "Taskpriority",
       "dueDate": "Due Date",
       "taskcategory": "Taskcategory",
-      "taskstate": "Taskstate"
+      "taskstate": "Taskstate",
+      "tblEmployee": "Tbl Employee"
     }
   }
 }

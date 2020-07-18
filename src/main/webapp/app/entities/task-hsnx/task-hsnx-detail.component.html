@@ -5,7 +5,7 @@
 
             <hr>
 
-            <jhi-alert-error></jhi-alert-error>
+            
 
             <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="taskManagerHsnxApp.task.tasktitle">Tasktitle</span></dt>
@@ -51,6 +51,12 @@
                 <dt><span jhiTranslate="taskManagerHsnxApp.task.taskstate">Taskstate</span></dt>
                 <dd>
                     <span>{{ task.taskstate }}</span>
+                </dd>
+                <dt><span jhiTranslate="taskManagerHsnxApp.task.tblEmployee">Tbl Employee</span></dt>
+                <dd>
+                    <div *ngIf="task.tblEmployeeId">
+                        <a [routerLink]="['/employee-hsnx', task.tblEmployeeId, 'view']">{{ task.tblEmployeeEmployeename }}</a>
+                    </div>
                 </dd>
             </dl>
 

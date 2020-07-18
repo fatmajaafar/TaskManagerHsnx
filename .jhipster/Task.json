@@ -64,15 +64,15 @@
         {
             "relationshipName": "tblEmployee",
             "dbhRelationshipId": "EmpID",
-            "otherEntityName": "tblEmployee",
+            "otherEntityName": "Employee",
             "relationshipType": "many-to-one",
-            "otherEntityField": "empFnameAr",
-            "otherEntityRelationshipName": "TblTask",
+            "otherEntityField": "employeename",
+            "otherEntityRelationshipName": "tblTask",
             "otherEntityRelationshipNameUndefined": false
         }
     ],
     "changelogDate": "20200720093012",
-    "entityTableName": "TblTask",
+    "entityTableName": "tblTask",
     "dto": "mapstruct",
     "pagination": "pagination",
     "service": "serviceImpl",

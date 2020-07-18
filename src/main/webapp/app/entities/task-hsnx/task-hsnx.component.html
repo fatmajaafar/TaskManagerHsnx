@@ -10,9 +10,9 @@
         </button>
     </h2>
 
-    <jhi-alert-error></jhi-alert-error>
+    
 
-    <jhi-alert></jhi-alert>
+    >
 
     <div class="row">
         <div class="col-sm-12">
@@ -40,7 +40,7 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="tasktitle"><span jhiTranslate="taskManagerHsnxApp.task.tasktitle">Tasktitle</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="taskdescription"><span jhiTranslate="taskManagerHsnxApp.task.taskdescription">Taskdescription</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="dateStart"><span jhiTranslate="taskManagerHsnxApp.task.dateStart">Date Start</span> <fa-icon icon="sort"></fa-icon></th>
@@ -52,12 +52,13 @@
                     <th scope="col"  jhiSortBy="dueDate"><span jhiTranslate="taskManagerHsnxApp.task.dueDate">Due Date</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="taskcategory"><span jhiTranslate="taskManagerHsnxApp.task.taskcategory">Taskcategory</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="taskstate"><span jhiTranslate="taskManagerHsnxApp.task.taskstate">Taskstate</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tblEmployeeEmployeename"><span jhiTranslate="taskManagerHsnxApp.task.tblEmployee">Tbl Employee</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let task of tasks ;trackBy: trackId">
-                    
+                    <td><a [routerLink]="['/task-hsnx', task.id, 'view']">{{ task.id }}</a></td>
                     <td>{{ task.tasktitle }}</td>
                     <td>{{ task.taskdescription }}</td>
                     <td>{{ task.dateStart | date:'mediumDate' }}</td>
@@ -69,6 +70,11 @@
                     <td>{{ task.dueDate | date:'mediumDate' }}</td>
                     <td>{{ task.taskcategory }}</td>
                     <td>{{ task.taskstate }}</td>
+                    <td>
+                        <div *ngIf="task.tblEmployeeId">
+                            <a [routerLink]="['/employee-hsnx', task.tblEmployeeId , 'view']" >{{ task.tblEmployeeEmployeename }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

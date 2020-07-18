@@ -37,6 +37,10 @@ public class TaskDTO implements Serializable {
     private Integer taskstate;
 
 
+    private Long tblEmployeeId;
+
+    private String tblEmployeeEmployeename;
+
     public Long getId() {
         return id;
     }
@@ -133,6 +137,22 @@ public class TaskDTO implements Serializable {
         this.taskstate = taskstate;
     }
 
+    public Long getTblEmployeeId() {
+        return tblEmployeeId;
+    }
+
+    public void setTblEmployeeId(Long EmployeeId) {
+        this.tblEmployeeId = EmployeeId;
+    }
+
+    public String getTblEmployeeEmployeename() {
+        return tblEmployeeEmployeename;
+    }
+
+    public void setTblEmployeeEmployeename(String EmployeeEmployeename) {
+        this.tblEmployeeEmployeename = EmployeeEmployeename;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -169,6 +189,8 @@ public class TaskDTO implements Serializable {
             ", dueDate='" + getDueDate() + "'" +
             ", taskcategory='" + getTaskcategory() + "'" +
             ", taskstate=" + getTaskstate() +
+            ", tblEmployeeId=" + getTblEmployeeId() +
+            ", tblEmployeeEmployeename='" + getTblEmployeeEmployeename() + "'" +
             "}";
     }
 }

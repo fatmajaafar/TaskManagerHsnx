@@ -106,6 +106,12 @@
                             <span jhiTranslate="global.menu.entities.employeeHsnx">Employee Hsnx</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="task-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.taskHsnx">Task Hsnx</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
              <ul class="navbar-nav ml-auto"> 
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" matTooltip="Administration">

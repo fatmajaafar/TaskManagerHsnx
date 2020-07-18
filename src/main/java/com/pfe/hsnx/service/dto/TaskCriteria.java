@@ -50,6 +50,8 @@ public class TaskCriteria implements Serializable, Criteria {
 
     private IntegerFilter taskstate;
 
+    private LongFilter tblEmployeeId;
+
     public TaskCriteria() {
     }
 
@@ -66,6 +68,7 @@ public class TaskCriteria implements Serializable, Criteria {
         this.dueDate = other.dueDate == null ? null : other.dueDate.copy();
         this.taskcategory = other.taskcategory == null ? null : other.taskcategory.copy();
         this.taskstate = other.taskstate == null ? null : other.taskstate.copy();
+        this.tblEmployeeId = other.tblEmployeeId == null ? null : other.tblEmployeeId.copy();
     }
 
     @Override
@@ -169,6 +172,14 @@ public class TaskCriteria implements Serializable, Criteria {
         this.taskstate = taskstate;
     }
 
+    public LongFilter getTblEmployeeId() {
+        return tblEmployeeId;
+    }
+
+    public void setTblEmployeeId(LongFilter tblEmployeeId) {
+        this.tblEmployeeId = tblEmployeeId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -191,7 +202,8 @@ public class TaskCriteria implements Serializable, Criteria {
             Objects.equals(taskpriority, that.taskpriority) &&
             Objects.equals(dueDate, that.dueDate) &&
             Objects.equals(taskcategory, that.taskcategory) &&
-            Objects.equals(taskstate, that.taskstate);
+            Objects.equals(taskstate, that.taskstate) &&
+            Objects.equals(tblEmployeeId, that.tblEmployeeId);
     }
 
     @Override
@@ -208,7 +220,8 @@ public class TaskCriteria implements Serializable, Criteria {
         taskpriority,
         dueDate,
         taskcategory,
-        taskstate
+        taskstate,
+        tblEmployeeId
         );
     }
 
@@ -227,6 +240,7 @@ public class TaskCriteria implements Serializable, Criteria {
                 (dueDate != null ? "dueDate=" + dueDate + ", " : "") +
                 (taskcategory != null ? "taskcategory=" + taskcategory + ", " : "") +
                 (taskstate != null ? "taskstate=" + taskstate + ", " : "") +
+                (tblEmployeeId != null ? "tblEmployeeId=" + tblEmployeeId + ", " : "") +
             "}";
     }
 

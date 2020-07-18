@@ -13,6 +13,8 @@ export interface ITaskHsnx {
   dueDate?: Moment;
   taskcategory?: string;
   taskstate?: number;
+  tblEmployeeEmployeename?: string;
+  tblEmployeeId?: number;
 }
 
 export class TaskHsnx implements ITaskHsnx {
@@ -28,6 +30,8 @@ export class TaskHsnx implements ITaskHsnx {
     public taskpriority?: number,
     public dueDate?: Moment,
     public taskcategory?: string,
-    public taskstate?: number
+    public taskstate?: number,
+    public tblEmployeeEmployeename?: string,
+    public tblEmployeeId?: number
   ) {}
 }
