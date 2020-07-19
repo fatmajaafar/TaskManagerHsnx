@@ -21,6 +21,7 @@
     "typedef": [false, "call-signature"],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/class-name-casing": "warn",
     "class-name": false,
     "camelcase": "off",
     "@typescript-eslint/camelcase": ["warn"]

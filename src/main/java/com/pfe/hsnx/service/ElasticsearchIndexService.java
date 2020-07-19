@@ -1,6 +1,6 @@
 package com.pfe.hsnx.service;
 
-
+import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pfe.hsnx.domain.*;
 import com.pfe.hsnx.repository.*;
@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import com.github.vanroy.springdata.jest.JestElasticsearchTemplate;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.scheduling.annotation.Async;
@@ -77,7 +79,7 @@ public class ElasticsearchIndexService {
 
     private final UserSearchRepository userSearchRepository;
 
-    private final ElasticsearchTemplate elasticsearchTemplate;
+    private final JestElasticsearchTemplate elasticsearchTemplate;
 
     public ElasticsearchIndexService(
         UserRepository userRepository,
@@ -99,7 +101,7 @@ public class ElasticsearchIndexService {
         NotificationSearchRepository notificationSearchRepository,
         TaskRepository taskRepository,
         TaskSearchRepository taskSearchRepository,
-        ElasticsearchTemplate elasticsearchTemplate) {
+        JestElasticsearchTemplate elasticsearchTemplate) {
         this.userRepository = userRepository;
         this.userSearchRepository = userSearchRepository;
         this.branchRepository = branchRepository;
@@ -176,7 +178,7 @@ public class ElasticsearchIndexService {
 
             int size = 100;
             for (int i = 0; i <= jpaRepository.count() / size; i++) {
-                Pageable page = new PageRequest(i, size);
+                Pageable page = PageRequest.of(i, size, Sort.by("id"));
                 log.info("Indexing page {} of {}, size {}", i, jpaRepository.count() / size, size);
                 Page<T> results = jpaRepository.findAll(page);
                 results.map(result -> {
@@ -191,10 +193,10 @@ public class ElasticsearchIndexService {
                     });
                     return result;
                 });
-                elasticsearchRepository.save(results.getContent());
+                elasticsearchRepository.saveAll(results.getContent());
             }
         }
-        } catch (IndexAlreadyExistsException e) {
+        } catch (Exception e) {
             // Do nothing. Index was already concurrently recreated by some other service.
         }
         log.info("Elasticsearch: Indexed all rows for {}", entityClass.getSimpleName());

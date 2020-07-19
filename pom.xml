@@ -268,6 +268,11 @@
             <version>${log4j2-mock.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+    <groupId>io.astefanutti.metrics.aspectj</groupId>
+    <artifactId>metrics-aspectj</artifactId>
+    <version>1.2.0</version>
+</dependency>
         <!-- end of Spring Data Jest dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -429,10 +434,7 @@
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-            </plugin>
+            
             <!-- jhipster-needle-maven-add-plugin -->
         </plugins>
         <pluginManagement>
@@ -540,23 +542,24 @@
                     <version>${frontend-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>properties-maven-plugin</artifactId>
-                    <version>${properties-maven-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <phase>initialize</phase>
-                            <goals>
-                                <goal>read-project-properties</goal>
-                            </goals>
-                            <configuration>
-                                <files>
-                                    <file>sonar-project.properties</file>
-                                </files>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>aspectj-maven-plugin</artifactId>
+    <configuration>
+        <aspectLibraries>
+            <aspectLibrary>
+                <groupId>io.astefanutti.metrics.aspectj</groupId>
+                <artifactId>metrics-aspectj</artifactId>
+            </aspectLibrary>
+        </aspectLibraries>
+    </configuration>
+    <executions>
+        <execution>
+            <goals>
+                <goal>compile</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 
                 <plugin>
                     <groupId>pl.project13.maven</groupId>

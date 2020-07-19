@@ -9,7 +9,7 @@ import { ProfileComponent } from './profile.component';
 import { Profile, IProfile } from 'app/shared/model/profile.model';
 
 @Injectable({ providedIn: 'root' })
-export class taskManagementHsnxResolve implements Resolve<IProfile> {
+export class TaskManagementHsnxResolve implements Resolve<IProfile> {
   constructor(private service: ProfileService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<IProfile> | Observable<never> {

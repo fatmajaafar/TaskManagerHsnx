@@ -9,7 +9,7 @@ import { ITaskmanagementHsnx, TaskmanagementHsnx } from 'app/shared/model/taskma
 import { TaskmanagementHsnxComponent } from './taskmanagement-hsnx.component';
 
 @Injectable({ providedIn: 'root' })
-export class taskManagementHsnxResolve implements Resolve<ITaskmanagementHsnx> {
+export class TaskManagementHsnxResolve implements Resolve<ITaskmanagementHsnx> {
   constructor(private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<ITaskmanagementHsnx> | Observable<never> {

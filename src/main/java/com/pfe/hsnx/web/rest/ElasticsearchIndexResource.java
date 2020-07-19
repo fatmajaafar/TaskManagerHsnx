@@ -1,10 +1,10 @@
 package com.pfe.hsnx.web.rest;
 
-
+import com.codahale.metrics.annotation.Timed;
 import com.pfe.hsnx.security.AuthoritiesConstants;
 import com.pfe.hsnx.security.SecurityUtils;
 import com.pfe.hsnx.service.ElasticsearchIndexService;
-
+import com.hosinox.main.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
