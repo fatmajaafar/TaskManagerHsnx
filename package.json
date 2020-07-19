@@ -35,6 +35,7 @@
     "font-awesome": "^4.7.0",
     "g": "^2.0.1",
     "generator-jhipster-db-helper": "^1.2.0",
+    "generator-jhipster-elasticsearch-reindexer": "^1.2.1",
     "immer": "^7.0.5",
     "jhipster": "0.0.2",
     "moment": "2.24.0",

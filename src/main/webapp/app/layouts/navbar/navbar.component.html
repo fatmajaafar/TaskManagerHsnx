@@ -171,6 +171,12 @@
                             <span jhiTranslate="global.menu.admin.apidocs">API</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="elasticsearch-reindex" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="fw fa-search" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.admin.elasticsearchReindex">Elasticsearch Reindex</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
                 </ul>
             </li>
