@@ -2,31 +2,31 @@
     <h2 id="page-heading">
         <span jhiTranslate="taskManagerHsnxApp.job.home.title">Jobs</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-job-hsnx" [routerLink]="['/job-hsnx/new']">
+        <button mat-fab color="primary"  id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-job-hsnx" [routerLink]="['/job-hsnx/new']" matTooltip="Add new Job">
             <fa-icon icon="plus"></fa-icon>
-            <span class="hidden-sm-down"  jhiTranslate="taskManagerHsnxApp.job.home.createLabel">
+            <!--<span class="hidden-sm-down"  jhiTranslate="taskManagerHsnxApp.job.home.createLabel">
             Create a new Job
-            </span>
+            </span>-->
         </button>
     </h2>
 
    
 
-    
-
     <div class="row">
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
-                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.job.home.search' | translate }}">
+                    <mat-form-field>
+                    <input matInput type="text" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.job.home.search' | translate }}">
+                    </mat-form-field>
 
-                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                    <button mat-mini-fab color="primary" class="input-group-append btn btn-info" (click)="search(currentSearch)">
                         <fa-icon icon="search"></fa-icon>
                     </button>
 
-                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                    <!--<button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
                         <fa-icon icon="trash-alt"></fa-icon>
-                    </button>
+                    </button>-->
                 </div>
             </form>
         </div>
@@ -39,15 +39,13 @@
     <div class="table-responsive" id="entities" *ngIf="jobs?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="jobTitle"><span jhiTranslate="taskManagerHsnxApp.job.jobTitle">Job Title</span> <fa-icon icon="sort"></fa-icon></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)" style="background-color: #5f83c5">
+                    <th scope="col"  jhiSortBy="jobTitle"><span jhiTranslate="taskManagerHsnxApp.job.jobTitle" style="color: white;">Job Title</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let job of jobs ;trackBy: trackId">
-                    <td><a [routerLink]="['/job-hsnx', job.id, 'view']">{{ job.id }}</a></td>
                     <td>{{ job.jobTitle }}</td>
                     <td class="text-right">
                         <div class="btn-group">

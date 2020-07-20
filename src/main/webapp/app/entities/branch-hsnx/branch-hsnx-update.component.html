@@ -6,13 +6,16 @@
             <div>
 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchName" for="field_branchName">Branch Name</label>
-                    <input type="text" class="form-control" name="branchName" id="field_branchName"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchName" for="field_branchName">Branch Name</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="branchName" id="field_branchName"
                            formControlName="branchName"/>
                     <div *ngIf="editForm.get('branchName')!.invalid && (editForm.get('branchName')!.dirty || editForm.get('branchName')!.touched)">
                         <small class="form-text text-danger"
@@ -20,42 +23,55 @@
                         This field is required.
                         </small>
                     </div>
+                </mat-form-field>
                 </div>
-
+                
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchPhone" for="field_branchPhone">Branch Phone</label>
-                    <input type="text" class="form-control" name="branchPhone" id="field_branchPhone"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchPhone" for="field_branchPhone">Branch Phone</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text" name="branchPhone" id="field_branchPhone"
                            formControlName="branchPhone"/>
+                        </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchFax" for="field_branchFax">Branch Fax</label>
-                    <input type="text" class="form-control" name="branchFax" id="field_branchFax"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchFax" for="field_branchFax">Branch Fax</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="branchFax" id="field_branchFax"
                            formControlName="branchFax"/>
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchAddress" for="field_branchAddress">Branch Address</label>
-                    <input type="text" class="form-control" name="branchAddress" id="field_branchAddress"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchAddress" for="field_branchAddress">Branch Address</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="branchAddress" id="field_branchAddress"
                            formControlName="branchAddress"/>
+                        </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchEmail" for="field_branchEmail">Branch Email</label>
-                    <input type="text" class="form-control" name="branchEmail" id="field_branchEmail"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchEmail" for="field_branchEmail">Branch Email</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="branchEmail" id="field_branchEmail"
                            formControlName="branchEmail"/>
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchBanner" for="field_branchBanner">Branch Banner</label>
-                    <input type="text" class="form-control" name="branchBanner" id="field_branchBanner"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchBanner" for="field_branchBanner">Branch Banner</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text" name="branchBanner" id="field_branchBanner"
                            formControlName="branchBanner"/>
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchDefaultExercice" for="field_branchDefaultExercice">Branch Default Exercice</label>
-                    <input type="number" class="form-control" name="branchDefaultExercice" id="field_branchDefaultExercice"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.branch.branchDefaultExercice" for="field_branchDefaultExercice">Branch Default Exercice</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="number"  name="branchDefaultExercice" id="field_branchDefaultExercice"
                            formControlName="branchDefaultExercice"/>
+                    </mat-form-field>
                 </div>
             </div>
 

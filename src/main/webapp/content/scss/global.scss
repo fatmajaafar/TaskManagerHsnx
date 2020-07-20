@@ -218,4 +218,17 @@ ui bootstrap tweaks
 .cdk-overlay-container {
   z-index: 9999 !important;
 }
+
+.material-icons.delete {
+  color: #ab000d;
+  font-size: 18px;
+}
+.material-icons.edit {
+  color: #34515e;
+  font-size: 18px;
+}
+.material-icons.view {
+  color: #000051;
+  font-size: 18px;
+}
 /* jhipster-needle-scss-add-main JHipster will add new css style */

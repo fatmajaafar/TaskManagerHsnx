@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { TaskManagerHsnxSharedModule } from 'app/shared/shared.module';
 import { EmployeeHsnxComponent } from './employee-hsnx.component';
 import { EmployeeHsnxDetailComponent } from './employee-hsnx-detail.component';

@@ -7,13 +7,16 @@
                
 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  id="id" name="id" formControlName="id" readonly />
+                </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.job.jobTitle" for="field_jobTitle">Job Title</label>
-                    <input type="text" class="form-control" name="jobTitle" id="field_jobTitle"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.job.jobTitle" for="field_jobTitle">Job Title</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="jobTitle" id="field_jobTitle"
                            formControlName="jobTitle"/>
                     <div *ngIf="editForm.get('jobTitle')!.invalid && (editForm.get('jobTitle')!.dirty || editForm.get('jobTitle')!.touched)">
                         <small class="form-text text-danger"
@@ -21,6 +24,7 @@
                         This field is required.
                         </small>
                     </div>
+                </mat-form-field>
                 </div>
             </div>
 

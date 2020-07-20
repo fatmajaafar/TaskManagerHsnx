@@ -80,44 +80,33 @@
                                 </span>
                         </a>
                     </li>
-                    <a class="nav-link" routerLink="taskmanagement-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Task management">
-                        <span>
-                            <fa-icon icon="tasks"></fa-icon>
-                        
-                        </span>
-                    </a>
+                    <li>
+                        <a class="nav-link" routerLink="taskmanagement-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Task management">
+                            <span>
+                                <fa-icon icon="tasks"></fa-icon>
+                            
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" routerLink="branch-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Employee Branch">
+                            <span class="material-icons">
+                                account_tree
+                                </span>
+                            
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" routerLink="job-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Employee Job">
+                            <span class="material-icons">
+                                work
+                                </span>
+                        </a>
+                    </li>
                 </ul>
                    
-                    <li>
-                        <a class="dropdown-item" routerLink="branch-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.branchHsnx">Branch Hsnx</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="job-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.jobHsnx">Job Hsnx</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="employee-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.employeeHsnx">Employee Hsnx</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="task-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.taskHsnx">Task Hsnx</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="event-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.eventHsnx">Event Hsnx</span>
-                        </a>
-                    </li>
+                    
+                    
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
              <ul class="navbar-nav ml-auto"> 
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" matTooltip="Administration">

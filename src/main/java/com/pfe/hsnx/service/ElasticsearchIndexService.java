@@ -129,10 +129,10 @@ public class ElasticsearchIndexService {
     public void reindexAll() {
         if (reindexLock.tryLock()) {
             try {
-                reindexForClass(Branch.class, branchRepository, branchSearchRepository);
-                reindexForClass(Country.class, countryRepository, countrySearchRepository);
+                // reindexForClass(Branch.class, branchRepository, branchSearchRepository);
+               // reindexForClass(Country.class, countryRepository, countrySearchRepository);
                 reindexForClass(Department.class, departmentRepository, departmentSearchRepository);
-                reindexForClass(Employee.class, employeeRepository, employeeSearchRepository);
+               // reindexForClass(Employee.class, employeeRepository, employeeSearchRepository);
                 reindexForClass(Event.class, eventRepository, eventSearchRepository);
                 reindexForClass(Job.class, jobRepository, jobSearchRepository);
                 

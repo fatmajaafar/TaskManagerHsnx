@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import './vendor';
 import { TaskManagerHsnxSharedModule } from 'app/shared/shared.module';
 import { TaskManagerHsnxCoreModule } from 'app/core/core.module';
@@ -23,6 +22,8 @@ import { KanbanModule } from './simple-kanban/kanban.module';
 import { SkyhookDndModule } from '@angular-skyhook/core';
 import { ToastrModule } from 'ngx-toastr';
 import { WebSocketService } from './layouts/main/WebSocketService';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -42,7 +43,9 @@ import { WebSocketService } from './layouts/main/WebSocketService';
     MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [WebSocketService],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],

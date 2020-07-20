@@ -7,13 +7,16 @@
                 
 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  id="id" name="id" formControlName="id" readonly />
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.eventdescription" for="field_eventdescription">Eventdescription</label>
-                    <input type="text" class="form-control" name="eventdescription" id="field_eventdescription"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.eventdescription" for="field_eventdescription">Eventdescription</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="eventdescription" id="field_eventdescription"
                            formControlName="eventdescription"/>
                     <div *ngIf="editForm.get('eventdescription')!.invalid && (editForm.get('eventdescription')!.dirty || editForm.get('eventdescription')!.touched)">
                         <small class="form-text text-danger"
@@ -21,6 +24,7 @@
                         This field is required.
                         </small>
                     </div>
+                </mat-form-field>
                 </div>
 
                 <div class="form-group">
@@ -58,11 +62,13 @@
                 </div>
 
                 <div class="form-group">
+                  
                     <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.tblTask" for="field_tblTask">Tbl Task</label>
                     <select class="form-control" id="field_tblTask" name="tblTask" formControlName="tblTaskId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="TaskOption.id" *ngFor="let TaskOption of tasks; trackBy: trackById">{{ TaskOption.tasktitle }}</option>
                     </select>
+               
                 </div>
             </div>
 

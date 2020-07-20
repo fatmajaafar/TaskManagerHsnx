@@ -7,13 +7,16 @@
                
 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeename" for="field_employeename">Employeename</label>
-                    <input type="text" class="form-control" name="employeename" id="field_employeename"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeename" for="field_employeename">Employeename</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="employeename" id="field_employeename"
                            formControlName="employeename"/>
                     <div *ngIf="editForm.get('employeename')!.invalid && (editForm.get('employeename')!.dirty || editForm.get('employeename')!.touched)">
                         <small class="form-text text-danger"
@@ -21,30 +24,39 @@
                         This field is required.
                         </small>
                     </div>
+                </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeephone" for="field_employeephone">Employeephone</label>
-                    <input type="text" class="form-control" name="employeephone" id="field_employeephone"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeephone" for="field_employeephone">Employeephone</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text"  name="employeephone" id="field_employeephone"
                            formControlName="employeephone"/>
+                        </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeefax" for="field_employeefax">Employeefax</label>
-                    <input type="text" class="form-control" name="employeefax" id="field_employeefax"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeefax" for="field_employeefax">Employeefax</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text" name="employeefax" id="field_employeefax"
                            formControlName="employeefax"/>
+                        </mat-form-field>       
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeeaddress" for="field_employeeaddress">Employeeaddress</label>
-                    <input type="text" class="form-control" name="employeeaddress" id="field_employeeaddress"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeeaddress" for="field_employeeaddress">Employeeaddress</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text" class="form-control" name="employeeaddress" id="field_employeeaddress"
                            formControlName="employeeaddress"/>
+                        </mat-form-field>       
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeeemail" for="field_employeeemail">Employeeemail</label>
-                    <input type="text" class="form-control" name="employeeemail" id="field_employeeemail"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeeemail" for="field_employeeemail">Employeeemail</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="text" name="employeeemail" id="field_employeeemail"
                            formControlName="employeeemail"/>
+                        </mat-form-field>
                 </div>
 
                 <div class="form-group">
@@ -58,27 +70,33 @@
                 </div>
 
                 <div class="form-group">
+                   
                     <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblJob" for="field_tblJob">Tbl Job</label>
                     <select class="form-control" id="field_tblJob" name="tblJob" formControlName="tblJobId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="JobOption.id" *ngFor="let JobOption of jobs; trackBy: trackById">{{ JobOption.jobTitle }}</option>
                     </select>
+                   
                 </div>
 
                 <div class="form-group">
+                    
                     <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblDepartment" for="field_tblDepartment">Tbl Department</label>
                     <select class="form-control" id="field_tblDepartment" name="tblDepartment" formControlName="tblDepartmentId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="DepartmentOption.id" *ngFor="let DepartmentOption of departments; trackBy: trackById">{{ DepartmentOption.deptName }}</option>
                     </select>
+                  
                 </div>
 
                 <div class="form-group">
+                    
                     <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblBranch" for="field_tblBranch">Tbl Branch</label>
                     <select class="form-control" id="field_tblBranch" name="tblBranch" formControlName="tblBranchId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="BranchOption.id" *ngFor="let BranchOption of branches; trackBy: trackById">{{ BranchOption.branchName }}</option>
                     </select>
+               
                 </div>
             </div>
 

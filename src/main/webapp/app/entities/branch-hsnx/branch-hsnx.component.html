@@ -2,11 +2,11 @@
     <h2 id="page-heading">
         <span jhiTranslate="taskManagerHsnxApp.branch.home.title">Branches</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-branch-hsnx" [routerLink]="['/branch-hsnx/new']">
+        <button mat-fab color="primary" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-branch-hsnx" [routerLink]="['/branch-hsnx/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span class="hidden-sm-down"  jhiTranslate="taskManagerHsnxApp.branch.home.createLabel">
+          <!-- <span class="hidden-sm-down"  jhiTranslate="taskManagerHsnxApp.branch.home.createLabel">
             Create a new Branch
-            </span>
+            </span>-->
         </button>
     </h2>
 
@@ -16,15 +16,16 @@
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
-                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.branch.home.search' | translate }}">
-
-                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                    <mat-form-field>
+                    <input matInput type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'taskManagerHsnxApp.branch.home.search' | translate }}">
+                    </mat-form-field>
+                    <button mat-mini-fab color="primary" class="input-group-append btn btn-info" (click)="search(currentSearch)">
                         <fa-icon icon="search"></fa-icon>
                     </button>
 
-                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                    <!--<button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
                         <fa-icon icon="trash-alt"></fa-icon>
-                    </button>
+                    </button>-->
                 </div>
             </form>
         </div>
@@ -37,21 +38,19 @@
     <div class="table-responsive" id="entities" *ngIf="branches?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchName"><span jhiTranslate="taskManagerHsnxApp.branch.branchName">Branch Name</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchPhone"><span jhiTranslate="taskManagerHsnxApp.branch.branchPhone">Branch Phone</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchFax"><span jhiTranslate="taskManagerHsnxApp.branch.branchFax">Branch Fax</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchAddress"><span jhiTranslate="taskManagerHsnxApp.branch.branchAddress">Branch Address</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchEmail"><span jhiTranslate="taskManagerHsnxApp.branch.branchEmail">Branch Email</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchBanner"><span jhiTranslate="taskManagerHsnxApp.branch.branchBanner">Branch Banner</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="branchDefaultExercice"><span jhiTranslate="taskManagerHsnxApp.branch.branchDefaultExercice">Branch Default Exercice</span> <fa-icon icon="sort"></fa-icon></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)" style="background-color: #5f83c5">
+                     <th scope="col"  jhiSortBy="branchName" ><span jhiTranslate="taskManagerHsnxApp.branch.branchName" style="color: white;">Branch Name</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="branchPhone"><span jhiTranslate="taskManagerHsnxApp.branch.branchPhone" style="color: white;">Branch Phone</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="branchFax"><span jhiTranslate="taskManagerHsnxApp.branch.branchFax" style="color: white;">Branch Fax</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="branchAddress"><span jhiTranslate="taskManagerHsnxApp.branch.branchAddress" style="color: white;">Branch Address</span> <fa-icon icon="sort" class="text-white" ></fa-icon></th>
+                    <th scope="col"  jhiSortBy="branchEmail"><span jhiTranslate="taskManagerHsnxApp.branch.branchEmail" style="color: white;">Branch Email</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="branchBanner"><span jhiTranslate="taskManagerHsnxApp.branch.branchBanner" style="color: white;">Branch Banner</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="branchDefaultExercice"><span jhiTranslate="taskManagerHsnxApp.branch.branchDefaultExercice" style="color: white;">Branch Default Exercice</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let branch of branches ;trackBy: trackId">
-                    <td><a [routerLink]="['/branch-hsnx', branch.id, 'view']">{{ branch.id }}</a></td>
                     <td>{{ branch.branchName }}</td>
                     <td>{{ branch.branchPhone }}</td>
                     <td>{{ branch.branchFax }}</td>
@@ -65,20 +64,17 @@
                                     [routerLink]="['/branch-hsnx', branch.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
 
                             <button type="submit"
                                     [routerLink]="['/branch-hsnx', branch.id, 'edit']"
                                     class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
 
                             <button type="submit" (click)="delete(branch)"
                                     class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                             </button>
                         </div>
                     </td>
