@@ -1,5 +1,8 @@
 @import './includes';
-
+h1 {
+  margin: 0;
+  font-weight: 100;
+}
 :host {
   display: flex;
   flex-direction: column;
@@ -7,6 +10,7 @@
 
 .relative {
   position: relative;
+  text-align: center;
 }
 
 .text {

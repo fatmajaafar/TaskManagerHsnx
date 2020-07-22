@@ -1,10 +1,15 @@
-import { Injectable } from '@angular/core';
+/*eslint-disable*/
+import { Injectable, OnInit } from '@angular/core';
 import { SortableSpec, DraggedItem } from '@angular-skyhook/sortable';
 import { ItemTypes } from './item-types';
 import { produce } from 'immer';
+import { TaskHsnxService } from 'app/entities/task-hsnx/task-hsnx.service';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { EmployeeHsnxService } from 'app/entities/employee-hsnx/employee-hsnx.service';
+import { Observable } from 'rxjs';
+import { ITaskHsnx } from 'app/shared/model/task-hsnx.model';
 
 export type CardTree = Array<CardList>;
-
 export interface CardList {
   id: number;
   title: string;
@@ -12,9 +17,9 @@ export interface CardList {
 }
 
 export interface Card {
-  listId: number;
-  id: number;
-  title: string;
+  listId?: number;
+  id?: number;
+  title?: string;
 }
 
 @Injectable({
@@ -49,19 +54,59 @@ export class SortableSpecService {
     }
   };
 
+  cards: Card[] = [];
+
   private initialTree: CardTree = [
     {
       id: 1,
       title: 'To Do',
-      cards: [
-        { listId: 1, id: 10, title: 'Task number one' },
-        { listId: 1, id: 20, title: 'Put the lyrics to music' }
-      ]
+      cards: [{ title: '' }, { title: '' }]
     },
-    { id: 2, title: 'Doing', cards: [{ listId: 2, id: 30, title: 'Rig up the speakers' }] },
-    { id: 3, title: 'Done', cards: [] }
+    {
+      id: 2,
+      title: 'Doing',
+      cards: []
+    },
+    {
+      id: 3,
+      title: 'Done',
+      cards: []
+    }
   ];
 
+  constructor(protected taskService: TaskHsnxService, private http: HttpClient, protected employeeService: EmployeeHsnxService) {}
+
+  getCards(): Observable<any[]> {
+    this.cards = [];
+    this.taskService
+      .query({
+        size: 10000
+      })
+      .subscribe(
+        (res: HttpResponse<ITaskHsnx[]>) => {
+          if (res.body) {
+            // let i = 0;
+
+            res.body.forEach(element => {
+              //i += 1;
+
+              const task: Card = {};
+              task.listId = element.taskstatus;
+              //task.listId= 1;
+              task.id = element.id;
+              task.title = element.tasktitle;
+              this.cards.push(task);
+            });
+          }
+        },
+        () => ''
+      );
+    return new Observable(observer => {
+      setTimeout(() => {
+        observer.next(this.cards);
+      }, 200);
+    });
+  }
   private savedTree = this.initialTree;
   public tree = this.initialTree;
 

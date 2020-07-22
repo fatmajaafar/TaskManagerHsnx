@@ -1,7 +1,8 @@
+/*eslint-disable*/
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DraggedItem } from '@angular-skyhook/sortable';
 import { ItemTypes } from '../item-types';
-import { SortableSpecService, Card, CardList, CardTree } from '../specs';
+import { SortableSpecService, CardList, CardTree, Card } from '../specs';
 
 @Component({
   selector: 'kanban-board',

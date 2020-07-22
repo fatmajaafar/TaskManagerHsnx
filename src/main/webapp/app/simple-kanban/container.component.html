@@ -1,7 +1,56 @@
 
 
-<div class="relative">
-    <h1>Task Managment Kanban</h1>
+<div>
+    <h2 class="title" style="color: #1e4366; font-family: Comic Sans MS, cursive, sans-serif;">Task Management Kanban</h2>
+    <hr>
+    <!--Grid row-->
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-2">
+  <!--
+          <div class="input-group md-form form-sm form-1 pl-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text purple lighten-3" id="basic-text1"><span class="material-icons">
+                search
+                </span></span>
+            </div>
+            <input class="form-control my-0 py-1" type="text" placeholder="Search  for tasks" aria-label="Search">
+          </div>-->
+          <div class="input-group md-form form-sm form-1 pl-0">
+            <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart" for="field_dateStart">From</label>
+            <input id="field_dateStart" type="date" class="form-control" name="dateStart" />
+        </div> 
+  
+        </div>
+        <!--Grid column-->
+  
+        <!--Grid column-->
+        <div class="col-md-4 mb-2">
+  
+          <!--<div class="input-group md-form form-sm form-2 pl-0">
+            <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Filter by" aria-label="Search">
+            <div class="input-group-append">
+              <span class="input-group-text amber lighten-3" id="basic-text1"><span class="material-icons">
+                search
+                </span></i></span>
+            </div>
+          </div>-->
+
+          
+          <div class="input-group md-form form-sm form-2 pl-0">
+            <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateEnd" for="field_dateEnd">To  </label>
+            <input id="field_dateEnd" type="date" class="form-control" name="dateEnd" />
+        </div>
+       
+        </div>
+
+        <!--Grid column-->
+        
+        <button type="button" class="btn btn-outline-info" (click)="load()">load</button>
+    
+       
+      </div>
     <kanban-board></kanban-board>
 </div>
 

@@ -32,6 +32,13 @@ export class MainComponent implements OnInit {
         this.toastr.info('Name : ' + JSON.parse(CreateDemandNotif.body).demandName, 'New Demand Created', { timeOut: 3000 });
       });
     });
+
+    const TaskNotif = this.webSocketService.connect();
+    TaskNotif.connect({}, (frame: any) => {
+      TaskNotif.subscribe('/topic/CreateTask', (CreateTaskNotif: { body: string }) => {
+        this.toastr.info('Name : ' + JSON.parse(CreateTaskNotif.body).message, 'New Task Created', { timeOut: 3000 });
+      });
+    });
   }
 
   ngOnInit(): void {

@@ -12,6 +12,8 @@ import { KanbanListComponent } from './kanban-list/kanban-list.component';
 import { KanbanCardComponent } from './kanban-card/kanban-card.component';
 import { SortableSpecService } from './specs';
 import { default as HTML5 } from 'react-dnd-html5-backend';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
 @NgModule({
   declarations: [ContainerComponent, KanbanBoardComponent, KanbanListComponent, KanbanCardComponent],
   imports: [
@@ -20,6 +22,8 @@ import { default as HTML5 } from 'react-dnd-html5-backend';
     SkyhookMultiBackendModule,
     SkyhookSortableModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
     RouterModule.forChild([{ path: 'kanban', component: ContainerComponent }])
   ],
   providers: [SkyhookDndService, SortableSpecService]
