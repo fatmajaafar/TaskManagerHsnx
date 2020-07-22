@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Card } from '../specs';
+import { Card } from '../card';
 
 @Component({
   selector: 'kanban-card',

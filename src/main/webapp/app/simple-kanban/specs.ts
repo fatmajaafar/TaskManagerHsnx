@@ -1,95 +1,81 @@
 import { Injectable } from '@angular/core';
-import { SortableSpec, DraggedItem } from '@angular-skyhook/sortable';
+import { NgRxSortable } from '@angular-skyhook/sortable';
+import { KanbanList } from './lists';
+import { Card } from './card';
 import { ItemTypes } from './item-types';
-import { produce } from 'immer';
+import { Store, select } from '@ngrx/store';
+import { ActionTypes, _render, _listById, _isCopying, CARD_ID_WHEN_COPYING } from './store';
+import { filter } from 'rxjs/operators';
 
-export type CardTree = Array<CardList>;
-
-export interface CardList {
-  id: number;
-  title: string;
-  cards: Array<Card>;
-}
-
-export interface Card {
-  listId: number;
-  id: number;
-  title: string;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SortableSpecService {
-  boardSpec: SortableSpec<CardList> = {
+  // These specs will pull data from our store with the provided getList
+  // functions. Then they will fire actions on this.store with the type
+  // provided, which we handle above.
+  //                                      (fire on this, with this action type)
+  //                                       vvvvvvvvvv    vvvvvvvvvvvvvvvvvvvv
+  boardSpec = new NgRxSortable<KanbanList>(this.store, ActionTypes.SortList, {
     type: ItemTypes.LIST,
     trackBy: list => list.id,
-    hover: item => {
-      this.tree = this.moveList(item);
-    },
-    drop: item => {
-      this.tree = this.savedTree = this.moveList(item);
-    },
-    endDrag: _item => {
-      this.tree = this.savedTree;
-    }
-  };
+    getList: _listId => this.store.pipe(select(_render))
+  });
 
-  listSpec: SortableSpec<Card> = {
+  isCopying = false;
+
+  subs = this.store.pipe(select(_isCopying)).subscribe(x => (this.isCopying = x));
+
+  listSpec = new NgRxSortable<Card>(this.store, ActionTypes.SortCard, {
     type: ItemTypes.CARD,
     trackBy: card => card.id,
-    hover: item => {
-      this.tree = this.moveCard(item);
-    },
-    drop: item => {
-      this.tree = this.savedTree = this.moveCard(item);
-    },
-    endDrag: _item => {
-      this.tree = this.savedTree;
+    // here we use the different listId on each kanban-list to pull different data
+    getList: listId =>
+      this.store.pipe(
+        select(_listById(listId)),
+        filter(x => x !== undefined)
+      ),
+
+    // isDragging determines which card on the ground will regard itself as
+    // "the same as the one in flight". It must return true for exactly one
+    // card at a time, and that card MUST be placed under the most recently
+    // hovered DraggedItem.
+    //
+    // By default, it is defined as
+    //
+    //     trackBy(ground) === trackBy(inFlight.data).
+    //
+    // But we want to be able to copy cards around -- so when there's an
+    // extra clone in transit around the board, we have to be careful to
+    // implement isDragging correctly.
+
+    // In this case:
+    //
+    // 1. We set id = a unique CARD_ID_WHEN_COPYING on any clones (if they
+    //    kept the same ID, there would be ngFor anomalies due to trackBy).
+    //    See store.ts.
+    //
+    // 2. We don't get to modify the inFlight data, so instead, we compare
+    //    ground.id to CARD_ID_WHEN_COPYING when we're copying.
+    //
+    // You can see for yourself that there is never more than one card with
+    // CARD_ID_WHEN_COPYING, so:
+    //
+    // a. trackBy still returns a different value for every card on the
+    //    board;
+    // b. exactly one card will return true from isDragging.
+    // c. that card will be the clone if copying, otherwise the original.
+    // d. as long as the clone follows the hover around like the original
+    //    normally does, it stays in place.
+
+    isDragging: (ground, inFlight) => {
+      const flyingId = this.isCopying ? CARD_ID_WHEN_COPYING : inFlight.data.id;
+      return ground.id === flyingId;
     }
-  };
+  });
 
-  private initialTree: CardTree = [
-    {
-      id: 1,
-      title: 'To Do',
-      cards: [
-        { listId: 1, id: 10, title: 'Task number one' },
-        { listId: 1, id: 20, title: 'Put the lyrics to music' }
-      ]
-    },
-    { id: 2, title: 'Doing', cards: [{ listId: 2, id: 30, title: 'Rig up the speakers' }] },
-    { id: 3, title: 'Done', cards: [] }
-  ];
+  constructor(public store: Store<{}>) {}
 
-  private savedTree = this.initialTree;
-  public tree = this.initialTree;
-
-  moveList(item: DraggedItem<CardList>) {
-    return produce(this.savedTree, (draft: any[]) => {
-      if (item.isInternal) {
-        draft.splice(item.index, 1);
-      }
-      draft.splice(item.hover.index, 0, item.data);
-    });
-  }
-
-  moveCard(item: DraggedItem<Card>) {
-    return produce(this.savedTree, (draft: any[]) => {
-      const { listId: from, index: fromIndex } = item;
-      const { listId: to, index: toIndex } = item.hover;
-      const fromList = draft.find((x: { id: any }) => x.id === from);
-      const toList = draft.find((x: { id: any }) => x.id === to);
-      if (!fromList) return;
-      if (item.isInternal) {
-        fromList.cards.splice(fromIndex, 1);
-      }
-      if (!toList) return;
-      const neu = {
-        ...item.data,
-        listId: to
-      };
-      toList.cards.splice(toIndex, 0, neu);
-    });
+  // usually services don't get destroyed, but if it is, we will be ON IT.
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }

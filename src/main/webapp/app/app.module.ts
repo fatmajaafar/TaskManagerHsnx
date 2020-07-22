@@ -24,9 +24,24 @@ import { ToastrModule } from 'ngx-toastr';
 import { WebSocketService } from './layouts/main/WebSocketService';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './simple-kanban/store';
+import { SkyhookSortableModule } from '@angular-skyhook/sortable';
+import { SkyhookMultiBackendModule } from '@angular-skyhook/multi-backend';
 
 @NgModule({
   imports: [
+    SkyhookMultiBackendModule,
+    SkyhookSortableModule,
+    StoreModule,
+    StoreModule.forFeature('kanban', reducer),
+    StoreModule.forRoot(reducer, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+
     ToastrModule.forRoot(),
     SkyhookDndModule,
     KanbanModule,

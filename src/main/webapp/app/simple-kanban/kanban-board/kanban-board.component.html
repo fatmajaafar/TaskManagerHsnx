@@ -19,7 +19,6 @@
 
 <skyhook-sortable-list class="kanban-root"
     [ssSortableListId]="888"
-    [ssSortableChildren]="specs.tree"
     [ssSortableSpec]="specs.boardSpec"
     ssSortableTrigger="fixed"
     [ssSortableHorizontal]="true">
@@ -61,3 +60,9 @@
     </ng-template>
 
 </skyhook-sortable-list>
+
+
+<div class="trash-zone">
+    <kanban-trash-can (dropped)="removeCard($event)"></kanban-trash-can>
+    <kanban-external></kanban-external>
+</div>

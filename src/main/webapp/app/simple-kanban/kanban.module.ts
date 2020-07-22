@@ -12,8 +12,19 @@ import { KanbanListComponent } from './kanban-list/kanban-list.component';
 import { KanbanCardComponent } from './kanban-card/kanban-card.component';
 import { SortableSpecService } from './specs';
 import { default as HTML5 } from 'react-dnd-html5-backend';
+import { AddCardComponent } from './add-card.component';
+import { TrashCanComponent } from './trash-can.component';
+import { KanbanExternalComponent } from './external.component';
 @NgModule({
-  declarations: [ContainerComponent, KanbanBoardComponent, KanbanListComponent, KanbanCardComponent],
+  declarations: [
+    ContainerComponent,
+    KanbanBoardComponent,
+    KanbanListComponent,
+    KanbanCardComponent,
+    AddCardComponent,
+    TrashCanComponent,
+    KanbanExternalComponent
+  ],
   imports: [
     CommonModule,
     SkyhookDndModule.forRoot({ backend: HTML5 }),

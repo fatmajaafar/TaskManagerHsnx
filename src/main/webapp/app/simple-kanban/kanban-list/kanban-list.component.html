@@ -29,28 +29,33 @@
         double drop events!
     -->
 
-    <skyhook-sortable-list
+    <div *ngIf="render; else plain"
         class="cards-container"
+        ssSortable
         [ssSortableSpec]="specs.listSpec"
-        [ssSortableChildren]="list.cards"
-        [ssSortableListId]="list.id" >
+        [ssSortableListId]="list.id"
+        #clist="ssSortable">
+        <!-- note the assignment of the ssSortable directive to a template
+            variable, clist, so we can use it below. It can generate the
+            required context for ssRender. -->
 
-        <ng-template ssTemplate let-context>
-            <kanban-card
-                [ssRender]="context"
-                #render="ssRender"
-                [dragSource]="render.source"
-                [card]="context.data"
-                [noHTML5Preview]="true"
-                [placeholder]="render.isDragging$|async">
-                <!-- This time, we aren't doing drag handles, so we just attached
-                    render.source directly to kanban-card by pulling #render out.
-                    You can do it whichever way suits.
-                -->
-            </kanban-card>
-        </ng-template>
+        <kanban-card
+            *ngFor="let card of list.cards;
+                    let i = index;
+                    trackBy: trackById"
+            [card]="card"
+            [ssRender]="clist.contextFor(card, i)"
+            #render="ssRender"
+            [dragSource]="render.source"
+            [noHTML5Preview]="true"
+            [placeholder]="render.isDragging$|async">
+            <!-- This time, we aren't doing drag handles, so we just attached
+                render.source directly to kanban-card by pulling #render out.
+                You can do it whichever way suits.
+            -->
+        </kanban-card>
 
-    </skyhook-sortable-list>
+    </div>
 
     <!-- A simple version for when we're dragging -->
     <ng-template #plain>
@@ -61,5 +66,8 @@
             </kanban-card>
         </div>
     </ng-template>
+
+    <kanban-add-card (add)="addCard.emit($event)">
+    </kanban-add-card>
 </div>
 
