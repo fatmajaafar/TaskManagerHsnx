@@ -131,14 +131,14 @@ public class ElasticsearchIndexService {
             try {
                 // reindexForClass(Branch.class, branchRepository, branchSearchRepository);
                // reindexForClass(Country.class, countryRepository, countrySearchRepository);
-                reindexForClass(Department.class, departmentRepository, departmentSearchRepository);
+               // reindexForClass(Department.class, departmentRepository, departmentSearchRepository);
                // reindexForClass(Employee.class, employeeRepository, employeeSearchRepository);
-                reindexForClass(Event.class, eventRepository, eventSearchRepository);
-                reindexForClass(Job.class, jobRepository, jobSearchRepository);
+               // reindexForClass(Event.class, eventRepository, eventSearchRepository);
+               // reindexForClass(Job.class, jobRepository, jobSearchRepository);
                 
-                reindexForClass(Notification.class, notificationRepository, notificationSearchRepository);
-                reindexForClass(Task.class, taskRepository, taskSearchRepository);
-                reindexForClass(User.class, userRepository, userSearchRepository);
+                //reindexForClass(Notification.class, notificationRepository, notificationSearchRepository);
+                // reindexForClass(Task.class, taskRepository, taskSearchRepository);
+               // reindexForClass(User.class, userRepository, userSearchRepository);
 
                 log.info("Elasticsearch: Successfully performed reindexing");
             } finally {

@@ -2,7 +2,7 @@ import { Component, ElementRef } from '@angular/core';
 import { SkyhookDndService } from '@angular-skyhook/core';
 import { spillTarget } from '@angular-skyhook/sortable';
 import { ItemTypes } from './item-types';
-import { Card } from './specs';
+import { Card } from './card';
 
 @Component({
   selector: 'kanban-container',
