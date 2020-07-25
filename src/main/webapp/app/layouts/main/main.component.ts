@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import { Component, OnInit, RendererFactory2, Renderer2 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRouteSnapshot, NavigationEnd, NavigationError } from '@angular/router';
@@ -32,8 +33,14 @@ export class MainComponent implements OnInit {
         this.toastr.info('Name : ' + JSON.parse(CreateDemandNotif.body).demandName, 'New Demand Created', { timeOut: 3000 });
       });
     });
-  }
 
+    const TaskNotif = this.webSocketService.connect();
+    TaskNotif.connect({}, (frame: any) => {
+      TaskNotif.subscribe('/topic/CreateTask', (CreateTaskNotif: { body: string }) => {
+        this.toastr.info('Name : ' + JSON.parse(CreateTaskNotif.body).message, 'New Task Created', { timeOut: 3000 });
+      });
+    });
+  }
   ngOnInit(): void {
     // try to log in automatically
     this.accountService.identity().subscribe();

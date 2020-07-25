@@ -10,6 +10,7 @@ import { ITaskHsnx } from 'app/shared/model/task-hsnx.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { TaskHsnxService } from './task-hsnx.service';
 import { TaskHsnxDeleteDialogComponent } from './task-hsnx-delete-dialog.component';
+import { WebSocketService } from 'app/layouts/main/WebSocketService';
 
 @Component({
   selector: 'jhi-task-hsnx',
@@ -31,7 +32,8 @@ export class TaskHsnxComponent implements OnInit, OnDestroy {
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    protected webSocketService: WebSocketService
   ) {
     this.currentSearch =
       this.activatedRoute.snapshot && this.activatedRoute.snapshot.queryParams['search']
@@ -130,5 +132,10 @@ export class TaskHsnxComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page;
+  }
+
+  sendNotif() {
+    console.log('**************');
+    this.webSocketService.createTask('new task', 1, 1).subscribe();
   }
 }

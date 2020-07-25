@@ -17,4 +17,7 @@ export class WebSocketService {
 
     return stompClient;
   }
+  createTask(notif: string, idbranch: number, status: number): Observable<Notificationglobal> {
+    return this.http.get<Notificationglobal>(`${this.resourceUrl}/CreateTask/${notif},${idbranch},${status}`);
+  }
 }
