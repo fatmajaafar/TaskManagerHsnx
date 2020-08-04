@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import './vendor';
@@ -18,7 +19,6 @@ import { MatTabsModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { KanbanModule } from './simple-kanban/kanban.module';
 import { SkyhookDndModule } from '@angular-skyhook/core';
 import { ToastrModule } from 'ngx-toastr';
 import { WebSocketService } from './layouts/main/WebSocketService';
@@ -28,7 +28,12 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './simple-kanban/store';
 import { SkyhookSortableModule } from '@angular-skyhook/sortable';
 import { SkyhookMultiBackendModule } from '@angular-skyhook/multi-backend';
+import { TaskKanbanModule } from './task-kanban/task-kanban.module';
+import { KanbanAllModule } from '@syncfusion/ej2-angular-kanban';
+import { NumericTextBoxAllModule, TextBoxAllModule } from '@syncfusion/ej2-angular-inputs';
+import { KanbanModule } from '@syncfusion/ej2-angular-kanban';
 
+import { CheckBoxAllModule } from '@syncfusion/ej2-angular-buttons';
 @NgModule({
   imports: [
     SkyhookMultiBackendModule,
@@ -44,7 +49,12 @@ import { SkyhookMultiBackendModule } from '@angular-skyhook/multi-backend';
 
     ToastrModule.forRoot(),
     SkyhookDndModule,
+    KanbanAllModule,
+    CheckBoxAllModule,
+    NumericTextBoxAllModule,
+    TextBoxAllModule,
     KanbanModule,
+    TaskKanbanModule,
     CommonModule,
     BrowserAnimationsModule,
     BrowserModule,

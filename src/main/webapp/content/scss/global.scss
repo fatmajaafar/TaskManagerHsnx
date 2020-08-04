@@ -1,8 +1,16 @@
 @import 'bootstrap-variables';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber';
+@import '~@angular/material/prebuilt-themes/indigo-pink';
+@import '/node_modules/@syncfusion/ej2-base/styles/material';
+@import '/node_modules/@syncfusion/ej2-buttons/styles/material';
+@import '/node_modules/@syncfusion/ej2-dropdowns/styles/material';
+@import '/node_modules/@syncfusion/ej2-inputs/styles/material';
+@import '/node_modules/@syncfusion/ej2-layouts/styles/material';
+@import '/node_modules/@syncfusion/ej2-navigations/styles/material';
+@import '/node_modules/@syncfusion/ej2-popups/styles/material';
+@import '/node_modules/@syncfusion/ej2-angular-kanban/styles/material';
 
 /* ==============================================================
 Bootstrap tweaks
@@ -21,7 +29,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: 300;
+  font-weight: 200;
 }
 
 /* Increase contrast of links to get 100% on Lighthouse Accessability Audit. Override this color if you want to change the link color, or use a Bootswatch theme */
