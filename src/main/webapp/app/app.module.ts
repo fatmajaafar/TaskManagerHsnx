@@ -32,8 +32,10 @@ import { TaskKanbanModule } from './task-kanban/task-kanban.module';
 import { KanbanAllModule } from '@syncfusion/ej2-angular-kanban';
 import { NumericTextBoxAllModule, TextBoxAllModule } from '@syncfusion/ej2-angular-inputs';
 import { KanbanModule } from '@syncfusion/ej2-angular-kanban';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CheckBoxAllModule } from '@syncfusion/ej2-angular-buttons';
+
+import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
 @NgModule({
   imports: [
     SkyhookMultiBackendModule,
@@ -55,6 +57,11 @@ import { CheckBoxAllModule } from '@syncfusion/ej2-angular-buttons';
     TextBoxAllModule,
     KanbanModule,
     TaskKanbanModule,
+    FontAwesomeModule,
+    ButtonModule,
+    CheckBoxModule,
+    RadioButtonModule,
+    SwitchModule,
     CommonModule,
     BrowserAnimationsModule,
     BrowserModule,

@@ -16,6 +16,9 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { TaskKanbanComponent } from './task-kanban/task-kanban.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
+
 @NgModule({
   declarations: [TaskKanbanComponent],
   imports: [
@@ -27,6 +30,11 @@ import { TaskKanbanComponent } from './task-kanban/task-kanban.component';
     DropDownListAllModule,
     NumericTextBoxAllModule,
     TextBoxAllModule,
+    FontAwesomeModule,
+    ButtonModule,
+    CheckBoxModule,
+    RadioButtonModule,
+    SwitchModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserModule,
