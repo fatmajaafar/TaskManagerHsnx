@@ -17,6 +17,8 @@ import { ITaskHsnx } from 'app/shared/model/task-hsnx.model';
 import { IKanbanData } from './data';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IEmployeeHsnx } from 'app/shared/model/employee-hsnx.model';
 //import { IKanbanData, cardData } from './data';
 @Component({
   selector: 'jhi-task-kanban',
@@ -49,9 +51,18 @@ export class TaskKanbanComponent {
       { key: 'Summary', type: 'TextArea' }
     ]
   };
+  public status: string[] = ['To Do', 'In Progress', 'In Review', 'Done'];
+
+  editTask: IKanbanData = {};
+
   public swimlaneSettings: SwimlaneSettingsModel = { keyField: 'Assignee' };
 
-  constructor(protected taskService: TaskHsnxService, private http: HttpClient, protected employeeService: EmployeeHsnxService) {
+  constructor(
+    protected taskService: TaskHsnxService,
+    protected http: HttpClient,
+    protected employeeService: EmployeeHsnxService,
+    protected modalService: NgbModal
+  ) {
     this.taskService.query({ size: 10000 }).subscribe((res: HttpResponse<ITaskHsnx[]>) => {
       if (res.body) {
         let task1: IKanbanData = {};
@@ -100,13 +111,13 @@ export class TaskKanbanComponent {
     if (args.data) {
       this.taskService
         .find(Number(args.data.RankId))
-        .pipe
-        //filter((mayBeOk: HttpResponse<ITaskHsnx>) => mayBeOk.ok),
-        //map((response: HttpResponse<ITaskHsnx>) => response.body),
-        ()
-        .subscribe((res: HttpResponse<ITaskHsnx>) => {
-          if (res.body) {
-            let task: ITaskHsnx = res.body;
+        .pipe(
+          filter((mayBeOk: HttpResponse<ITaskHsnx>) => mayBeOk.ok),
+          map((response: HttpResponse<ITaskHsnx>) => response.body)
+        )
+        .subscribe(res => {
+          if (res) {
+            let task: ITaskHsnx = res;
             switch (args.data?.Status) {
               case 'Open':
                 task.taskstatus = 1;
@@ -147,5 +158,12 @@ export class TaskKanbanComponent {
       () => '',
       () => ''
     );
+  }
+
+  open(content: any, data: IKanbanData) {
+    this.editTask = data;
+    console.clear();
+    console.log(this.editTask);
+    this.modalService.open(content, { size: 'sm' });
   }
 }

@@ -44,7 +44,7 @@
 
       </e-columns>
       <ng-template #cardSettingsTemplate let-data>
-        <div class='card-template'>
+        <div class='card-template' (click)="open(content, data)">
           <div class='e-card-header'>
             <div class='e-card-header-caption'>
               <div class='e-card-header-title e-tooltip-text'>{{data.Title}}</div>
@@ -61,3 +61,73 @@
     </ejs-kanban>
   </div>
 </div>
+
+
+
+<ng-template #content let-modal>
+    <div id="_dialog_wrapper" class="e-lib e-dialog e-control e-kanban-dialog e-dlg-modal e-popup e-popup-open"
+      role="dialog" style="max-height: 455px; z-index: 1002; width: 350px; left: 0px; top: 0px; position: relative;"
+      aria-labelledby="_dialog_wrapper_title" aria-describedby="_dialog_wrapper_dialog-content" aria-modal="true"
+      tabindex="-1">
+      <div class="e-dlg-header-content" id="_dialog_wrapper_dialog-header">
+        <button class="e-dlg-closeicon-btn e-control e-btn e-lib e-flat e-icon-btn" type="button" title="Close"
+          aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span class="e-btn-icon e-icon-dlg-close e-icons">
+  
+          </span>
+        </button>
+        <div class="e-dlg-header" id="_dialog_wrapper_title">Edit Task Details</div>
+      </div>
+      <div class="e-dlg-content" id="_dialog_wrapper_dialog-content">
+        <div class="e-kanban-form-wrapper">
+          <form class="e-kanban-form e-lib e-formvalidator" id="EditForm" onsubmit="return false;" novalidate="">
+            <div class="e-kanban-dialog-content">
+              <table>
+                <tr>
+                  <td class="e-label">ID</td>
+                  <td>
+                    <div class="Title_wrapper">
+                      <input class="e-field e-control e-textbox e-lib e-input e-disabled" name="Title" type="text"
+                        role="textbox" id="textbox_3" disabled [(ngModel)]="editTask.Title">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="e-label">Status</td>
+                  <td>
+                    <div>
+                      <ejs-dropdownlist  [dataSource]='status' placeholder='{{editTask.Status}}' [(ngModel)]="editTask.Status" [ngModelOptions]="{standalone: true}"></ejs-dropdownlist>
+                    </div>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td class="e-label">Assignee</td>
+                  <td>
+                    <div>
+                      <ejs-dropdownlist  [dataSource]='' [allowFiltering]='true' placeholder='Select an employee' [(ngModel)]="editTask.Assignee" [ngModelOptions]="{standalone: true}"></ejs-dropdownlist>
+                    </div>
+                  </td>
+                </tr>
+                
+
+                <tr>
+                  <td class="e-label">Summary</td>
+                  <td>
+                    <div class="Summary_wrapper">
+                      <div><textarea class="e-field" name="Summary" rows="3" [(ngModel)]="editTask.Summary"[ngModelOptions]="{standalone: true}"></textarea></div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="e-footer-content">
+        <button type="button" class="e-control e-btn e-lib e-flat e-dialog-delete">Delete</button>
+        <button type="button" class="e-control e-btn e-lib e-flat e-dialog-edit e-primary">Save</button>
+        <button type="button" class="e-control e-btn e-lib e-flat e-dialog-cancel" (click)="modal.dismiss('Cross click')">Cancel</button>
+        </div>
+    </div>
+</ng-template>

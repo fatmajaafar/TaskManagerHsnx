@@ -18,6 +18,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TaskKanbanComponent } from './task-kanban/task-kanban.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [TaskKanbanComponent],
@@ -26,6 +27,7 @@ import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@
     HttpModule,
     KanbanAllModule,
     DialogModule,
+    NgbModule,
     CheckBoxAllModule,
     DropDownListAllModule,
     NumericTextBoxAllModule,
