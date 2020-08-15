@@ -1,6 +1,5 @@
 /*eslint-disable*/
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
-import { addClass } from '@syncfusion/ej2-base';
+import { Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
 import {
   KanbanComponent,
   ColumnsModel,
@@ -13,12 +12,17 @@ import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
 import { TaskHsnxService } from 'app/entities/task-hsnx/task-hsnx.service';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { EmployeeHsnxService } from 'app/entities/employee-hsnx/employee-hsnx.service';
-import { ITaskHsnx } from 'app/shared/model/task-hsnx.model';
-import { IKanbanData } from './data';
+import { ITaskHsnx, TaskHsnx } from 'app/shared/model/task-hsnx.model';
+import { IKanbanData, IEmployeeData } from './data';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IEmployeeHsnx } from 'app/shared/model/employee-hsnx.model';
+import { FormBuilder, Validators } from '@angular/forms';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
+
 //import { IKanbanData, cardData } from './data';
 @Component({
   selector: 'jhi-task-kanban',
@@ -26,11 +30,12 @@ import { IEmployeeHsnx } from 'app/shared/model/employee-hsnx.model';
   styleUrls: ['./task-kanban.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TaskKanbanComponent {
+export class TaskKanbanComponent implements OnInit {
   @ViewChild('kanbanObj', { static: true }) kanbanObj!: KanbanComponent;
   @ViewChild('toggleBtn', { static: true })
   public toggleBtn!: ButtonComponent;
   public kanbanData: IKanbanData[] = []; //extend([], kanbanData, [], true) as Object[];
+
   public columns: ColumnsModel[] = [
     { headerText: 'To Do', keyField: 'Open', allowToggle: true },
     { headerText: 'In Progress', keyField: 'InProgress', allowToggle: true },
@@ -52,16 +57,23 @@ export class TaskKanbanComponent {
     ]
   };
   public status: string[] = ['To Do', 'In Progress', 'In Review', 'Done'];
+  addTask: ITaskHsnx = {};
+  editTask: ITaskHsnx = {};
 
-  editTask: IKanbanData = {};
+  isSaving = false;
+  employees: IEmployeeHsnx[] = [];
+  task: ITaskHsnx = {};
 
   public swimlaneSettings: SwimlaneSettingsModel = { keyField: 'Assignee' };
+  modalRef: any;
 
   constructor(
     protected taskService: TaskHsnxService,
     protected http: HttpClient,
     protected employeeService: EmployeeHsnxService,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    private fb: FormBuilder,
+    protected activatedRoute: ActivatedRoute
   ) {
     this.taskService.query({ size: 10000 }).subscribe((res: HttpResponse<ITaskHsnx[]>) => {
       if (res.body) {
@@ -92,7 +104,7 @@ export class TaskKanbanComponent {
           }
 
           task.RankId = element.id;
-          task.Assignee = 'Andrew Fuller';
+          task.Assignee = element.tblEmployeeEmployeename;
 
           this.kanbanData.push(task);
           this.kanbanObj.kanbanData.push(task);
@@ -100,6 +112,8 @@ export class TaskKanbanComponent {
       }
     });
   }
+
+  ngOnInit(): void {}
 
   public getString(assignee: string) {
     //return assignee.match(/\b(\w)/g).join('').toUpperCase();
@@ -138,32 +152,106 @@ export class TaskKanbanComponent {
     }
   }
 
-  addClick(): void {
-    const cardIds = this.kanbanObj.kanbanData.map((obj: { [key: string]: any }) => parseInt(obj.Id.replace('Task ', ''), 10));
-    const cardCount: number = Math.max.apply(Math, cardIds) + 1;
-    const cardDetails = {
-      Id: 'Task ' + cardCount,
-      Status: 'Open',
-      Priority: 'Normal',
-      Assignee: 'Andrew Fuller',
-      Estimate: 0,
-      Tags: '',
-      Summary: ''
-    };
-    this.kanbanObj.openDialog('Add', cardDetails);
+  //OPEN ADD TASK MODAL
+  addClick(cont: any) {
+    this.modalRef = this.modalService.open(cont, { size: 'sm' });
+
+    this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
+      this.employees = [];
+      if (res.body) {
+        this.employees = res.body;
+      }
+    });
   }
+
+  /**save added task */
+  savetask(): void {
+    this.isSaving = true;
+    const task = this.createFromForm();
+
+    this.subscribeToSaveResponse(this.taskService.create(task));
+  }
+
+  // OPEN EDIT TASK MODAL
+  open(content: any, data: IKanbanData) {
+    this.editTask.id = data.RankId;
+    this.editTask.tasktitle = data.Title;
+    this.editTask.taskdescription = data.Summary;
+    this.editTask.tblEmployeeEmployeename = data.Assignee;
+
+    console.clear();
+    console.log(this.editTask);
+    this.modalService.open(content, { size: 'sm' });
+    /*const task = this.editTask
+    this.updateForm(data);*/
+    this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
+      this.employees = [];
+      if (res.body) {
+        this.employees = res.body;
+      }
+    });
+  }
+
+  editForm = this.fb.group({
+    id: [],
+    tasktitle: [null, [Validators.required]],
+    taskdescription: [],
+    dateStart: [],
+    timeStart: [],
+    dateEnd: [],
+    timeEnd: [],
+    taskstatus: [],
+    taskpriority: [],
+    dueDate: [],
+    taskcategory: [],
+    taskstate: [],
+    tblEmployeeId: []
+  });
+
+  private createFromForm(): ITaskHsnx {
+    return {
+      ...new TaskHsnx(),
+      id: this.editForm.get(['id'])!.value,
+      tasktitle: this.editForm.get(['tasktitle'])!.value,
+      taskdescription: this.editForm.get(['taskdescription'])!.value,
+      dateStart: this.editForm.get(['dateStart'])!.value,
+      timeStart: this.editForm.get(['timeStart'])!.value ? moment(this.editForm.get(['timeStart'])!.value, DATE_TIME_FORMAT) : undefined,
+      dateEnd: this.editForm.get(['dateEnd'])!.value,
+      timeEnd: this.editForm.get(['timeEnd'])!.value ? moment(this.editForm.get(['timeEnd'])!.value, DATE_TIME_FORMAT) : undefined,
+      taskstatus: this.editForm.get(['taskstatus'])!.value,
+      taskpriority: this.editForm.get(['taskpriority'])!.value,
+      dueDate: this.editForm.get(['dueDate'])!.value,
+      taskcategory: this.editForm.get(['taskcategory'])!.value,
+      taskstate: this.editForm.get(['taskstate'])!.value,
+      tblEmployeeId: this.editForm.get(['tblEmployeeId'])!.value
+    };
+  }
+
+  updateForm(task: ITaskHsnx): void {
+    this.editForm.patchValue({
+      id: task.id,
+      tasktitle: task.tasktitle,
+      taskdescription: task.taskdescription,
+      dateStart: task.dateStart,
+      timeStart: task.timeStart ? task.timeStart.format(DATE_TIME_FORMAT) : null,
+      dateEnd: task.dateEnd,
+      timeEnd: task.timeEnd ? task.timeEnd.format(DATE_TIME_FORMAT) : null,
+      tasksavestatus: task.taskstatus,
+      taskpriority: task.taskpriority,
+      dueDate: task.dueDate,
+      taskcategory: task.taskcategory,
+      taskstate: task.taskstate,
+      tblEmployeeId: task.tblEmployeeId
+    });
+  }
+
+  /**save task after edit */
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ITaskHsnx>>): void {
     result.subscribe(
       () => '',
-      () => ''
+      () => '',
+      this.modalRef.close()
     );
-  }
-
-  open(content: any, data: IKanbanData) {
-    this.editTask = data;
-    console.clear();
-    console.log(this.editTask);
-    this.modalService.open(content, { size: 'sm' });
   }
 }

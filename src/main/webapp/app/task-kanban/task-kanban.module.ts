@@ -19,6 +19,13 @@ import { TaskKanbanComponent } from './task-kanban/task-kanban.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [TaskKanbanComponent],
@@ -36,6 +43,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ButtonModule,
     CheckBoxModule,
     RadioButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatSelectModule,
+    MatChipsModule,
     SwitchModule,
     ReactiveFormsModule,
     FormsModule,

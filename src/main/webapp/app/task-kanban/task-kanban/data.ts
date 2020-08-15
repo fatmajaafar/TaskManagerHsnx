@@ -300,3 +300,8 @@ export interface IKanbanData {
   RankId?: number;
   Assignee?: string;
 }
+
+export interface IEmployeeData {
+  id?: number;
+  Assignee?: string;
+}
