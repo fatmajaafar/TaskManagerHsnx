@@ -1,0 +1,265 @@
+<div class="control-section">
+  <!--input section-->
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+      <button ejs-button id='addNew' class="e-dialog-add" (click)="addClick(cont)" style="color: crimson;">What needs
+        to be
+        done ?</button>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <div>
+        <ejs-dropdownlist id='priority_filter' #priority_filter [dataSource]='priorityData' (change)='change($event)'
+          index=0 placeholder='Filter by priority'></ejs-dropdownlist>
+      </div>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <div>
+        <ejs-dropdownlist id='status_filter' #status_filter [dataSource]='statusData' (change)='change($event)'
+          [fields]='fields' [value]='value' placeholder='Filter by status'></ejs-dropdownlist>
+      </div>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <div>
+        <ejs-textbox id="search_text" #search_text placeholder="Search for tasks" [showClearButton]="true"
+          (focus)="onFocus()" (keyup)="searchClick($event)"></ejs-textbox>
+      </div>
+    </div>
+  </form>
+  <hr>
+
+  <!--kanban layout-->
+  <div class="content-wrapper">
+    <ejs-kanban #kanbanObj cssClass='kanban-overview' keyField="Status" [dataSource]='kanbanData'
+      [cardSettings]='cardSettings' enableTooltip='true' [swimlaneSettings]='swimlaneSettings'
+      [dialogSettings]='dialogSettings' (cardRendered)='cardRendered($event)'>
+      <e-columns>
+        <e-column *ngFor="let column of columns;" headerText={{column.headerText}} keyField='{{column.keyField}}'
+          allowToggle='{{column.allowToggle}}'>
+          <ng-template #template let-data>
+            <div class="header-template-wrap">
+              <div class="header-icon e-icons {{data.keyField}}"></div>
+              <div class="header-text">{{data.headerText}}</div>
+            </div>
+          </ng-template>
+        </e-column>
+
+      </e-columns>
+      <ng-template #cardSettingsTemplate let-data>
+        <div class='card-template' (click)="open(content, data)">
+          <div class='e-card-header'>
+            <div class='e-card-header-caption'>
+              <div class='e-card-header-title e-tooltip-text'>{{data.Title}}</div>
+            </div>
+          </div>
+          <div class='e-card-content e-tooltip-text'>
+            <div class='e-text'>{{data.Summary}}</div>
+          </div>
+          <div class="sample-padding">
+              <ejs-chiplist id="chip-default">
+                  <e-chips>
+                      <e-chip *ngIf="data.Priority === 1" text="High" cssClass="e-primary"></e-chip>
+                      <e-chip *ngIf="data.Priority === 2" text="Medium" cssClass="e-info"></e-chip>
+                      <e-chip *ngIf="data.Priority === 3" text="Low" cssClass="e-success"></e-chip>
+                  </e-chips>
+              </ejs-chiplist>
+          </div>
+        </div>
+
+      </ng-template>
+
+    </ejs-kanban>
+  </div>
+</div>
+
+
+<!--EDIT TASK DIALOGUE-->
+<ng-template #content let-modal>
+  <div id="_dialog_wrapper" class="e-lib e-dialog e-control e-kanban-dialog e-dlg-modal e-popup e-popup-open"
+    role="dialog" style="max-height: 455px; z-index: 1002; width: 350px; left: 0px; top: 0px; position: relative;"
+    aria-labelledby="_dialog_wrapper_title" aria-describedby="_dialog_wrapper_dialog-content" aria-modal="true"
+    tabindex="-1">
+    <div class="e-dlg-header-content" id="_dialog_wrapper_dialog-header">
+      <button class="e-dlg-closeicon-btn e-control e-btn e-lib e-flat e-icon-btn" type="button" title="Close"
+        aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span class="e-btn-icon e-icon-dlg-close e-icons">
+
+        </span>
+      </button>
+      <div class="e-dlg-header" id="_dialog_wrapper_title">Edit Task Details</div>
+    </div>
+    <div class="e-dlg-content" id="_dialog_wrapper_dialog-content">
+      <div class="e-kanban-form-wrapper">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm" >
+          <div class="e-kanban-dialog-content">
+            <table>
+              <tr>
+                <td class="e-label">Title</td>
+                <td>
+                  <div>
+                    <input class="e-field e-control e-textbox e-lib e-input "type="text" name="tasktitle" id="field_tasktitle" 
+                    [(ngModel)]="editTask.tasktitle" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="e-label">Priority</td>
+                <td>
+                  <div>
+                    <mat-form-field>
+                      <mat-label jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority"></mat-label>
+                      <mat-select name="taskpriority" id="field_taskpriority"  [(ngModel)]="editTask.taskpriority" [ngModelOptions]="{standalone: true}">
+                        <mat-option value="1">High</mat-option>
+                        <mat-option value="2">Medium</mat-option>
+                        <mat-option value="3">Low</mat-option>
+                        
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="e-label">Assignee</td>
+                <td>
+                  <div>
+                    <mat-form-field>
+                      <mat-select id="field_tblEmployee" name="tblEmployee" [(ngModel)]="editTask.tblEmployeeId" [ngModelOptions]="{standalone: true}">
+                        <mat-option [value]="employee.id" *ngFor="let employee of employees">{{ employee.employeename }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td class="e-label">Summary</td>
+                <td>
+                  <div>
+                    <div><textarea class="e-field" name="taskdescription" id="field_taskdescription"
+                      [(ngModel)]="editTask.taskdescription" [ngModelOptions]="{standalone: true}"></textarea></div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+           <div class="e-footer-content">
+      <button type="button" (click)="confirmDelete(editTask.id)" class="e-control e-btn e-lib e-flat e-dialog-delete">Delete</button>
+      <button type="submit" class="e-control e-btn e-lib e-flat e-dialog-edit e-primary"
+      >Save</button>
+<!--      <button type="submit" id="save-entity" class="e-control e-btn e-lib e-flat e-dialog-edit e-primary" >Save</button>
+-->     
+ <button type="button" class="e-control e-btn e-lib e-flat e-dialog-cancel"
+        (click)="modal.dismiss('Cross click')">Cancel</button>
+    </div>
+        </form>
+      </div>
+    </div>
+   
+  </div>
+</ng-template>
+
+<!--ADD TASK DIALOG-->
+
+<ng-template #cont let-modal>
+  <div id="_dialog_wrapper" class="e-lib e-dialog e-control e-kanban-dialog e-dlg-modal e-popup e-popup-open"
+    role="dialog" style="max-height: 455px; z-index: 1002; width: 350px; left: 0px; top: 0px; position: relative;"
+    aria-labelledby="_dialog_wrapper_title" aria-describedby="_dialog_wrapper_dialog-content" aria-modal="true"
+    tabindex="-1">
+    <div class="e-dlg-header-content" id="_dialog_wrapper_dialog-header">
+      <button class="e-dlg-closeicon-btn e-control e-btn e-lib e-flat e-icon-btn" type="button" title="Close"
+        aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span class="e-btn-icon e-icon-dlg-close e-icons">
+
+        </span>
+      </button>
+      <div class="e-dlg-header" id="_dialog_wrapper_title">Add New Task</div>
+    </div>
+    <div class="e-dlg-content" id="_dialog_wrapper_dialog-content">
+      <div class="e-kanban-form-wrapper">
+        <form name="editForm" role="form" novalidate (ngSubmit)="savetask()" [formGroup]="editForm">
+          <div class="e-kanban-dialog-content">
+            <table>
+              <tr>
+                <td class="e-label">Title</td>
+                <td>
+                  <div class="form-group">
+                    <input class="e-field e-control e-textbox e-lib e-input" name="Title" type="text"
+                      formControlName="tasktitle">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="e-label">Status</td>
+                <td>
+                  <div class="form-group">
+                    <mat-form-field>
+                      <mat-label jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus"></mat-label>
+                      <mat-select name="taskstatus" id="field_taskstatus" formControlName="taskstatus">
+                        <mat-option value="1">To Do</mat-option>
+                        <mat-option value="2">In Progress</mat-option>
+                        <mat-option value="3">In Review</mat-option>
+                        <mat-option value="4">Done</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="e-label">Priority</td>
+                <td>
+                  <div class="form-group">
+                    <mat-form-field>
+                      <mat-label jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority"></mat-label>
+                      <mat-select name="taskpriority" id="field_taskpriority" formControlName="taskpriority">
+                        <mat-option value="1">High</mat-option>
+                        <mat-option value="2">Medium</mat-option>
+                        <mat-option value="3">Low</mat-option>
+                        
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="e-label">Assignee</td>
+                <td>
+                  <div class="form-group">
+                    <mat-form-field>
+                      <mat-select id="field_tblEmployee" name="tblEmployee" formControlName="tblEmployeeId">
+                        <mat-option [value]="employee.id" *ngFor="let employee of employees">{{ employee.employeename }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td class="e-label">Summary</td>
+                <td>
+                  <div class="form-group">
+                    <div><textarea class="e-field" rows="3" name="taskdescription" id="field_taskdescription"
+                        formControlName="taskdescription"></textarea></div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="e-footer-content">
+            <button type="submit" id="save-entity" class="e-control e-btn e-lib e-flat e-dialog-edit e-primary"
+               >Save</button>
+            <button type="button" class="e-control e-btn e-lib e-flat e-dialog-cancel"
+              (click)="modal.dismiss('Cross click')">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</ng-template>
