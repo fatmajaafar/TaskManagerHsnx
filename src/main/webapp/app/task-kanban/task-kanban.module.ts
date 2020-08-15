@@ -8,7 +8,7 @@ import { DialogModule } from '@syncfusion/ej2-angular-popups';
 
 import { DropDownListAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
-import { CheckBoxAllModule } from '@syncfusion/ej2-angular-buttons';
+import { CheckBoxAllModule, ChipListModule } from '@syncfusion/ej2-angular-buttons';
 
 import { KanbanAllModule } from '@syncfusion/ej2-angular-kanban';
 
@@ -50,6 +50,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatCardModule,
     MatSelectModule,
     MatChipsModule,
+    ChipListModule,
     SwitchModule,
     ReactiveFormsModule,
     FormsModule,

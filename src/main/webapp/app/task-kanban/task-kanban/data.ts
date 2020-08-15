@@ -294,7 +294,7 @@ export interface IKanbanData {
   Title?: string;
   Status?: string;
   Summary?: string;
-  Priority?: string;
+  Priority?: number;
   Tags?: string;
   Estimate?: string;
   RankId?: number;

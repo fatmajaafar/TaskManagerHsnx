@@ -54,7 +54,15 @@
           <div class='e-card-content e-tooltip-text'>
             <div class='e-text'>{{data.Summary}}</div>
           </div>
-
+          <div class="sample-padding">
+              <ejs-chiplist id="chip-default">
+                  <e-chips>
+                      <e-chip *ngIf="data.Priority === 1" text="High" cssClass="e-primary"></e-chip>
+                      <e-chip *ngIf="data.Priority === 2" text="Medium" cssClass="e-info"></e-chip>
+                      <e-chip *ngIf="data.Priority === 3" text="Low" cssClass="e-success"></e-chip>
+                  </e-chips>
+              </ejs-chiplist>
+          </div>
         </div>
 
       </ng-template>
@@ -90,6 +98,22 @@
                   <div>
                     <input class="e-field e-control e-textbox e-lib e-input "type="text" name="tasktitle" id="field_tasktitle" 
                     [(ngModel)]="editTask.tasktitle" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="e-label">Priority</td>
+                <td>
+                  <div>
+                    <mat-form-field>
+                      <mat-label jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority"></mat-label>
+                      <mat-select name="taskpriority" id="field_taskpriority"  [(ngModel)]="editTask.taskpriority" [ngModelOptions]="{standalone: true}">
+                        <mat-option value="1">High</mat-option>
+                        <mat-option value="2">Medium</mat-option>
+                        <mat-option value="3">Low</mat-option>
+                        
+                      </mat-select>
+                    </mat-form-field>
                   </div>
                 </td>
               </tr>
@@ -178,6 +202,23 @@
                         <mat-option value="2">In Progress</mat-option>
                         <mat-option value="3">In Review</mat-option>
                         <mat-option value="4">Done</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="e-label">Priority</td>
+                <td>
+                  <div class="form-group">
+                    <mat-form-field>
+                      <mat-label jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority"></mat-label>
+                      <mat-select name="taskpriority" id="field_taskpriority" formControlName="taskpriority">
+                        <mat-option value="1">High</mat-option>
+                        <mat-option value="2">Medium</mat-option>
+                        <mat-option value="3">Low</mat-option>
+                        
                       </mat-select>
                     </mat-form-field>
                   </div>

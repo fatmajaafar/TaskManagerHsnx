@@ -110,6 +110,7 @@ export class TaskKanbanComponent implements OnInit {
           task.RankId = element.id;
           task.EmpID = element.tblEmployeeId;
           task.Assignee = element.tblEmployeeEmployeename;
+          task.Priority = element.taskpriority;
 
           this.kanbanData.push(task);
           this.kanbanObj.kanbanData.push(task);
