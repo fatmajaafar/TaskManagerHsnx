@@ -81,7 +81,7 @@
     </div>
     <div class="e-dlg-content" id="_dialog_wrapper_dialog-content">
       <div class="e-kanban-form-wrapper">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm" >
           <div class="e-kanban-dialog-content">
             <table>
               <tr>
@@ -97,9 +97,9 @@
               <tr>
                 <td class="e-label">Assignee</td>
                 <td>
-                  <div class="form-group">
+                  <div>
                     <mat-form-field>
-                      <mat-select id="field_tblEmployee" name="tblEmployee" formControlName="tblEmployeeId">
+                      <mat-select id="field_tblEmployee" name="tblEmployee" [(ngModel)]="editTask.tblEmployeeId" [ngModelOptions]="{standalone: true}">
                         <mat-option [value]="employee.id" *ngFor="let employee of employees">{{ employee.employeename }}
                         </mat-option>
                       </mat-select>
@@ -112,7 +112,7 @@
               <tr>
                 <td class="e-label">Summary</td>
                 <td>
-                  <div class="form-group">
+                  <div>
                     <div><textarea class="e-field" name="taskdescription" id="field_taskdescription"
                       [(ngModel)]="editTask.taskdescription" [ngModelOptions]="{standalone: true}"></textarea></div>
                   </div>
@@ -122,7 +122,7 @@
           </div>
 
            <div class="e-footer-content">
-      <button type="button" class="e-control e-btn e-lib e-flat e-dialog-delete">Delete</button>
+      <button type="button" (click)="confirmDelete(editTask.id)" class="e-control e-btn e-lib e-flat e-dialog-delete">Delete</button>
       <button type="submit" class="e-control e-btn e-lib e-flat e-dialog-edit e-primary"
       >Save</button>
 <!--      <button type="submit" id="save-entity" class="e-control e-btn e-lib e-flat e-dialog-edit e-primary" >Save</button>

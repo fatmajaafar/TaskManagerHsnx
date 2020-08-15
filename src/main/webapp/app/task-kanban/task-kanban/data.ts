@@ -298,6 +298,7 @@ export interface IKanbanData {
   Tags?: string;
   Estimate?: string;
   RankId?: number;
+  EmpID?: number;
   Assignee?: string;
 }
 

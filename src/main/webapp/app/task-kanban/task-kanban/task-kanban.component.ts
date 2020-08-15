@@ -75,6 +75,10 @@ export class TaskKanbanComponent implements OnInit {
     private fb: FormBuilder,
     protected activatedRoute: ActivatedRoute
   ) {
+    this.loadTasks();
+  }
+
+  loadTasks() {
     this.taskService.query({ size: 10000 }).subscribe((res: HttpResponse<ITaskHsnx[]>) => {
       if (res.body) {
         let task1: IKanbanData = {};
@@ -104,6 +108,7 @@ export class TaskKanbanComponent implements OnInit {
           }
 
           task.RankId = element.id;
+          task.EmpID = element.tblEmployeeId;
           task.Assignee = element.tblEmployeeEmployeename;
 
           this.kanbanData.push(task);
@@ -146,10 +151,17 @@ export class TaskKanbanComponent implements OnInit {
                 task.taskstatus = 4;
                 break;
             }
-            this.subscribeToSaveResponse(this.taskService.update(task));
+            this.subscribeToSaveResponseForUpdate(this.taskService.update(task));
           }
         });
     }
+  }
+
+  protected subscribeToSaveResponseForUpdate(result: Observable<HttpResponse<ITaskHsnx>>): void {
+    result.subscribe(
+      () => 'this.loadTasks()',
+      () => ''
+    );
   }
 
   //OPEN ADD TASK MODAL
@@ -177,18 +189,51 @@ export class TaskKanbanComponent implements OnInit {
     this.editTask.id = data.RankId;
     this.editTask.tasktitle = data.Title;
     this.editTask.taskdescription = data.Summary;
-    this.editTask.tblEmployeeEmployeename = data.Assignee;
+    this.editTask.tblEmployeeId = data.EmpID;
+    // data.Assignee=this.editTask.tblEmployeeId?.toString();
 
-    console.clear();
-    console.log(this.editTask);
-    this.modalService.open(content, { size: 'sm' });
-    /*const task = this.editTask
-    this.updateForm(data);*/
+    switch (data.Status) {
+      case 'Open':
+        this.editTask.taskstatus = 1;
+        break;
+      case 'InProgress':
+        this.editTask.taskstatus = 2;
+        break;
+      case 'Review':
+        this.editTask.taskstatus = 3;
+        break;
+      case 'Close':
+        this.editTask.taskstatus = 4;
+        break;
+    }
+
+    // console.clear();
+    //console.log(this.editTask);
+    this.modalRef = this.modalService.open(content, { size: 'sm' });
+
     this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
       this.employees = [];
       if (res.body) {
         this.employees = res.body;
       }
+    });
+  }
+
+  /**save task after edit */
+  save(): void {
+    this.isSaving = true;
+
+    const task = this.editTask;
+    console.clear();
+    console.log(task);
+    this.updateForm(task);
+    this.subscribeToSaveResponse(this.taskService.update(task));
+  }
+
+  confirmDelete(id: number): void {
+    this.taskService.delete(id).subscribe(() => {
+      this.loadTasks();
+      this.modalRef.close();
     });
   }
 
@@ -245,13 +290,13 @@ export class TaskKanbanComponent implements OnInit {
     });
   }
 
-  /**save task after edit */
-
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ITaskHsnx>>): void {
     result.subscribe(
-      () => '',
-      () => '',
-      this.modalRef.close()
+      () => {
+        this.loadTasks();
+        this.modalRef.close();
+      },
+      () => ''
     );
   }
 }
