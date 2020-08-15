@@ -159,7 +159,7 @@ export class TaskKanbanComponent implements OnInit {
 
   protected subscribeToSaveResponseForUpdate(result: Observable<HttpResponse<ITaskHsnx>>): void {
     result.subscribe(
-      () => 'this.loadTasks()',
+      () => '',
       () => ''
     );
   }
