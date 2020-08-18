@@ -119,7 +119,9 @@ export class TaskKanbanComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadTasks();
+  }
 
   public getString(assignee: string) {
     //return assignee.match(/\b(\w)/g).join('').toUpperCase();
