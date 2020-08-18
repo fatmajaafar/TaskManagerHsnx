@@ -130,70 +130,90 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
   </div>
   <br>
   <div class="page-content">
-    
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="">
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
     <div class="header">
-    <img src="https://img.icons8.com/nolan/64/to-do.png"/>
-    <span>Tasks Today</span>
+    <span class="title" >Manage Tasks</span>
   <span  class="fab-button">
       <button mat-fab class="fab-button-color" (click)="openDialog()" matTooltip="New Task" >
         <fa-icon icon="plus"></fa-icon>
       </button>
    </span>
     </div>
-    <mat-form-field>
-      <input matInput placeholder="Filter by task category">
-      <mat-icon matPrefix>search</mat-icon>
-    </mat-form-field>
     
+    <div>
+      <p><div ><strong>Tasks List</strong></div></p>
+      <ul class="list-group" *ngFor="let task of tasks  ;trackBy: trackId">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{task.tasktitle}}
+          <span class=" tag approved" *ngIf="task.taskstatus ===1" style="color: rgb(53, 34, 221);">Open</span>
+          <span class="tag progress" *ngIf="task.taskstatus === 2" style="color: #c76a1e;">In Progress</span>
+          <span class="tag review " *ngIf="task.taskstatus === 3" style="color: darkmagenta;">In Review</span>
+          <span class="tag done" *ngIf="task.taskstatus === 4" style="color: #28a745;">Done</span>
+        </li>
+       
+      </ul>
+      </div>
+      <hr>
       <mat-tab-group>
         
       <mat-tab label = "All">
+        <ng-template mat-tab-label>
+          <span class="material-icons">
+            list
+            </span>
+         All
+        </ng-template>
           <mat-list *ngFor="let task of tasks">
             <mat-list-item>{{task.tasktitle}}</mat-list-item>
           </mat-list>
         </mat-tab>
 
         <mat-tab label = "Important">
+          <ng-template mat-tab-label>
+            <span class="material-icons">
+              priority_high
+              </span>
+          Important
+          </ng-template>
+          
           <mat-list *ngFor="let task of tasks">
             <mat-list-item *ngIf="task.taskcategory == 1">{{task.tasktitle}}</mat-list-item>
           </mat-list>
         </mat-tab>
 
         <mat-tab label = "Notes">
+          <ng-template mat-tab-label>
+            <span class="material-icons">
+              notes
+              </span>
+          Notes
+          </ng-template>
           <mat-list *ngFor="let task of tasks">
             <mat-list-item *ngIf="task.taskcategory == 2">{{task.tasktitle}}</mat-list-item>
           </mat-list>
         </mat-tab>
 
         <mat-tab label = "Links">
+          <ng-template mat-tab-label>
+            <span class="material-icons">
+              link
+              </span>
+          Links
+          </ng-template>
           <mat-list *ngFor="let task of tasks">
             <mat-list-item *ngIf ="task.taskcategory == 3">{{task.tasktitle}}</mat-list-item>
           </mat-list>
         </mat-tab>
       </mat-tab-group>
 
-      <mat-divider></mat-divider>
+     
    
-      <div style="overflow-y:scroll;">
-      <p><div ><strong>Todo List</strong></div></p>
-      <div class="task" *ngFor="let task of tasks  ;trackBy: trackId" >
-        <input class="task-item" name="task" type="checkbox">
-        <label for="item-1" >
-          <span class="label-text">{{task.tasktitle}}</span>
-          <span>
-            <a [routerLink]="['/task-hsnx', task.id, 'view']">
-            <small class="badge badge-light">more</small></a>
-            
-        </span>
-        </label>
-        <!--<span ><small> comleted by {{task.dateEnd}}</small></span>--> 
-        <span class=" approved" *ngIf="task.taskstatus ===1" style="color: rgb(228, 100, 122);">Approved</span>
-        <span class="review" *ngIf="task.taskstatus === 2" style="color: rgb(68, 204, 129);">In Review</span>
-        <span class="progress" *ngIf="task.taskstatus === 3" style="color: rgb(53, 34, 221);">In Progress</span>
-      </div>
-      </div>
+      
       <mat-divider></mat-divider>
-      <div style="overflow-y:scroll;">
+      <div>
       <p><div ><strong>Upcoming Tasks</strong></div></p>
       <div class="task">
         <input class="task-item" name="task" type="checkbox" id="item-7">
@@ -224,41 +244,35 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
         <span class="tag waiting">Waiting</span>
       </div>
     </div>
-  </div>
+  </div> 
   <div class="right-bar">
     
- 
-        <button mat-button mat-icon-button class="toolbar-btn"><span class="material-icons" matTooltip="{{(tasks?.length)}}">
-          notifications_none
-          </span></button>
-   
-    
-    
-    <div class="top-part">
-      
-    </div>
-
-    <div class="header">
-      
-      <img src="https://img.icons8.com/nolan/64/tear-off-calendar.png"/>
-      <span>Events</span>
-      
-    </div>
-    
+    <div class="header">Events</div>
     <div class="right-content" *ngFor="let event of events">
-      <div>
-        <div class="description-event" class="task-box blue" style="color:rgb(0, 0, 0);" [ngStyle]="{'backgroundColor': getBackgroundColor(event)}" >
-          
-          <label><div class="time" >{{event.startdate}}</div>
-            <div class="event-name">{{event.eventdescription}}</div>
-          </label>
+      <div class="task-box yellow"  [ngStyle]="{'backgroundColor': getBackgroundColor(event)}">
+        <div class="description-task" >
+          <div class="time">{{event.startdate}}</div>
+          <div class="task-name">{{event.eventdescription}}</div>
+        </div>
+        <div class="more-button"></div>
+        <div class="members">
+          <img
+            src="https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+            alt="member">
+          <img
+            src="https://images.unsplash.com/photo-1476657680631-c07285ff2581?ixlib=rb-1.2.1&auto=format&fit=crop&w=2210&q=80"
+            alt="member-2">
+          <img
+            src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
+            alt="member-3">
+          <img
+            src="https://images.unsplash.com/photo-1455504490126-80ed4d83b3b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
+            alt="member-4">
         </div>
       </div>
-    
-      </div>
-      
-        
+     
+    </div>
+     
       </div>
     </div>
-  </div>
-</div>
+ 

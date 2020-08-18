@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ITaskHsnx } from 'app/shared/model/task-hsnx.model';
+import { ITaskHsnx, TaskHsnx } from 'app/shared/model/task-hsnx.model';
 import { HttpResponse } from '@angular/common/http';
 import { TaskHsnxService } from '../task-hsnx/task-hsnx.service';
 import { EventHsnxService } from '../event-hsnx/event-hsnx.service';
@@ -19,6 +19,8 @@ export class TaskmanagementHsnxComponent implements OnInit {
   tasks: ITaskHsnx[] = [];
   events: IEventHsnx[] = [];
   notifications: INotificationHsnx[] = [];
+
+  modalRef: any;
   constructor(
     protected modalService: NgbModal,
     protected taskService: TaskHsnxService,
@@ -27,11 +29,11 @@ export class TaskmanagementHsnxComponent implements OnInit {
   ) {}
 
   getBackgroundColor(event: Event): String {
-    return event ? '#91a3db' : '';
+    return event ? '#f5e6e6' : '';
   }
 
   openDialog(): void {
-    this.modalService.open(TaskFormComponent as Component);
+    this.modalRef = this.modalService.open(TaskFormComponent as Component);
   }
 
   /**

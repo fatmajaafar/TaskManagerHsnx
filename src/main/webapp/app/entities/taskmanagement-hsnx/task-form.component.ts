@@ -49,6 +49,7 @@ export class TaskFormComponent implements OnInit {
       }
 
       this.updateForm(task);
+      this.createFromForm();
     });
   }
 

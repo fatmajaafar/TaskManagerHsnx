@@ -73,15 +73,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus">Taskstatus</label>
-                    <input type="number" class="form-control" name="taskstatus" id="field_taskstatus"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus">Taskstatus</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input  matInput type="number"  name="taskstatus" id="field_taskstatus"
                            formControlName="taskstatus"/>
+                        </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority">Taskpriority</label>
-                    <input type="number" class="form-control" name="taskpriority" id="field_taskpriority"
+                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority">Taskpriority</mat-label>
+                    <mat-form-field class="example-full-width">
+                    <input matInput type="number"  name="taskpriority" id="field_taskpriority"
                            formControlName="taskpriority"/>
+                        </mat-form-field>
                 </div>
 
                 <div class="form-group">
@@ -98,7 +102,7 @@
                     <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory">
                         Taskcategory</mat-label>
                     <mat-form-field class="example-full-width">
-                        <input matInput type="text" class="form-control" name="taskcategory" id="field_taskcategory"
+                        <input matInput type="number" name="taskcategory" id="field_taskcategory"
                             formControlName="taskcategory" />
                     </mat-form-field>
                 </div>
@@ -107,7 +111,7 @@
                     <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.taskstate" for="field_taskstate">
                         Taskstate</mat-label>
                     <mat-form-field class="example-full-width">
-                        <input matInput type="number" class="form-control" name="taskstate" id="field_taskstate"
+                        <input matInput type="number" name="taskstate" id="field_taskstate"
                             formControlName="taskstate" />
                     </mat-form-field>
                 </div>

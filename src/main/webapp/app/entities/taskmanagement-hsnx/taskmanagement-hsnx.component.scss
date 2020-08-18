@@ -1,8 +1,3 @@
-* {
-  box-sizing: border-box;
-  outline: none;
-}
-
 :root {
   --bg-color: #f5f8ff;
   --main-color: #353536;
@@ -42,6 +37,7 @@ body {
   padding: 20px;
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
+  background-color: #9c9898;
 }
 
 ul {
@@ -63,12 +59,15 @@ button {
   background-color: #dcf8f3;
   width: 230px;
   border-right: 1px solid #e3e7f7;
-  position: relative;
+  position: sticky;
+  top: 0;
   border-start-start-radius: 1px;
 }
 
 .left-content {
   padding: 40px;
+  position: sticky;
+  top: 0;
 }
 
 .item {
@@ -76,6 +75,8 @@ button {
   color: var(--main-color);
   margin-bottom: 14px;
   font-weight: 500;
+  position: sticky;
+  top: 0;
 
   svg {
     width: 14px;
@@ -96,6 +97,7 @@ button {
 .actions {
   padding: 12px;
   display: flex;
+
   justify-content: space-between;
 }
 
@@ -104,6 +106,7 @@ button {
   border-left: 1px solid #e3e7f7;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   .header {
     font-size: 20px;
@@ -126,9 +129,7 @@ button {
 }
 
 .right-content {
-  padding: 10px 40px;
-  overflow-y: none;
-  flex: 1;
+  padding: 10px 10px;
 }
 
 .task-box {
@@ -151,7 +152,7 @@ button {
   font-size: 10px;
 }
 
-.event-name {
+.task-name {
   font-size: 14px;
   font-weight: 500;
   opacity: 0.6;
@@ -301,19 +302,28 @@ label .label-text:before {
   padding: 4px 8px;
   border-radius: 20px;
 
-  .approved {
-    background-color: rgb(231, 117, 136);
-    color: white;
+  &.approved {
+    background-color: rgb(185, 178, 240);
+    color: rgb(53, 34, 221);
   }
 
-  .review {
-    background-color: var(--tag-color-three);
-    color: var(--tag-color-text-three);
+  &.progress {
+    background-color: #ebe3dd;
+    color: #c55724;
+  }
+
+  &.review {
+    background-color: rgb(206, 147, 206);
+    color: darkmagenta;
+  }
+  &.done {
+    background-color: #8cbe98;
+    color: #28a745;
   }
 
   &.waiting {
-    background-color: var(--tag-color-four);
-    color: var(--tag-color-text-four);
+    background-color: rgb(235, 225, 225);
+    color: rgb(75, 71, 71);
   }
 }
 .upcoming {
@@ -325,6 +335,7 @@ label .label-text:before {
 @media screen and (max-width: 900px) {
   .left-bar {
     display: none;
+    position: sticky;
   }
 }
 
@@ -338,6 +349,7 @@ label .label-text:before {
   .page-content {
     width: 100%;
     display: block;
+    position: relative;
   }
 
   .tasks-wrapper {
@@ -384,10 +396,6 @@ label .label-text:before {
   span.badge-notification[data-badge]::after {
     top: -11px;
     right: -24px;
-  }
-
-  body {
-    background-color: #e84118;
   }
 
   .search-box {
@@ -504,4 +512,11 @@ label .label-text:before {
   right: 8px;
   color: rgb(124, 173, 26);
   font-size: 10px;
+}
+.title {
+  font-family: Arial;
+  color: grey;
+}
+.example-tab-icon {
+  margin-right: 8px;
 }
