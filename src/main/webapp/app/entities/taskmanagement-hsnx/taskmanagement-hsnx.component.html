@@ -1,32 +1,41 @@
-
 <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <div class="task-manager">
   <div class="left-bar">
     <div class="upper-part">
       <div class="actions">
         <form name="searchForm" class="form-inline">
           <div class="input-group w-100 mt-3">
-            
+
             <!--  <mat-form-field>   
               <input matInput type="text" placeholder="Type here to search">
               <mat-icon matPrefix>search</mat-icon>
               </mat-form-field>-->
-              <div class="search-bar">
-  
-                <input type="text" class="input" placeholder="&nbsp;">
-                <span class="label">Type to search</span>
-                <span class="highlight"></span>
-                <div class="search-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-width="24" height="24"
-viewBox="0 0 172 172"
-style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M64.5,14.33333c-27.6214,0 -50.16667,22.54527 -50.16667,50.16667c0,27.6214 22.54527,50.16667 50.16667,50.16667c12.52732,0 23.97256,-4.67249 32.7819,-12.31771l3.05143,3.05143v9.26628l43,43l14.33333,-14.33333l-43,-43h-9.26628l-3.05143,-3.05143c7.64521,-8.80934 12.31771,-20.25458 12.31771,-32.7819c0,-27.6214 -22.54527,-50.16667 -50.16667,-50.16667zM64.5,28.66667c19.87509,0 35.83333,15.95824 35.83333,35.83333c0,19.87509 -15.95825,35.83333 -35.83333,35.83333c-19.87509,0 -35.83333,-15.95825 -35.83333,-35.83333c0,-19.87509 15.95824,-35.83333 35.83333,-35.83333z"></path></g></g></svg>
-                 </div>
-                </div>
+            <div class="search-bar">
+
+              <input type="text" class="input" placeholder="&nbsp;">
+              <span class="label">Type to search</span>
+              <span class="highlight"></span>
+              <div class="search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"
+                  style=" fill:#000000;">
+                  <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                    style="mix-blend-mode: normal">
+                    <path d="M0,172v-172h172v172z" fill="none"></path>
+                    <g fill="#ffffff">
+                      <path
+                        d="M64.5,14.33333c-27.6214,0 -50.16667,22.54527 -50.16667,50.16667c0,27.6214 22.54527,50.16667 50.16667,50.16667c12.52732,0 23.97256,-4.67249 32.7819,-12.31771l3.05143,3.05143v9.26628l43,43l14.33333,-14.33333l-43,-43h-9.26628l-3.05143,-3.05143c7.64521,-8.80934 12.31771,-20.25458 12.31771,-32.7819c0,-27.6214 -22.54527,-50.16667 -50.16667,-50.16667zM64.5,28.66667c19.87509,0 35.83333,15.95824 35.83333,35.83333c0,19.87509 -15.95825,35.83333 -35.83333,35.83333c-19.87509,0 -35.83333,-15.95825 -35.83333,-35.83333c0,-19.87509 15.95824,-35.83333 35.83333,-35.83333z">
+                      </path>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
           </div>
         </form>
       </div>
@@ -35,7 +44,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
     <div class="left-content">
       <ul class="action-list">
         <li class="item">
-       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
             stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-inbox"
             viewBox="0 0 24 24">
             <path d="M22 12h-6l-2 3h-4l-2-3H2" />
@@ -51,7 +60,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
             class="feather feather-star">
             <polygon
               points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-            </svg>
+          </svg>
           <span> Today</span>
         </li>
         <li class="item">
@@ -72,7 +81,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
             <line x1="10" y1="3" x2="8" y2="21" />
             <line x1="16" y1="3" x2="14" y2="21" /></svg>
           <span>Important</span>
-          
+
         </li>
         <li class="item">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -97,7 +106,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
         <li class="item">
           <div class="material-icons">
             notifications_none
-            </div>
+          </div>
           <span>Notifications</span>
         </li>
         <li class="item">
@@ -123,28 +132,30 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-zap">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-          <span><a >Concerts</a></span>
+          <span><a>Concerts</a></span>
         </li>
       </ul>
     </div>
   </div>
   <br>
   <div class="page-content">
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="example-full-width" color="accent">
       <input matInput placeholder="">
       <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
     <div class="header">
-    <span class="title" >Manage Tasks</span>
-  <span  class="fab-button">
-      <button mat-fab class="fab-button-color" (click)="openDialog()" matTooltip="New Task" >
-        <fa-icon icon="plus"></fa-icon>
-      </button>
-   </span>
+      <span class="title">Manage Tasks</span>
+      <span class="fab-button">
+        <button mat-fab class="fab-button-color" (click)="openDialog(content)" matTooltip="New Task">
+          <fa-icon icon="plus"></fa-icon>
+        </button>
+      </span>
     </div>
-    
+
     <div>
-      <p><div ><strong>Tasks List</strong></div></p>
+      <p>
+      <div><strong>Tasks List</strong></div>
+      </p>
       <ul class="list-group" *ngFor="let task of tasks  ;trackBy: trackId">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           {{task.tasktitle}}
@@ -153,68 +164,70 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
           <span class="tag review " *ngIf="task.taskstatus === 3" style="color: darkmagenta;">In Review</span>
           <span class="tag done" *ngIf="task.taskstatus === 4" style="color: #28a745;">Done</span>
         </li>
-       
+
       </ul>
-      </div>
-      <hr>
-      <mat-tab-group>
-        
-      <mat-tab label = "All">
-        <ng-template mat-tab-label>
+    </div>
+    <hr>
+    <mat-tab-group color="accent">
+
+      <mat-tab label="All" >
+        <ng-template mat-tab-label >
           <span class="material-icons">
             list
-            </span>
-         All
+          </span>
+          All
         </ng-template>
-          <mat-list *ngFor="let task of tasks">
-            <mat-list-item>{{task.tasktitle}}</mat-list-item>
-          </mat-list>
-        </mat-tab>
+        <mat-list *ngFor="let task of tasks">
+          <mat-list-item>{{task.tasktitle}}</mat-list-item>
+        </mat-list>
+      </mat-tab>
 
-        <mat-tab label = "Important">
-          <ng-template mat-tab-label>
-            <span class="material-icons">
-              priority_high
-              </span>
+      <mat-tab label="Important">
+        <ng-template mat-tab-label>
+          <span class="material-icons">
+            priority_high
+          </span>
           Important
-          </ng-template>
-          
-          <mat-list *ngFor="let task of tasks">
-            <mat-list-item *ngIf="task.taskcategory == 1">{{task.tasktitle}}</mat-list-item>
-          </mat-list>
-        </mat-tab>
+        </ng-template>
 
-        <mat-tab label = "Notes">
-          <ng-template mat-tab-label>
-            <span class="material-icons">
-              notes
-              </span>
+        <mat-list *ngFor="let task of tasks">
+          <mat-list-item *ngIf="task.taskcategory == 1">{{task.tasktitle}}</mat-list-item>
+        </mat-list>
+      </mat-tab>
+
+      <mat-tab label="Notes">
+        <ng-template mat-tab-label>
+          <span class="material-icons">
+            notes
+          </span>
           Notes
-          </ng-template>
-          <mat-list *ngFor="let task of tasks">
-            <mat-list-item *ngIf="task.taskcategory == 2">{{task.tasktitle}}</mat-list-item>
-          </mat-list>
-        </mat-tab>
+        </ng-template>
+        <mat-list *ngFor="let task of tasks">
+          <mat-list-item *ngIf="task.taskcategory == 2">{{task.tasktitle}}</mat-list-item>
+        </mat-list>
+      </mat-tab>
 
-        <mat-tab label = "Links">
-          <ng-template mat-tab-label>
-            <span class="material-icons">
-              link
-              </span>
+      <mat-tab label="Links">
+        <ng-template mat-tab-label>
+          <span class="material-icons">
+            link
+          </span>
           Links
-          </ng-template>
-          <mat-list *ngFor="let task of tasks">
-            <mat-list-item *ngIf ="task.taskcategory == 3">{{task.tasktitle}}</mat-list-item>
-          </mat-list>
-        </mat-tab>
-      </mat-tab-group>
+        </ng-template>
+        <mat-list *ngFor="let task of tasks">
+          <mat-list-item *ngIf="task.taskcategory == 3">{{task.tasktitle}}</mat-list-item>
+        </mat-list>
+      </mat-tab>
+    </mat-tab-group>
 
-     
-   
-      
-      <mat-divider></mat-divider>
-      <div>
-      <p><div ><strong>Upcoming Tasks</strong></div></p>
+
+
+
+    <mat-divider></mat-divider>
+    <div>
+      <p>
+      <div><strong>Upcoming Tasks</strong></div>
+      </p>
       <div class="task">
         <input class="task-item" name="task" type="checkbox" id="item-7">
         <label for="item-7">
@@ -244,13 +257,13 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
         <span class="tag waiting">Waiting</span>
       </div>
     </div>
-  </div> 
+  </div>
   <div class="right-bar">
-    
+
     <div class="header">Events</div>
     <div class="right-content" *ngFor="let event of events">
-      <div class="task-box yellow"  [ngStyle]="{'backgroundColor': getBackgroundColor(event)}">
-        <div class="description-task" >
+      <div class="task-box yellow" [ngStyle]="{'backgroundColor': getBackgroundColor(event)}">
+        <div class="description-task">
           <div class="time">{{event.startdate}}</div>
           <div class="task-name">{{event.eventdescription}}</div>
         </div>
@@ -270,9 +283,79 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
             alt="member-4">
         </div>
       </div>
-     
+
     </div>
-     
-      </div>
-    </div>
- 
+
+  </div>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="task-form-wrapper">
+
+    <mat-toolbar color="warn" style="background-color:#880e4f">
+      
+      <span class="material-icons">
+        check_circle
+      </span>
+  
+      <h5>Add New To Do</h5>
+      
+      <button class="e-btn-icon " (click)="modal.dismiss('Cross click')" 
+      >
+      <span class="material-icons">
+        highlight_off
+        </span>
+    </button>
+    </mat-toolbar>
+  
+    <mat-card>
+  
+      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+  
+        <div class="input-full-width">
+          <textarea matInput type="text" name="tasktitle" formControlName="tasktitle" maxlength="500" minlength="5"
+            placeholder="What needs to be done?" autocomplete="off" autofocus class="task-form__input"></textarea>
+          <br>
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart" for="field_dateStart">Date
+              Start</label>
+            <div class="input-group">
+  
+              <input id="field_dateStart" type="text" class="form-control" name="dateStart" ngbDatepicker
+                #dateStartDp="ngbDatepicker" formControlName="dateStart" />
+              <span class="input-group-append">
+                <button type="button" class="btn btn-secondary" (click)="dateStartDp.toggle()">
+                  <fa-icon icon="calendar-alt"></fa-icon>
+                </button>
+              </span>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <mat-form-field color="accent">
+              <mat-label jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory">Category</mat-label>
+              <mat-select name="taskcategory" id="field_taskcategory" formControlName="taskcategory">
+                <mat-option value="1">Important</mat-option>
+                <mat-option value="2">Notes</mat-option>
+                <mat-option value="3">Links</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <br>
+          <br>
+  
+  
+  
+          <button ejs-button cssClass="e-outline" [isPrimary]="true" type="submit" id="save-entity"
+            [disabled]=" isSaving">
+            <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+          </button>
+          <button ejs-button>
+            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+          </button>
+        </div>
+  
+      </form>
+    </mat-card>
+</ng-template>

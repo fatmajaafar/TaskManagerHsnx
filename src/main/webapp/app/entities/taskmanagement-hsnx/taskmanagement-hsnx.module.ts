@@ -15,6 +15,7 @@ import { DropDownListAllModule } from '@syncfusion/ej2-angular-dropdowns';
 import { CheckBoxAllModule, ChipListModule } from '@syncfusion/ej2-angular-buttons';
 
 import { KanbanAllModule } from '@syncfusion/ej2-angular-kanban';
+import { SidebarModule, MenuAllModule, TreeViewAllModule } from '@syncfusion/ej2-angular-navigations';
 
 @NgModule({
   imports: [
@@ -30,7 +31,10 @@ import { KanbanAllModule } from '@syncfusion/ej2-angular-kanban';
     DropDownListAllModule,
     CheckBoxAllModule,
     ChipListModule,
-    KanbanAllModule
+    KanbanAllModule,
+    SidebarModule,
+    MenuAllModule,
+    TreeViewAllModule
   ],
   declarations: [TaskmanagementHsnxComponent, TaskFormComponent],
   entryComponents: [TaskFormComponent]

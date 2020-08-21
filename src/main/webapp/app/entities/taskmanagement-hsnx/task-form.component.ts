@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
@@ -35,7 +35,12 @@ export class TaskFormComponent implements OnInit {
     taskstate: []
   });
 
-  constructor(protected taskService: TaskHsnxService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {
+  constructor(
+    protected taskService: TaskHsnxService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    protected route: Router
+  ) {
     this.dateStartDp = new Date().toString();
   }
 
@@ -111,7 +116,7 @@ export class TaskFormComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-    this.previousState();
+    this.route.navigate(['/task-hsnx']);
   }
 
   protected onSaveError(): void {

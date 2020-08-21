@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+/*eslint-disable*/
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ITaskHsnx, TaskHsnx } from 'app/shared/model/task-hsnx.model';
 import { HttpResponse } from '@angular/common/http';
 import { TaskHsnxService } from '../task-hsnx/task-hsnx.service';
@@ -9,6 +10,12 @@ import { NotificationHsnxService } from '../notification-hsnx/notification-hsnx.
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TaskFormComponent } from './task-form.component';
+import { SidebarComponent } from '@syncfusion/ej2-angular-navigations';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import * as moment from 'moment';
+import { Observable } from 'rxjs';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 @Component({
   selector: 'jhi-taskmanagement-hsnx',
@@ -16,24 +23,63 @@ import { TaskFormComponent } from './task-form.component';
   styleUrls: ['./taskmanagement-hsnx.component.scss']
 })
 export class TaskmanagementHsnxComponent implements OnInit {
+  @ViewChild('sidebar', { static: true })
+  public sidebar!: SidebarComponent;
+  public closeOnDocumentClick: boolean = false;
   tasks: ITaskHsnx[] = [];
   events: IEventHsnx[] = [];
   notifications: INotificationHsnx[] = [];
+  isSaving = false;
+  dateStartDp: any;
+  dateEndDp: any;
+  dueDateDp: any;
+  content: any;
 
   modalRef: any;
   constructor(
     protected modalService: NgbModal,
     protected taskService: TaskHsnxService,
     protected eventService: EventHsnxService,
-    protected notificationService: NotificationHsnxService
+    protected notificationService: NotificationHsnxService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    protected route: Router
   ) {}
+  editForm = this.fb.group({
+    id: [],
+    tasktitle: [null, [Validators.required]],
+    taskdescription: [],
+    dateStart: [],
+    timeStart: [],
+    dateEnd: [],
+    timeEnd: [],
+    taskstatus: [],
+    taskpriority: [],
+    dueDate: [],
+    taskcategory: [],
+    taskstate: []
+  });
 
   getBackgroundColor(event: Event): String {
     return event ? '#f5e6e6' : '';
   }
 
-  openDialog(): void {
-    this.modalRef = this.modalService.open(TaskFormComponent as Component);
+  openDialog(content: any) {
+    this.modalRef = this.modalService.open(content, { centered: true });
+  }
+
+  toggleClick() {
+    this.sidebar.toggle();
+  }
+  closeClick() {
+    this.sidebar.hide();
+  }
+  openClick() {
+    this.sidebar.show();
+  }
+  //To hide the sidebar element skelton during the page load by setting the visibity style when the control is created.
+  onCreated(e: any): void {
+    this.sidebar.element.style.visibility = 'visible';
   }
 
   /**
@@ -70,5 +116,77 @@ export class TaskmanagementHsnxComponent implements OnInit {
         },
         () => ''
       );
+  }
+
+  updateForm(task: ITaskHsnx): void {
+    this.editForm.patchValue({
+      id: task.id,
+      tasktitle: task.tasktitle,
+      taskdescription: task.taskdescription,
+      dateStart: task.dateStart,
+      timeStart: task.timeStart ? task.timeStart.format(DATE_TIME_FORMAT) : null,
+      dateEnd: task.dateEnd,
+      timeEnd: task.timeEnd ? task.timeEnd.format(DATE_TIME_FORMAT) : null,
+      taskstatus: task.taskstatus,
+      taskpriority: task.taskpriority,
+      dueDate: task.dueDate,
+      taskcategory: task.taskcategory,
+      taskstate: task.taskstate
+    });
+  }
+
+  previousState(): void {
+    window.history.back();
+  }
+
+  save(): void {
+    this.isSaving = true;
+    const task = this.createFromForm();
+    if (task.id !== undefined) {
+      this.subscribeToSaveResponse(this.taskService.update(task));
+    } else {
+      this.subscribeToSaveResponse(this.taskService.create(task));
+    }
+  }
+
+  private createFromForm(): ITaskHsnx {
+    return {
+      ...new TaskHsnx(),
+
+      tasktitle: this.editForm.get(['tasktitle'])!.value,
+      taskdescription: this.editForm.get(['taskdescription'])!.value,
+      dateStart: this.editForm.get(['dateStart'])!.value,
+      timeStart: this.editForm.get(['timeStart'])!.value ? moment(this.editForm.get(['timeStart'])!.value, DATE_TIME_FORMAT) : undefined,
+      dateEnd: this.editForm.get(['dateEnd'])!.value,
+      timeEnd: this.editForm.get(['timeEnd'])!.value ? moment(this.editForm.get(['timeEnd'])!.value, DATE_TIME_FORMAT) : undefined,
+      taskstatus: this.editForm.get(['taskstatus'])!.value,
+      taskpriority: this.editForm.get(['taskpriority'])!.value,
+      dueDate: this.editForm.get(['dueDate'])!.value,
+      taskcategory: this.editForm.get(['taskcategory'])!.value,
+      taskstate: this.editForm.get(['taskstate'])!.value
+    };
+  }
+
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<ITaskHsnx>>): void {
+    result.subscribe(
+      () => this.onSaveSuccess(),
+      () => this.onSaveError()
+    );
+  }
+  protected subscribeToSaveResponseForClose(result: Observable<HttpResponse<ITaskHsnx>>): void {
+    result.subscribe(
+      () => {
+        this.modalRef.close();
+      },
+      () => ''
+    );
+  }
+  protected onSaveSuccess(): void {
+    this.isSaving = false;
+    this.route.navigate(['/task-hsnx']);
+  }
+
+  protected onSaveError(): void {
+    this.isSaving = false;
   }
 }
