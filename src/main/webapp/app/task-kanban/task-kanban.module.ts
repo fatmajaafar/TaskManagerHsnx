@@ -26,6 +26,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
+import { TaskKanbanRoute } from './task-kanban.route';
 
 @NgModule({
   declarations: [TaskKanbanComponent],
@@ -55,7 +56,7 @@ import { MatChipsModule } from '@angular/material/chips';
     ReactiveFormsModule,
     FormsModule,
     BrowserModule,
-    RouterModule.forChild([{ path: 'task-kanban', component: TaskKanbanComponent }])
+    RouterModule.forChild(TaskKanbanRoute)
   ],
   providers: [],
   bootstrap: [TaskKanbanComponent]
