@@ -105,7 +105,7 @@
                 <td class="e-label">Priority</td>
                 <td>
                   <div>
-                    <mat-form-field>
+                    <mat-form-field color="accent">
                       <mat-label jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority"></mat-label>
                       <mat-select name="taskpriority" id="field_taskpriority"  [(ngModel)]="editTask.taskpriority" [ngModelOptions]="{standalone: true}">
                         <mat-option value="1">High</mat-option>
@@ -122,7 +122,7 @@
                 <td class="e-label">Assignee</td>
                 <td>
                   <div>
-                    <mat-form-field>
+                    <mat-form-field color="accent">
                       <mat-select id="field_tblEmployee" name="tblEmployee" [(ngModel)]="editTask.tblEmployeeId" [ngModelOptions]="{standalone: true}">
                         <mat-option [value]="employee.id" *ngFor="let employee of employees">{{ employee.employeename }}
                         </mat-option>
@@ -195,7 +195,7 @@
                 <td class="e-label">Status</td>
                 <td>
                   <div class="form-group">
-                    <mat-form-field>
+                    <mat-form-field color="accent">
                       <mat-label jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus"></mat-label>
                       <mat-select name="taskstatus" id="field_taskstatus" formControlName="taskstatus">
                         <mat-option value="1">To Do</mat-option>
@@ -212,7 +212,7 @@
                 <td class="e-label">Priority</td>
                 <td>
                   <div class="form-group">
-                    <mat-form-field>
+                    <mat-form-field color="accent">
                       <mat-label jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority"></mat-label>
                       <mat-select name="taskpriority" id="field_taskpriority" formControlName="taskpriority">
                         <mat-option value="1">High</mat-option>
@@ -229,7 +229,7 @@
                 <td class="e-label">Assignee</td>
                 <td>
                   <div class="form-group">
-                    <mat-form-field>
+                    <mat-form-field color="accent">
                       <mat-select id="field_tblEmployee" name="tblEmployee" formControlName="tblEmployeeId">
                         <mat-option [value]="employee.id" *ngFor="let employee of employees">{{ employee.employeename }}
                         </mat-option>
