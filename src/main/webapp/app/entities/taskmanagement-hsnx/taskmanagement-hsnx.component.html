@@ -146,6 +146,7 @@
     <div class="header">
       <span class="title">Manage Tasks</span>
       <span class="fab-button">
+
         <button mat-fab class="fab-button-color" (click)="openDialog(content)" matTooltip="New Task">
           <fa-icon icon="plus"></fa-icon>
         </button>
@@ -159,19 +160,23 @@
       <ul class="list-group" *ngFor="let task of tasks  ;trackBy: trackId">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           {{task.tasktitle}}
-          <span class=" tag approved" *ngIf="task.taskstatus ===1" style="color: rgb(53, 34, 221);">Open</span>
+
+          <span class="badge badge-info">{{task.nbjrs | number: '1.0-0'}} days left </span>
+          <span class=" tag approved" *ngIf="task.taskstatus === 1" style="color: rgb(53, 34, 221);">Open</span>
           <span class="tag progress" *ngIf="task.taskstatus === 2" style="color: #c76a1e;">In Progress</span>
           <span class="tag review " *ngIf="task.taskstatus === 3" style="color: darkmagenta;">In Review</span>
           <span class="tag done" *ngIf="task.taskstatus === 4" style="color: #28a745;">Done</span>
+
         </li>
 
       </ul>
+
     </div>
     <hr>
     <mat-tab-group color="accent">
 
-      <mat-tab label="All" >
-        <ng-template mat-tab-label >
+      <mat-tab label="All">
+        <ng-template mat-tab-label>
           <span class="material-icons">
             list
           </span>
@@ -294,34 +299,34 @@
   <div class="task-form-wrapper">
 
     <mat-toolbar color="warn" style="background-color:#880e4f">
-      
+
       <span class="material-icons">
         check_circle
       </span>
-  
+
       <h5>Add New To Do</h5>
-      
-      <button class="e-btn-icon " (click)="modal.dismiss('Cross click')" 
-      >
-      <span class="material-icons">
-        highlight_off
+
+      <button class="e-btn-icon " (click)="modal.dismiss('Cross click')">
+        <span class="material-icons">
+          highlight_off
         </span>
-    </button>
+      </button>
     </mat-toolbar>
-  
+
     <mat-card>
-  
+
       <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-  
+
         <div class="input-full-width">
           <textarea matInput type="text" name="tasktitle" formControlName="tasktitle" maxlength="500" minlength="5"
             placeholder="What needs to be done?" autocomplete="off" autofocus class="task-form__input"></textarea>
           <br>
           <div class="form-group">
-            <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart" for="field_dateStart">Date
+            <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart"
+              for="field_dateStart">Date
               Start</label>
             <div class="input-group">
-  
+
               <input id="field_dateStart" type="text" class="form-control" name="dateStart" ngbDatepicker
                 #dateStartDp="ngbDatepicker" formControlName="dateStart" />
               <span class="input-group-append">
@@ -331,10 +336,11 @@
               </span>
             </div>
           </div>
-  
+
           <div class="form-group">
             <mat-form-field color="accent">
-              <mat-label jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory">Category</mat-label>
+              <mat-label jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory">Category
+              </mat-label>
               <mat-select name="taskcategory" id="field_taskcategory" formControlName="taskcategory">
                 <mat-option value="1">Important</mat-option>
                 <mat-option value="2">Notes</mat-option>
@@ -344,9 +350,9 @@
           </div>
           <br>
           <br>
-  
-  
-  
+
+
+
           <button ejs-button cssClass="e-outline" [isPrimary]="true" type="submit" id="save-entity"
             [disabled]=" isSaving">
             <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
@@ -355,7 +361,7 @@
             <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
           </button>
         </div>
-  
+
       </form>
     </mat-card>
 </ng-template>

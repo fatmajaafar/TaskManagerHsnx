@@ -15,6 +15,7 @@ export interface ITaskHsnx {
   taskstate?: number;
   tblEmployeeEmployeename?: string;
   tblEmployeeId?: number;
+  nbjrs?: number;
 }
 
 export class TaskHsnx implements ITaskHsnx {
@@ -32,6 +33,7 @@ export class TaskHsnx implements ITaskHsnx {
     public taskcategory?: string,
     public taskstate?: number,
     public tblEmployeeEmployeename?: string,
-    public tblEmployeeId?: number
+    public tblEmployeeId?: number,
+    public nbjrs?: number
   ) {}
 }

@@ -10,7 +10,6 @@ import { NotificationHsnxService } from '../notification-hsnx/notification-hsnx.
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TaskFormComponent } from './task-form.component';
-import { SidebarComponent } from '@syncfusion/ej2-angular-navigations';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
@@ -24,7 +23,6 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 })
 export class TaskmanagementHsnxComponent implements OnInit {
   @ViewChild('sidebar', { static: true })
-  public sidebar!: SidebarComponent;
   public closeOnDocumentClick: boolean = false;
   tasks: ITaskHsnx[] = [];
   events: IEventHsnx[] = [];
@@ -36,6 +34,9 @@ export class TaskmanagementHsnxComponent implements OnInit {
   content: any;
 
   modalRef: any;
+  Difference_In_Days: any;
+  Difference_In_Day: any;
+
   constructor(
     protected modalService: NgbModal,
     protected taskService: TaskHsnxService,
@@ -67,21 +68,6 @@ export class TaskmanagementHsnxComponent implements OnInit {
   openDialog(content: any) {
     this.modalRef = this.modalService.open(content, { centered: true });
   }
-
-  toggleClick() {
-    this.sidebar.toggle();
-  }
-  closeClick() {
-    this.sidebar.hide();
-  }
-  openClick() {
-    this.sidebar.show();
-  }
-  //To hide the sidebar element skelton during the page load by setting the visibity style when the control is created.
-  onCreated(e: any): void {
-    this.sidebar.element.style.visibility = 'visible';
-  }
-
   /**
   getRandomColor():String {
    const color = Math.floor(0x1000000 * Math.random()).toString(16);
@@ -95,7 +81,19 @@ export class TaskmanagementHsnxComponent implements OnInit {
       })
       .subscribe(
         (res: HttpResponse<ITaskHsnx[]>) => {
+          const today = new Date();
+          this.Difference_In_Days = 0;
           this.tasks = res.body || [];
+
+          for (var i = 0; i < this.tasks.length; i++) {
+            var date = moment(this.tasks[i].dateEnd).toDate();
+
+            var Difference_In_Time = date.getTime() - today.getTime();
+            this.Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+            //  return this.Difference_In_Days;
+            //this.Difference_In_Day=this.Difference_In_Days;
+            this.tasks[i].nbjrs = this.Difference_In_Days;
+          }
         },
         () => ''
       );
@@ -169,7 +167,9 @@ export class TaskmanagementHsnxComponent implements OnInit {
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ITaskHsnx>>): void {
     result.subscribe(
-      () => this.onSaveSuccess(),
+      () => {
+        this.modalRef.close();
+      },
       () => this.onSaveError()
     );
   }
