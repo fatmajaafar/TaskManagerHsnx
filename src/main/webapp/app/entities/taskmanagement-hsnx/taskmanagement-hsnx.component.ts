@@ -15,6 +15,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { IEmployeeHsnx } from 'app/shared/model/employee-hsnx.model';
+import { EmployeeHsnxService } from '../employee-hsnx/employee-hsnx.service';
 
 @Component({
   selector: 'jhi-taskmanagement-hsnx',
@@ -36,6 +38,7 @@ export class TaskmanagementHsnxComponent implements OnInit {
   modalRef: any;
   Difference_In_Days: any;
   Difference_In_Day: any;
+  employees: IEmployeeHsnx[] = [];
 
   constructor(
     protected modalService: NgbModal,
@@ -44,7 +47,8 @@ export class TaskmanagementHsnxComponent implements OnInit {
     protected notificationService: NotificationHsnxService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    protected route: Router
+    protected route: Router,
+    protected employeeService: EmployeeHsnxService
   ) {}
   editForm = this.fb.group({
     id: [],
@@ -58,7 +62,8 @@ export class TaskmanagementHsnxComponent implements OnInit {
     taskpriority: [],
     dueDate: [],
     taskcategory: [],
-    taskstate: []
+    taskstate: [],
+    tblEmployeeId: []
   });
 
   getBackgroundColor(event: Event): String {
@@ -67,12 +72,13 @@ export class TaskmanagementHsnxComponent implements OnInit {
 
   openDialog(content: any) {
     this.modalRef = this.modalService.open(content, { centered: true });
+    this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
+      this.employees = [];
+      if (res.body) {
+        this.employees = res.body;
+      }
+    });
   }
-  /**
-  getRandomColor():String {
-   const color = Math.floor(0x1000000 * Math.random()).toString(16);
-    return '#' + ('000000' + color).slice(-6);
-  } */
 
   ngOnInit(): void {
     this.taskService
@@ -129,7 +135,8 @@ export class TaskmanagementHsnxComponent implements OnInit {
       taskpriority: task.taskpriority,
       dueDate: task.dueDate,
       taskcategory: task.taskcategory,
-      taskstate: task.taskstate
+      taskstate: task.taskstate,
+      tblEmployeeId: task.tblEmployeeId
     });
   }
 
@@ -161,7 +168,8 @@ export class TaskmanagementHsnxComponent implements OnInit {
       taskpriority: this.editForm.get(['taskpriority'])!.value,
       dueDate: this.editForm.get(['dueDate'])!.value,
       taskcategory: this.editForm.get(['taskcategory'])!.value,
-      taskstate: this.editForm.get(['taskstate'])!.value
+      taskstate: this.editForm.get(['taskstate'])!.value,
+      tblEmployeeId: this.editForm.get(['tblEmployeeId'])!.value
     };
   }
 
