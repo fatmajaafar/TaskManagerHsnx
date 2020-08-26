@@ -4,7 +4,7 @@
 		<span class="hipster img-fluid rounded"></span>
 		<p class="lead">
 			<div [ngSwitch]="isAuthenticated()">
-				<div *ngSwitchCase="true">
+				<div class="alert alert-success" *ngSwitchCase="true">
 					<span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
 						[translateValues]="{ username: account.login }">You are logged in as "{{ account.login }}".</span>
 				</div>
