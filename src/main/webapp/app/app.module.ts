@@ -36,6 +36,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CheckBoxAllModule } from '@syncfusion/ej2-angular-buttons';
 
 import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
+
 @NgModule({
   imports: [
     SkyhookMultiBackendModule,
@@ -62,6 +63,7 @@ import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@
     CheckBoxModule,
     RadioButtonModule,
     SwitchModule,
+
     CommonModule,
     BrowserAnimationsModule,
     BrowserModule,
