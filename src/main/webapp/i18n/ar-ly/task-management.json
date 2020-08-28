@@ -1,0 +1,37 @@
+{
+  "taskManagement": {
+    "home": {
+      "title": "إدارة المهام",
+      "createLabel": "الأحداث",
+      "search": "اكتب للبحث",
+      "taskList": "قائمة المهام",
+      "upcomingTasks": "المهام القادمة"
+    },
+    "category": {
+      "all": "الكل",
+      "important": "مهم",
+      "notes": "ملاحظات",
+      "links": "الروابط"
+    },
+    "nav": {
+      "inbox": "صندوق الوارد",
+      "today": "اليوم",
+      "upcoming": "القادمة",
+      "important": "مهم",
+      "meeting": "الاجتماعات",
+      "trash": "يدمر",
+      "notification": "إشعارات",
+      "vacation": "عطل",
+      "festival": "مهرجان",
+      "concerts": "حفلات"
+    },
+    "add": {
+      "dialogTitle": "إضافة مهام جديدة",
+      "taskTitle": "ما يجب القيام به ؟",
+      "taskStatus": "الحالة",
+      "taskPriority": "الأولوية",
+      "assignee": "المعين إليه",
+      "category": "الفئة"
+    }
+  }
+}

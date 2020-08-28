@@ -1,0 +1,32 @@
+{
+  "kanban": {
+    "home": {
+      "createLabel": "What needs to be done ?",
+      "search": "Search for tasks",
+      "filterByStatus": "Filter by status",
+      "FilterByPriority": "Filter by priority"
+    },
+    "task": {
+      "toDo": "To Do",
+      "inProgress": "In Progress",
+      "inReview": "In Review",
+      "done": "Done"
+    },
+    "edit": {
+      "dialogTitle": "Edit Task Details",
+      "taskTitle": "Title",
+      "taskStatus": "Status",
+      "taskPriority": "Priority",
+      "assignee": "Assignee",
+      "summary": "Summary"
+    },
+    "add": {
+      "dialogTitle": "Add New Task",
+      "taskTitle": "Title",
+      "taskStatus": "Status",
+      "taskPriority": "Priority",
+      "assignee": "Assignee",
+      "summary": "Summary"
+    }
+  }
+}

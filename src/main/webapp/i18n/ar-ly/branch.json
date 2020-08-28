@@ -2,28 +2,28 @@
   "taskManagerHsnxApp": {
     "branch": {
       "home": {
-        "title": "Branches",
-        "createLabel": "Create a new Branch",
-        "createOrEditLabel": "Create or edit a Branch",
-        "search": "Search for Branch",
-        "notFound": "No Branches found"
+        "title": "الفروع",
+        "createLabel": "إنشاء فرع جديد",
+        "createOrEditLabel": "تفاصيل الفرع ",
+        "search": "ابحث عن فرع",
+        "notFound": "لم يتم العثور على فروع"
       },
-      "created": "A new Branch is created with identifier {{ param }}",
-      "updated": "A Branch is updated with identifier {{ param }}",
-      "deleted": "A Branch is deleted with identifier {{ param }}",
+      "created": "تم إنشاء فرع جديد بمعرف {{ param }}",
+      "updated": "تم تحديث الفرع بمعرف {{ param }}",
+      "deleted": "تم حذف الفرع بمعرف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Branch {{ id }}?"
+        "question": "هل أنت متأكد أنك تريد حذف الفرع {{ id }}?"
       },
       "detail": {
-        "title": "Branch"
+        "title": "فرع"
       },
-      "branchName": "Branch Name",
-      "branchPhone": "Branch Phone",
-      "branchFax": "Branch Fax",
-      "branchAddress": "Branch Address",
-      "branchEmail": "Branch Email",
-      "branchBanner": "Branch Banner",
-      "branchDefaultExercice": "Branch Default Exercice"
+      "branchName": "اسم الفرع",
+      "branchPhone": "هاتف الفرع",
+      "branchFax": "فاكس الفرع",
+      "branchAddress": "عنوان فرع",
+      "branchEmail": "البريد الإلكتروني للفرع",
+      "branchBanner": "لافتة فرع ",
+      "branchDefaultExercice": "التمرين الافتراضي للفرع"
     }
   }
 }

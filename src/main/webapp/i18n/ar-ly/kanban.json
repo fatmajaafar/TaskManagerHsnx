@@ -1,0 +1,32 @@
+{
+  "kanban": {
+    "home": {
+      "createLabel": "ما يجب القيام به ?",
+      "search": "ابحث عن المهام",
+      "filterByStatus": "تصفية حسب الحالة",
+      "FilterByPriority": "تصفية حسب الأولوية"
+    },
+    "task": {
+      "toDo": "لكى يفعل",
+      "inProgress": "في تقدم",
+      "inReview": "في مراجعة",
+      "done": "منجز"
+    },
+    "edit": {
+      "dialogTitle": "تحرير تفاصيل المهمة ",
+      "taskTitle": "عنوان",
+      "taskStatus": "الحالة",
+      "taskPriority": "الأولوية",
+      "assignee": "المعين إليه",
+      "summary": "ملخص"
+    },
+    "add": {
+      "dialogTitle": "إضافة مهمة جديدة",
+      "taskTitle": "عنوان",
+      "taskStatus": "الحالة",
+      "taskPriority": "الأولوية",
+      "assignee": "المعين إليه",
+      "summary": "ملخص"
+    }
+  }
+}

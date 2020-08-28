@@ -2,25 +2,26 @@
   "taskManagerHsnxApp": {
     "notification": {
       "home": {
-        "title": "Notifications",
-        "createLabel": "Create a new Notification",
-        "createOrEditLabel": "Create or edit a Notification",
-        "search": "Search for Notification",
-        "notFound": "No Notifications found"
+        "title": "إشعارات",
+        "createLabel": "أضف إشعارًا جديدًا",
+        "createOrEditLabel": "تفاصيل الإخطار",
+        "search": "ابحث عن الإعلام",
+        "notFound": "لم يتم العثور على إخطارا",
+        "tooltip": "إضافة إشعار جديد        "
       },
-      "created": "A new Notification is created with identifier {{ param }}",
-      "updated": "A Notification is updated with identifier {{ param }}",
-      "deleted": "A Notification is deleted with identifier {{ param }}",
+      "created": "تم إنشاء إشعار جديد بالمعرف {{ param }}",
+      "updated": "تم تحديث إشعار بالمعرف {{ param }}",
+      "deleted": "تم حذف إعلام مع المعرف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Notification {{ id }}?"
+        "question": "هل أنت متأكد أنك تريد حذف الإعلام {{ id }}?"
       },
       "detail": {
-        "title": "Notification"
+        "title": "إشعار"
       },
-      "message": "Message",
-      "handled": "Handled",
-      "notifFrom": "Notif From",
-      "notifto": "Notifto"
+      "message": "رسالة",
+      "handled": "تم التعامل معها",
+      "notifFrom": "إشعار من",
+      "notifto": "إشعار إلى"
     }
   }
 }

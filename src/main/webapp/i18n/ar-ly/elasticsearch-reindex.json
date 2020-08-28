@@ -1,12 +1,12 @@
 {
   "elasticsearch": {
     "reindex": {
-      "accepted": "Request accepted, performing full Elasticsearch reindexing.",
+      "accepted": "تم قبول الطلب ، وإجراء إعادة فهرسة كاملة للبحث المرن",
       "dialog": {
-        "title": "Confirm Elasticsearch Reindex",
-        "question": "Are you sure you want to reindex Elasticsearch? This could take a while!",
-        "cancel": "Cancel",
-        "confirm": "Reindex"
+        "title": "تأكيد إعادة فهرسة البحث المرن",
+        "question": "هل أنت متأكد أنك تريد إعادة فهرسة elasticsearch؟ وهذا يمكن أن يستغرق بعض الوقت!        ",
+        "cancel": "إلغاء",
+        "confirm": "إعادة الفهرسة"
       },
       "title": "Reindex Elasticsearch",
       "instructions1": "This will send a request to reindex all data from your primary datasource into Elasticsearch. This will fix missing data and mapping issues, however you will lose any ES data and mapping that was defined outside of your application. This request will return immediately and the reindexing will run in the background. You will see \"Elasticsearch: Successfully performed reindexing\" in your logs when this is complete.",

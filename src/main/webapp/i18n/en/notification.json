@@ -3,10 +3,11 @@
     "notification": {
       "home": {
         "title": "Notifications",
-        "createLabel": "",
-        "createOrEditLabel": "Create or edit a Notification",
+        "createLabel": "Add a new Notification",
+        "createOrEditLabel": "Notification Details",
         "search": "Search for Notification",
-        "notFound": "No Notifications found"
+        "notFound": "No Notifications found",
+        "tooltip": "Add new Notification"
       },
       "created": "A new Notification is created with identifier {{ param }}",
       "updated": "A Notification is updated with identifier {{ param }}",

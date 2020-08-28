@@ -1,20 +1,20 @@
 {
   "global": {
-    "title": "TaskManagerHsnx",
+    "title": "مدير المهام Hsnx",
     "browsehappy": "أنت تستخدم متصفح <strong>قديم</strong> . من فضلك <a href=\"http://browsehappy.com/?locale=en\">قم بتحديث متصفحك</a> لتحسين تجربتك.",
     "menu": {
       "home": "الصفحة الرئيسية",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "الكيانات",
-        "departmentHsnx": "Department",
-        "employeeHsnx": "Employee",
-        "eventHsnx": "Event",
-        "taskHsnx": "Task",
-        "countryHsnx": "Country",
-        "notificationHsnx": "Notification",
-        "branchHsnx": "Branch",
-        "jobHsnx": "Job",
+        "departmentHsnx": "قسم",
+        "employeeHsnx": "موظف",
+        "eventHsnx": "حدث",
+        "taskHsnx": "مهمة",
+        "countryHsnx": "بلد",
+        "notificationHsnx": "إشعار",
+        "branchHsnx": "فرع",
+        "jobHsnx": "مهنة",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -45,8 +45,8 @@
     "form": {
       "username.label": "اسم المستخدم",
       "username.placeholder": "إسم المستخدم الخاص بك",
-      "currentpassword.label": "Current password",
-      "currentpassword.placeholder": "Current password",
+      "currentpassword.label": "كلمة السر الحالية",
+      "currentpassword.placeholder": "كلمة السر الحالية ",
       "newpassword.label": "كلمة السر الجديدة",
       "newpassword.placeholder": "كلمة السر الجديدة",
       "confirmpassword.label": "تأكيد كلمة السر الجديدة",
@@ -144,5 +144,5 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "هنا يضع الفووتر"
+  "footer": "  انت في شركة جيدة 😊"
 }

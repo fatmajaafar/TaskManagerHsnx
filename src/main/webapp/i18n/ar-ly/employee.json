@@ -2,30 +2,30 @@
   "taskManagerHsnxApp": {
     "employee": {
       "home": {
-        "title": "Employees",
-        "createLabel": "Create a new Employee",
-        "createOrEditLabel": "Create or edit a Employee",
-        "search": "Search for Employee",
-        "notFound": "No Employees found"
+        "title": "الموظفين",
+        "createLabel": "إضافة موظف جديد",
+        "createOrEditLabel": "تفاصيل الموظف",
+        "search": "ابحث عن موظف",
+        "notFound": "لم يتم العثور على موظفين"
       },
-      "created": "A new Employee is created with identifier {{ param }}",
-      "updated": "A Employee is updated with identifier {{ param }}",
-      "deleted": "A Employee is deleted with identifier {{ param }}",
+      "created": "تم إنشاء موظف جديد بمعرف {{ param }}",
+      "updated": "تم تحديث الموظف بالمعرف {{ param }}",
+      "deleted": "تم حذف الموظف بمعرف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Employee {{ id }}?"
+        "question": "هل أنت متأكد أنك تريد حذف الموظف {{ id }}?"
       },
       "detail": {
-        "title": "Employee"
+        "title": "موظف"
       },
-      "employeename": "Employeename",
-      "employeephone": "Employeephone",
-      "employeefax": "Employeefax",
-      "employeeaddress": "Employeeaddress",
-      "employeeemail": "Employeeemail",
-      "employeehiredate": "Employeehiredate",
-      "tblJob": "Tbl Job",
-      "tblDepartment": "Tbl Department",
-      "tblBranch": "Tbl Branch"
+      "employeename": "اسم الموظف",
+      "employeephone": "هاتف الموظف",
+      "employeefax": "فاكس الموظف",
+      "employeeaddress": "عنوان الموظف",
+      "employeeemail": "البريد الإلكتروني للموظف",
+      "employeehiredate": "تاريخ تعيين الموظف ",
+      "tblJob": "وظيفة Tbl",
+      "tblDepartment": "قسم Tbl",
+      "tblBranch": "فرع Tbl"
     }
   }
 }

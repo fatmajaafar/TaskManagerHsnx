@@ -3,8 +3,8 @@
     "country": {
       "home": {
         "title": "Countries",
-        "createLabel": "Create a new Country",
-        "createOrEditLabel": "Create or edit a Country",
+        "createLabel": "Add a new Country",
+        "createOrEditLabel": "Country Details",
         "search": "Search for Country",
         "notFound": "No Countries found"
       },

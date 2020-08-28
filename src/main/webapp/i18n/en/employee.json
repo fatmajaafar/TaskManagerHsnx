@@ -3,8 +3,8 @@
     "employee": {
       "home": {
         "title": "Employees",
-        "createLabel": "Create a new Employee",
-        "createOrEditLabel": "Create or edit a Employee",
+        "createLabel": "Add a new Employee",
+        "createOrEditLabel": " Employee Details",
         "search": "Search for Employee",
         "notFound": "No Employees found"
       },

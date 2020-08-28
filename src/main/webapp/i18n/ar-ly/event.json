@@ -2,27 +2,27 @@
   "taskManagerHsnxApp": {
     "event": {
       "home": {
-        "title": "Events",
-        "createLabel": "Create a new Event",
-        "createOrEditLabel": "Create or edit a Event",
-        "search": "Search for Event",
-        "notFound": "No Events found"
+        "title": "الأحداث",
+        "createLabel": "أضف حدثًا جديدًا",
+        "createOrEditLabel": "تفاصيل الحدث",
+        "search": "ابحث عن حدث",
+        "notFound": "لم يتم العثور على أحداث"
       },
-      "created": "A new Event is created with identifier {{ param }}",
-      "updated": "A Event is updated with identifier {{ param }}",
-      "deleted": "A Event is deleted with identifier {{ param }}",
+      "created": "تم إنشاء حدث جديد بمعرف {{ param }}",
+      "updated": "تم تحديث الحدث بالمعرف {{ param }}",
+      "deleted": "تم حذف الحدث بالمعرف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Event {{ id }}?"
+        "question": "هل أنت متأكد أنك تريد حذف الحدث {{ id }}?"
       },
       "detail": {
-        "title": "Event"
+        "title": "حدث"
       },
-      "eventdescription": "Eventdescription",
-      "starttime": "Starttime",
-      "startdate": "Startdate",
-      "endtime": "Endtime",
-      "enddate": "Enddate",
-      "tblTask": "Tbl Task"
+      "eventdescription": "وصف الحدث",
+      "starttime": "وقت البدء",
+      "startdate": "تاريخ البدء",
+      "endtime": "وقت الانتهاء",
+      "enddate": "تاريخ الانتهاء",
+      "tblTask": "مهمة Tbl"
     }
   }
 }

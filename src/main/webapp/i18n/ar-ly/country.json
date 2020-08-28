@@ -2,23 +2,23 @@
   "taskManagerHsnxApp": {
     "country": {
       "home": {
-        "title": "Countries",
-        "createLabel": "Create a new Country",
-        "createOrEditLabel": "Create or edit a Country",
-        "search": "Search for Country",
-        "notFound": "No Countries found"
+        "title": "بلدان",
+        "createLabel": "أضف دولة جديدة",
+        "createOrEditLabel": "تفاصيل الدولة",
+        "search": "ابحث عن دولة",
+        "notFound": "لم يتم العثور على دول"
       },
-      "created": "A new Country is created with identifier {{ param }}",
-      "updated": "A Country is updated with identifier {{ param }}",
-      "deleted": "A Country is deleted with identifier {{ param }}",
+      "created": "تمت إضافة بلد جديد بمعرف {{ param }}",
+      "updated": "تم تحديث الدولة بالمعرف {{ param }}",
+      "deleted": "تم حذف الدولة ذات المعرف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Country {{ id }}?"
+        "question": "هل أنت متأكد أنك تريد حذف الدولة {{ id }}?"
       },
       "detail": {
-        "title": "Country"
+        "title": "بلد"
       },
-      "countryName": "Country Name",
-      "countryCode": "Country Code"
+      "countryName": "اسم الدولة",
+      "countryCode": "الرقم الدولي"
     }
   }
 }

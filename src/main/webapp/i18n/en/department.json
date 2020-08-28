@@ -3,8 +3,8 @@
     "department": {
       "home": {
         "title": "Departments",
-        "createLabel": "",
-        "createOrEditLabel": "Create or edit a Department",
+        "createLabel": "Add a new Department",
+        "createOrEditLabel": "Department Details",
         "search": "Search for Department",
         "notFound": "No Departments found"
       },

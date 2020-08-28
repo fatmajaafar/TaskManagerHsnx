@@ -1,0 +1,37 @@
+{
+  "taskManagement": {
+    "home": {
+      "title": "Manage Tasks",
+      "createLabel": "Events",
+      "search": "Type to search",
+      "taskList": "Tasks List",
+      "upcomingTasks": "Upcoming Tasks"
+    },
+    "category": {
+      "all": "All",
+      "important": "Important",
+      "notes": "Notes",
+      "links": "Links"
+    },
+    "nav": {
+      "inbox": "Inbox",
+      "today": "Today",
+      "upcoming": "Upcoming",
+      "important": "Important",
+      "meeting": "Meetings",
+      "trash": "Trash",
+      "notification": "Notifications",
+      "vacation": "Vacation",
+      "festival": "Festival",
+      "concerts": "Concerts"
+    },
+    "add": {
+      "dialogTitle": "Add New To Do",
+      "taskTitle": "What needs to be done ?",
+      "taskStatus": "Status",
+      "taskPriority": "Priority",
+      "assignee": "Assignee",
+      "category": "Category"
+    }
+  }
+}

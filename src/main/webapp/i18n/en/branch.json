@@ -3,8 +3,8 @@
     "branch": {
       "home": {
         "title": "Branches",
-        "createLabel": "Create a new Branch",
-        "createOrEditLabel": "Create or edit a Branch",
+        "createLabel": "Add a new Branch",
+        "createOrEditLabel": "Branch Details",
         "search": "Search for Branch",
         "notFound": "No Branches found"
       },

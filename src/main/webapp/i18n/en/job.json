@@ -3,8 +3,8 @@
     "job": {
       "home": {
         "title": "Jobs",
-        "createLabel": "Create a new Job",
-        "createOrEditLabel": "Create or edit a Job",
+        "createLabel": "Add a new Job",
+        "createOrEditLabel": "Job Details",
         "search": "Search for Job",
         "notFound": "No Jobs found"
       },

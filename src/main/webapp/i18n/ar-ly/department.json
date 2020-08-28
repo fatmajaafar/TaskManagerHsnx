@@ -2,23 +2,23 @@
   "taskManagerHsnxApp": {
     "department": {
       "home": {
-        "title": "Departments",
-        "createLabel": "Create a new Department",
-        "createOrEditLabel": "Create or edit a Department",
-        "search": "Search for Department",
-        "notFound": "No Departments found"
+        "title": "الأقسام",
+        "createLabel": "إضافة قسم جديد",
+        "createOrEditLabel": "تفاصيل القسم",
+        "search": "ابحث عن قسم",
+        "notFound": "لم يتم العثور على أقسام"
       },
-      "created": "A new Department is created with identifier {{ param }}",
-      "updated": "A Department is updated with identifier {{ param }}",
-      "deleted": "A Department is deleted with identifier {{ param }}",
+      "created": "تم إنشاء قسم جديد بمعرف {{ param }}",
+      "updated": "تم تحديث القسم بالمعرف {{ param }}",
+      "deleted": "تم حذف قسم بمعرف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Department {{ id }}?"
+        "question": "هل أنت متأكد أنك تريد حذف القسم {{ id }}?"
       },
       "detail": {
-        "title": "Department"
+        "title": "قسم"
       },
-      "deptName": "Dept Name",
-      "deptNote": "Dept Note"
+      "deptName": "اسم القسم",
+      "deptNote": "ملاحظة القسم"
     }
   }
 }

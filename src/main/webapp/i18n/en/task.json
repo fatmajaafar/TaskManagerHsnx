@@ -3,8 +3,8 @@
     "task": {
       "home": {
         "title": "Tasks",
-        "createLabel": "Create a new Task",
-        "createOrEditLabel": "Create or edit a Task",
+        "createLabel": "Add a new Task",
+        "createOrEditLabel": "Task Details",
         "search": "Search for Task",
         "notFound": "No Tasks found"
       },

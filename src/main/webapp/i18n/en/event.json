@@ -3,8 +3,8 @@
     "event": {
       "home": {
         "title": "Events",
-        "createLabel": "Create a new Event",
-        "createOrEditLabel": "Create or edit a Event",
+        "createLabel": "Add a new Event",
+        "createOrEditLabel": "Event Details",
         "search": "Search for Event",
         "notFound": "No Events found"
       },

@@ -2,13 +2,13 @@
   "error": {
     "title": "صفحة الاخطاء",
     "http": {
-      "400": "Bad request.",
+      "400": "اقتراح غير جيد.",
       "403": "غير مصرح لك للوصول إلى صفحة.",
       "404": "هذه الصفحة غير موجودة.",
-      "405": "The HTTP verb you used is not supported for this URL.",
-      "500": "Internal server error."
+      "405": "فعل HTTP الذي استخدمته غير مدعوم لعنوان URL هذا.",
+      "500": "خطأ في الخادم الداخلي."
     },
-    "concurrencyFailure": "Another user modified this data at the same time as you. Your changes were rejected.",
-    "validation": "Validation error on the server."
+    "concurrencyFailure": "قام مستخدم آخر بتعديل هذه البيانات في نفس الوقت الذي قمت فيه. تم رفض التغييرات الخاصة بك.    ",
+    "validation": "خطأ في التحقق من الصحة على الخادم."
   }
 }

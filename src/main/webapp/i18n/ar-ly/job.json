@@ -2,22 +2,22 @@
   "taskManagerHsnxApp": {
     "job": {
       "home": {
-        "title": "Jobs",
-        "createLabel": "Create a new Job",
-        "createOrEditLabel": "Create or edit a Job",
-        "search": "Search for Job",
-        "notFound": "No Jobs found"
+        "title": "وظائف",
+        "createLabel": "أضف وظيفة جديدة",
+        "createOrEditLabel": "تفاصيل الوظيفة",
+        "search": "ابحث عن وظيفة",
+        "notFound": "لم يتم العثور على وظائف"
       },
-      "created": "A new Job is created with identifier {{ param }}",
-      "updated": "A Job is updated with identifier {{ param }}",
-      "deleted": "A Job is deleted with identifier {{ param }}",
+      "created": "تم إنشاء وظيفة جديدة بمعرف {{ param }}",
+      "updated": "تم تحديث الوظيفة بمعرف {{ param }}",
+      "deleted": "تم حذف الوظيفة بمعرف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Job {{ id }}?"
+        "question": "هل أنت متأكد أنك تريد حذف الوظيفة {{ id }}?"
       },
       "detail": {
-        "title": "Job"
+        "title": "وظيفة"
       },
-      "jobTitle": "Job Title"
+      "jobTitle": "اسم الوظيفة"
     }
   }
 }

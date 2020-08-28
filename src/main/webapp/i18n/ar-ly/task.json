@@ -2,33 +2,33 @@
   "taskManagerHsnxApp": {
     "task": {
       "home": {
-        "title": "Tasks",
-        "createLabel": "Create a new Task",
-        "createOrEditLabel": "Create or edit a Task",
-        "search": "Search for Task",
-        "notFound": "No Tasks found"
+        "title": "مهام",
+        "createLabel": "أضف مهمة جديدة",
+        "createOrEditLabel": "تفاصيل المهمة",
+        "search": "ابحث عن مهمة",
+        "notFound": "لم يتم العثور على مهام"
       },
-      "created": "A new Task is created with identifier {{ param }}",
-      "updated": "A Task is updated with identifier {{ param }}",
-      "deleted": "A Task is deleted with identifier {{ param }}",
+      "created": "تم إنشاء مهمة جديدة بمعرف {{ param }}",
+      "updated": "تم تحديث مهمة بالمعرف {{ param }}",
+      "deleted": "تم حذف مهمة بالمعرف {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Task {{ id }}?"
+        "question": "هل أنت متأكد أنك تريد حذف المهمة{{ id }}?"
       },
       "detail": {
-        "title": "Task"
+        "title": "مهمة"
       },
-      "tasktitle": "Tasktitle",
-      "taskdescription": "Taskdescription",
-      "dateStart": "Date Start",
-      "timeStart": "Time Start",
-      "dateEnd": "Date End",
-      "timeEnd": "Time End",
-      "taskstatus": "Taskstatus",
-      "taskpriority": "Taskpriority",
-      "dueDate": "Due Date",
-      "taskcategory": "Taskcategory",
-      "taskstate": "Taskstate",
-      "tblEmployee": "Tbl Employee"
+      "tasktitle": "اسم المهمة",
+      "taskdescription": "وصف المهمة",
+      "dateStart": "تاريخ البدء",
+      "timeStart": "وقت البدء",
+      "dateEnd": "تاريخ الانتهاء",
+      "timeEnd": "وقت الانتهاء",
+      "taskstatus": "حالة المهمة",
+      "taskpriority": "أولوية المهمة",
+      "dueDate": "تاريخ الاستحقاق",
+      "taskcategory": "فئة المهمة",
+      "taskstate": "وضع المهمة ",
+      "tblEmployee": "موظف Tbl"
     }
   }
 }
