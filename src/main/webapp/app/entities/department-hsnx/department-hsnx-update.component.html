@@ -1,48 +1,121 @@
-<div class="row justify-content-center">
-    <div class="col-8">
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper" style="margin-bottom: 25px;">
+        <div class="formtitle" id="jhi-department-hsnx-heading">
+            <span jhiTranslate="taskManagerHsnxApp.department.home.createOrEditLabel">Department Details</span>
+        </div>
+
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-department-hsnx-heading" jhiTranslate="taskManagerHsnxApp.department.home.createOrEditLabel">Create or edit a Department</h2>
 
-            <div>
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text"  id="id" name="id" formControlName="id" readonly />
-                    </mat-form-field>
+
+            <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
+                <mat-form-field class="example-full-width">
+                    <input matInput type="text" id="id" name="id" formControlName="id" readonly />
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+                <div class="e-float-input">
+                    <input type="text" name="deptName" id="field_deptName" formControlName="deptName">
+                    <span class="e-float-line"></span>
+                    <label jhiTranslate="taskManagerHsnxApp.department.deptName" for="field_deptName"
+                        class="e-float-text">Dept Name</label>
                 </div>
-
-                <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.department.deptName" for="field_deptName">Dept Name</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text" name="deptName" id="field_deptName"
-                           formControlName="deptName"/>
-                    <div *ngIf="editForm.get('deptName')!.invalid && (editForm.get('deptName')!.dirty || editForm.get('deptName')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('deptName')?.errors?.required" jhiTranslate="entity.validation.required">
+                <div
+                    *ngIf="editForm.get('deptName')!.invalid && (editForm.get('deptName')!.dirty || editForm.get('deptName')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('deptName')?.errors?.required"
+                        jhiTranslate="entity.validation.required">
                         This field is required.
-                        </small>
-                    </div>
-                      </mat-form-field>
-                      </div>
-
-                <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.department.deptNote" for="field_deptNote">Dept Note</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text"  name="deptNote" id="field_deptNote"
-                           formControlName="deptNote"/>
-                    </mat-form-field>
+                    </small>
                 </div>
             </div>
 
-            <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                </button>
+            <div class="form-group">
+                <div class="e-float-input">
+                    <input type="text" name="deptNote" id="field_deptNote" formControlName="deptNote">
+                    <span class="e-float-line"></span>
+                    <label jhiTranslate="taskManagerHsnxApp.department.deptNote" for="field_deptNote"
+                        class="e-float-text">Email</label>
+                </div>
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-                </button>
             </div>
-        </form>
+
+
+
+            <div class="row">
+                <div style="width: 320px;margin:0px auto;height: 100px;padding-top: 25px;">
+                    <div style="display: inline-block;">
+                        <button class="samplebtn e-control e-btn e-primary" type="submit"
+                            style="height:40px;width: 150px;" data-ripple="true" id="save-entity"
+                            [disabled]="editForm.invalid || isSaving"> <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span></button>
+                    </div>
+                    <div style="float: right;">
+                        <button  class="samplebtn e-control e-btn" type="reset"
+                            style="height:40px;width: 150px;" data-ripple="true" id="cancel-save"
+                            (click)="previousState()">   <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span></button>
+                    </div>
+                </div>
+            </div>
+
     </div>
+    </form>
 </div>
+
+
+
+<style>
+    .formtitle {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.70);
+    }
+
+    .e-error,
+    .e-float-text {
+        font-weight: 500;
+    }
+
+    .e-custom-label {
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 20px;
+    }
+
+    form {
+        padding-top: 20px;
+        margin-bottom: 45px;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+        border-radius: 5px;
+        background: #f9f9f9;
+    }
+
+    .highcontrast form,
+    .highcontrast .header {
+        color: #fff;
+        background: #000000;
+    }
+
+    .header {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    table,
+    td,
+    th {
+        padding: 5px;
+    }
+
+    .form-horizontal .form-group {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .row {
+        padding-bottom: 30px;
+        padding-top: 25px;
+    }
+</style>

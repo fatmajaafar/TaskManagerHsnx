@@ -13,7 +13,7 @@ import { TaskHsnxService } from 'app/entities/task-hsnx/task-hsnx.service';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { EmployeeHsnxService } from 'app/entities/employee-hsnx/employee-hsnx.service';
 import { ITaskHsnx, TaskHsnx } from 'app/shared/model/task-hsnx.model';
-import { IKanbanData, IEmployeeData } from './data';
+import { IKanbanData } from './data';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

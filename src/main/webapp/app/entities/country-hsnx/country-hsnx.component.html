@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="taskManagerHsnxApp.country.home.title">Countries</span>
 
-        <button  mat-fab color="primary" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-country-hsnx" [routerLink]="['/country-hsnx/new']">
+        <button  mat-fab class="fab-button-color" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-country-hsnx" [routerLink]="['/country-hsnx/new']" matTooltip="Add new country">
             <fa-icon icon="plus"></fa-icon>
             
         </button>
@@ -49,21 +49,27 @@
                         <div class="btn-group">
                             <button type="submit"
                                     [routerLink]="['/country-hsnx', country.id, 'view']"
-                                    class="btn btn-info btn-sm">
+                                    class="btn btn-outline-success">
                                 <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+
                               
                             </button>
 
                             <button type="submit"
                                     [routerLink]="['/country-hsnx', country.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                                    class="btn btn-outline-primary">
                                 <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+
                                 
                             </button>
 
                             <button type="submit" (click)="delete(country)"
-                                    class="btn btn-danger btn-sm">
+                            class="btn btn-outline-danger">
                                 <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+
                                 
                             </button>
                         </div>

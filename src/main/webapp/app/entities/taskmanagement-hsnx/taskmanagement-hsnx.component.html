@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<div class="task-manager">
+<div class="task-manager" dir="ltr">
   <div class="left-bar">
     <div class="upper-part">
       <div class="actions">
@@ -17,7 +17,7 @@
             <div class="search-bar">
 
               <input type="text" class="input" placeholder="&nbsp;">
-              <span class="label">Type to search</span>
+              <span class="label" jhiTranslate="taskManagement.home.search">Type to search</span>
               <span class="highlight"></span>
               <div class="search-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"
@@ -51,7 +51,7 @@
             <path
               d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
           </svg>
-          <span>Inbox</span>
+          <span jhiTranslate="taskManagement.nav.inbox">Inbox</span>
         </li>
 
         <li class="item">
@@ -61,16 +61,25 @@
             <polygon
               points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
           </svg>
-          <span> Today</span>
+          <span jhiTranslate="taskManagement.nav.today"> Today</span>
         </li>
         <li class="item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-calendar"
-            viewBox="0 0 24 24">
-            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-            <path d="M16 2v4M8 2v4m-5 4h18" />
-          </svg>
-          <label>Upcoming</label>
+
+          <label>
+            <div>
+              <div style="display: inline-block" jhiTranslate="taskManagement.nav.upcoming">Upcoming</div>
+
+              <div style="display: inline-block">
+                <ejs-chiplist aria-orientation="Horizontal">
+                  <e-chips>
+
+                    <e-chip text="Soon" cssClass="e-danger"></e-chip>
+                  </e-chips>
+                </ejs-chiplist>
+              </div>
+
+            </div>
+          </label>
         </li>
         <li class="item">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -80,7 +89,7 @@
             <line x1="4" y1="15" x2="20" y2="15" />
             <line x1="10" y1="3" x2="8" y2="21" />
             <line x1="16" y1="3" x2="14" y2="21" /></svg>
-          <span>Important</span>
+          <span jhiTranslate="taskManagement.nav.important">Important</span>
 
         </li>
         <li class="item">
@@ -91,7 +100,7 @@
             <circle cx="9" cy="7" r="4" />
             <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
             <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
-          <span>Meetings</span>
+          <span jhiTranslate="taskManagement.nav.meeting">Meetings</span>
         </li>
         <li class="item">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
@@ -99,7 +108,7 @@
             viewBox="0 0 24 24">
             <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
           </svg>
-          <span>Trash</span>
+          <span jhiTranslate="taskManagement.nav.trash">Trash</span>
         </li>
       </ul>
       <ul class="category-list">
@@ -107,7 +116,7 @@
           <div class="material-icons">
             notifications_none
           </div>
-          <span>Notifications</span>
+          <span jhiTranslate="taskManagement.nav.notification">Notifications</span>
         </li>
         <li class="item">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
@@ -117,7 +126,7 @@
             <path
               d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
           </svg>
-          <span>Vacation</span>
+          <span jhiTranslate="taskManagement.nav.vacation">Vacation</span>
         </li>
         <li class="item">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -125,14 +134,14 @@
             class="feather feather-trending-up">
             <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
             <polyline points="17 6 23 6 23 12" /></svg>
-          <span>Festival</span>
+          <span jhiTranslate="taskManagement.nav.festival">Festival</span>
         </li>
         <li class="item">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="feather feather-zap">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-          <span><a>Concerts</a></span>
+          <span jhiTranslate="taskManagement.nav.concerts"><a>Concerts</a></span>
         </li>
       </ul>
     </div>
@@ -144,7 +153,7 @@
       <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
     <div class="header">
-      <span class="title">Manage Tasks</span>
+      <span class="title" jhiTranslate="taskManagement.home.title">Manage Tasks</span>
       <span class="fab-button">
 
         <button mat-fab class="fab-button-color" (click)="openDialog(content)" matTooltip="New Task">
@@ -155,12 +164,11 @@
 
     <div>
       <p>
-      <div><strong>Tasks List</strong></div>
+      <div jhiTranslate="taskManagement.home.taskList"><strong>Tasks List</strong></div>
       </p>
       <ul class="list-group" *ngFor="let task of tasks  ;trackBy: trackId">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           {{task.tasktitle}}
-          
           <span class="badge badge-info">{{task.nbjrs | number: '1.0-0'}} days left </span>
           <span class=" tag approved" *ngIf="task.taskstatus === 1" style="color: rgb(53, 34, 221);">Open</span>
           <span class="tag progress" *ngIf="task.taskstatus === 2" style="color: #c76a1e;">In Progress</span>
@@ -187,7 +195,7 @@
         </mat-list>
       </mat-tab>
 
-      <mat-tab label="Important">
+      <mat-tab label="Important" jhiTranslate="taskManagement.category.important">
         <ng-template mat-tab-label>
           <span class="material-icons">
             priority_high
@@ -200,7 +208,7 @@
         </mat-list>
       </mat-tab>
 
-      <mat-tab label="Notes">
+      <mat-tab label="Notes" jhiTranslate="taskManagement.category.notes">
         <ng-template mat-tab-label>
           <span class="material-icons">
             notes
@@ -212,7 +220,7 @@
         </mat-list>
       </mat-tab>
 
-      <mat-tab label="Links">
+      <mat-tab label="Links" jhiTranslate="taskManagement.category.links">
         <ng-template mat-tab-label>
           <span class="material-icons">
             link
@@ -231,7 +239,21 @@
     <mat-divider></mat-divider>
     <div>
       <p>
-      <div><strong>Upcoming Tasks</strong></div>
+      <div>
+        <div style="display: inline-block" jhiTranslate="taskManagement.home.upcomingTasks"><strong>Upcoming
+            Tasks</strong></div>
+
+        <div style="display: inline-block">
+
+          <ejs-chiplist aria-orientation="Horizontal">
+            <e-chips>
+
+              <e-chip text="Soon" cssClass="e-danger"></e-chip>
+            </e-chips>
+          </ejs-chiplist>
+        </div>
+
+      </div>
       </p>
       <div class="task">
         <input class="task-item" name="task" type="checkbox" id="item-7">
@@ -265,28 +287,31 @@
   </div>
   <div class="right-bar">
 
-    <div class="header">Events</div>
+    <div class="header" jhiTranslate="taskManagement.home.createLabel">Events</div>
     <div class="right-content" *ngFor="let event of events">
-      <div class="task-box yellow" [ngStyle]="{'backgroundColor': getBackgroundColor(event)}">
+      <div class="task-box yellow" [ngStyle]="{'backgroundColor': getBackgroundColor(event)}" dir="ltr">
         <div class="description-task">
-          <div class="time">{{event.startdate}}</div>
+          <div class="time">{{event.startdate | date:'dd/MM/yyyy'}}</div>
           <div class="task-name">{{event.eventdescription}}</div>
         </div>
-        <div class="more-button"></div>
-        <div class="members">
-          <img
-            src="https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-            alt="member">
-          <img
-            src="https://images.unsplash.com/photo-1476657680631-c07285ff2581?ixlib=rb-1.2.1&auto=format&fit=crop&w=2210&q=80"
-            alt="member-2">
-          <img
-            src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
-            alt="member-3">
-          <img
-            src="https://images.unsplash.com/photo-1455504490126-80ed4d83b3b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
-            alt="member-4">
-        </div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Redial</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voice mail</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+          </button>
+        </mat-menu>
+
       </div>
 
     </div>
@@ -304,7 +329,7 @@
         check_circle
       </span>
 
-      <h5>Add New To Do</h5>
+      <h5 jhiTranslate="taskManagement.add.dialogTitle">Add New To Do</h5>
 
       <button class="e-btn-icon " (click)="modal.dismiss('Cross click')">
         <span class="material-icons">
@@ -318,119 +343,122 @@
       <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
 
         <div class="input-full-width">
-          <textarea  matInput type="text" name="tasktitle" formControlName="tasktitle" maxlength="500" minlength="5"
+          <textarea matInput type="text" name="tasktitle" formControlName="tasktitle" maxlength="500" minlength="5"
             placeholder="What needs to be done?" autocomplete="off" autofocus class="task-form__input"></textarea>
           <br>
           <div
-                            *ngIf="editForm.get('tasktitle')!.invalid && (editForm.get('tasktitle')!.dirty || editForm.get('tasktitle')!.touched)">
-                            <small class="form-text text-danger" *ngIf="editForm.get('tasktitle')?.errors?.required"
-                                jhiTranslate="entity.validation.required">
-                                Name of the task is needed. Please write name of this task.
-                            </small>
-                
-                        </div>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart"
-              for="field_dateStart">Date
-              Start</label>
-            <div class="input-group">
+            *ngIf="editForm.get('tasktitle')!.invalid && (editForm.get('tasktitle')!.dirty || editForm.get('tasktitle')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('tasktitle')?.errors?.required"
+              jhiTranslate="entity.validation.required">
+              Name of the task is needed. Please write name of this task.
+            </small>
 
-              <input id="field_dateStart" type="text" class="form-control" name="dateStart" ngbDatepicker
-                #dateStartDp="ngbDatepicker" formControlName="dateStart" />
-              <span class="input-group-append">
-                <button type="button" class="btn btn-secondary" (click)="dateStartDp.toggle()">
-                  <fa-icon icon="calendar-alt"></fa-icon>
-                </button>
-              </span>
-            </div>
           </div>
-          
-          <div class="form-group">
-            <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateEnd" for="field_dateEnd">Date End</label>
-            <div class="input-group">
-                <input id="field_dateEnd" type="text" class="form-control" name="dateEnd" ngbDatepicker #dateEndDp="ngbDatepicker" formControlName="dateEnd"/>
-                <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="dateEndDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
-                </span>
-            </div>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart" for="field_dateStart">Date
+            Start</label>
+          <div class="input-group">
+
+            <input id="field_dateStart" type="text" class="form-control" name="dateStart" ngbDatepicker
+              #dateStartDp="ngbDatepicker" formControlName="dateStart" />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateStartDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
         </div>
 
-          <tr>
-            <td class="e-label">Assignee</td>
-            <td>
-          <div class="form-group">
-            <mat-form-field color="accent">
-              <mat-select id="field_tblEmployee" name="tblEmployee" formControlName="tblEmployeeId">
-                <mat-option [value]="employee.id" *ngFor="let employee of employees">{{ employee.employeename }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateEnd" for="field_dateEnd">Date
+            End</label>
+          <div class="input-group">
+            <input id="field_dateEnd" type="text" class="form-control" name="dateEnd" ngbDatepicker
+              #dateEndDp="ngbDatepicker" formControlName="dateEnd" />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateEndDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
           </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="e-label">Category</td>
-        <td>
-          <div class="form-group">
-            <mat-form-field color="accent">
-              <mat-label jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory">
-              </mat-label>
-              <mat-select name="taskcategory" id="field_taskcategory" formControlName="taskcategory">
-                <mat-option value="1">Important</mat-option>
-                <mat-option value="2">Notes</mat-option>
-                <mat-option value="3">Links</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="e-label">Status</td>
-        <td>
-              <div class="form-group">
-                <mat-form-field color="accent">
-                  <mat-label jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus"></mat-label>
-                  <mat-select name="taskstatus" id="field_taskstatus" formControlName="taskstatus">
-                    <mat-option value="1">To Do</mat-option>
-                    <mat-option value="2">In Progress</mat-option>
-                    <mat-option value="3">In Review</mat-option>
-                    <mat-option value="4">Done</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td class="e-label">Priority</td>
-            <td>
-              <div class="form-group">
-                <mat-form-field color="accent">
-                  <mat-label jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority"></mat-label>
-                  <mat-select name="taskpriority" id="field_taskpriority" formControlName="taskpriority">
-                    <mat-option value="1">High</mat-option>
-                    <mat-option value="2">Medium</mat-option>
-                    <mat-option value="3">Low</mat-option>
-                    
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </td>
-          </tr>
-          <br>
-          <br>
-          <br>
-
-          <button ejs-button cssClass="e-outline" [isPrimary]="true" type="submit" id="save-entity"
-            [disabled]=" isSaving">
-            <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
-          </button>
-          <button ejs-button>
-            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-          </button>
         </div>
 
-      </form>
-    </mat-card>
+        <tr>
+          <td class="e-label" jhiTranslate="taskManagement.add.assignee">Assignee</td>
+          <td>
+            <div class="form-group">
+              <mat-form-field color="accent">
+                <mat-select id="field_tblEmployee" name="tblEmployee" formControlName="tblEmployeeId">
+                  <mat-option [value]="employee.id" *ngFor="let employee of employees">{{ employee.employeename }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="e-label" jhiTranslate="taskManagerHsnxApp.task.taskcategory">Category</td>
+          <td>
+            <div class="form-group">
+              <mat-form-field color="accent">
+                <mat-label for="field_taskcategory">
+                </mat-label>
+                <mat-select name="taskcategory" id="field_taskcategory" formControlName="taskcategory">
+                  <mat-option value="1">Important</mat-option>
+                  <mat-option value="2">Notes</mat-option>
+                  <mat-option value="3">Links</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="e-label" jhiTranslate="taskManagerHsnxApp.task.taskstatus">Status</td>
+          <td>
+            <div class="form-group">
+              <mat-form-field color="accent">
+                <mat-label for="field_taskstatus"></mat-label>
+                <mat-select name="taskstatus" id="field_taskstatus" formControlName="taskstatus">
+                  <mat-option value="1">To Do</mat-option>
+                  <mat-option value="2">In Progress</mat-option>
+                  <mat-option value="3">In Review</mat-option>
+                  <mat-option value="4">Done</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="e-label" jhiTranslate="taskManagerHsnxApp.task.taskpriority">Priority</td>
+          <td>
+            <div class="form-group">
+              <mat-form-field color="accent">
+                <mat-label for="field_taskpriority"></mat-label>
+                <mat-select name="taskpriority" id="field_taskpriority" formControlName="taskpriority">
+                  <mat-option value="1">High</mat-option>
+                  <mat-option value="2">Medium</mat-option>
+                  <mat-option value="3">Low</mat-option>
+
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <br>
+        <br>
+        <br>
+
+        <button ejs-button cssClass="e-outline" [isPrimary]="true" type="submit" id="save-entity"
+          [disabled]=" isSaving">
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+        <button ejs-button>
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+  </div>
+
+  </form>
+  </mat-card>
 </ng-template>

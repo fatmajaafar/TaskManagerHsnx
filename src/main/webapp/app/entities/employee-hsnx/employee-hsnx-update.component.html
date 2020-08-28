@@ -1,114 +1,204 @@
-<div class="row justify-content-center">
-    <div class="col-8">
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper" style="margin-bottom: 25px;">
+        <div class="formtitle">
+            <span jhiTranslate="taskManagerHsnxApp.employee.home.createOrEditLabel">Employee Details</span>
+        </div>
+
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="-employee-hsnx-heading" jhiTranslate="taskManagerHsnxApp.employee.home.createOrEditLabel">Create or edit a Employee</h2>
 
-            <div>
-               
-
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
-                    <mat-form-field class="example-full-width">
+            <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
+                <mat-form-field class="example-full-width">
                     <input matInput type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
-                    </mat-form-field>
-                </div>
-
-                <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeename" for="field_employeename">Employeename</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text"  name="employeename" id="field_employeename"
-                           formControlName="employeename"/>
-                    <div *ngIf="editForm.get('employeename')!.invalid && (editForm.get('employeename')!.dirty || editForm.get('employeename')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('employeename')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
                 </mat-form-field>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="e-float-input">
+                    <input type="text" name="employeename" id="field_employeename" formControlName="employeename">
+                    <span class="e-float-line"></span>
+                    <label jhiTranslate="taskManagerHsnxApp.employee.employeename" for="field_employeename"
+                        class="e-float-text">User Name</label>
+                </div>
+                <div
+                    *ngIf="editForm.get('employeename')!.invalid && (editForm.get('employeename')!.dirty || editForm.get('employeename')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('employeename')?.errors?.required"
+                        jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="e-float-input">
+                    <input type="text" name="employeephone" id="field_employeephone" formControlName="employeephone">
+                    <span class="e-float-line"></span>
+                    <label jhiTranslate="taskManagerHsnxApp.employee.employeephone" for="field_employeephone"
+                        class="e-float-text">Employee Phone</label>
                 </div>
 
-                <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeephone" for="field_employeephone">Employeephone</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text"  name="employeephone" id="field_employeephone"
-                           formControlName="employeephone"/>
-                        </mat-form-field>
-                </div>
+            </div>
 
-                <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeefax" for="field_employeefax">Employeefax</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text" name="employeefax" id="field_employeefax"
-                           formControlName="employeefax"/>
-                        </mat-form-field>       
-                </div>
+            <div class="form-group">
+                <div class="e-float-input">
+                    <input type="text" name="employeefax" id="field_employeefax" formControlName="employeefax">
+                    <span class="e-float-line"></span>
+                    <label jhiTranslate="taskManagerHsnxApp.employee.employeefax" for="field_employeefax"
+                        class="e-float-text">Employee Fax</label>
 
-                <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeeaddress" for="field_employeeaddress">Employeeaddress</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text" class="form-control" name="employeeaddress" id="field_employeeaddress"
-                           formControlName="employeeaddress"/>
-                        </mat-form-field>       
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeeemail" for="field_employeeemail">Employeeemail</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text" name="employeeemail" id="field_employeeemail"
-                           formControlName="employeeemail"/>
-                        </mat-form-field>
+            <div class="form-group">
+                <div class="e-float-input">
+                    <textarea rows="2" name="employeeaddress" id="field_employeeaddress"
+                        formControlName="employeeaddress"></textarea>
+                    <span class="e-float-line"></span>
+                    <label class="e-float-text" jhiTranslate="taskManagerHsnxApp.employee.employeeaddress"
+                        for="field_employeeaddress">Employee Address</label>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeehiredate" for="field_employeehiredate">Employeehiredate</label>
-                    <div class="input-group">
-                        <input id="field_employeehiredate" type="text" class="form-control" name="employeehiredate" ngbDatepicker #employeehiredateDp="ngbDatepicker" formControlName="employeehiredate"/>
-                        <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="employeehiredateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
-                        </span>
+            <div class="form-group">
+                <div class="e-float-input">
+                    <input type="text" name="employeeemail" id="field_employeeemail" formControlName="employeeemail">
+                    <span class="e-float-line"></span>
+                    <label jhiTranslate="taskManagerHsnxApp.employee.employeeemail" for="field_employeeemail"
+                        class="e-float-text">employeeemail</label>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeehiredate"
+                    for="field_employeehiredate">Employeehiredate</label>
+                <div class="input-group">
+                    <input id="field_employeehiredate" type="text" class="form-control" name="employeehiredate"
+                        ngbDatepicker #employeehiredateDp="ngbDatepicker" formControlName="employeehiredate" />
+                    <span class="input-group-append">
+                        <button type="button" class="btn btn-secondary" (click)="employeehiredateDp.toggle()">
+                            <fa-icon icon="calendar-alt"></fa-icon>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblJob"
+                    for="field_tblJob">Tbl Job</label>
+                <select class="form-control" id="field_tblJob" name="tblJob" formControlName="tblJobId">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="JobOption.id" *ngFor="let JobOption of jobs; trackBy: trackById">
+                        {{ JobOption.jobTitle }}</option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblDepartment"
+                    for="field_tblDepartment">Tbl Department</label>
+                <select class="form-control" id="field_tblDepartment" name="tblDepartment"
+                    formControlName="tblDepartmentId">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="DepartmentOption.id"
+                        *ngFor="let DepartmentOption of departments; trackBy: trackById">{{ DepartmentOption.deptName }}
+                    </option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblBranch"
+                    for="field_tblBranch">Tbl Branch</label>
+                <select class="form-control" id="field_tblBranch" name="tblBranch" formControlName="tblBranchId">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="BranchOption.id" *ngFor="let BranchOption of branches; trackBy: trackById">
+                        {{ BranchOption.branchName }}</option>
+                </select>
+
+            </div>
+
+
+
+            <div class="row">
+                <div style="width: 320px;margin:0px auto;height: 100px;padding-top: 25px;">
+                    <div style="display: inline-block;">
+                        <button id="save-entity" [disabled]="editForm.invalid || isSaving"
+                            class="samplebtn e-control e-btn e-primary" type="submit" style="height:40px;width: 150px;"
+                            data-ripple="true"> <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span></button>
+                    </div>
+                    <div style="float: right;">
+                        <button class="samplebtn e-control e-btn" type="submit" style="height:40px;width: 150px;"
+                            data-ripple="true" id="cancel-save" (click)="previousState()">   <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span></button>
                     </div>
                 </div>
-
-                <div class="form-group">
-                   
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblJob" for="field_tblJob">Tbl Job</label>
-                    <select class="form-control" id="field_tblJob" name="tblJob" formControlName="tblJobId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="JobOption.id" *ngFor="let JobOption of jobs; trackBy: trackById">{{ JobOption.jobTitle }}</option>
-                    </select>
-                   
-                </div>
-
-                <div class="form-group">
-                    
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblDepartment" for="field_tblDepartment">Tbl Department</label>
-                    <select class="form-control" id="field_tblDepartment" name="tblDepartment" formControlName="tblDepartmentId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="DepartmentOption.id" *ngFor="let DepartmentOption of departments; trackBy: trackById">{{ DepartmentOption.deptName }}</option>
-                    </select>
-                  
-                </div>
-
-                <div class="form-group">
-                    
-                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblBranch" for="field_tblBranch">Tbl Branch</label>
-                    <select class="form-control" id="field_tblBranch" name="tblBranch" formControlName="tblBranchId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="BranchOption.id" *ngFor="let BranchOption of branches; trackBy: trackById">{{ BranchOption.branchName }}</option>
-                    </select>
-               
-                </div>
             </div>
-
-            <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                </button>
-
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-                </button>
-            </div>
-        </form>
     </div>
+    </form>
 </div>
+</div>
+
+
+<div id="description">
+
+    <style>
+        .formtitle {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.70);
+        }
+
+        .e-error,
+        .e-float-text {
+            font-weight: 500;
+        }
+
+        .e-custom-label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 20px;
+        }
+
+        form {
+            padding-top: 20px;
+            margin-bottom: 45px;
+            border: 1px solid #ccc;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+
+        .highcontrast form,
+        .highcontrast .header {
+            color: #fff;
+            background: #000000;
+        }
+
+        .header {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        table,
+        td,
+        th {
+            padding: 5px;
+        }
+
+        .form-horizontal .form-group {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .row {
+            padding-bottom: 30px;
+            padding-top: 25px;
+        }
+    </style>

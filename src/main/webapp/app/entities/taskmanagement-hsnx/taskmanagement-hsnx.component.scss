@@ -667,3 +667,10 @@ label .label-text:before {
   width: auto;
   opacity: initial;
 }
+
+#chip-default-wrapper .sample-padding {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,42 +1,105 @@
-<div class="row justify-content-center">
-    <div class="col-8">
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper" style="margin-bottom: 25px;">
+        <div class="formtitle">
+            <span jhiTranslate="taskManagerHsnxApp.job.home.createOrEditLabel">Job Details</span>
+        </div>
+
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="-job-hsnx-heading" jhiTranslate="taskManagerHsnxApp.job.home.createOrEditLabel">Create or edit a Job</h2>
 
-            <div>
-               
+            <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
+                <mat-form-field class="example-full-width">
+                <input matInput type="text"  id="id" name="id" formControlName="id" readonly />
+            </mat-form-field>
+            </div>
 
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text"  id="id" name="id" formControlName="id" readonly />
-                </mat-form-field>
+            <div class="form-group">
+                <div class="e-float-input">
+                    <input type="text"  name="jobTitle" id="field_jobTitle"
+                    formControlName="jobTitle">
+                    <span class="e-float-line"></span>
+                    <label jhiTranslate="taskManagerHsnxApp.job.jobTitle" for="field_jobTitle" class="e-float-text">Job Title</label>
                 </div>
-
-                <div class="form-group">
-                    <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.job.jobTitle" for="field_jobTitle">Job Title</mat-label>
-                    <mat-form-field class="example-full-width">
-                    <input matInput type="text"  name="jobTitle" id="field_jobTitle"
-                           formControlName="jobTitle"/>
-                    <div *ngIf="editForm.get('jobTitle')!.invalid && (editForm.get('jobTitle')!.dirty || editForm.get('jobTitle')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('jobTitle')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </mat-form-field>
+                <div *ngIf="editForm.get('jobTitle')!.invalid && (editForm.get('jobTitle')!.dirty || editForm.get('jobTitle')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('jobTitle')?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                    </small>
                 </div>
             </div>
 
-            <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                </button>
+          
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-                </button>
+            <div class="row">
+                <div style="width: 320px;margin:0px auto;height: 100px;padding-top: 25px;">
+                    <div style="display: inline-block;">
+                        <button id="save-entity" [disabled]="editForm.invalid || isSaving" class="samplebtn e-control e-btn e-primary" type="submit" style="height:40px;width: 150px;" data-ripple="true"><fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span></button>
+                    </div>
+                    <div style="float: right;">
+                        <button  type="button" id="cancel-save" (click)="previousState()" class="samplebtn e-control e-btn"  style="height:40px;width: 150px;" data-ripple="true"><fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span></button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </div>
+
+
+<div id="description">
+
+<style>
+    .formtitle {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.70);
+    }
+
+    .e-error,
+    .e-float-text {
+        font-weight: 500;
+    }
+
+    .e-custom-label {
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 20px;
+    }
+
+    form {
+        padding-top: 20px;
+        margin-bottom: 45px;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+        border-radius: 5px;
+        background: #f9f9f9;
+    }
+
+    .highcontrast form,
+    .highcontrast .header {
+        color: #fff;
+        background: #000000;
+    }
+
+    .header {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    table,
+    td,
+    th {
+        padding: 5px;
+    }
+
+    .form-horizontal .form-group {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .row {
+        padding-bottom: 30px;
+        padding-top: 25px;
+    }
+</style>
