@@ -15,6 +15,7 @@ import { DropDownListAllModule } from '@syncfusion/ej2-angular-dropdowns';
 import { CheckBoxAllModule, ChipListModule } from '@syncfusion/ej2-angular-buttons';
 
 import { KanbanAllModule } from '@syncfusion/ej2-angular-kanban';
+import { ScrollTopComponent } from '../scroll-top/scroll-top.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,7 @@ import { KanbanAllModule } from '@syncfusion/ej2-angular-kanban';
     ChipListModule,
     KanbanAllModule
   ],
-  declarations: [TaskmanagementHsnxComponent, TaskFormComponent],
+  declarations: [TaskmanagementHsnxComponent, TaskFormComponent, ScrollTopComponent],
   entryComponents: [TaskFormComponent]
 })
 export class TaskManagerHsnxTaskmanagementHsnxModule {}

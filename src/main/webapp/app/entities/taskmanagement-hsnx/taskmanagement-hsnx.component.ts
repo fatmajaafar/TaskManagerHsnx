@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ITaskHsnx, TaskHsnx } from 'app/shared/model/task-hsnx.model';
 import { HttpResponse } from '@angular/common/http';
 import { TaskHsnxService } from '../task-hsnx/task-hsnx.service';
@@ -9,12 +9,11 @@ import { INotificationHsnx } from 'app/shared/model/notification-hsnx.model';
 import { NotificationHsnxService } from '../notification-hsnx/notification-hsnx.service';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TaskFormComponent } from './task-form.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { DATE_TIME_FORMAT, DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { IEmployeeHsnx } from 'app/shared/model/employee-hsnx.model';
 import { EmployeeHsnxService } from '../employee-hsnx/employee-hsnx.service';
 
@@ -34,12 +33,12 @@ export class TaskmanagementHsnxComponent implements OnInit {
   dateEndDp: any;
   dueDateDp: any;
   content: any;
-
   modalRef: any;
   Difference_In_Days: any;
   Difference_In_Day: any;
   employees: IEmployeeHsnx[] = [];
-
+  //current date
+  date = new FormControl(new Date());
   constructor(
     protected modalService: NgbModal,
     protected taskService: TaskHsnxService,
@@ -104,10 +103,6 @@ export class TaskmanagementHsnxComponent implements OnInit {
         () => ''
       );
 
-    this.notificationService.query({
-      size: 1000
-    });
-
     this.eventService
 
       .query({
@@ -147,6 +142,7 @@ export class TaskmanagementHsnxComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const task = this.createFromForm();
+
     if (task.id !== undefined) {
       this.subscribeToSaveResponse(this.taskService.update(task));
     } else {
@@ -196,5 +192,16 @@ export class TaskmanagementHsnxComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  protected convertDateFromClient(task: ITaskHsnx): ITaskHsnx {
+    const copy: ITaskHsnx = Object.assign({}, task, {
+      dateStart: task.dateStart && task.dateStart.isValid() ? task.dateStart.format(DATE_FORMAT) : undefined,
+      timeStart: task.timeStart && task.timeStart.isValid() ? task.timeStart.toJSON() : undefined,
+      dateEnd: task.dateEnd && task.dateEnd.isValid() ? task.dateEnd.format(DATE_FORMAT) : undefined,
+      timeEnd: task.timeEnd && task.timeEnd.isValid() ? task.timeEnd.toJSON() : undefined,
+      dueDate: task.dueDate && task.dueDate.isValid() ? task.dueDate.format(DATE_FORMAT) : undefined
+    });
+    return copy;
   }
 }

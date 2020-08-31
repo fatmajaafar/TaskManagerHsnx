@@ -164,7 +164,7 @@
 
     <div>
       <p>
-      <div jhiTranslate="taskManagement.home.taskList"><strong>Tasks List</strong></div>
+      <div ><strong jhiTranslate="taskManagement.home.taskList">Tasks List</strong></div>
       </p>
       <ul class="list-group" *ngFor="let task of tasks  ;trackBy: trackId">
         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -240,7 +240,7 @@
     <div>
       <p>
       <div>
-        <div style="display: inline-block" jhiTranslate="taskManagement.home.upcomingTasks"><strong>Upcoming
+        <div style="display: inline-block" ><strong jhiTranslate="taskManagement.home.upcomingTasks">Upcoming
             Tasks</strong></div>
 
         <div style="display: inline-block">
@@ -319,7 +319,7 @@
   </div>
 </div>
 
-
+<jhi-scroll-top></jhi-scroll-top>
 <ng-template #content let-modal>
   <div class="task-form-wrapper">
 
@@ -328,14 +328,9 @@
       <span class="material-icons">
         check_circle
       </span>
-
+      
       <h5 jhiTranslate="taskManagement.add.dialogTitle">Add New To Do</h5>
-
-      <button class="e-btn-icon " (click)="modal.dismiss('Cross click')">
-        <span class="material-icons">
-          highlight_off
-        </span>
-      </button>
+      
     </mat-toolbar>
 
     <mat-card>
@@ -343,14 +338,14 @@
       <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
 
         <div class="input-full-width">
-          <textarea matInput type="text" name="tasktitle" formControlName="tasktitle" maxlength="500" minlength="5"
-            placeholder="What needs to be done?" autocomplete="off" autofocus class="task-form__input"></textarea>
+          <textarea matInput type="text" name="tasktitle" formControlName="tasktitle"
+            placeholder="What needs to be done?" autocomplete="off"></textarea>
           <br>
           <div
             *ngIf="editForm.get('tasktitle')!.invalid && (editForm.get('tasktitle')!.dirty || editForm.get('tasktitle')!.touched)">
             <small class="form-text text-danger" *ngIf="editForm.get('tasktitle')?.errors?.required"
               jhiTranslate="entity.validation.required">
-              Name of the task is needed. Please write name of this task.
+              
             </small>
 
           </div>
@@ -361,7 +356,7 @@
           <div class="input-group">
 
             <input id="field_dateStart" type="text" class="form-control" name="dateStart" ngbDatepicker
-              #dateStartDp="ngbDatepicker" formControlName="dateStart" />
+              #dateStartDp="ngbDatepicker" formControlName="dateStart"  [value]="date.value  | date:'dd/MM/yyyy' " />
             <span class="input-group-append">
               <button type="button" class="btn btn-secondary" (click)="dateStartDp.toggle()">
                 <fa-icon icon="calendar-alt"></fa-icon>
@@ -375,7 +370,7 @@
             End</label>
           <div class="input-group">
             <input id="field_dateEnd" type="text" class="form-control" name="dateEnd" ngbDatepicker
-              #dateEndDp="ngbDatepicker" formControlName="dateEnd" />
+              #dateEndDp="ngbDatepicker" formControlName="dateEnd"/>
             <span class="input-group-append">
               <button type="button" class="btn btn-secondary" (click)="dateEndDp.toggle()">
                 <fa-icon icon="calendar-alt"></fa-icon>
@@ -383,6 +378,8 @@
             </span>
           </div>
         </div>
+        
+      
 
         <tr>
           <td class="e-label" jhiTranslate="taskManagement.add.assignee">Assignee</td>
@@ -446,15 +443,13 @@
             </div>
           </td>
         </tr>
-        <br>
-        <br>
-        <br>
 
+        
         <button ejs-button cssClass="e-outline" [isPrimary]="true" type="submit" id="save-entity"
           [disabled]=" isSaving">
           <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
-        <button ejs-button>
+        <button ejs-button (click)="modal.dismiss('Cross click')">
           <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
   </div>
@@ -462,3 +457,4 @@
   </form>
   </mat-card>
 </ng-template>
+
