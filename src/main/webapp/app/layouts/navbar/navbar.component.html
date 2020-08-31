@@ -17,6 +17,7 @@
                 </a>
 
             </li>
+            
             <!--Task Management!!!-->
            
              <!--Department entity-->
@@ -26,6 +27,7 @@
                     <span class="material-icons">
                         domain
                         </span>
+                        <span jhiTranslate="global.menu.entities.departmentHsnx">Department Hsnx</span>
                 </a>
             </li>
              <!--Employee entity-->   
@@ -34,6 +36,7 @@
                     <span class="material-icons">
                         people_alt
                         </span>
+                        <span jhiTranslate="global.menu.entities.employeeHsnx">Employee Hsnx</span>
                 </a>
             </li>
             <!--Event entity-->
@@ -42,6 +45,7 @@
                     <span class="material-icons">
                         event
                         </span>
+                        <span jhiTranslate="global.menu.entities.eventHsnx">Event Hsnx</span>
                 </a>
             </li>
              <!--Task entity-->
@@ -50,6 +54,7 @@
                     <span class="material-icons">
                         list_alt
                         </span>
+                        <span jhiTranslate="global.menu.entities.taskHsnx">Task Hsnx</span>
                 </a>
             </li>
            
@@ -63,6 +68,7 @@
                             <span class="material-icons">
                                 flag
                                 </span>
+                                <span jhiTranslate="global.menu.entities.countryHsnx">Country Hsnx</span>
                         </a>
                     </li>
                     <!--Notifications-->
@@ -71,29 +77,36 @@
                             <span class="material-icons">
                                 notifications_active
                                 </span>
+                                <span jhiTranslate="global.menu.entities.notificationHsnx">Notification Hsnx</span>
                         </a>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"   routerLink="task-kanban" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Task Kanban">
+                            
+
                             <span class="material-icons">
                                 view_list
                                 </span>
+                                <span jhiTranslate="global.menu.entities.taskkanban">Task Kanban</span>
+                         
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" routerLink="taskmanagement-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Task management">
                             <span>
                                 <fa-icon icon="tasks"></fa-icon>
-                            
+                                <span jhiTranslate="global.menu.entities.taskmanagement">Task management</span>
                             </span>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" routerLink="branch-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Employee Branch">
-                            <span class="material-icons">
+                           <span class="material-icons">
                                 account_tree
                                 </span>
-                            
+                                 <span jhiTranslate="global.menu.entities.branchHsnx">Branch</span>
+                           
                         </a>
                     </li>
                     <li>
@@ -101,6 +114,7 @@
                             <span class="material-icons">
                                 work
                                 </span>
+                                <span jhiTranslate="global.menu.entities.jobHsnx">Job</span>
                         </a>
                     </li>
                 </ul>
