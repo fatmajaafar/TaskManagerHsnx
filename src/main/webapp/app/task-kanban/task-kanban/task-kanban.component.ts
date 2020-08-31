@@ -34,7 +34,7 @@ export class TaskKanbanComponent implements OnInit {
   @ViewChild('kanbanObj', { static: true }) kanbanObj!: KanbanComponent;
   @ViewChild('toggleBtn', { static: true })
   public toggleBtn!: ButtonComponent;
-  public kanbanData: IKanbanData[] = []; //extend([], kanbanData, [], true) as Object[];
+  public kanbanData: IKanbanData[] = []; //extend([], kanbanData, [], true) as Object[]; //here data is no longer extracted from card.ts
 
   public columns: ColumnsModel[] = [
     { headerText: 'To Do', keyField: 'Open', allowToggle: true },
@@ -170,7 +170,6 @@ export class TaskKanbanComponent implements OnInit {
   //OPEN ADD TASK MODAL
   addClick(cont: any) {
     this.modalRef = this.modalService.open(cont, { size: 'sm' });
-
     this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
       this.employees = [];
       if (res.body) {
@@ -209,11 +208,8 @@ export class TaskKanbanComponent implements OnInit {
         this.editTask.taskstatus = 4;
         break;
     }
-
-    // console.clear();
-    //console.log(this.editTask);
+    this.editTask.taskpriority = data.Priority;
     this.modalRef = this.modalService.open(content, { size: 'sm' });
-
     this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
       this.employees = [];
       if (res.body) {
@@ -225,10 +221,7 @@ export class TaskKanbanComponent implements OnInit {
   /**save task after edit */
   save(): void {
     this.isSaving = true;
-
     const task = this.editTask;
-    console.clear();
-    console.log(task);
     this.updateForm(task);
     this.subscribeToSaveResponse(this.taskService.update(task));
   }
