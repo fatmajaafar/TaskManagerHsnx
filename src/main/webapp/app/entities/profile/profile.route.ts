@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router';
 import { JhiResolvePagingParams } from 'ng-jhipster';
