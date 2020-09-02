@@ -35,7 +35,11 @@ import { KanbanModule } from '@syncfusion/ej2-angular-kanban';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CheckBoxAllModule } from '@syncfusion/ej2-angular-buttons';
 
-import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
+import { CheckBoxModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
+
+import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+
+import { RadioButtonModule, ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
   imports: [
@@ -64,6 +68,7 @@ import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@
     RadioButtonModule,
     SwitchModule,
 
+    DropDownListModule,
     CommonModule,
     BrowserAnimationsModule,
     BrowserModule,
