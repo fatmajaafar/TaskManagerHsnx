@@ -182,7 +182,6 @@ export class TaskKanbanComponent implements OnInit {
   savetask(): void {
     this.isSaving = true;
     const task = this.createFromForm();
-
     this.subscribeToSaveResponse(this.taskService.create(task));
   }
 

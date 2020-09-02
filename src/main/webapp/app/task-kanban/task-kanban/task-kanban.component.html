@@ -12,16 +12,11 @@
           index=0 placeholder="Filter by priority"></ejs-dropdownlist>
       </div>
     </div>
-    <div class="form-group mx-sm-3 mb-2">
-      <div>
-        <ejs-dropdownlist id='status_filter' #status_filter [dataSource]='statusData' (change)='change($event)'
-          [fields]='fields' [value]='value' placeholder='Filter by status'></ejs-dropdownlist>
-      </div>
-    </div>
+
     <div class="form-group mx-sm-3 mb-2">
       <div>
         <ejs-textbox id="search_text" #search_text placeholder="Search for tasks" [showClearButton]="true"
-          (focus)="onFocus()" (keyup)="searchClick($event)"></ejs-textbox>
+          ></ejs-textbox>
       </div>
     </div>
   </form>

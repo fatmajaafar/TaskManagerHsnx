@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 import { DATE_TIME_FORMAT, DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { IEmployeeHsnx } from 'app/shared/model/employee-hsnx.model';
 import { EmployeeHsnxService } from '../employee-hsnx/employee-hsnx.service';
+import { WebSocketService } from 'app/layouts/main/WebSocketService';
 
 @Component({
   selector: 'jhi-taskmanagement-hsnx',
@@ -39,6 +40,7 @@ export class TaskmanagementHsnxComponent implements OnInit {
   employees: IEmployeeHsnx[] = [];
   //current date
   date = new FormControl(new Date());
+  filter = '';
   constructor(
     protected modalService: NgbModal,
     protected taskService: TaskHsnxService,
@@ -47,39 +49,9 @@ export class TaskmanagementHsnxComponent implements OnInit {
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     protected route: Router,
-    protected employeeService: EmployeeHsnxService
-  ) {}
-  editForm = this.fb.group({
-    id: [],
-    tasktitle: [null, [Validators.required]],
-    taskdescription: [],
-    dateStart: [],
-    timeStart: [],
-    dateEnd: [],
-    timeEnd: [],
-    taskstatus: [],
-    taskpriority: [],
-    dueDate: [],
-    taskcategory: [],
-    taskstate: [],
-    tblEmployeeId: []
-  });
-
-  getBackgroundColor(event: Event): String {
-    return event ? '#f5e6e6' : '';
-  }
-
-  openDialog(content: any) {
-    this.modalRef = this.modalService.open(content, { centered: true });
-    this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
-      this.employees = [];
-      if (res.body) {
-        this.employees = res.body;
-      }
-    });
-  }
-
-  ngOnInit(): void {
+    protected employeeService: EmployeeHsnxService,
+    protected webSocketService: WebSocketService
+  ) {
     this.taskService
       .query({
         size: 1000
@@ -116,6 +88,37 @@ export class TaskmanagementHsnxComponent implements OnInit {
         () => ''
       );
   }
+  editForm = this.fb.group({
+    id: [],
+    tasktitle: [null, [Validators.required]],
+    taskdescription: [],
+    dateStart: [],
+    timeStart: [],
+    dateEnd: [],
+    timeEnd: [],
+    taskstatus: [],
+    taskpriority: [],
+    dueDate: [],
+    taskcategory: [],
+    taskstate: [],
+    tblEmployeeId: []
+  });
+
+  getBackgroundColor(event: Event): String {
+    return event ? '#f5e6e6' : '';
+  }
+
+  openDialog(content: any) {
+    this.modalRef = this.modalService.open(content, { centered: true });
+    this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
+      this.employees = [];
+      if (res.body) {
+        this.employees = res.body;
+      }
+    });
+  }
+
+  ngOnInit(): void {}
 
   updateForm(task: ITaskHsnx): void {
     this.editForm.patchValue({
@@ -203,5 +206,9 @@ export class TaskmanagementHsnxComponent implements OnInit {
       dueDate: task.dueDate && task.dueDate.isValid() ? task.dueDate.format(DATE_FORMAT) : undefined
     });
     return copy;
+  }
+  sendNotif() {
+    console.log('send notif !!!!!');
+    this.webSocketService.createTask('new task', 1, 1).subscribe();
   }
 }

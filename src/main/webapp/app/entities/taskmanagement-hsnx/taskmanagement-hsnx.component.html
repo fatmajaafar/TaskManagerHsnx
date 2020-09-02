@@ -118,44 +118,19 @@
           </div>
           <span jhiTranslate="taskManagement.nav.notification">Notifications</span>
         </li>
-        <li class="item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-sun"
-            viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="5" />
-            <path
-              d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-          </svg>
-          <span jhiTranslate="taskManagement.nav.vacation">Vacation</span>
-        </li>
-        <li class="item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-trending-up">
-            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-            <polyline points="17 6 23 6 23 12" /></svg>
-          <span jhiTranslate="taskManagement.nav.festival">Festival</span>
-        </li>
-        <li class="item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-zap">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-          <span jhiTranslate="taskManagement.nav.concerts"><a>Concerts</a></span>
-        </li>
+     
       </ul>
     </div>
   </div>
   <br>
   <div class="page-content">
     <mat-form-field class="example-full-width" color="accent">
-      <input matInput placeholder="">
+      <input matInput  [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="">
       <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
     <div class="header">
       <span class="title" jhiTranslate="taskManagement.home.title">Manage Tasks</span>
       <span class="fab-button">
-
         <button mat-fab class="fab-button-color" (click)="openDialog(content)" matTooltip="New Task">
           <fa-icon icon="plus"></fa-icon>
         </button>
@@ -174,7 +149,7 @@
           <span class="tag progress" *ngIf="task.taskstatus === 2" style="color: #c76a1e;">In Progress</span>
           <span class="tag review " *ngIf="task.taskstatus === 3" style="color: darkmagenta;">In Review</span>
           <span class="tag done" *ngIf="task.taskstatus === 4" style="color: #28a745;">Done</span>
-
+         
         </li>
 
       </ul>
@@ -182,7 +157,6 @@
     </div>
     <hr>
     <mat-tab-group color="accent">
-
       <mat-tab label="All">
         <ng-template mat-tab-label>
           <span class="material-icons">
@@ -286,8 +260,15 @@
     </div>
   </div>
   <div class="right-bar">
+    <div class="top-part">
+      <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+        <button ejs-button cssClass="e-success" (click)="sendNotif()"><span class="material-icons">
+          notifications_active
+          </span></button>
+    </div>
+    </div>
 
-    <div class="header" jhiTranslate="taskManagement.home.createLabel">Events</div>
+    <div class="header" jhiTranslate="taskManagement.home.createLabel"><strong>Events</strong></div>
     <div class="right-content" *ngFor="let event of events">
       <div class="task-box yellow" [ngStyle]="{'backgroundColor': getBackgroundColor(event)}" dir="ltr">
         <div class="description-task">
@@ -298,20 +279,14 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
+          
           <button mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
-            <span>Redial</span>
-          </button>
-          <button mat-menu-item disabled>
-            <mat-icon>voicemail</mat-icon>
-            <span>Check voice mail</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>notifications_off</mat-icon>
-            <span>Disable alerts</span>
+            <span class="material-icons">
+              delete_sweep
+              </span>
+            <span>Clear</span>
           </button>
         </mat-menu>
-
       </div>
 
     </div>
@@ -319,7 +294,7 @@
   </div>
 </div>
 
-<jhi-scroll-top></jhi-scroll-top>
+
 <ng-template #content let-modal>
   <div class="task-form-wrapper">
 
@@ -387,7 +362,8 @@
             <div class="form-group">
               <mat-form-field color="accent">
                 <mat-select id="field_tblEmployee" name="tblEmployee" formControlName="tblEmployeeId">
-                  <mat-option [value]="employee.id" *ngFor="let employee of employees">{{ employee.employeename }}
+                  <input type="text" [(ngModel)]="filter" class="form-control" [ngModelOptions]="{standalone: true}">
+                  <mat-option [value]="employee.id" *ngFor="let employee of (employees  | pureFilter:filter:'employeename')">{{ employee.employeename }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -458,3 +434,4 @@
   </mat-card>
 </ng-template>
 
+<jhi-scroll-top></jhi-scroll-top>
