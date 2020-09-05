@@ -5,14 +5,15 @@
         </div>
 
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-
+            <div class="form-group mx-sm-3 mb-2">
             <div class="form-group" [hidden]="!editForm.get('id')!.value">
                 <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
                 <mat-form-field class="example-full-width">
                     <input matInput type="text" id="id" name="id" formControlName="id" readonly />
                 </mat-form-field>
             </div>
-
+        </div>
+            <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="text" name="eventdescription" id="field_eventdescription"
@@ -29,9 +30,25 @@
                     </small>
                 </div>
             </div>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+         <div class="form-row">
+            <div class="col">
+                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.startdate"
+                    for="field_startdate">Startdate</label>
+                <div class="input-group">
+                    <input id="field_startdate" type="text" class="form-control" name="startdate" ngbDatepicker
+                        #startdateDp="ngbDatepicker" formControlName="startdate" />
+                    <span class="input-group-append">
+                        <button type="button" class="btn btn-info" (click)="startdateDp.toggle()">
+                            <fa-icon icon="calendar-alt"></fa-icon>
+                        </button>
+                    </span>
+                </div>
+            </div>
 
-
-            <div class="form-group">
+            
+            <div class="col">
                 <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.starttime"
                     for="field_starttime">Starttime</label>
                 <div class="d-flex">
@@ -39,22 +56,26 @@
                         formControlName="starttime" placeholder="YYYY-MM-DD HH:mm" />
                 </div>
             </div>
-
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.startdate"
-                    for="field_startdate">Startdate</label>
+        </div>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <div class="form-row">
+            
+            <div class="col">
+                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.enddate"
+                    for="field_enddate">Enddate</label>
                 <div class="input-group">
-                    <input id="field_startdate" type="text" class="form-control" name="startdate" ngbDatepicker
-                        #startdateDp="ngbDatepicker" formControlName="startdate" />
+                    <input id="field_enddate" type="text" class="form-control" name="enddate" ngbDatepicker
+                        #enddateDp="ngbDatepicker" formControlName="enddate" />
                     <span class="input-group-append">
-                        <button type="button" class="btn btn-secondary" (click)="startdateDp.toggle()">
+                        <button type="button" class="btn btn-info" (click)="enddateDp.toggle()">
                             <fa-icon icon="calendar-alt"></fa-icon>
                         </button>
                     </span>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="col">
                 <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.endtime"
                     for="field_endtime">Endtime</label>
                 <div class="d-flex">
@@ -62,34 +83,22 @@
                         formControlName="endtime" placeholder="YYYY-MM-DD HH:mm" />
                 </div>
             </div>
+        </div>
+    </div>
 
+
+    <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
-                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.enddate"
-                    for="field_enddate">Enddate</label>
-                <div class="input-group">
-                    <input id="field_enddate" type="text" class="form-control" name="enddate" ngbDatepicker
-                        #enddateDp="ngbDatepicker" formControlName="enddate" />
-                    <span class="input-group-append">
-                        <button type="button" class="btn btn-secondary" (click)="enddateDp.toggle()">
-                            <fa-icon icon="calendar-alt"></fa-icon>
-                        </button>
-                    </span>
-                </div>
-            </div>
-
-            <div class="form-group">
-
                 <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.event.tblTask"
                     for="field_tblTask">Tbl Task</label>
-                <select class="form-control" id="field_tblTask" name="tblTask" formControlName="tblTaskId">
-                    <option [ngValue]="null"></option>
-                    <option [ngValue]="TaskOption.id" *ngFor="let TaskOption of tasks; trackBy: trackById">
-                        {{ TaskOption.tasktitle }}</option>
-                </select>
-
+                <mat-form-field color="accent">
+                  <mat-select id="field_tblTask" name="tblTask" formControlName="tblTaskId" for="field_tblTask">
+                    <mat-option [value]="TaskOption.id" *ngFor="let TaskOption of tasks">{{ TaskOption.tasktitle }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
             </div>
-
-
 
             <div class="row">
                 <div style="width: 320px;margin:0px auto;height: 100px;padding-top: 25px;">

@@ -7,9 +7,17 @@ import { NotificationHsnxDetailComponent } from './notification-hsnx-detail.comp
 import { NotificationHsnxUpdateComponent } from './notification-hsnx-update.component';
 import { NotificationHsnxDeleteDialogComponent } from './notification-hsnx-delete-dialog.component';
 import { notificationRoute } from './notification-hsnx.route';
+import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
-  imports: [TaskManagerHsnxSharedModule, RouterModule.forChild(notificationRoute)],
+  imports: [
+    TaskManagerHsnxSharedModule,
+    RouterModule.forChild(notificationRoute),
+    ButtonModule,
+    CheckBoxModule,
+    RadioButtonModule,
+    SwitchModule
+  ],
   declarations: [
     NotificationHsnxComponent,
     NotificationHsnxDetailComponent,

@@ -5,151 +5,202 @@
         </div>
 
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-
-            <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
                     <mat-form-field class="example-full-width">
-                <input matInput type="text"  id="id" name="id" formControlName="id" readonly />
-            </mat-form-field>
+                        <input matInput type="text" id="id" name="id" formControlName="id" readonly />
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group">
+                    <div class="e-float-input">
+                        <input type="text" name="tasktitle" id="field_tasktitle" formControlName="tasktitle">
+                        <span class="e-float-line"></span>
+                        <label jhiTranslate="taskManagerHsnxApp.task.tasktitle" for="field_tasktitle"
+                            class="e-float-text">Task title</label>
+                    </div>
+                    <div
+                        *ngIf="editForm.get('tasktitle')!.invalid && (editForm.get('tasktitle')!.dirty || editForm.get('tasktitle')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('tasktitle')?.errors?.required"
+                            jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group">
+                    <div class="e-float-input">
+                        <input type="text" name="taskdescription" id="field_taskdescription"
+                            formControlName="taskdescription">
+                        <span class="e-float-line"></span>
+                        <label jhiTranslate="taskManagerHsnxApp.task.taskdescription" for="field_taskdescription"
+                            class="e-float-text">taskdescription</label>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="form-group">
-                <div class="e-float-input">
-                    <input type="text" name="tasktitle" id="field_tasktitle" formControlName="tasktitle" >
-                    <span class="e-float-line"></span>
-                    <label  jhiTranslate="taskManagerHsnxApp.task.tasktitle" for="field_tasktitle" class="e-float-text">Task title</label>
-                </div>
-                <div
-                            *ngIf="editForm.get('tasktitle')!.invalid && (editForm.get('tasktitle')!.dirty || editForm.get('tasktitle')!.touched)">
-                            <small class="form-text text-danger" *ngIf="editForm.get('tasktitle')?.errors?.required"
-                                jhiTranslate="entity.validation.required">
-                                This field is required.
-                            </small>
-                
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-row">
+                    <div class="col">
+                        <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart"
+                            for="field_dateStart">Date Start</label>
+                        <div class="input-group">
+                            <input id="field_dateStart" type="text" class="form-control" name="dateStart" ngbDatepicker
+                                #dateStartDp="ngbDatepicker" formControlName="dateStart" />
+                            <span class="input-group-append">
+                                <button type="button" class="btn btn-info" (click)="dateStartDp.toggle()">
+                                    <fa-icon icon="calendar-alt"></fa-icon>
+                                </button>
+                            </span>
                         </div>
-            </div>
+                    </div>
 
-            <div class="form-group">
-                <div class="e-float-input">
-                    <input type="text"  name="taskdescription" id="field_taskdescription"
-                    formControlName="taskdescription">
-                    <span class="e-float-line"></span>
-                    <label jhiTranslate="taskManagerHsnxApp.task.taskdescription" for="field_taskdescription" class="e-float-text">taskdescription</label>
-                </div>
-                
-            </div>
 
-          
-
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart" for="field_dateStart">Date Start</label>
-                <div class="input-group">
-                    <input id="field_dateStart" type="text" class="form-control" name="dateStart" ngbDatepicker #dateStartDp="ngbDatepicker" formControlName="dateStart"/>
-                    <span class="input-group-append">
-                        <button type="button" class="btn btn-secondary" (click)="dateStartDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
-                    </span>
+                    <div class="col">
+                        <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.timeStart"
+                            for="field_timeStart">Time Start</label>
+                        <div class="d-flex">
+                            <input id="field_timeStart" type="datetime-local" class="form-control" name="timeStart"
+                                formControlName="timeStart" placeholder="YYYY-MM-DD HH:mm" />
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-row">
 
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.timeStart" for="field_timeStart">Time Start</label>
-                <div class="d-flex">
-                    <input id="field_timeStart" type="datetime-local" class="form-control" name="timeStart" formControlName="timeStart" placeholder="YYYY-MM-DD HH:mm"/>
-                </div>
-            </div>
+                    <div class="col">
+                        <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateEnd"
+                            for="field_dateEnd">Date End</label>
+                        <div class="input-group">
+                            <input id="field_dateEnd" type="text" class="form-control" name="dateEnd" ngbDatepicker
+                                #dateEndDp="ngbDatepicker" formControlName="dateEnd" />
+                            <span class="input-group-append">
+                                <button type="button" class="btn btn-info" (click)="dateEndDp.toggle()">
+                                    <fa-icon icon="calendar-alt"></fa-icon>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
 
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateEnd" for="field_dateEnd">Date End</label>
-                <div class="input-group">
-                    <input id="field_dateEnd" type="text" class="form-control" name="dateEnd" ngbDatepicker #dateEndDp="ngbDatepicker" formControlName="dateEnd"/>
-                    <span class="input-group-append">
-                        <button type="button" class="btn btn-secondary" (click)="dateEndDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
-                    </span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <mat-label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.timeEnd" for="field_timeEnd">Time End</mat-label>
-                <div class="d-flex">
-                    <input id="field_timeEnd" type="datetime-local" class="form-control" name="timeEnd" formControlName="timeEnd" placeholder="YYYY-MM-DD HH:mm"/>
+                    <div class="col">
+                        <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.timeEnd"
+                            for="field_timeEnd">Time End</label>
+                        <div class="d-flex">
+                            <input id="field_timeEnd" type="datetime-local" class="form-control" name="timeEnd"
+                                formControlName="timeEnd" placeholder="YYYY-MM-DD HH:mm" />
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="e-float-input">
-               
-                <input  type="number"  name="taskstatus" id="field_taskstatus"
-                       formControlName="taskstatus"/>
-                       <span class="e-float-line"></span>
-                       <label jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus" class="e-float-text">Taskstatus</label>
-                  
-            </div>
-        </div>
 
-         
 
-            <div class="form-group">
-                <div class="e-float-input">
-             
-                <input  type="number"  name="taskpriority" id="field_taskpriority"
-                       formControlName="taskpriority"/>
-                       <span class="e-float-line"></span>
-                       <label jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority" class="e-float-text"></label>
-                    
-            </div>
-        </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group">
+                    <div class="e-float-input">
 
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dueDate" for="field_dueDate">Due Date</label>
-                <div class="input-group">
-                    <input id="field_dueDate" type="text" class="form-control" name="dueDate" ngbDatepicker #dueDateDp="ngbDatepicker" formControlName="dueDate"/>
-                    <span class="input-group-append">
-                        <button type="button" class="btn btn-secondary" (click)="dueDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
-                    </span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="e-float-input">
-                    
-             
-                    <input  type="number" name="taskcategory" id="field_taskcategory"
-                        formControlName="taskcategory" />
+                        <input type="number" name="taskstatus" id="field_taskstatus" formControlName="taskstatus" />
                         <span class="e-float-line"></span>
-                        <label jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory" class="e-float-text"></label>
-               </div>
+                        <label jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus"
+                            class="e-float-text">Taskstatus</label>
+
+                    </div>
+                </div>
+
             </div>
 
-            <div class="form-group">
-                <div class="e-float-input" >
-                   
-                   
-                    <input type="number" name="taskstate" id="field_taskstate"
-                        formControlName="taskstate" />
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group">
+                    <div class="e-float-input">
+
+                        <input type="number" name="taskpriority" id="field_taskpriority"
+                            formControlName="taskpriority" />
                         <span class="e-float-line"></span>
-                        <label jhiTranslate="taskManagerHsnxApp.task.taskstate" for="field_taskstate" class="e-float-text"></label>
+                        <label jhiTranslate="taskManagerHsnxApp.task.taskpriority" for="field_taskpriority"
+                            class="e-float-text"></label>
 
-
-                
+                    </div>
+                </div>
             </div>
-        </div>
-
-            <div class="form-group">
-                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.tblEmployee" for="field_tblEmployee">Tbl Employee</label>
-                <select class="form-control" id="field_tblEmployee" name="tblEmployee" formControlName="tblEmployeeId">
-                    <option [ngValue]="null"></option>
-                    <option [ngValue]="EmployeeOption.id" *ngFor="let EmployeeOption of employees; trackBy: trackById">{{ EmployeeOption.employeename }}</option>
-                </select>
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dueDate"
+                        for="field_dueDate">Due Date</label>
+                    <div class="input-group">
+                        <input id="field_dueDate" type="text" class="form-control" name="dueDate" ngbDatepicker
+                            #dueDateDp="ngbDatepicker" formControlName="dueDate" />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-info" (click)="dueDateDp.toggle()">
+                                <fa-icon icon="calendar-alt"></fa-icon>
+                            </button>
+                        </span>
+                    </div>
+                </div>
             </div>
-        
-           
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group">
+                    <div class="e-float-input">
+
+
+                        <input type="number" name="taskcategory" id="field_taskcategory"
+                            formControlName="taskcategory" />
+                        <span class="e-float-line"></span>
+                        <label jhiTranslate="taskManagerHsnxApp.task.taskcategory" for="field_taskcategory"
+                            class="e-float-text"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group">
+                    <div class="e-float-input">
+
+
+                        <input type="number" name="taskstate" id="field_taskstate" formControlName="taskstate" />
+                        <span class="e-float-line"></span>
+                        <label jhiTranslate="taskManagerHsnxApp.task.taskstate" for="field_taskstate"
+                            class="e-float-text"></label>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.tblEmployee"
+                        for="field_tblEmployee">Tbl Employee</label>
+                    <select class="form-control" id="field_tblEmployee" name="tblEmployee"
+                        formControlName="tblEmployeeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="EmployeeOption.id"
+                            *ngFor="let EmployeeOption of employees; trackBy: trackById">
+                            {{ EmployeeOption.employeename }}</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="row">
                 <div style="width: 320px;margin:0px auto;height: 100px;padding-top: 25px;">
                     <div style="display: inline-block;">
-                        <button id="save-entity" [disabled]="editForm.invalid || isSaving"class="samplebtn e-control e-btn e-primary" type="submit" style="height:40px;width: 150px;" data-ripple="true"><fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span></button>
+                        <button id="save-entity" [disabled]="editForm.invalid || isSaving"
+                            class="samplebtn e-control e-btn e-primary" type="submit" style="height:40px;width: 150px;"
+                            data-ripple="true">
+                            <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
                     </div>
                     <div style="float: right;">
-                        <button  type="button" id="cancel-save"  (click)="previousState()" class="samplebtn e-control e-btn" type="reset" style="height:40px;width: 150px;" data-ripple="true"><fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span></button>
+                        <button type="button" id="cancel-save" (click)="previousState()"
+                            class="samplebtn e-control e-btn" type="reset" style="height:40px;width: 150px;"
+                            data-ripple="true">
+                            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -160,59 +211,59 @@
 
 <div id="description">
 
-<style>
-    .formtitle {
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-        font-size: 16px;
-        font-weight: 500;
-        color: rgba(0, 0, 0, 0.70);
-    }
+    <style>
+        .formtitle {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.70);
+        }
 
-    .e-error,
-    .e-float-text {
-        font-weight: 500;
-    }
+        .e-error,
+        .e-float-text {
+            font-weight: 500;
+        }
 
-    .e-custom-label {
-        font-size: 14px;
-        font-weight: 500;
-        margin-left: 20px;
-    }
+        .e-custom-label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 20px;
+        }
 
-    form {
-        padding-top: 20px;
-        margin-bottom: 45px;
-        border: 1px solid #ccc;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
-        border-radius: 5px;
-        background: #f9f9f9;
-    }
+        form {
+            padding-top: 20px;
+            margin-bottom: 45px;
+            border: 1px solid #ccc;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
 
-    .highcontrast form,
-    .highcontrast .header {
-        color: #fff;
-        background: #000000;
-    }
+        .highcontrast form,
+        .highcontrast .header {
+            color: #fff;
+            background: #000000;
+        }
 
-    .header {
-        color: rgba(0, 0, 0, 0.7);
-    }
+        .header {
+            color: rgba(0, 0, 0, 0.7);
+        }
 
-    table,
-    td,
-    th {
-        padding: 5px;
-    }
+        table,
+        td,
+        th {
+            padding: 5px;
+        }
 
-    .form-horizontal .form-group {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
+        .form-horizontal .form-group {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
 
-    .row {
-        padding-bottom: 30px;
-        padding-top: 25px;
-    }
-</style>
+        .row {
+            padding-bottom: 30px;
+            padding-top: 25px;
+        }
+    </style>

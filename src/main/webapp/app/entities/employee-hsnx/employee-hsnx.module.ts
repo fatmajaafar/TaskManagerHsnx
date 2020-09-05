@@ -6,9 +6,17 @@ import { EmployeeHsnxDetailComponent } from './employee-hsnx-detail.component';
 import { EmployeeHsnxUpdateComponent } from './employee-hsnx-update.component';
 import { EmployeeHsnxDeleteDialogComponent } from './employee-hsnx-delete-dialog.component';
 import { employeeRoute } from './employee-hsnx.route';
+import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
-  imports: [TaskManagerHsnxSharedModule, RouterModule.forChild(employeeRoute)],
+  imports: [
+    TaskManagerHsnxSharedModule,
+    RouterModule.forChild(employeeRoute),
+    ButtonModule,
+    CheckBoxModule,
+    RadioButtonModule,
+    SwitchModule
+  ],
   declarations: [EmployeeHsnxComponent, EmployeeHsnxDetailComponent, EmployeeHsnxUpdateComponent, EmployeeHsnxDeleteDialogComponent],
   entryComponents: [EmployeeHsnxDeleteDialogComponent]
 })

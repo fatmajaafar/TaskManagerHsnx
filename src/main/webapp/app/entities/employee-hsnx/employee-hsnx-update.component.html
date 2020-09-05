@@ -3,18 +3,20 @@
         <div class="formtitle">
             <span jhiTranslate="taskManagerHsnxApp.employee.home.createOrEditLabel">Employee Details</span>
         </div>
-
+        
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-
+            <div class="form-group mx-sm-3 mb-2">
             <div class="form-group" [hidden]="!editForm.get('id')!.value">
                 <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
                 <mat-form-field class="example-full-width">
-                    <input matInput type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    <input matInput type="text" id="id" name="id" formControlName="id" readonly />
                 </mat-form-field>
             </div>
+        </div>
+    
 
 
-
+            <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="text" name="employeename" id="field_employeename" formControlName="employeename">
@@ -30,7 +32,8 @@
                     </small>
                 </div>
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="text" name="employeephone" id="field_employeephone" formControlName="employeephone">
@@ -40,7 +43,8 @@
                 </div>
 
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="text" name="employeefax" id="field_employeefax" formControlName="employeefax">
@@ -50,7 +54,8 @@
 
                 </div>
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <textarea rows="2" name="employeeaddress" id="field_employeeaddress"
@@ -60,7 +65,9 @@
                         for="field_employeeaddress">Employee Address</label>
                 </div>
             </div>
+        </div>
 
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="text" name="employeeemail" id="field_employeeemail" formControlName="employeeemail">
@@ -70,7 +77,8 @@
 
                 </div>
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.employeehiredate"
                     for="field_employeehiredate">Employeehiredate</label>
@@ -78,13 +86,14 @@
                     <input id="field_employeehiredate" type="text" class="form-control" name="employeehiredate"
                         ngbDatepicker #employeehiredateDp="ngbDatepicker" formControlName="employeehiredate" />
                     <span class="input-group-append">
-                        <button type="button" class="btn btn-secondary" (click)="employeehiredateDp.toggle()">
+                        <button type="button" class="btn btn-info" (click)="employeehiredateDp.toggle()">
                             <fa-icon icon="calendar-alt"></fa-icon>
                         </button>
                     </span>
                 </div>
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
 
                 <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblJob"
@@ -96,7 +105,8 @@
                 </select>
 
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
 
                 <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblDepartment"
@@ -110,7 +120,8 @@
                 </select>
 
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
 
                 <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.employee.tblBranch"
@@ -122,6 +133,7 @@
                 </select>
 
             </div>
+        </div>
 
 
 

@@ -5,15 +5,16 @@
         </div>
 
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-
+            <div class="form-group mx-sm-3 mb-2">
             <div class="form-group" [hidden]="!editForm.get('id')!.value">
                 <mat-label for="id" jhiTranslate="global.field.id">ID</mat-label>
                 <mat-form-field class="example-full-width">
-                <input matInput type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                <input matInput type="text" id="id" name="id" formControlName="id" readonly />
                 </mat-form-field>
             </div>
+        </div>
 
-
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input  type="text"  name="branchName" id="field_branchName"
@@ -28,7 +29,8 @@
                     </small>
                 </div>
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="text" name="branchPhone" id="field_branchPhone"
@@ -38,7 +40,8 @@
                 </div>
                
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="text"  name="branchFax" id="field_branchFax"
@@ -48,7 +51,8 @@
                     
                 </div>
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="text"  name="branchAddress" id="field_branchAddress"
@@ -58,9 +62,10 @@
                     
                 </div>
             </div>
+        </div>
 
            
-
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="text"  name="branchEmail" id="field_branchEmail"
@@ -69,7 +74,8 @@
                     <label jhiTranslate="taskManagerHsnxApp.branch.branchEmail" for="field_branchEmail"class="e-float-text">Branch Email</label>
                 </div>
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="text" name="branchBanner" id="field_branchBanner"
@@ -78,7 +84,8 @@
                     <label jhiTranslate="taskManagerHsnxApp.branch.branchBanner" for="field_branchBanner" class="e-float-text">Branch Banner</label>
                 </div>
             </div>
-
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
                     <input type="number"  name="branchDefaultExercice" id="field_branchDefaultExercice"
@@ -87,6 +94,7 @@
                     <label  jhiTranslate="taskManagerHsnxApp.branch.branchDefaultExercice" for="field_branchDefaultExercice"class="e-float-text">Branch Default Exercice</label>
                 </div>
             </div>
+        </div>
 
             <div class="row">
                 <div style="width: 320px;margin:0px auto;height: 100px;padding-top: 25px;">

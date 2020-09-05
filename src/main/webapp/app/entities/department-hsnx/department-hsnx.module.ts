@@ -7,9 +7,17 @@ import { DepartmentHsnxDetailComponent } from './department-hsnx-detail.componen
 import { DepartmentHsnxUpdateComponent } from './department-hsnx-update.component';
 import { DepartmentHsnxDeleteDialogComponent } from './department-hsnx-delete-dialog.component';
 import { departmentRoute } from './department-hsnx.route';
+import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
 
 @NgModule({
-  imports: [TaskManagerHsnxSharedModule, RouterModule.forChild(departmentRoute)],
+  imports: [
+    TaskManagerHsnxSharedModule,
+    RouterModule.forChild(departmentRoute),
+    ButtonModule,
+    CheckBoxModule,
+    RadioButtonModule,
+    SwitchModule
+  ],
   declarations: [
     DepartmentHsnxComponent,
     DepartmentHsnxDetailComponent,

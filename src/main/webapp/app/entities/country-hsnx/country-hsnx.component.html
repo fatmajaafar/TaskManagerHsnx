@@ -49,26 +49,26 @@
                     <td>{{ country.countryCode }}</td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
+                            <button  ejs-button cssClass="e-success" type="submit"
                                     [routerLink]="['/country-hsnx', country.id, 'view']"
-                                    class="btn btn-outline-success">
+                                   >
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
 
                               
                             </button>
 
-                            <button type="submit"
+                            <button ejs-button cssClass="e-info" type="submit"
                                     [routerLink]="['/country-hsnx', country.id, 'edit']"
-                                    class="btn btn-outline-primary">
+                                  >
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
 
                                 
                             </button>
 
-                            <button type="submit" (click)="delete(country)"
-                            class="btn btn-outline-danger">
+                            <button  ejs-button cssClass="e-danger" type="submit" (click)="delete(country)"
+                           >
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
 
