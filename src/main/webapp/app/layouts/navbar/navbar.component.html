@@ -22,7 +22,7 @@
            
              <!--Department entity-->
             <li class="nav-item" >
-                <a class="nav-link" routerLink="department-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Departments" >
+                <a *jhiHasAnyAuthority="'ROLE_ADMIN'" class="nav-link" routerLink="department-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Departments" >
                     <i class="fa fa-building-o" aria-hidden="true"></i>
                     <span class="material-icons">
                         domain
@@ -32,7 +32,7 @@
             </li>
              <!--Employee entity-->   
             <li class="nav-item">
-                <a class="nav-link" routerLink="employee-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Employees">
+                <a *jhiHasAnyAuthority="'ROLE_ADMIN'" class="nav-link" routerLink="employee-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Employees">
                     <span class="material-icons">
                         people_alt
                         </span>
@@ -64,7 +64,7 @@
                     <!--Country entity-->
                     
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="country-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Country">
+                        <a *jhiHasAnyAuthority="'ROLE_ADMIN'"  class="nav-link" routerLink="country-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Country">
                             <span class="material-icons">
                                 flag
                                 </span>
@@ -82,7 +82,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"   routerLink="task-kanban" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Task Kanban">
+                        <a  class="nav-link"   routerLink="task-kanban" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Task Kanban">
                             
 
                             <span class="material-icons">
@@ -101,7 +101,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" routerLink="branch-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Employee Branch">
+                        <a *jhiHasAnyAuthority="'ROLE_ADMIN'" class="nav-link" routerLink="branch-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Employee Branch">
                            <span class="material-icons">
                                 account_tree
                                 </span>
@@ -110,7 +110,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" routerLink="job-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Employee Job">
+                        <a *jhiHasAnyAuthority="'ROLE_ADMIN'" class="nav-link" routerLink="job-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Employee Job">
                             <span class="material-icons">
                                 work
                                 </span>
@@ -183,6 +183,13 @@
                     <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
                 </ul>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" matTooltip="Your profile" >
+                    <span class="material-icons">
+                        perm_identity
+                        </span>
+                </a>
+            </li>
             <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1" matTooltip="language">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
                     <span>
@@ -241,13 +248,7 @@
                 </ul>
             </li>
            <!--PROFILE-->
-            <li class="nav-item">
-                <a class="nav-link" routerLink="profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" matTooltip="Your profile" >
-                    <span class="material-icons">
-                        perm_identity
-                        </span>
-                </a>
-            </li>
+            
 
            
             

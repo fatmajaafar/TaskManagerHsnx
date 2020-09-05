@@ -42,7 +42,7 @@ export const departmentRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       defaultSort: 'id,asc',
       pageTitle: 'taskManagerHsnxApp.department.home.title'
     },
@@ -55,7 +55,7 @@ export const departmentRoute: Routes = [
       department: DepartmentHsnxResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'taskManagerHsnxApp.department.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -67,7 +67,7 @@ export const departmentRoute: Routes = [
       department: DepartmentHsnxResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'taskManagerHsnxApp.department.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -79,7 +79,7 @@ export const departmentRoute: Routes = [
       department: DepartmentHsnxResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'taskManagerHsnxApp.department.home.title'
     },
     canActivate: [UserRouteAccessService]
