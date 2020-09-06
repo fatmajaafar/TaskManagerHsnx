@@ -144,7 +144,7 @@
       <ul class="list-group" *ngFor="let task of tasks  ;trackBy: trackId">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           {{task.tasktitle}}
-          <span class="badge badge-info">{{task.nbjrs | number: '1.0-0'}} days left </span>
+          <span class="badge badge-info" *ngIf="task.nbjrs">{{task.nbjrs | number: '1.0-0'}} days left </span>
           <span class=" tag approved" *ngIf="task.taskstatus === 1" style="color: rgb(53, 34, 221);">Open</span>
           <span class="tag progress" *ngIf="task.taskstatus === 2" style="color: #c76a1e;">In Progress</span>
           <span class="tag review " *ngIf="task.taskstatus === 3" style="color: darkmagenta;">In Review</span>
@@ -295,8 +295,8 @@
 </div>
 
 
-<ng-template #content let-modal>
-  <div class="task-form-wrapper">
+<ng-template #content let-modal >
+  <div class="task-form-wrapper" dir="ltr">
 
     <mat-toolbar color="warn" style="background-color:#880e4f">
       <span class="material-icons">
@@ -422,7 +422,7 @@
           </td>
         </tr>
 
-        
+        <div class="modal-footer">
         <button ejs-button cssClass="e-outline" [isPrimary]="true" type="submit" id="save-entity"
           [disabled]=" isSaving">
           <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
@@ -430,9 +430,10 @@
         <button ejs-button (click)="modal.dismiss('Cross click')">
           <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
-        <button ejs-button cssClass="e-warning"  type="reset" style="margin-left: 200px;">
+        <button ejs-button cssClass="e-warning"  type="reset">
           <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.reset">Clear</span>
-        </button>
+        </button></div>
+
   </div>
 
   </form>

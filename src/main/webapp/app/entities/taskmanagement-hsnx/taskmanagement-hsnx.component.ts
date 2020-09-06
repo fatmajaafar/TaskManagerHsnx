@@ -63,13 +63,15 @@ export class TaskmanagementHsnxComponent implements OnInit {
           this.tasks = res.body || [];
 
           for (var i = 0; i < this.tasks.length; i++) {
-            var date = moment(this.tasks[i].dateEnd).toDate();
+            if (this.tasks[i].dueDate) {
+              var date = moment(this.tasks[i].dueDate).toDate();
 
-            var Difference_In_Time = date.getTime() - today.getTime();
-            this.Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-            //  return this.Difference_In_Days;
-            //this.Difference_In_Day=this.Difference_In_Days;
-            this.tasks[i].nbjrs = this.Difference_In_Days;
+              var Difference_In_Time = date.getTime() - today.getTime();
+              this.Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+              //  return this.Difference_In_Days;
+              //this.Difference_In_Day=this.Difference_In_Days;
+              this.tasks[i].nbjrs = this.Difference_In_Days;
+            }
           }
         },
         () => ''
