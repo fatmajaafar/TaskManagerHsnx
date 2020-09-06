@@ -87,7 +87,7 @@ export class TaskKanbanComponent implements OnInit {
         if (res.body) {
           let task1: IKanbanData = {};
           this.kanbanData = [task1];
-          this.kanbanObj.kanbanData.push(task1);
+          if (this.kanbanObj.kanbanData) this.kanbanObj.kanbanData.push(task1);
 
           let i = 0;
           res.body.forEach(element => {
