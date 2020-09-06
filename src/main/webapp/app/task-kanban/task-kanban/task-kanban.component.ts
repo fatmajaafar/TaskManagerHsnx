@@ -227,6 +227,7 @@ export class TaskKanbanComponent implements OnInit {
     const task = this.editTask;
     this.updateForm(task);
     this.subscribeToSaveResponse(this.taskService.update(task));
+    this.loadTasks();
   }
 
   confirmDelete(id: number): void {
