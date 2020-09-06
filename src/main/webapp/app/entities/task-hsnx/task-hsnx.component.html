@@ -49,7 +49,6 @@
                     <th scope="col"  jhiSortBy="taskpriority"><span jhiTranslate="taskManagerHsnxApp.task.taskpriority" style="color: white;">Taskpriority</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="dueDate"><span jhiTranslate="taskManagerHsnxApp.task.dueDate" style="color: white;">Due Date</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="taskcategory"><span jhiTranslate="taskManagerHsnxApp.task.taskcategory" style="color: white;">Taskcategory</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="taskstate"><span jhiTranslate="taskManagerHsnxApp.task.taskstate" style="color: white;">Taskstate</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="tblEmployeeEmployeename"><span jhiTranslate="taskManagerHsnxApp.task.tblEmployee" style="color: white;">Tbl Employee</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
@@ -66,7 +65,7 @@
                     <td>{{ task.taskpriority }}</td>
                     <td>{{ task.dueDate | date:'dd/MM/yyyy' }}</td>
                     <td>{{ task.taskcategory }}</td>
-                    <td>{{ task.taskstate }}</td>
+                    
                     <td>
                         <div *ngIf="task.tblEmployeeId">
                             <a [routerLink]="['/employee-hsnx', task.tblEmployeeId , 'view']" >{{ task.tblEmployeeEmployeename }}</a>
