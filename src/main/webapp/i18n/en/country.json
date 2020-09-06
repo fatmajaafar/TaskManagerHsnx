@@ -17,8 +17,8 @@
       "detail": {
         "title": "Country"
       },
-      "countryName": "Country Name",
-      "countryCode": "Country Code"
+      "countryName": " Name",
+      "countryCode": " Code"
     }
   }
 }

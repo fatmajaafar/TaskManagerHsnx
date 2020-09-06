@@ -2,23 +2,23 @@
   "taskManagerHsnxApp": {
     "country": {
       "home": {
-        "title": "Countries",
-        "createLabel": "Créer un nouveau Country",
-        "createOrEditLabel": "Créer ou éditer un Country",
-        "search": "Recherche pour Country",
-        "notFound": "Aucun Country trouvé"
+        "title": "Pays",
+        "createLabel": "Ajouter un nouveau Pays",
+        "createOrEditLabel": "Détails du Pays",
+        "search": "Recherche pour Pays",
+        "notFound": "Aucun Pays trouvé"
       },
-      "created": "Un nouveau Country a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Country avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Country avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau Pays a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Pays avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Pays avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Country {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer le Pays {{ id }} ?"
       },
       "detail": {
         "title": "Country"
       },
-      "countryName": "Country Name",
-      "countryCode": "Country Code"
+      "countryName": "Nom Pays",
+      "countryCode": "Code Pays"
     }
   }
 }

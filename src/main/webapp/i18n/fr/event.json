@@ -2,27 +2,27 @@
   "taskManagerHsnxApp": {
     "event": {
       "home": {
-        "title": "Events",
-        "createLabel": "Créer un nouveau Event",
-        "createOrEditLabel": "Créer ou éditer un Event",
-        "search": "Recherche pour Event",
-        "notFound": "Aucun Event trouvé"
+        "title": "Événements",
+        "createLabel": "Créer un nouveau Événement",
+        "createOrEditLabel": "Détails de l'Événement",
+        "search": "Recherche pour Événement",
+        "notFound": "Aucun Événement trouvé"
       },
-      "created": "Un nouveau Event a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Event avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Event avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau Événement a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Événement avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Événement avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Event {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer l'Événement {{ id }} ?"
       },
       "detail": {
         "title": "Event"
       },
-      "eventdescription": "Eventdescription",
-      "starttime": "Starttime",
-      "startdate": "Startdate",
-      "endtime": "Endtime",
-      "enddate": "Enddate",
-      "tblTask": "Tbl Task"
+      "eventdescription": "Description",
+      "starttime": "Temps Début",
+      "startdate": "Date Début",
+      "endtime": "Temps Fin",
+      "enddate": "Date Fin",
+      "tblTask": "Tâche"
     }
   }
 }

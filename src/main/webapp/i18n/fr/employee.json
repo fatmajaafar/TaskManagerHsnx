@@ -2,30 +2,30 @@
   "taskManagerHsnxApp": {
     "employee": {
       "home": {
-        "title": "Employees",
-        "createLabel": "Créer un nouveau Employee",
-        "createOrEditLabel": "Créer ou éditer un Employee",
-        "search": "Recherche pour Employee",
-        "notFound": "Aucun Employee trouvé"
+        "title": "Employés",
+        "createLabel": "Créer un nouveau Employé",
+        "createOrEditLabel": "Détails du l'Employé",
+        "search": "Recherche pour Employé",
+        "notFound": "Aucun Employé trouvé"
       },
-      "created": "Un nouveau Employee a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Employee avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Employee avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau Employé a été créé avec l'identifiant {{ param }}",
+      "updated": "L'Employé avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "L'Employé avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Employee {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer l'Employé {{ id }} ?"
       },
       "detail": {
         "title": "Employee"
       },
-      "employeename": "Employeename",
-      "employeephone": "Employeephone",
-      "employeefax": "Employeefax",
-      "employeeaddress": "Employeeaddress",
-      "employeeemail": "Employeeemail",
-      "employeehiredate": "Employeehiredate",
-      "tblJob": "Tbl Job",
-      "tblDepartment": "Tbl Department",
-      "tblBranch": "Tbl Branch"
+      "employeename": "Nom",
+      "employeephone": "Téléphone ",
+      "employeefax": "Fax ",
+      "employeeaddress": "Adresse ",
+      "employeeemail": "Email ",
+      "employeehiredate": "Date Embauche",
+      "tblJob": "Poste",
+      "tblDepartment": "Département",
+      "tblBranch": "Branche"
     }
   }
 }

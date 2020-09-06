@@ -2,22 +2,22 @@
   "taskManagerHsnxApp": {
     "job": {
       "home": {
-        "title": "Jobs",
-        "createLabel": "Créer un nouveau Job",
-        "createOrEditLabel": "Créer ou éditer un Job",
-        "search": "Recherche pour Job",
-        "notFound": "Aucun Job trouvé"
+        "title": "Postes",
+        "createLabel": "Créer une nouvelle Poste",
+        "createOrEditLabel": "Détails de la Poste",
+        "search": "Recherche pour Poste",
+        "notFound": "Aucune Poste trouvée"
       },
-      "created": "Un nouveau Job a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Job avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Job avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle Poste a été créé avec l'identifiant {{ param }}",
+      "updated": "La Poste avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "La Poste avec l'identifiant {{ param }} a été supprimée",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Job {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer la Poste {{ id }} ?"
       },
       "detail": {
         "title": "Job"
       },
-      "jobTitle": "Job Title"
+      "jobTitle": "Titre"
     }
   }
 }

@@ -41,7 +41,7 @@
             </li>
             <!--Event entity-->
             <li class="nav-item">
-                <a class="nav-link" routerLink="event-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Events">
+                <a *jhiHasAnyAuthority="'ROLE_ADMIN'"   class="nav-link" routerLink="event-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Events">
                     <span class="material-icons">
                         event
                         </span>

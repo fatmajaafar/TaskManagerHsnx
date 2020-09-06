@@ -17,15 +17,15 @@
       "detail": {
         "title": "Employee"
       },
-      "employeename": "Employeename",
-      "employeephone": "Employeephone",
-      "employeefax": "Employeefax",
-      "employeeaddress": "Employeeaddress",
-      "employeeemail": "Employeeemail",
-      "employeehiredate": "Employeehiredate",
-      "tblJob": "Tbl Job",
-      "tblDepartment": "Tbl Department",
-      "tblBranch": "Tbl Branch"
+      "employeename": "Name",
+      "employeephone": "Phone",
+      "employeefax": "Fax",
+      "employeeaddress": "Address",
+      "employeeemail": "Email",
+      "employeehiredate": "Hiredate",
+      "tblJob": "Job",
+      "tblDepartment": "Department",
+      "tblBranch": "Branch"
     }
   }
 }

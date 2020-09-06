@@ -1,0 +1,37 @@
+{
+  "taskManagement": {
+    "home": {
+      "title": "Gérer les tâches",
+      "createLabel": "Événements",
+      "search": "Rechercher",
+      "taskList": "Liste des Tâches",
+      "upcomingTasks": "Tâches à venir"
+    },
+    "category": {
+      "all": "Toutes",
+      "important": "Importantes",
+      "notes": "Notes",
+      "links": "Liens"
+    },
+    "nav": {
+      "inbox": "Boîte de réception",
+      "today": "Aujourd'hui",
+      "upcoming": "À venir",
+      "important": "Importantes",
+      "meeting": "Réunions",
+      "trash": "Poubelle",
+      "notification": "Notifications",
+      "vacation": "Vacation",
+      "festival": "Festival",
+      "concerts": "Concerts"
+    },
+    "add": {
+      "dialogTitle": "Ajouter To Do",
+      "taskTitle": "Que faut-il faire ?",
+      "taskStatus": "Status",
+      "taskPriority": "Priorité",
+      "assignee": "Assignée à",
+      "category": "Catégorie"
+    }
+  }
+}

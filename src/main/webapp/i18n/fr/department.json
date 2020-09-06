@@ -2,23 +2,23 @@
   "taskManagerHsnxApp": {
     "department": {
       "home": {
-        "title": "Departments",
-        "createLabel": "Créer un nouveau Department",
-        "createOrEditLabel": "Créer ou éditer un Department",
-        "search": "Recherche pour Department",
-        "notFound": "Aucun Department trouvé"
+        "title": "Départements",
+        "createLabel": "Créer un nouveau Département",
+        "createOrEditLabel": "Détails du Département",
+        "search": "Recherche pour Département",
+        "notFound": "Aucun Département trouvé"
       },
-      "created": "Un nouveau Department a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Department avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Department avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau Département a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Département avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Département avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Department {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer le Département {{ id }} ?"
       },
       "detail": {
         "title": "Department"
       },
-      "deptName": "Dept Name",
-      "deptNote": "Dept Note"
+      "deptName": "Nom Dept",
+      "deptNote": "Note Dept"
     }
   }
 }

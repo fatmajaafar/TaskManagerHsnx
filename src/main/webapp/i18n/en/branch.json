@@ -17,13 +17,13 @@
       "detail": {
         "title": "Branch"
       },
-      "branchName": "Branch Name",
-      "branchPhone": "Branch Phone",
-      "branchFax": "Branch Fax",
-      "branchAddress": "Branch Address",
-      "branchEmail": "Branch Email",
-      "branchBanner": "Branch Banner",
-      "branchDefaultExercice": "Branch Default Exercice"
+      "branchName": " Name",
+      "branchPhone": " Phone",
+      "branchFax": " Fax",
+      "branchAddress": " Address",
+      "branchEmail": " Email",
+      "branchBanner": " Banner",
+      "branchDefaultExercice": " Default Exercice"
     }
   }
 }
