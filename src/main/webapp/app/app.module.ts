@@ -43,19 +43,7 @@ import { RadioButtonModule, ButtonModule } from '@syncfusion/ej2-angular-buttons
 
 @NgModule({
   imports: [
-    SkyhookMultiBackendModule,
-    SkyhookSortableModule,
-    StoreModule,
-    StoreModule.forFeature('kanban', reducer),
-    StoreModule.forRoot(reducer, {
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true
-      }
-    }),
-
     ToastrModule.forRoot(),
-    SkyhookDndModule,
     KanbanAllModule,
     CheckBoxAllModule,
     NumericTextBoxAllModule,
