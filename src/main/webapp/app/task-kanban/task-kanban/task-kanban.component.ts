@@ -36,6 +36,7 @@ export class TaskKanbanComponent implements OnInit {
   public toggleBtn!: ButtonComponent;
   public kanbanData: IKanbanData[] = []; //extend([], kanbanData, [], true) as Object[]; //here data is no longer extracted from card.ts
 
+  employeeId = 0;
   public columns: ColumnsModel[] = [
     { headerText: 'To Do', keyField: 'Open', allowToggle: true },
     { headerText: 'In Progress', keyField: 'InProgress', allowToggle: true },
@@ -77,54 +78,102 @@ export class TaskKanbanComponent implements OnInit {
   ) {}
 
   loadTasks() {
-    this.taskService
-      .query({
-        'tblEmployeeId.specified': true,
-        'taskstatus.specified': true,
-        size: 10000
-      })
-      .subscribe((res: HttpResponse<ITaskHsnx[]>) => {
-        if (res.body) {
-          let task1: IKanbanData = {};
-          this.kanbanData = [task1];
-          if (this.kanbanObj.kanbanData) this.kanbanObj.kanbanData.push(task1);
+    if (this.employeeId) {
+      this.taskService
+        .query({
+          'tblEmployeeId.equals': this.employeeId,
+          'taskstatus.specified': true,
+          size: 10000
+        })
+        .subscribe((res: HttpResponse<ITaskHsnx[]>) => {
+          if (res.body) {
+            let task1: IKanbanData = {};
+            this.kanbanData = [task1];
+            if (this.kanbanObj.kanbanData) this.kanbanObj.kanbanData.push(task1);
 
-          let i = 0;
-          res.body.forEach(element => {
-            i += 1;
-            let task: IKanbanData = {};
-            task.Id = 'Task ' + i;
-            task.Title = element.tasktitle;
-            task.Summary = element.taskdescription;
-            switch (element.taskstatus) {
-              case 1:
-                task.Status = 'Open';
-                break;
-              case 2:
-                task.Status = 'InProgress';
-                break;
-              case 3:
-                task.Status = 'Review';
-                break;
-              case 4:
-                task.Status = 'Close';
-                break;
-            }
+            let i = 0;
+            res.body.forEach(element => {
+              i += 1;
+              let task: IKanbanData = {};
+              task.Id = 'Task ' + i;
+              task.Title = element.tasktitle;
+              task.Summary = element.taskdescription;
+              switch (element.taskstatus) {
+                case 1:
+                  task.Status = 'Open';
+                  break;
+                case 2:
+                  task.Status = 'InProgress';
+                  break;
+                case 3:
+                  task.Status = 'Review';
+                  break;
+                case 4:
+                  task.Status = 'Close';
+                  break;
+              }
 
-            task.RankId = element.id;
-            task.EmpID = element.tblEmployeeId;
-            task.Assignee = element.tblEmployeeEmployeename;
-            task.Priority = element.taskpriority;
+              task.RankId = element.id;
+              task.EmpID = element.tblEmployeeId;
+              task.Assignee = element.tblEmployeeEmployeename;
+              task.Priority = element.taskpriority;
 
-            this.kanbanData.push(task);
-            this.kanbanObj.kanbanData.push(task);
-          });
-        }
-      });
+              this.kanbanData.push(task);
+              this.kanbanObj.kanbanData.push(task);
+            });
+          }
+        });
+    } else {
+      this.taskService
+        .query({
+          'tblEmployeeId.specified': true,
+          'taskstatus.specified': true,
+          size: 10000
+        })
+        .subscribe((res: HttpResponse<ITaskHsnx[]>) => {
+          if (res.body) {
+            let task1: IKanbanData = {};
+            this.kanbanData = [task1];
+            if (this.kanbanObj.kanbanData) this.kanbanObj.kanbanData.push(task1);
+
+            let i = 0;
+            res.body.forEach(element => {
+              i += 1;
+              let task: IKanbanData = {};
+              task.Id = 'Task ' + i;
+              task.Title = element.tasktitle;
+              task.Summary = element.taskdescription;
+              switch (element.taskstatus) {
+                case 1:
+                  task.Status = 'Open';
+                  break;
+                case 2:
+                  task.Status = 'InProgress';
+                  break;
+                case 3:
+                  task.Status = 'Review';
+                  break;
+                case 4:
+                  task.Status = 'Close';
+                  break;
+              }
+
+              task.RankId = element.id;
+              task.EmpID = element.tblEmployeeId;
+              task.Assignee = element.tblEmployeeEmployeename;
+              task.Priority = element.taskpriority;
+
+              this.kanbanData.push(task);
+              this.kanbanObj.kanbanData.push(task);
+            });
+          }
+        });
+    }
   }
 
   ngOnInit(): void {
     this.loadTasks();
+    this.employeeService.query().subscribe((res: HttpResponse<IEmployeeHsnx[]>) => (this.employees = res.body || []));
   }
 
   public getString(assignee: string) {
