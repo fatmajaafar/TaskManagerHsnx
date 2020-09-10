@@ -40,14 +40,14 @@
                 </a>
             </li>
             <!--Event entity-->
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a *jhiHasAnyAuthority="'ROLE_ADMIN'"   class="nav-link" routerLink="event-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Events">
                     <span class="material-icons">
                         event
                         </span>
                         <span jhiTranslate="global.menu.entities.eventHsnx">Event Hsnx</span>
                 </a>
-            </li>
+            </li>-->
              <!--Task entity-->
             <li class="nav-item">
                 <a class="nav-link" routerLink="task-hsnx" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" matTooltip="Tasks List">
@@ -123,7 +123,7 @@
                     
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
              <ul class="navbar-nav ml-auto"> 
-            <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" matTooltip="Administration">
+            <!--<li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" matTooltip="Administration">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>
                         <span class="material-icons">
@@ -180,16 +180,10 @@
                             <span jhiTranslate="global.menu.admin.elasticsearchReindex">Elasticsearch Reindex</span>
                         </a>
                     </li>
-                    <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" matTooltip="Your profile" >
-                    <span class="material-icons">
-                        perm_identity
-                        </span>
-                </a>
-            </li>
+                    jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+              <!--</ul>
+            </li>--> 
+            
             <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1" matTooltip="language">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
                     <span>
