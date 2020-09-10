@@ -1,8 +1,7 @@
+/*eslint-disable*/
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ProdConfig } from './blocks/config/prod.config';
 import { TaskManagerHsnxAppModule } from './app.module';
-import { TaskmanagementHsnxComponent } from './entities/taskmanagement-hsnx/taskmanagement-hsnx.component';
-import { ProfileComponent } from './entities/profile/profile.component';
 ProdConfig();
 
 if (module['hot']) {
