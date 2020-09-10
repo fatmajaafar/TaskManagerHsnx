@@ -32,10 +32,7 @@ import { RouterModule } from '@angular/router';
         path: 'taskmanagement-hsnx',
         loadChildren: () => import('./taskmanagement-hsnx/taskmanagement-hsnx.module').then(m => m.TaskManagerHsnxTaskmanagementHsnxModule)
       },
-      {
-        path: 'profile',
-        loadChildren: () => import('./profile/profile.module').then(m => m.TaskManagerHsnxProfileModule)
-      },
+
       {
         path: 'kanban',
         loadChildren: () => import('../simple-kanban/kanban.module').then(m => m.KanbanModule)
