@@ -15,6 +15,8 @@ public class EmployeeDTO implements Serializable {
     @NotNull
     private String employeename;
 
+    private String employeelastname;
+
     private String employeephone;
 
     private String employeefax;
@@ -52,6 +54,14 @@ public class EmployeeDTO implements Serializable {
 
     public void setEmployeename(String employeename) {
         this.employeename = employeename;
+    }
+
+    public String getEmployeelastname() {
+        return employeelastname;
+    }
+
+    public void setEmployeelastname(String employeelastname) {
+        this.employeelastname = employeelastname;
     }
 
     public String getEmployeephone() {
@@ -168,6 +178,7 @@ public class EmployeeDTO implements Serializable {
         return "EmployeeDTO{" +
             "id=" + getId() +
             ", employeename='" + getEmployeename() + "'" +
+            ", employeelastname='" + getEmployeelastname() + "'" +
             ", employeephone='" + getEmployeephone() + "'" +
             ", employeefax='" + getEmployeefax() + "'" +
             ", employeeaddress='" + getEmployeeaddress() + "'" +

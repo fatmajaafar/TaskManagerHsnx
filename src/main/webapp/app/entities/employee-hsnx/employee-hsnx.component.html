@@ -41,6 +41,8 @@
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="taskManagerHsnxApp.employee.id" style="color: white;">ID</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
 
                     <th scope="col"  jhiSortBy="employeename"><span jhiTranslate="taskManagerHsnxApp.employee.employeename" style="color: white;">Employeename</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="employeelastname"><span  jhiTranslate="taskManagerHsnxApp.employee.employeelastname" style="color: white;">Employeelastname</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+
                     <th scope="col"  jhiSortBy="employeephone"><span jhiTranslate="taskManagerHsnxApp.employee.employeephone" style="color: white;">Employeephone</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="employeefax"><span jhiTranslate="taskManagerHsnxApp.employee.employeefax" style="color: white;">Employeefax</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="employeeaddress"><span jhiTranslate="taskManagerHsnxApp.employee.employeeaddress" style="color: white;">Employeeaddress</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
@@ -55,6 +57,7 @@
             <tbody>
                 <tr *ngFor="let employee of employees ;trackBy: trackId">
                     <td>{{ employee.id }}</td>
+                    <td>{{employee.employeelastname}}</td>
                     <td>{{ employee.employeename }}</td>
                     <td>{{ employee.employeephone }}</td>
                     <td>{{ employee.employeefax }}</td>

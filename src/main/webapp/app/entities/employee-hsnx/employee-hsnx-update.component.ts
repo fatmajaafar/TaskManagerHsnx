@@ -30,6 +30,7 @@ export class EmployeeHsnxUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     employeename: [null, [Validators.required]],
+    employeelastname: [null, [Validators.required]],
     employeephone: [null, [Validators.required]],
     employeefax: [],
     employeeaddress: [],
@@ -65,6 +66,7 @@ export class EmployeeHsnxUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: employee.id,
       employeename: employee.employeename,
+      employeelastname: employee.employeelastname,
       employeephone: employee.employeephone,
       employeefax: employee.employeefax,
       employeeaddress: employee.employeeaddress,
@@ -95,6 +97,7 @@ export class EmployeeHsnxUpdateComponent implements OnInit {
       ...new EmployeeHsnx(),
       id: this.editForm.get(['id'])!.value,
       employeename: this.editForm.get(['employeename'])!.value,
+      employeelastname: this.editForm.get(['employeelastname'])!.value,
       employeephone: this.editForm.get(['employeephone'])!.value,
       employeefax: this.editForm.get(['employeefax'])!.value,
       employeeaddress: this.editForm.get(['employeeaddress'])!.value,

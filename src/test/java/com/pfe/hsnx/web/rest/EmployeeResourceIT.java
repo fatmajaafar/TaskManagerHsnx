@@ -52,6 +52,9 @@ public class EmployeeResourceIT {
     private static final String DEFAULT_EMPLOYEENAME = "AAAAAAAAAA";
     private static final String UPDATED_EMPLOYEENAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_EMPLOYEELASTNAME = "AAAAAAAAAA";
+    private static final String UPDATED_EMPLOYEELASTNAME = "BBBBBBBBBB";
+
     private static final String DEFAULT_EMPLOYEEPHONE = "AAAAAAAAAA";
     private static final String UPDATED_EMPLOYEEPHONE = "BBBBBBBBBB";
 
@@ -128,6 +131,7 @@ public class EmployeeResourceIT {
     public static Employee createEntity(EntityManager em) {
         Employee employee = new Employee()
             .employeename(DEFAULT_EMPLOYEENAME)
+            .employeelastname(DEFAULT_EMPLOYEELASTNAME)
             .employeephone(DEFAULT_EMPLOYEEPHONE)
             .employeefax(DEFAULT_EMPLOYEEFAX)
             .employeeaddress(DEFAULT_EMPLOYEEADDRESS)
@@ -144,6 +148,7 @@ public class EmployeeResourceIT {
     public static Employee createUpdatedEntity(EntityManager em) {
         Employee employee = new Employee()
             .employeename(UPDATED_EMPLOYEENAME)
+            .employeelastname(UPDATED_EMPLOYEELASTNAME)
             .employeephone(UPDATED_EMPLOYEEPHONE)
             .employeefax(UPDATED_EMPLOYEEFAX)
             .employeeaddress(UPDATED_EMPLOYEEADDRESS)
@@ -174,6 +179,7 @@ public class EmployeeResourceIT {
         assertThat(employeeList).hasSize(databaseSizeBeforeCreate + 1);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
         assertThat(testEmployee.getEmployeename()).isEqualTo(DEFAULT_EMPLOYEENAME);
+        assertThat(testEmployee.getEmployeelastname()).isEqualTo(DEFAULT_EMPLOYEELASTNAME);
         assertThat(testEmployee.getEmployeephone()).isEqualTo(DEFAULT_EMPLOYEEPHONE);
         assertThat(testEmployee.getEmployeefax()).isEqualTo(DEFAULT_EMPLOYEEFAX);
         assertThat(testEmployee.getEmployeeaddress()).isEqualTo(DEFAULT_EMPLOYEEADDRESS);
@@ -239,6 +245,7 @@ public class EmployeeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(employee.getId().intValue())))
             .andExpect(jsonPath("$.[*].employeename").value(hasItem(DEFAULT_EMPLOYEENAME)))
+            .andExpect(jsonPath("$.[*].employeelastname").value(hasItem(DEFAULT_EMPLOYEELASTNAME)))
             .andExpect(jsonPath("$.[*].employeephone").value(hasItem(DEFAULT_EMPLOYEEPHONE)))
             .andExpect(jsonPath("$.[*].employeefax").value(hasItem(DEFAULT_EMPLOYEEFAX)))
             .andExpect(jsonPath("$.[*].employeeaddress").value(hasItem(DEFAULT_EMPLOYEEADDRESS)))
@@ -258,6 +265,7 @@ public class EmployeeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(employee.getId().intValue()))
             .andExpect(jsonPath("$.employeename").value(DEFAULT_EMPLOYEENAME))
+            .andExpect(jsonPath("$.employeelastname").value(DEFAULT_EMPLOYEELASTNAME))
             .andExpect(jsonPath("$.employeephone").value(DEFAULT_EMPLOYEEPHONE))
             .andExpect(jsonPath("$.employeefax").value(DEFAULT_EMPLOYEEFAX))
             .andExpect(jsonPath("$.employeeaddress").value(DEFAULT_EMPLOYEEADDRESS))
@@ -360,6 +368,84 @@ public class EmployeeResourceIT {
 
         // Get all the employeeList where employeename does not contain UPDATED_EMPLOYEENAME
         defaultEmployeeShouldBeFound("employeename.doesNotContain=" + UPDATED_EMPLOYEENAME);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllEmployeesByEmployeelastnameIsEqualToSomething() throws Exception {
+        // Initialize the database
+        employeeRepository.saveAndFlush(employee);
+
+        // Get all the employeeList where employeelastname equals to DEFAULT_EMPLOYEELASTNAME
+        defaultEmployeeShouldBeFound("employeelastname.equals=" + DEFAULT_EMPLOYEELASTNAME);
+
+        // Get all the employeeList where employeelastname equals to UPDATED_EMPLOYEELASTNAME
+        defaultEmployeeShouldNotBeFound("employeelastname.equals=" + UPDATED_EMPLOYEELASTNAME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllEmployeesByEmployeelastnameIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        employeeRepository.saveAndFlush(employee);
+
+        // Get all the employeeList where employeelastname not equals to DEFAULT_EMPLOYEELASTNAME
+        defaultEmployeeShouldNotBeFound("employeelastname.notEquals=" + DEFAULT_EMPLOYEELASTNAME);
+
+        // Get all the employeeList where employeelastname not equals to UPDATED_EMPLOYEELASTNAME
+        defaultEmployeeShouldBeFound("employeelastname.notEquals=" + UPDATED_EMPLOYEELASTNAME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllEmployeesByEmployeelastnameIsInShouldWork() throws Exception {
+        // Initialize the database
+        employeeRepository.saveAndFlush(employee);
+
+        // Get all the employeeList where employeelastname in DEFAULT_EMPLOYEELASTNAME or UPDATED_EMPLOYEELASTNAME
+        defaultEmployeeShouldBeFound("employeelastname.in=" + DEFAULT_EMPLOYEELASTNAME + "," + UPDATED_EMPLOYEELASTNAME);
+
+        // Get all the employeeList where employeelastname equals to UPDATED_EMPLOYEELASTNAME
+        defaultEmployeeShouldNotBeFound("employeelastname.in=" + UPDATED_EMPLOYEELASTNAME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllEmployeesByEmployeelastnameIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        employeeRepository.saveAndFlush(employee);
+
+        // Get all the employeeList where employeelastname is not null
+        defaultEmployeeShouldBeFound("employeelastname.specified=true");
+
+        // Get all the employeeList where employeelastname is null
+        defaultEmployeeShouldNotBeFound("employeelastname.specified=false");
+    }
+                @Test
+    @Transactional
+    public void getAllEmployeesByEmployeelastnameContainsSomething() throws Exception {
+        // Initialize the database
+        employeeRepository.saveAndFlush(employee);
+
+        // Get all the employeeList where employeelastname contains DEFAULT_EMPLOYEELASTNAME
+        defaultEmployeeShouldBeFound("employeelastname.contains=" + DEFAULT_EMPLOYEELASTNAME);
+
+        // Get all the employeeList where employeelastname contains UPDATED_EMPLOYEELASTNAME
+        defaultEmployeeShouldNotBeFound("employeelastname.contains=" + UPDATED_EMPLOYEELASTNAME);
+    }
+
+    @Test
+    @Transactional
+    public void getAllEmployeesByEmployeelastnameNotContainsSomething() throws Exception {
+        // Initialize the database
+        employeeRepository.saveAndFlush(employee);
+
+        // Get all the employeeList where employeelastname does not contain DEFAULT_EMPLOYEELASTNAME
+        defaultEmployeeShouldNotBeFound("employeelastname.doesNotContain=" + DEFAULT_EMPLOYEELASTNAME);
+
+        // Get all the employeeList where employeelastname does not contain UPDATED_EMPLOYEELASTNAME
+        defaultEmployeeShouldBeFound("employeelastname.doesNotContain=" + UPDATED_EMPLOYEELASTNAME);
     }
 
 
@@ -848,6 +934,7 @@ public class EmployeeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(employee.getId().intValue())))
             .andExpect(jsonPath("$.[*].employeename").value(hasItem(DEFAULT_EMPLOYEENAME)))
+            .andExpect(jsonPath("$.[*].employeelastname").value(hasItem(DEFAULT_EMPLOYEELASTNAME)))
             .andExpect(jsonPath("$.[*].employeephone").value(hasItem(DEFAULT_EMPLOYEEPHONE)))
             .andExpect(jsonPath("$.[*].employeefax").value(hasItem(DEFAULT_EMPLOYEEFAX)))
             .andExpect(jsonPath("$.[*].employeeaddress").value(hasItem(DEFAULT_EMPLOYEEADDRESS)))
@@ -901,6 +988,7 @@ public class EmployeeResourceIT {
         em.detach(updatedEmployee);
         updatedEmployee
             .employeename(UPDATED_EMPLOYEENAME)
+            .employeelastname(UPDATED_EMPLOYEELASTNAME)
             .employeephone(UPDATED_EMPLOYEEPHONE)
             .employeefax(UPDATED_EMPLOYEEFAX)
             .employeeaddress(UPDATED_EMPLOYEEADDRESS)
@@ -918,6 +1006,7 @@ public class EmployeeResourceIT {
         assertThat(employeeList).hasSize(databaseSizeBeforeUpdate);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
         assertThat(testEmployee.getEmployeename()).isEqualTo(UPDATED_EMPLOYEENAME);
+        assertThat(testEmployee.getEmployeelastname()).isEqualTo(UPDATED_EMPLOYEELASTNAME);
         assertThat(testEmployee.getEmployeephone()).isEqualTo(UPDATED_EMPLOYEEPHONE);
         assertThat(testEmployee.getEmployeefax()).isEqualTo(UPDATED_EMPLOYEEFAX);
         assertThat(testEmployee.getEmployeeaddress()).isEqualTo(UPDATED_EMPLOYEEADDRESS);
@@ -984,6 +1073,7 @@ public class EmployeeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(employee.getId().intValue())))
             .andExpect(jsonPath("$.[*].employeename").value(hasItem(DEFAULT_EMPLOYEENAME)))
+            .andExpect(jsonPath("$.[*].employeelastname").value(hasItem(DEFAULT_EMPLOYEELASTNAME)))
             .andExpect(jsonPath("$.[*].employeephone").value(hasItem(DEFAULT_EMPLOYEEPHONE)))
             .andExpect(jsonPath("$.[*].employeefax").value(hasItem(DEFAULT_EMPLOYEEFAX)))
             .andExpect(jsonPath("$.[*].employeeaddress").value(hasItem(DEFAULT_EMPLOYEEADDRESS)))

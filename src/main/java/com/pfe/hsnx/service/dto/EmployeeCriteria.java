@@ -29,6 +29,8 @@ public class EmployeeCriteria implements Serializable, Criteria {
 
     private StringFilter employeename;
 
+    private StringFilter employeelastname;
+
     private StringFilter employeephone;
 
     private StringFilter employeefax;
@@ -51,6 +53,7 @@ public class EmployeeCriteria implements Serializable, Criteria {
     public EmployeeCriteria(EmployeeCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.employeename = other.employeename == null ? null : other.employeename.copy();
+        this.employeelastname = other.employeelastname == null ? null : other.employeelastname.copy();
         this.employeephone = other.employeephone == null ? null : other.employeephone.copy();
         this.employeefax = other.employeefax == null ? null : other.employeefax.copy();
         this.employeeaddress = other.employeeaddress == null ? null : other.employeeaddress.copy();
@@ -80,6 +83,14 @@ public class EmployeeCriteria implements Serializable, Criteria {
 
     public void setEmployeename(StringFilter employeename) {
         this.employeename = employeename;
+    }
+
+    public StringFilter getEmployeelastname() {
+        return employeelastname;
+    }
+
+    public void setEmployeelastname(StringFilter employeelastname) {
+        this.employeelastname = employeelastname;
     }
 
     public StringFilter getEmployeephone() {
@@ -159,6 +170,7 @@ public class EmployeeCriteria implements Serializable, Criteria {
         return
             Objects.equals(id, that.id) &&
             Objects.equals(employeename, that.employeename) &&
+            Objects.equals(employeelastname, that.employeelastname) &&
             Objects.equals(employeephone, that.employeephone) &&
             Objects.equals(employeefax, that.employeefax) &&
             Objects.equals(employeeaddress, that.employeeaddress) &&
@@ -174,6 +186,7 @@ public class EmployeeCriteria implements Serializable, Criteria {
         return Objects.hash(
         id,
         employeename,
+        employeelastname,
         employeephone,
         employeefax,
         employeeaddress,
@@ -190,6 +203,7 @@ public class EmployeeCriteria implements Serializable, Criteria {
         return "EmployeeCriteria{" +
                 (id != null ? "id=" + id + ", " : "") +
                 (employeename != null ? "employeename=" + employeename + ", " : "") +
+                (employeelastname != null ? "employeelastname=" + employeelastname + ", " : "") +
                 (employeephone != null ? "employeephone=" + employeephone + ", " : "") +
                 (employeefax != null ? "employeefax=" + employeefax + ", " : "") +
                 (employeeaddress != null ? "employeeaddress=" + employeeaddress + ", " : "") +

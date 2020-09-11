@@ -32,6 +32,9 @@ public class Employee implements Serializable {
     @Column(name = "EmployeeName", nullable = false)
     private String employeename;
 
+    @Column(name = "Employeelastname")
+    private String employeelastname;
+
     @Column(name = "EmployeePhone")
     private String employeephone;
 
@@ -82,6 +85,19 @@ public class Employee implements Serializable {
 
     public void setEmployeename(String employeename) {
         this.employeename = employeename;
+    }
+
+    public String getEmployeelastname() {
+        return employeelastname;
+    }
+
+    public Employee employeelastname(String employeelastname) {
+        this.employeelastname = employeelastname;
+        return this;
+    }
+
+    public void setEmployeelastname(String employeelastname) {
+        this.employeelastname = employeelastname;
     }
 
     public String getEmployeephone() {
@@ -210,6 +226,7 @@ public class Employee implements Serializable {
         return "Employee{" +
             "id=" + getId() +
             ", employeename='" + getEmployeename() + "'" +
+            ", employeelastname='" + getEmployeelastname() + "'" +
             ", employeephone='" + getEmployeephone() + "'" +
             ", employeefax='" + getEmployeefax() + "'" +
             ", employeeaddress='" + getEmployeeaddress() + "'" +
