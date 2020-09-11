@@ -37,7 +37,8 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)" style="background-color: #5f83c5">
-                  
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="taskManagerHsnxApp.department.id" style="color: white;">id</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+
                     <th scope="col"  jhiSortBy="deptName"><span jhiTranslate="taskManagerHsnxApp.department.deptName" style="color: white;">Dept Name</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="deptNote"><span jhiTranslate="taskManagerHsnxApp.department.deptNote" style="color: white;">Dept Note</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"></th>
@@ -45,7 +46,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let department of departments ;trackBy: trackId">
-                   
+                   <td>{{ department.id }}</td>
                     <td>{{ department.deptName }}</td>
                     <td>{{ department.deptNote }}</td>
                     <td class="text-right">

@@ -38,6 +38,8 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)" style="background-color: #5f83c5">
+                    <th scope="col"  jhiSortBy="id" ><span jhiTranslate="taskManagerHsnxApp.branch.id" style="color: white;">ID</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+
                      <th scope="col"  jhiSortBy="branchName" ><span jhiTranslate="taskManagerHsnxApp.branch.branchName" style="color: white;">Branch Name</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="branchPhone"><span jhiTranslate="taskManagerHsnxApp.branch.branchPhone" style="color: white;">Branch Phone</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="branchFax"><span jhiTranslate="taskManagerHsnxApp.branch.branchFax" style="color: white;">Branch Fax</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
@@ -50,6 +52,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let branch of branches ;trackBy: trackId">
+                    <td>{{branch.id}}</td>
                     <td>{{ branch.branchName }}</td>
                     <td>{{ branch.branchPhone }}</td>
                     <td>{{ branch.branchFax }}</td>

@@ -36,7 +36,7 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)" style="background-color: #5f83c5">
-                    
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="taskManagerHsnxApp.country.id" style="color: white;">ID</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="countryName"><span jhiTranslate="taskManagerHsnxApp.country.countryName" style="color: white;">Country Name</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="countryCode"><span jhiTranslate="taskManagerHsnxApp.country.countryCode" style="color: white;">Country Code</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"></th>
@@ -44,7 +44,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let country of countries ;trackBy: trackId">
-                    
+                    <td>{{country.id}}</td>
                     <td>{{ country.countryName }}</td>
                     <td>{{ country.countryCode }}</td>
                     <td class="text-right">

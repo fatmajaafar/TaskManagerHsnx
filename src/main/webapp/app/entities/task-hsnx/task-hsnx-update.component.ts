@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
@@ -23,21 +23,24 @@ export class TaskHsnxUpdateComponent implements OnInit {
   dateEndDp: any;
   dueDateDp: any;
 
-  editForm = this.fb.group({
-    id: [],
-    tasktitle: [null, [Validators.required]],
-    taskdescription: [],
-    dateStart: [],
-    timeStart: [],
-    dateEnd: [],
-    timeEnd: [],
-    taskstatus: [],
-    taskpriority: [],
-    dueDate: [],
-    taskcategory: [],
-    taskstate: [],
-    tblEmployeeId: []
-  });
+  editForm = this.fb.group(
+    {
+      id: [],
+      tasktitle: [null, [Validators.required]],
+      taskdescription: [],
+      dateStart: ['', Validators.required],
+      timeStart: [],
+      dateEnd: [],
+      timeEnd: [],
+      taskstatus: [],
+      taskpriority: [],
+      dueDate: ['', Validators.required],
+      taskcategory: [],
+      taskstate: [],
+      tblEmployeeId: []
+    },
+    { validator: this.dateLessThan('dateStart', 'dueDate') }
+  );
 
   constructor(
     protected taskService: TaskHsnxService,
@@ -85,6 +88,7 @@ export class TaskHsnxUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const task = this.createFromForm();
+    task.taskstatus = 1;
     if (task.id !== undefined) {
       this.subscribeToSaveResponse(this.taskService.update(task));
     } else {
@@ -129,5 +133,18 @@ export class TaskHsnxUpdateComponent implements OnInit {
 
   trackById(index: number, item: IEmployeeHsnx): any {
     return item.id;
+  }
+  // compare dates
+  dateLessThan(start: string, end: string) {
+    return (group: FormGroup): { [key: string]: any } => {
+      const s = group.controls[start];
+      const e = group.controls[end];
+      if (s.value > e.value) {
+        return {
+          dates: 'Due date should be less than Start date'
+        };
+      }
+      return {};
+    };
   }
 }

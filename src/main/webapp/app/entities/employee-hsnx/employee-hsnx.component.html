@@ -38,7 +38,8 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)" style="background-color: #5f83c5">
-                    
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="taskManagerHsnxApp.employee.id" style="color: white;">ID</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+
                     <th scope="col"  jhiSortBy="employeename"><span jhiTranslate="taskManagerHsnxApp.employee.employeename" style="color: white;">Employeename</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="employeephone"><span jhiTranslate="taskManagerHsnxApp.employee.employeephone" style="color: white;">Employeephone</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="employeefax"><span jhiTranslate="taskManagerHsnxApp.employee.employeefax" style="color: white;">Employeefax</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
@@ -53,7 +54,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let employee of employees ;trackBy: trackId">
-            
+                    <td>{{ employee.id }}</td>
                     <td>{{ employee.employeename }}</td>
                     <td>{{ employee.employeephone }}</td>
                     <td>{{ employee.employeefax }}</td>

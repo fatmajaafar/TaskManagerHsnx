@@ -10,6 +10,11 @@
             ]
         },
         {
+            "fieldName": "employeelastname",
+            "dbhColumnName": "Employeelastname",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "employeephone",
             "dbhColumnName": "EmployeePhone",
             "fieldType": "String"

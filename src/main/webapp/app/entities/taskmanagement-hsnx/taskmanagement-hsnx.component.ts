@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ITaskHsnx, TaskHsnx } from 'app/shared/model/task-hsnx.model';
 import { HttpResponse } from '@angular/common/http';
 import { TaskHsnxService } from '../task-hsnx/task-hsnx.service';
@@ -24,8 +24,6 @@ import { WebSocketService } from 'app/layouts/main/WebSocketService';
   styleUrls: ['./taskmanagement-hsnx.component.scss']
 })
 export class TaskmanagementHsnxComponent implements OnInit {
-  @ViewChild('sidebar', { static: true })
-  public closeOnDocumentClick: boolean = false;
   tasks: ITaskHsnx[] = [];
   events: IEventHsnx[] = [];
   notifications: INotificationHsnx[] = [];
@@ -76,7 +74,9 @@ export class TaskmanagementHsnxComponent implements OnInit {
         },
         () => ''
       );
-
+    this.loadEvents();
+  }
+  loadEvents(): void {
     this.eventService
 
       .query({
@@ -147,7 +147,7 @@ export class TaskmanagementHsnxComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const task = this.createFromForm();
-
+    task.taskstatus = 1;
     if (task.id !== undefined) {
       this.subscribeToSaveResponse(this.taskService.update(task));
     } else {
@@ -208,9 +208,5 @@ export class TaskmanagementHsnxComponent implements OnInit {
       dueDate: task.dueDate && task.dueDate.isValid() ? task.dueDate.format(DATE_FORMAT) : undefined
     });
     return copy;
-  }
-  sendNotif() {
-    console.log('send notif !!!!!');
-    this.webSocketService.createTask('new task', 1, 1).subscribe();
   }
 }

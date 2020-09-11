@@ -22,7 +22,7 @@
     <div class="form-group mx-sm-3 mb-2">
     <mat-form-field color="accent">
       <mat-select id="field_tblEmployee" name="tblEmployee" [(ngModel)]="employeeId"
-        [ngModelOptions]="{standalone: true}" (selectionChange)="loadTasks()" >
+        [ngModelOptions]="{standalone: true}" (selectionChange)="loadTasks()" placeholder="Filter by employee" >
         <mat-option></mat-option>
         <mat-option [value]="employee.id" *ngFor="let employee of employees">{{ employee.employeename }}
         </mat-option>
@@ -195,22 +195,6 @@
                   <div class="form-group">
                     <input class="e-field e-control e-textbox e-lib e-input" name="Title" type="text"
                       formControlName="tasktitle">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="e-label">Status</td>
-                <td>
-                  <div class="form-group">
-                    <mat-form-field color="accent">
-                      <mat-label jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus"></mat-label>
-                      <mat-select name="taskstatus" id="field_taskstatus" formControlName="taskstatus">
-                        <mat-option value="1">To Do</mat-option>
-                        <mat-option value="2">In Progress</mat-option>
-                        <mat-option value="3">In Review</mat-option>
-                        <mat-option value="4">Done</mat-option>
-                      </mat-select>
-                    </mat-form-field>
                   </div>
                 </td>
               </tr>

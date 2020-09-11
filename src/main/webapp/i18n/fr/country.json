@@ -17,8 +17,9 @@
       "detail": {
         "title": "Country"
       },
-      "countryName": "Nom Pays",
-      "countryCode": "Code Pays"
+      "id": "ID",
+      "countryName": "Nom",
+      "countryCode": "Code"
     }
   }
 }

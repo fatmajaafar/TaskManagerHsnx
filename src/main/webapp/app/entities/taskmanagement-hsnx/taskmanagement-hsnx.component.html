@@ -14,8 +14,7 @@
               <input matInput type="text" placeholder="Type here to search">
               <mat-icon matPrefix>search</mat-icon>
               </mat-form-field>-->
-            <div class="search-bar">
-
+              <div class="search-bar">
               <input type="text" class="input" placeholder="&nbsp;">
               <span class="label" jhiTranslate="taskManagement.home.search">Type to search</span>
               <span class="highlight"></span>
@@ -145,7 +144,7 @@
         <li class="list-group-item d-flex justify-content-between align-items-center">
           {{task.tasktitle}}
           <span class="badge badge-info" *ngIf="task.nbjrs">{{task.nbjrs | number: '1.0-0'}} days left </span>
-          <span class=" tag approved" *ngIf="task.taskstatus === 1" style="color: rgb(53, 34, 221);">Open</span>
+          <span class=" tag approved" *ngIf="task.taskstatus === 1" style="color: rgb(53, 34, 221);">To Do</span>
           <span class="tag progress" *ngIf="task.taskstatus === 2" style="color: #c76a1e;">In Progress</span>
           <span class="tag review " *ngIf="task.taskstatus === 3" style="color: darkmagenta;">In Review</span>
           <span class="tag done" *ngIf="task.taskstatus === 4" style="color: #28a745;">Done</span>
@@ -261,14 +260,17 @@
   </div>
   <div class="right-bar">
     <div class="top-part">
-      <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-        <button ejs-button cssClass="e-success" text=""><span class="material-icons">
-          notifications_active
-          </span>Notifications</button>
+      
     </div>
+    <button mat-menu-item>
+      <span class="material-icons">
+        delete_sweep
+        </span>
+      <span>Clear</span>
+    </button>
+    <div class="header" jhiTranslate="taskManagement.home.createLabel"><strong>Events</strong>
+      
     </div>
-
-    <div class="header" jhiTranslate="taskManagement.home.createLabel"><strong>Events</strong></div>
     <div class="right-content" *ngFor="let event of events">
       <div class="task-box yellow" [ngStyle]="{'backgroundColor': getBackgroundColor(event)}" dir="ltr">
         <div class="description-task">
@@ -280,7 +282,7 @@
         </button>
         <mat-menu #menu="matMenu">
           
-          <button mat-menu-item>
+          <button mat-menu-item >
             <span class="material-icons">
               delete_sweep
               </span>
@@ -343,18 +345,18 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateEnd" for="field_dateEnd">Date
-            End</label>
+          <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dueDate"
+              for="field_dueDate">Due Date</label>
           <div class="input-group">
-            <input id="field_dateEnd" type="text" class="form-control" name="dateEnd" ngbDatepicker
-              #dateEndDp="ngbDatepicker" formControlName="dateEnd"/>
-            <span class="input-group-append">
-              <button type="button" class="btn btn-secondary" (click)="dateEndDp.toggle()">
-                <fa-icon icon="calendar-alt"></fa-icon>
-              </button>
-            </span>
+              <input id="field_dueDate" type="text" class="form-control" name="dueDate" ngbDatepicker
+                  #dueDateDp="ngbDatepicker" formControlName="dueDate" />
+              <span class="input-group-append">
+                  <button type="button" class="btn btn-info" (click)="dueDateDp.toggle()">
+                      <fa-icon icon="calendar-alt"></fa-icon>
+                  </button>
+              </span>
           </div>
-        </div>
+      </div>
         
       
 
@@ -392,9 +394,9 @@
           <td class="e-label" jhiTranslate="taskManagerHsnxApp.task.taskstatus">Status</td>
           <td>
             <div class="form-group">
-              <mat-form-field color="accent">
+              <mat-form-field color="accent" >
                 <mat-label for="field_taskstatus"></mat-label>
-                <mat-select name="taskstatus" id="field_taskstatus" formControlName="taskstatus">
+                <mat-select name="taskstatus" id="field_taskstatus" formControlName="taskstatus" disabled>
                   <mat-option value="1">To Do</mat-option>
                   <mat-option value="2">In Progress</mat-option>
                   <mat-option value="3">In Review</mat-option>

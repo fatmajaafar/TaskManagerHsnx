@@ -50,7 +50,7 @@
                         <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.task.dateStart"
                             for="field_dateStart">Date Start</label>
                         <div class="input-group">
-                            <input id="field_dateStart" type="text" class="form-control" name="dateStart" ngbDatepicker
+                            <input id="field_dateStart" type="date" class="form-control" name="dateStart" ngbDatepicker
                                 #dateStartDp="ngbDatepicker" formControlName="dateStart" />
                             <span class="input-group-append">
                                 <button type="button" class="btn btn-info" (click)="dateStartDp.toggle()">
@@ -86,6 +86,7 @@
                                 </button>
                             </span>
                         </div>
+                        
                     </div>
 
                     <div class="col">
@@ -105,7 +106,7 @@
                 <div class="form-group">
                     <div class="e-float-input">
 
-                        <input type="number" name="taskstatus" id="field_taskstatus" formControlName="taskstatus" />
+                        <input type="number" name="taskstatus" id="field_taskstatus" formControlName="taskstatus"  [attr.disabled]="true"/>
                         <span class="e-float-line"></span>
                         <label jhiTranslate="taskManagerHsnxApp.task.taskstatus" for="field_taskstatus"
                             class="e-float-text">Taskstatus</label>

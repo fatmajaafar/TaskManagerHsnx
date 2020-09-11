@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { AccountService } from 'app/core/auth/account.service';
@@ -7,15 +7,19 @@ import { Account } from 'app/core/user/account.model';
 import { SingleDataSet, Label } from 'ng2-charts';
 import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { TaskHsnxService } from 'app/entities/task-hsnx/task-hsnx.service';
+import { HttpResponse } from '@angular/common/http';
+import { ITaskHsnx } from 'app/shared/model/task-hsnx.model';
 
 @Component({
   selector: 'jhi-home',
   templateUrl: './home.component.html',
   styleUrls: ['home.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   account: Account | null = null;
   authSubscription?: Subscription;
+  tasks: ITaskHsnx[] = [];
 
   //chart init
   public barChartOptions: ChartOptions = {
@@ -51,14 +55,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     }
   };
-  public pieChartLabels: Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];
-  public pieChartData: number[] = [300, 500, 100];
+  public pieChartLabels: Label[] = [['To Do'], ['In Progress'], ['In Review'], ['Done']];
+  public pieChartData: number[] = [300, 200, 400, 100];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [pluginDataLabels];
   public pieChartColors = [
     {
-      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)']
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', 'rgba(255, 248, 181, 1)']
     }
   ];
   /** */
@@ -69,7 +73,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public polarAreaChartType: ChartType = 'polarArea';
   /** */
-  constructor(private accountService: AccountService, private loginModalService: LoginModalService) {}
+  constructor(private accountService: AccountService, private loginModalService: LoginModalService, private taskService: TaskHsnxService) {}
 
   ngOnInit(): void {
     this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));

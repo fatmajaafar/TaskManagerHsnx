@@ -17,6 +17,7 @@
       "detail": {
         "title": "بلد"
       },
+      "id": "معرف",
       "countryName": "اسم الدولة",
       "countryCode": "الرقم الدولي"
     }

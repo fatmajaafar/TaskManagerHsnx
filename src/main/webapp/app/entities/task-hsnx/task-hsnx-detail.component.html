@@ -18,19 +18,19 @@
                 </dd>
                 <dt><span jhiTranslate="taskManagerHsnxApp.task.dateStart">Date Start</span></dt>
                 <dd>
-                    <span>{{ task.dateStart }}</span>
+                    <span>{{ task.dateStart | date:'dd/MM/yyyy'}}</span>
                 </dd>
                 <dt><span jhiTranslate="taskManagerHsnxApp.task.timeStart">Time Start</span></dt>
                 <dd>
-                    <span>{{ task.timeStart }}</span>
+                    <span>{{ task.timeStart | date:'mmss' }}</span>
                 </dd>
                 <dt><span jhiTranslate="taskManagerHsnxApp.task.dateEnd">Date End</span></dt>
                 <dd>
-                    <span>{{ task.dateEnd }}</span>
+                    <span>{{ task.dateEnd | date:'dd/MM/yyyy' }}</span>
                 </dd>
                 <dt><span jhiTranslate="taskManagerHsnxApp.task.timeEnd">Time End</span></dt>
                 <dd>
-                    <span>{{ task.timeEnd }}</span>
+                    <span>{{ task.timeEnd | date:'mmss' }}</span>
                 </dd>
                 <dt><span jhiTranslate="taskManagerHsnxApp.task.taskstatus">Taskstatus</span></dt>
                 <dd>
@@ -42,7 +42,7 @@
                 </dd>
                 <dt><span jhiTranslate="taskManagerHsnxApp.task.dueDate">Due Date</span></dt>
                 <dd>
-                    <span>{{ task.dueDate }}</span>
+                    <span>{{ task.dueDate | date:'dd/MM/yyyy' }}</span>
                 </dd>
                 <dt><span jhiTranslate="taskManagerHsnxApp.task.taskcategory">Taskcategory</span></dt>
                 <dd>

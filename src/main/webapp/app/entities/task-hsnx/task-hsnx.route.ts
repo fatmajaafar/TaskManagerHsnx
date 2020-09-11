@@ -67,7 +67,7 @@ export const taskRoute: Routes = [
       task: TaskHsnxResolve
     },
     data: {
-      authorities: ['ROLE_ADMIN'],
+      authorities: ['ROLE_ADMIN', 'ROLE_USER'],
       pageTitle: 'taskManagerHsnxApp.task.home.title'
     },
     canActivate: [UserRouteAccessService]

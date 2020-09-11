@@ -6,9 +6,7 @@
             <fa-icon icon="plus"></fa-icon>
             
         </button>
-        <button class="btn btn-warning float-right" (click)="sendNotif()">
-            notification
-        </button>
+        
     </h2>
 
 
@@ -39,6 +37,8 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)" style="background-color: #5f83c5">
+                    <th scope="col"  jhiSortBy="id"><span style="color: white;">ID</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+
                     <th scope="col"  jhiSortBy="tasktitle"><span jhiTranslate="taskManagerHsnxApp.task.tasktitle" style="color: white;">Tasktitle</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="taskdescription"><span jhiTranslate="taskManagerHsnxApp.task.taskdescription" style="color: white;">Taskdescription</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="dateStart"><span jhiTranslate="taskManagerHsnxApp.task.dateStart" style="color: white;">Date Start</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
@@ -55,6 +55,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let task of tasks ;trackBy: trackId">
+                    <td>{{task.id}}</td>
                     <td>{{ task.tasktitle }}</td>
                     <td>{{ task.taskdescription }}</td>
                     <td>{{ task.dateStart | date:'dd/MM/yyyy' }}</td>

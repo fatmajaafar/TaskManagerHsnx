@@ -17,6 +17,7 @@
       "detail": {
         "title": "Branch"
       },
+      "id": "ID",
       "branchName": " Name",
       "branchPhone": " Phone",
       "branchFax": " Fax",

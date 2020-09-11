@@ -58,7 +58,6 @@ export class TaskKanbanComponent implements OnInit {
     ]
   };
   public status: string[] = ['To Do', 'In Progress', 'In Review', 'Done'];
-  addTask: ITaskHsnx = {};
   editTask: ITaskHsnx = {};
 
   isSaving = false;
@@ -176,40 +175,38 @@ export class TaskKanbanComponent implements OnInit {
     this.employeeService.query().subscribe((res: HttpResponse<IEmployeeHsnx[]>) => (this.employees = res.body || []));
   }
 
-  public getString(assignee: string) {
-    //return assignee.match(/\b(\w)/g).join('').toUpperCase();
-  }
+  public getString(assignee: string) {}
 
   cardRendered(args: CardRenderedEventArgs): void {
-    /*const val: string = (<{ [key: string]: Object }>args.data).Priority as string;
-    addClass([args.element], val);*/
-    if (args.data) {
-      this.taskService
-        .find(Number(args.data.RankId))
-        .pipe(
-          filter((mayBeOk: HttpResponse<ITaskHsnx>) => mayBeOk.ok),
-          map((response: HttpResponse<ITaskHsnx>) => response.body)
-        )
-        .subscribe(res => {
-          if (res) {
-            let task: ITaskHsnx = res;
-            switch (args.data?.Status) {
-              case 'Open':
-                task.taskstatus = 1;
-                break;
-              case 'InProgress':
-                task.taskstatus = 2;
-                break;
-              case 'Review':
-                task.taskstatus = 3;
-                break;
-              case 'Close':
-                task.taskstatus = 4;
-                break;
+    if (true) {
+      if (args.data) {
+        this.taskService
+          .find(Number(args.data.RankId))
+          .pipe(
+            filter((mayBeOk: HttpResponse<ITaskHsnx>) => mayBeOk.ok),
+            map((response: HttpResponse<ITaskHsnx>) => response.body)
+          )
+          .subscribe(res => {
+            if (res) {
+              let task: ITaskHsnx = res;
+              switch (args.data?.Status) {
+                case 'Open':
+                  task.taskstatus = 1;
+                  break;
+                case 'InProgress':
+                  task.taskstatus = 2;
+                  break;
+                case 'Review':
+                  task.taskstatus = 3;
+                  break;
+                case 'Close':
+                  task.taskstatus = 4;
+                  break;
+              }
+              this.subscribeToSaveResponseForUpdate(this.taskService.update(task));
             }
-            this.subscribeToSaveResponseForUpdate(this.taskService.update(task));
-          }
-        });
+          });
+      }
     }
   }
 
@@ -222,6 +219,21 @@ export class TaskKanbanComponent implements OnInit {
 
   //OPEN ADD TASK MODAL
   addClick(cont: any) {
+    this.editForm = this.fb.group({
+      id: [],
+      tasktitle: [null, [Validators.required]],
+      taskdescription: [],
+      dateStart: [],
+      timeStart: [],
+      dateEnd: [],
+      timeEnd: [],
+      taskstatus: [],
+      taskpriority: [],
+      dueDate: [],
+      taskcategory: [],
+      taskstate: [],
+      tblEmployeeId: []
+    });
     this.modalRef = this.modalService.open(cont, { size: 'sm' });
     this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
       this.employees = [];
@@ -234,7 +246,8 @@ export class TaskKanbanComponent implements OnInit {
   /**save added task */
   savetask(): void {
     this.isSaving = true;
-    const task = this.createFromForm();
+    let task = this.createFromForm();
+    task.taskstatus = 1;
     this.subscribeToSaveResponse(this.taskService.create(task));
   }
 
@@ -273,7 +286,7 @@ export class TaskKanbanComponent implements OnInit {
   /**save task after edit */
   save(): void {
     this.isSaving = true;
-    const task = this.editTask;
+    let task = this.editTask;
     this.updateForm(task);
     this.subscribeToSaveResponse(this.taskService.update(task));
     this.loadTasks();

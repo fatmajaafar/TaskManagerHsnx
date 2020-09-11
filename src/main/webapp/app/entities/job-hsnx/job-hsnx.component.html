@@ -40,12 +40,15 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)" style="background-color: #5f83c5">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="taskManagerHsnxApp.job.id" style="color: white;">ID</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+
                     <th scope="col"  jhiSortBy="jobTitle"><span jhiTranslate="taskManagerHsnxApp.job.jobTitle" style="color: white;">Job Title</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let job of jobs ;trackBy: trackId">
+                    <td>{{job.id}}</td>
                     <td>{{ job.jobTitle }}</td>
                     <td class="text-right">
                         <div class="btn-group">

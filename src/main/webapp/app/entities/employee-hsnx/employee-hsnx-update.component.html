@@ -36,18 +36,25 @@
         <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
-                    <input type="text" name="employeephone" id="field_employeephone" formControlName="employeephone">
+                    <input type="number" name="employeephone" id="field_employeephone" formControlName="employeephone">
                     <span class="e-float-line"></span>
                     <label jhiTranslate="taskManagerHsnxApp.employee.employeephone" for="field_employeephone"
                         class="e-float-text">Employee Phone</label>
                 </div>
+                <div
+                *ngIf="editForm.get('employeephone')!.invalid && (editForm.get('employeephone')!.dirty || editForm.get('employeephone')!.touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('employeephone')?.errors?.required"
+                    jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
 
             </div>
         </div>
         <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
-                    <input type="text" name="employeefax" id="field_employeefax" formControlName="employeefax">
+                    <input type="number" name="employeefax" id="field_employeefax" formControlName="employeefax">
                     <span class="e-float-line"></span>
                     <label jhiTranslate="taskManagerHsnxApp.employee.employeefax" for="field_employeefax"
                         class="e-float-text">Employee Fax</label>
@@ -70,11 +77,18 @@
         <div class="form-group mx-sm-3 mb-2">
             <div class="form-group">
                 <div class="e-float-input">
-                    <input type="text" name="employeeemail" id="field_employeeemail" formControlName="employeeemail">
+                    <input type="email" name="employeeemail" id="field_employeeemail" formControlName="employeeemail"  ngModel [email]="true">
                     <span class="e-float-line"></span>
                     <label jhiTranslate="taskManagerHsnxApp.employee.employeeemail" for="field_employeeemail"
                         class="e-float-text">employeeemail</label>
 
+                </div>
+                <div
+                    *ngIf="editForm.get('employeeemail')!.invalid && (editForm.get('employeeemail')!.dirty || editForm.get('employeeemail')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('employeeemail')?.errors?.required"
+                        jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
                 </div>
             </div>
         </div>

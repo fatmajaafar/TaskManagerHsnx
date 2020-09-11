@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -30,10 +30,10 @@ export class EmployeeHsnxUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     employeename: [null, [Validators.required]],
-    employeephone: [],
+    employeephone: [null, [Validators.required]],
     employeefax: [],
     employeeaddress: [],
-    employeeemail: [],
+    employeeemail: [null, [Validators.required]],
     employeehiredate: [],
     tblJobId: [],
     tblDepartmentId: [],

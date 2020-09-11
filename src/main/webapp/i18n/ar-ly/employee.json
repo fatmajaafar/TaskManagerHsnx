@@ -17,15 +17,16 @@
       "detail": {
         "title": "موظف"
       },
+      "id": "معرف",
       "employeename": "اسم الموظف",
       "employeephone": "هاتف الموظف",
       "employeefax": "فاكس الموظف",
       "employeeaddress": "عنوان الموظف",
       "employeeemail": "البريد الإلكتروني للموظف",
       "employeehiredate": "تاريخ تعيين الموظف ",
-      "tblJob": "وظيفة Tbl",
-      "tblDepartment": "قسم Tbl",
-      "tblBranch": "فرع Tbl"
+      "tblJob": "وظيفة ",
+      "tblDepartment": "قسم ",
+      "tblBranch": "فرع "
     }
   }
 }

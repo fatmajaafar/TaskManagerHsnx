@@ -17,6 +17,7 @@
       "detail": {
         "title": "Job"
       },
+      "id": "ID",
       "jobTitle": "Job Title"
     }
   }

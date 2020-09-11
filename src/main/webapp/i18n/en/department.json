@@ -17,6 +17,7 @@
       "detail": {
         "title": "Department"
       },
+      "id": "ID",
       "deptName": "Dept Name",
       "deptNote": "Dept Note"
     }

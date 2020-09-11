@@ -17,6 +17,7 @@
       "detail": {
         "title": "Employee"
       },
+      "id": "ID",
       "employeename": "Name",
       "employeephone": "Phone",
       "employeefax": "Fax",

@@ -17,6 +17,7 @@
       "detail": {
         "title": "فرع"
       },
+      "id": "معرف",
       "branchName": "اسم الفرع",
       "branchPhone": "هاتف الفرع",
       "branchFax": "فاكس الفرع",
