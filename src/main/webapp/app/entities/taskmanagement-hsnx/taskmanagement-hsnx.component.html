@@ -156,17 +156,7 @@
     </div>
     <hr>
     <mat-tab-group color="accent">
-      <mat-tab label="All">
-        <ng-template mat-tab-label>
-          <span class="material-icons">
-            list
-          </span>
-          All
-        </ng-template>
-        <mat-list *ngFor="let task of tasks">
-          <mat-list-item>{{task.tasktitle}}</mat-list-item>
-        </mat-list>
-      </mat-tab>
+      
 
       <mat-tab label="Important" jhiTranslate="taskManagement.category.important">
         <ng-template mat-tab-label>
@@ -262,12 +252,7 @@
     <div class="top-part">
       
     </div>
-    <button mat-menu-item>
-      <span class="material-icons">
-        delete_sweep
-        </span>
-      <span>Clear</span>
-    </button>
+
     <div class="header" jhiTranslate="taskManagement.home.createLabel"><strong>Events</strong>
       
     </div>
@@ -308,7 +293,6 @@
       <h5 jhiTranslate="taskManagement.add.dialogTitle">Add New To Do</h5>
       <button type="button"  style="margin-left: 280px;"  (click)="modal.dismiss('Cross click')">
         <fa-icon icon="times" class="text-white"></fa-icon>
-  
     </button>
     </mat-toolbar>
 

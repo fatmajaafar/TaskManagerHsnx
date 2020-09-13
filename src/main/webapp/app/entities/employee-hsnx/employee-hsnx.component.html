@@ -85,7 +85,6 @@
                             [routerLink]="['/employee-hsnx', employee.id, 'view']"
                                     >
                                 <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                                     
                             </button>
                            
@@ -93,14 +92,12 @@
                                     [routerLink]="['/employee-hsnx', employee.id, 'edit']"
                                     >
                                 <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
 
                             </button>
                              
                             <button ejs-button cssClass="e-danger" type="submit" (click)="delete(employee)"
                           >
                                 <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
 
                             </button>
 

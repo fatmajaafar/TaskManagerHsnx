@@ -22,6 +22,7 @@ export class TaskHsnxUpdateComponent implements OnInit {
   dateStartDp: any;
   dateEndDp: any;
   dueDateDp: any;
+  task: ITaskHsnx[] = [];
 
   editForm = this.fb.group(
     {
