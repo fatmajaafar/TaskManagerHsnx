@@ -17,6 +17,10 @@ public class DepartmentDTO implements Serializable {
     private String deptNote;
 
 
+    private Long tblCountryId;
+
+    private String tblCountryCountryName;
+
     public Long getId() {
         return id;
     }
@@ -39,6 +43,22 @@ public class DepartmentDTO implements Serializable {
 
     public void setDeptNote(String deptNote) {
         this.deptNote = deptNote;
+    }
+
+    public Long getTblCountryId() {
+        return tblCountryId;
+    }
+
+    public void setTblCountryId(Long CountryId) {
+        this.tblCountryId = CountryId;
+    }
+
+    public String getTblCountryCountryName() {
+        return tblCountryCountryName;
+    }
+
+    public void setTblCountryCountryName(String CountryCountryName) {
+        this.tblCountryCountryName = CountryCountryName;
     }
 
     @Override
@@ -68,6 +88,8 @@ public class DepartmentDTO implements Serializable {
             "id=" + getId() +
             ", deptName='" + getDeptName() + "'" +
             ", deptNote='" + getDeptNote() + "'" +
+            ", tblCountryId=" + getTblCountryId() +
+            ", tblCountryCountryName='" + getTblCountryCountryName() + "'" +
             "}";
     }
 }

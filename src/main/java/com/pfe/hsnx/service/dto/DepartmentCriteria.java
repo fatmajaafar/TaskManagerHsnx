@@ -30,6 +30,8 @@ public class DepartmentCriteria implements Serializable, Criteria {
 
     private StringFilter deptNote;
 
+    private LongFilter tblCountryId;
+
     public DepartmentCriteria() {
     }
 
@@ -37,6 +39,7 @@ public class DepartmentCriteria implements Serializable, Criteria {
         this.id = other.id == null ? null : other.id.copy();
         this.deptName = other.deptName == null ? null : other.deptName.copy();
         this.deptNote = other.deptNote == null ? null : other.deptNote.copy();
+        this.tblCountryId = other.tblCountryId == null ? null : other.tblCountryId.copy();
     }
 
     @Override
@@ -68,6 +71,14 @@ public class DepartmentCriteria implements Serializable, Criteria {
         this.deptNote = deptNote;
     }
 
+    public LongFilter getTblCountryId() {
+        return tblCountryId;
+    }
+
+    public void setTblCountryId(LongFilter tblCountryId) {
+        this.tblCountryId = tblCountryId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -81,7 +92,8 @@ public class DepartmentCriteria implements Serializable, Criteria {
         return
             Objects.equals(id, that.id) &&
             Objects.equals(deptName, that.deptName) &&
-            Objects.equals(deptNote, that.deptNote);
+            Objects.equals(deptNote, that.deptNote) &&
+            Objects.equals(tblCountryId, that.tblCountryId);
     }
 
     @Override
@@ -89,7 +101,8 @@ public class DepartmentCriteria implements Serializable, Criteria {
         return Objects.hash(
         id,
         deptName,
-        deptNote
+        deptNote,
+        tblCountryId
         );
     }
 
@@ -99,6 +112,7 @@ public class DepartmentCriteria implements Serializable, Criteria {
                 (id != null ? "id=" + id + ", " : "") +
                 (deptName != null ? "deptName=" + deptName + ", " : "") +
                 (deptNote != null ? "deptNote=" + deptNote + ", " : "") +
+                (tblCountryId != null ? "tblCountryId=" + tblCountryId + ", " : "") +
             "}";
     }
 

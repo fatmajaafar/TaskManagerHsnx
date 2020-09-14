@@ -2,6 +2,7 @@ package com.pfe.hsnx.web.rest;
 
 import com.pfe.hsnx.TaskManagerHsnxApp;
 import com.pfe.hsnx.domain.Department;
+import com.pfe.hsnx.domain.Country;
 import com.pfe.hsnx.repository.DepartmentRepository;
 import com.pfe.hsnx.repository.search.DepartmentSearchRepository;
 import com.pfe.hsnx.service.DepartmentService;
@@ -400,6 +401,26 @@ public class DepartmentResourceIT {
 
         // Get all the departmentList where deptNote does not contain UPDATED_DEPT_NOTE
         defaultDepartmentShouldBeFound("deptNote.doesNotContain=" + UPDATED_DEPT_NOTE);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllDepartmentsByTblCountryIsEqualToSomething() throws Exception {
+        // Initialize the database
+        departmentRepository.saveAndFlush(department);
+        Country tblCountry = CountryResourceIT.createEntity(em);
+        em.persist(tblCountry);
+        em.flush();
+        department.setTblCountry(tblCountry);
+        departmentRepository.saveAndFlush(department);
+        Long tblCountryId = tblCountry.getId();
+
+        // Get all the departmentList where tblCountry equals to tblCountryId
+        defaultDepartmentShouldBeFound("tblCountryId.equals=" + tblCountryId);
+
+        // Get all the departmentList where tblCountry equals to tblCountryId + 1
+        defaultDepartmentShouldNotBeFound("tblCountryId.equals=" + (tblCountryId + 1));
     }
 
     /**

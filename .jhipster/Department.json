@@ -1,7 +1,6 @@
 {
     "fluentMethods": true,
     "clientRootFolder": "",
-    "relationships": [],
     "fields": [
         {
             "fieldName": "deptName",
@@ -15,6 +14,17 @@
             "fieldName": "deptNote",
             "dbhColumnName": "DeptNote",
             "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "tblCountry",
+            "dbhRelationshipId": "CountryID",
+            "otherEntityName": "Country",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "countryName",
+            "otherEntityRelationshipName": "tblDepartment",
+            "otherEntityRelationshipNameUndefined": true
         }
     ],
     "changelogDate": "20190221131629",

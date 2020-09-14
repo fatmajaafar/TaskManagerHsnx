@@ -1,5 +1,6 @@
 package com.pfe.hsnx.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -32,6 +33,11 @@ public class Department implements Serializable {
 
     @Column(name = "DeptNote")
     private String deptNote;
+
+    @ManyToOne
+    @JsonIgnoreProperties("tblDepartments")
+    @JoinColumn(name = "CountryID")
+    private Country tblCountry;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -66,6 +72,19 @@ public class Department implements Serializable {
 
     public void setDeptNote(String deptNote) {
         this.deptNote = deptNote;
+    }
+
+    public Country getTblCountry() {
+        return tblCountry;
+    }
+
+    public Department tblCountry(Country Country) {
+        this.tblCountry = Country;
+        return this;
+    }
+
+    public void setTblCountry(Country Country) {
+        this.tblCountry = Country;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

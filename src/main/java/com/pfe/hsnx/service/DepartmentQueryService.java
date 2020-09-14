@@ -101,6 +101,10 @@ public class DepartmentQueryService extends QueryService<Department> {
             if (criteria.getDeptNote() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getDeptNote(), Department_.deptNote));
             }
+            if (criteria.getTblCountryId() != null) {
+                specification = specification.and(buildSpecification(criteria.getTblCountryId(),
+                    root -> root.join(Department_.tblCountry, JoinType.LEFT).get(Country_.id)));
+            }
         }
         return specification;
     }
