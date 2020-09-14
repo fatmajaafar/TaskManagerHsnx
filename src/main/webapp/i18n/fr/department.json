@@ -19,7 +19,8 @@
       },
       "id": "ID",
       "deptName": "Nom Dept",
-      "deptNote": "Note Dept"
+      "deptNote": "Note Dept",
+      "tblCountry": "Nom pays"
     }
   }
 }

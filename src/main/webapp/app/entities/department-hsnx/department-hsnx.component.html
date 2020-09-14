@@ -41,6 +41,8 @@
 
                     <th scope="col"  jhiSortBy="deptName"><span jhiTranslate="taskManagerHsnxApp.department.deptName" style="color: white;">Dept Name</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
                     <th scope="col"  jhiSortBy="deptNote"><span jhiTranslate="taskManagerHsnxApp.department.deptNote" style="color: white;">Dept Note</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tblCountryCountryName"><span jhiTranslate="taskManagerHsnxApp.department.tblCountry"  style="color: white;">Tbl Country</span> <fa-icon icon="sort" class="text-white"></fa-icon></th>
+
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -49,6 +51,11 @@
                    <td>{{ department.id }}</td>
                     <td>{{ department.deptName }}</td>
                     <td>{{ department.deptNote }}</td>
+                    <td>
+                        <div *ngIf="department.tblCountryId">
+                            <a [routerLink]="['/task-hsnx', department.tblCountryId , 'view']" >{{ department.tblCountryCountryName }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button ejs-button cssClass="e-success" type="submit"

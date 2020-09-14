@@ -42,6 +42,18 @@
 
             </div>
         </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="taskManagerHsnxApp.department.tblCountry"
+                    for="field_tblCountry">Tbl Country</label>
+                <mat-form-field color="accent">
+                  <mat-select id="field_tblCountry" name="tblCountry" formControlName="tblCountryId" for="field_tblCountry">
+                    <mat-option [value]="CountryOption.id" *ngFor="let CountryOption of countries">{{ CountryOption.countryName }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
 
 
 
