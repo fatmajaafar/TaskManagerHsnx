@@ -64,6 +64,19 @@
                     jhiTranslate="entity.validation.required">
                     This field is required.
                 </small>
+                <small class="form-text text-danger"
+                           *ngIf="editForm.get('employeephone')?.errors?.maxlength"
+                           jhiTranslate="entity.validation.maxlength"
+                           [translateValues]="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                    </small>
+
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('employeephone')?.errors?.minlength"
+                           jhiTranslate="entity.validation.minlength"
+                           [translateValues]="{ min: 8 }">
+                        This field is required to be at least 8 characters.
+                    </small>
             </div>
 
             </div>
@@ -77,6 +90,26 @@
                         class="e-float-text">Employee Fax</label>
 
                 </div>
+                <div
+                *ngIf="editForm.get('employeefax')!.invalid && (editForm.get('employeefax')!.dirty || editForm.get('employeefax')!.touched)">
+                <small class="form-text text-danger" *ngIf="editForm.get('employeefax')?.errors?.required"
+                    jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+                <small class="form-text text-danger"
+                           *ngIf="editForm.get('employeefax')?.errors?.maxlength"
+                           jhiTranslate="entity.validation.maxlength"
+                           [translateValues]="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                    </small>
+
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('employeefax')?.errors?.minlength"
+                           jhiTranslate="entity.validation.minlength"
+                           [translateValues]="{ min: 8 }">
+                        This field is required to be at least 8 characters.
+                    </small>
+            </div>
             </div>
         </div>
         <div class="form-group mx-sm-3 mb-2">
@@ -100,11 +133,32 @@
                         class="e-float-text">employeeemail</label>
 
                 </div>
-                <div
-                    *ngIf="editForm.get('employeeemail')!.invalid && (editForm.get('employeeemail')!.dirty || editForm.get('employeeemail')!.touched)">
-                    <small class="form-text text-danger" *ngIf="editForm.get('employeeemail')?.errors?.required"
-                        jhiTranslate="entity.validation.required">
+                
+                <div *ngIf="editForm.get('employeeemail')!.invalid && (editForm.get('employeeemail')!.dirty || editForm.get('employeeemail')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('employeeemail')?.errors?.required"
+                           jhiTranslate="entity.validation.required">
                         This field is required.
+                    </small>
+
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('employeeemail')?.errors?.maxlength"
+                           jhiTranslate="entity.validation.maxlength"
+                           [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                    </small>
+
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('employeeemail')?.errors?.minlength"
+                           jhiTranslate="entity.validation.minlength"
+                           [translateValues]="{ min: 5 }">
+                        This field is required to be at least 5 characters.
+                    </small>
+
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('employeeemail')?.errors?.employeeemail"
+                           jhiTranslate="global.messages.validate.employeeemail.invalid">
+                        Your email is invalid.
                     </small>
                 </div>
             </div>
