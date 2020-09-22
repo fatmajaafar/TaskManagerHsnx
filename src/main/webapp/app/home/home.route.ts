@@ -8,7 +8,7 @@ export const HOME_ROUTE: Routes = [
     path: '',
     component: HomeComponent,
     data: {
-      authorities: [],
+      authorities: ['ROLE_ADMIN', 'ROLE_USER'],
       pageTitle: 'home.title'
     },
     canActivate: [UserRouteAccessService]
