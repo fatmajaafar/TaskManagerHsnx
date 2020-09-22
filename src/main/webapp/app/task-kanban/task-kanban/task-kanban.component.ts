@@ -22,6 +22,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
+import { AccountService } from 'app/core/auth/account.service';
 
 //import { IKanbanData, cardData } from './data';
 @Component({
@@ -61,6 +62,8 @@ export class TaskKanbanComponent implements OnInit {
   editTask: ITaskHsnx = {};
 
   isSaving = false;
+  canDrag: any;
+  canEdit: any;
   employees: IEmployeeHsnx[] = [];
   task: ITaskHsnx = {};
 
@@ -73,8 +76,14 @@ export class TaskKanbanComponent implements OnInit {
     protected employeeService: EmployeeHsnxService,
     protected modalService: NgbModal,
     private fb: FormBuilder,
-    protected activatedRoute: ActivatedRoute
-  ) {}
+    protected activatedRoute: ActivatedRoute,
+    protected accountService: AccountService
+  ) {
+    this.accountService.identity().subscribe(account => {
+      this.canDrag = account?.authorities.includes('ROLE_ADMIN');
+      this.canEdit = account?.authorities.includes('ROLE_ADMIN');
+    });
+  }
 
   loadTasks() {
     if (this.employeeId) {
@@ -178,7 +187,7 @@ export class TaskKanbanComponent implements OnInit {
   public getString(assignee: string) {}
 
   cardRendered(args: CardRenderedEventArgs): void {
-    if (true) {
+    if (this.canDrag) {
       if (args.data) {
         this.taskService
           .find(Number(args.data.RankId))
@@ -252,35 +261,38 @@ export class TaskKanbanComponent implements OnInit {
   }
 
   // OPEN EDIT TASK MODAL
-  open(content: any, data: IKanbanData) {
-    this.editTask.id = data.RankId;
-    this.editTask.tasktitle = data.Title;
-    this.editTask.taskdescription = data.Summary;
-    this.editTask.tblEmployeeId = data.EmpID;
-    // data.Assignee=this.editTask.tblEmployeeId?.toString();
 
-    switch (data.Status) {
-      case 'Open':
-        this.editTask.taskstatus = 1;
-        break;
-      case 'InProgress':
-        this.editTask.taskstatus = 2;
-        break;
-      case 'Review':
-        this.editTask.taskstatus = 3;
-        break;
-      case 'Close':
-        this.editTask.taskstatus = 4;
-        break;
-    }
-    this.editTask.taskpriority = data.Priority;
-    this.modalRef = this.modalService.open(content, { size: 'sm' });
-    this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
-      this.employees = [];
-      if (res.body) {
-        this.employees = res.body;
+  open(content: any, data: IKanbanData) {
+    if (this.canEdit) {
+      this.editTask.id = data.RankId;
+      this.editTask.tasktitle = data.Title;
+      this.editTask.taskdescription = data.Summary;
+      this.editTask.tblEmployeeId = data.EmpID;
+      // data.Assignee=this.editTask.tblEmployeeId?.toString();
+
+      switch (data.Status) {
+        case 'Open':
+          this.editTask.taskstatus = 1;
+          break;
+        case 'InProgress':
+          this.editTask.taskstatus = 2;
+          break;
+        case 'Review':
+          this.editTask.taskstatus = 3;
+          break;
+        case 'Close':
+          this.editTask.taskstatus = 4;
+          break;
       }
-    });
+      this.editTask.taskpriority = data.Priority;
+      this.modalRef = this.modalService.open(content, { size: 'sm' });
+      this.employeeService.query({}).subscribe((res: HttpResponse<IEmployeeHsnx[]>) => {
+        this.employees = [];
+        if (res.body) {
+          this.employees = res.body;
+        }
+      });
+    }
   }
 
   /**save task after edit */

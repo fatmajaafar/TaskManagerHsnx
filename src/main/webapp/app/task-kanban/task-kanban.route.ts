@@ -10,9 +10,6 @@ export const TaskKanbanRoute: Routes = [
     data: {
       authorities: ['ROLE_USER', 'ROLE_ADMIN']
     },
-    /* resolve: {
-      task: TaskHsnx
-    },*/
     canActivate: [UserRouteAccessService]
   }
 ];
