@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
@@ -23,7 +23,6 @@ export class TaskHsnxUpdateComponent implements OnInit {
   dateEndDp: any;
   dueDateDp: any;
   task: ITaskHsnx[] = [];
-
   editForm = this.fb.group(
     {
       id: [],
@@ -31,7 +30,7 @@ export class TaskHsnxUpdateComponent implements OnInit {
       taskdescription: [],
       dateStart: ['', Validators.required],
       timeStart: [],
-      dateEnd: [],
+      dateEnd: ['', Validators.required],
       timeEnd: [],
       taskstatus: [],
       taskpriority: [],
@@ -40,7 +39,7 @@ export class TaskHsnxUpdateComponent implements OnInit {
       taskstate: [],
       tblEmployeeId: []
     },
-    { validator: this.dateLessThan('dateStart', 'dueDate') }
+    { validator: this.dateLessThan('dateStart', 'dueDate') && this.dateLassThan2('dateStart', 'dateEnd') }
   );
 
   constructor(
@@ -140,6 +139,19 @@ export class TaskHsnxUpdateComponent implements OnInit {
     return (group: FormGroup): { [key: string]: any } => {
       const s = group.controls[start];
       const e = group.controls[end];
+      if (s.value > e.value) {
+        return {
+          dates: 'Due date should be less than Start date'
+        };
+      }
+      return {};
+    };
+  }
+
+  dateLassThan2(datestart: string, Dateend: string) {
+    return (group: FormGroup): { [key: string]: any } => {
+      const s = group.controls[datestart];
+      const e = group.controls[Dateend];
       if (s.value > e.value) {
         return {
           dates: 'Due date should be less than Start date'
