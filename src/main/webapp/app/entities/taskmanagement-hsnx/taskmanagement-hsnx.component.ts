@@ -39,6 +39,7 @@ export class TaskmanagementHsnxComponent implements OnInit {
   //current date
   date = new FormControl(new Date());
   filter = '';
+  employeeId = 0;
   constructor(
     protected modalService: NgbModal,
     protected taskService: TaskHsnxService,
@@ -50,30 +51,6 @@ export class TaskmanagementHsnxComponent implements OnInit {
     protected employeeService: EmployeeHsnxService,
     protected webSocketService: WebSocketService
   ) {
-    this.taskService
-      .query({
-        size: 1000
-      })
-      .subscribe(
-        (res: HttpResponse<ITaskHsnx[]>) => {
-          const today = new Date();
-          this.Difference_In_Days = 0;
-          this.tasks = res.body || [];
-
-          for (var i = 0; i < this.tasks.length; i++) {
-            if (this.tasks[i].dueDate) {
-              var date = moment(this.tasks[i].dueDate).toDate();
-
-              var Difference_In_Time = date.getTime() - today.getTime();
-              this.Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-              //  return this.Difference_In_Days;
-              //this.Difference_In_Day=this.Difference_In_Days;
-              this.tasks[i].nbjrs = this.Difference_In_Days;
-            }
-          }
-        },
-        () => ''
-      );
     this.loadEvents();
   }
   loadEvents(): void {
@@ -90,11 +67,69 @@ export class TaskmanagementHsnxComponent implements OnInit {
         () => ''
       );
   }
+
+  loadAllTasks(): void {
+    if (this.employeeId) {
+      this.taskService
+        .query({
+          'tblEmployeeId.equals': this.employeeId,
+          'taskstatus.specified': true,
+          size: 100000
+        })
+        .subscribe(
+          (res: HttpResponse<ITaskHsnx[]>) => {
+            const today = new Date();
+            this.Difference_In_Days = 0;
+            this.tasks = res.body || [];
+
+            for (var i = 0; i < this.tasks.length; i++) {
+              this.tasks[i].tblEmployeeId = this.employees[i].id;
+              if (this.tasks[i].dueDate && this.tasks[i].taskstatus != 4) {
+                var date = moment(this.tasks[i].dueDate).toDate();
+
+                var Difference_In_Time = date.getTime() - today.getTime();
+                this.Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+                //  return this.Difference_In_Days;
+                //this.Difference_In_Day=this.Difference_In_Days;
+                this.tasks[i].nbjrs = this.Difference_In_Days;
+              }
+            }
+          },
+          () => ''
+        );
+    } else {
+      this.taskService
+        .query({
+          size: 100000
+        })
+        .subscribe(
+          (res: HttpResponse<ITaskHsnx[]>) => {
+            const today = new Date();
+            this.Difference_In_Days = 0;
+            this.tasks = res.body || [];
+
+            for (var i = 0; i < this.tasks.length; i++) {
+              this.tasks[i].tblEmployeeId = this.employees[i].id;
+              if (this.tasks[i].dueDate && this.tasks[i].taskstatus != 4) {
+                var date = moment(this.tasks[i].dueDate).toDate();
+
+                var Difference_In_Time = date.getTime() - today.getTime();
+                this.Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+                //  return this.Difference_In_Days;
+                //this.Difference_In_Day=this.Difference_In_Days;
+                this.tasks[i].nbjrs = this.Difference_In_Days;
+              }
+            }
+          },
+          () => ''
+        );
+    }
+  }
   editForm = this.fb.group({
     id: [],
     tasktitle: [null, [Validators.required]],
     taskdescription: [],
-    dateStart: [],
+    dateStart: ['', Validators.required],
     timeStart: [],
     dateEnd: [],
     timeEnd: [],
@@ -120,7 +155,10 @@ export class TaskmanagementHsnxComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.employeeService.query().subscribe((res: HttpResponse<IEmployeeHsnx[]>) => (this.employees = res.body || []));
+    this.loadAllTasks();
+  }
 
   updateForm(task: ITaskHsnx): void {
     this.editForm.patchValue({

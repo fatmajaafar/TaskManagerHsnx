@@ -123,10 +123,18 @@
   </div>
   <br>
   <div class="page-content">
-    <mat-form-field class="example-full-width" color="accent">
-      <input matInput  [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="">
-      <mat-icon matPrefix>search</mat-icon>
-    </mat-form-field>
+    <div class="form-group mx-sm-3 mb-2">
+      <mat-form-field color="accent">
+        <mat-select id="field_tblEmployee" name="tblEmployee" [(ngModel)]="employeeId"
+          [ngModelOptions]="{standalone: true}" (selectionChange)="loadAllTasks()" placeholder="Filter by employee" >
+          <mat-option>All</mat-option>
+          <mat-option [value]="employee.id" *ngFor="let employee of employees">{{ employee.employeename }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+    </div>
     <div class="header">
       <span class="title" jhiTranslate="taskManagement.home.title">Manage Tasks</span>
       <span class="fab-button">
