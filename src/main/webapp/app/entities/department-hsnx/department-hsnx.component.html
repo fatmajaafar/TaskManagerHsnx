@@ -53,7 +53,7 @@
                     <td>{{ department.deptNote }}</td>
                     <td>
                         <div *ngIf="department.tblCountryId">
-                            <a [routerLink]="['/task-hsnx', department.tblCountryId , 'view']" >{{ department.tblCountryCountryName }}</a>
+                            <a [routerLink]="['/country-hsnx', department.tblCountryId , 'view']" >{{ department.tblCountryCountryName }}</a>
                         </div>
                     </td>
                     <td class="text-right">
