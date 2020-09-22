@@ -22,6 +22,40 @@ export class HomeComponent implements OnInit {
   tasks: ITaskHsnx[] = [];
 
   //chart init
+
+  /**!!!!!!!!!!!!!**/
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+    legend: {
+      position: 'bottom'
+    },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end'
+      }
+    }
+  };
+  public pieChartLabels: Label[] = [['To Do'], ['In Progress'], ['In Review'], ['Done']];
+  public pieChartData: number[] = [300, 100, 500, 100];
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [pluginDataLabels];
+  public pieChartColors = [
+    {
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', 'rgba(255, 248, 181, 1)']
+    }
+  ];
+  /** *******************************************/
+
+  public polarAreaChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
+  public polarAreaChartData: SingleDataSet = [300, 500, 100, 40, 120];
+
+  public polarAreaLegend = true;
+
+  public polarAreaChartType: ChartType = 'polarArea';
+  /************************* */
+
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -33,50 +67,51 @@ export class HomeComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: Label[] = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
 
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-  ];
+  public barChartData: ChartDataSets[] = [{ data: [65, 59, 80, 81, 56, 55, 40, 12, 50, 30, 22, 58], label: 'Completed' }];
 
-  /**!!!!!!!!!!!!!**/
-  public pieChartOptions: ChartOptions = {
-    responsive: true,
-    legend: {
-      position: 'top'
-    },
-    plugins: {
-      datalabels: {
-        anchor: 'end',
-        align: 'end'
-      }
-    }
-  };
-  public pieChartLabels: Label[] = [['To Do'], ['In Progress'], ['In Review'], ['Done']];
-  public pieChartData: number[] = [300, 200, 400, 100];
-  public pieChartType: ChartType = 'pie';
-  public pieChartLegend = true;
-  public pieChartPlugins = [pluginDataLabels];
-  public pieChartColors = [
-    {
-      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', 'rgba(255, 248, 181, 1)']
-    }
-  ];
-  /** */
-
-  public polarAreaChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
-  public polarAreaChartData: SingleDataSet = [300, 500, 100, 40, 120];
-  public polarAreaLegend = true;
-
-  public polarAreaChartType: ChartType = 'polarArea';
-  /** */
   constructor(private accountService: AccountService, private loginModalService: LoginModalService, private taskService: TaskHsnxService) {}
 
   ngOnInit(): void {
     this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
+    console.clear();
+    console.log('------');
+    this.taskService
+      .query({
+        'taskstatus.specified': true,
+        size: 1000
+      })
+      .subscribe((res: HttpResponse<ITaskHsnx[]>) => {
+        this.tasks = res.body || [];
+        let i = 0;
+        this.pieChartData = [0, 0, 0, 0];
+
+        res.body?.forEach(element => {
+          i += 1;
+          if (element.taskstatus == 1) this.pieChartData[0] += 1;
+          if (element.taskstatus == 2) this.pieChartData[1] += 1;
+          if (element.taskstatus == 3) this.pieChartData[2] += 1;
+          if (element.taskstatus == 4) this.pieChartData[3] += 1;
+        });
+        console.clear();
+        console.log(this.pieChartData);
+      });
   }
 
   isAuthenticated(): boolean {
@@ -92,27 +127,4 @@ export class HomeComponent implements OnInit {
       this.authSubscription.unsubscribe();
     }
   }
-  // events
-
-  /* changeLabels() {
-    const words = ['hen', 'variable', 'embryo', 'instal', 'pleasant', 'physical', 'bomber', 'army', 'add', 'film',
-      'conductor', 'comfortable', 'flourish', 'establish', 'circumstance', 'chimney', 'crack', 'hall', 'energy',
-      'treat', 'window', 'shareholder', 'division', 'disk', 'temptation', 'chord', 'left', 'hospital', 'beef',
-      'patrol', 'satisfied', 'academy', 'acceptance', 'ivory', 'aquarium', 'building', 'store', 'replace', 'language',
-      'redeem', 'honest', 'intention', 'silk', 'opera', 'sleep', 'innocent', 'ignore', 'suite', 'applaud', 'funny'];
-    const randomWord = () => words[Math.trunc(Math.random() * words.length)];
-    this.pieChartLabels = Array.apply(null, { length: 3 }).map(_ => randomWord());
-  }*/
-
-  /* addSlice() {
-    this.pieChartLabels.push(['Line 1', 'Line 2', 'Line 3']);
-    this.pieChartData.push(400);
-    this.pieChartColors[0].backgroundColor.push('rgba(196,79,244,0.3)');
-  }
-
-  removeSlice() {
-    this.pieChartLabels.pop();
-    this.pieChartData.pop();
-    this.pieChartColors[0].backgroundColor.pop();
-  }*/
 }
