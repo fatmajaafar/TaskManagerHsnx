@@ -30,7 +30,7 @@ export class TaskHsnxUpdateComponent implements OnInit {
       taskdescription: [],
       dateStart: ['', Validators.required],
       timeStart: [],
-      dateEnd: ['', Validators.required],
+      dateEnd: [''],
       timeEnd: [],
       taskstatus: [],
       taskpriority: [],

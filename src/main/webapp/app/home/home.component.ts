@@ -4,12 +4,13 @@ import { Subscription } from 'rxjs';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/user/account.model';
-import { SingleDataSet, Label } from 'ng2-charts';
+import { SingleDataSet, Label, MultiDataSet } from 'ng2-charts';
 import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { TaskHsnxService } from 'app/entities/task-hsnx/task-hsnx.service';
 import { HttpResponse } from '@angular/common/http';
 import { ITaskHsnx } from 'app/shared/model/task-hsnx.model';
+import { Color } from 'chartjs-plugin-datalabels/types/options';
 
 @Component({
   selector: 'jhi-home',
@@ -43,18 +44,25 @@ export class HomeComponent implements OnInit {
   public pieChartPlugins = [pluginDataLabels];
   public pieChartColors = [
     {
-      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', 'rgba(255, 248, 181, 1)']
+      backgroundColor: ['#3F3FBF', '#E59328', '#4C0F7A', '#3D7A0F']
     }
   ];
   /** *******************************************/
 
-  public polarAreaChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
+  /*public polarAreaChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
   public polarAreaChartData: SingleDataSet = [300, 500, 100, 40, 120];
 
   public polarAreaLegend = true;
 
-  public polarAreaChartType: ChartType = 'polarArea';
+  public polarAreaChartType: ChartType = 'polarArea';*/
   /************************* */
+  // Doughnut
+  public doughnutChartLabels: Label[] = ['High', 'Medium', 'Low'];
+  public doughnutChartData: number[] = [350, 450, 100];
+
+  public doughnutChartType: ChartType = 'doughnut';
+  public pieColor: Color[] = ['#E22C87', '#056DD5', '#149414'];
+  /*** */
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -90,17 +98,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
-    console.clear();
-    console.log('------');
     this.taskService
       .query({
         'taskstatus.specified': true,
+        'taskpriority.specified': true,
         size: 1000
       })
       .subscribe((res: HttpResponse<ITaskHsnx[]>) => {
         this.tasks = res.body || [];
         let i = 0;
         this.pieChartData = [0, 0, 0, 0];
+        this.doughnutChartData = [0, 0, 0];
 
         res.body?.forEach(element => {
           i += 1;
@@ -108,9 +116,10 @@ export class HomeComponent implements OnInit {
           if (element.taskstatus == 2) this.pieChartData[1] += 1;
           if (element.taskstatus == 3) this.pieChartData[2] += 1;
           if (element.taskstatus == 4) this.pieChartData[3] += 1;
+          if (element.taskpriority == 1) this.doughnutChartData[0] += 1;
+          if (element.taskpriority == 2) this.doughnutChartData[1] += 1;
+          if (element.taskpriority == 3) this.doughnutChartData[2] += 1;
         });
-        console.clear();
-        console.log(this.pieChartData);
       });
   }
 

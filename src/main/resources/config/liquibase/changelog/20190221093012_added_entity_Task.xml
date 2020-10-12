@@ -50,8 +50,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="TblTask" columnName="TimeStart" columnDataType="datetime"/>
-        <dropDefaultValue tableName="TblTask" columnName="TimeEnd" columnDataType="datetime"/>
+        <dropDefaultValue tableName="TblTask" columnName="TimeStart" columnDataType="time(7)"/>
+        <dropDefaultValue tableName="TblTask" columnName="TimeEnd" columnDataType="time(7)"/>
     </changeSet>
 
     <changeSet id="20190221093012-1-relations" author="jhipster">

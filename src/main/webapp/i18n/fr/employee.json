@@ -18,7 +18,8 @@
         "title": "Employee"
       },
       "id": "ID",
-      "employeename": "Nom",
+      "employeename": "Prénom",
+      "employeelastname": "Nom",
       "employeephone": "Téléphone ",
       "employeefax": "Fax ",
       "employeeaddress": "Adresse ",

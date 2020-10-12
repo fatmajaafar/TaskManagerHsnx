@@ -10,7 +10,7 @@ import { NotificationHsnxService } from '../notification-hsnx/notification-hsnx.
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { DATE_TIME_FORMAT, DATE_FORMAT } from 'app/shared/constants/input.constants';
@@ -109,7 +109,6 @@ export class TaskmanagementHsnxComponent implements OnInit {
             this.tasks = res.body || [];
 
             for (var i = 0; i < this.tasks.length; i++) {
-              this.tasks[i].tblEmployeeId = this.employees[i].id;
               if (this.tasks[i].dueDate && this.tasks[i].taskstatus != 4) {
                 var date = moment(this.tasks[i].dueDate).toDate();
 
@@ -135,7 +134,7 @@ export class TaskmanagementHsnxComponent implements OnInit {
     timeEnd: [],
     taskstatus: [],
     taskpriority: [],
-    dueDate: [],
+    dueDate: ['', Validators.required],
     taskcategory: [],
     taskstate: [],
     tblEmployeeId: []
